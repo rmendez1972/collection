@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe145593-eaf5-49dc-971a-1de1a3559efe">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="2aa97007-3da0-44a8-8675-549622e6d4b3">
+		<queryString language="SQL">
+			<![CDATA[select S.id_solicitud, S.fecha_ingreso, S.fecha_termino, S.id_tramite, S.id_solicitante, S.id_usuario_ingreso, S.id_usuario_seguimiento, S.id_status, T.nombre as tramite, concat(P.nombre,' ',P.apellido_paterno,' ',P.apellido_materno) as solicitante, ST.nombre as status, UA.nombre as ua from solicitud S inner join tramite T on S.id_tramite=T.id_tramite inner join solicitante P on S.id_solicitante=P.id_solicitante inner join status ST on S.id_status=ST.id_status inner join unidadadministrativa UA on T.id_unidadadministrativa=UA.id_unidadadministrativa where S.id_solicitud=1;]]>
+		</queryString>
+		<field name="id_solicitud" class="java.lang.Integer"/>
+		<field name="fecha_termino" class="java.sql.Timestamp"/>
+	</subDataset>
+	<parameter name="sql" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select S.id_solicitud, S.fecha_ingreso, S.fecha_termino, S.id_tramite, S.id_solicitante, S.id_usuario_ingreso, S.id_usuario_seguimiento, S.id_status, T.nombre as tramite, concat(P.nombre,' ',P.apellido_paterno,' ',P.apellido_materno) as solicitante, ST.nombre as status, UA.nombre as ua from solicitud S inner join tramite T on S.id_tramite=T.id_tramite inner join solicitante P on S.id_solicitante=P.id_solicitante inner join status ST on S.id_status=ST.id_status inner join unidadadministrativa UA on T.id_unidadadministrativa=UA.id_unidadadministrativa $P!{sql};]]>
+	</queryString>
+	<field name="id_solicitud" class="java.lang.Integer"/>
+	<field name="fecha_ingreso" class="java.sql.Timestamp"/>
+	<field name="fecha_termino" class="java.sql.Timestamp"/>
+	<field name="id_tramite" class="java.lang.Integer"/>
+	<field name="id_solicitante" class="java.lang.Integer"/>
+	<field name="id_usuario_ingreso" class="java.lang.Integer"/>
+	<field name="id_usuario_seguimiento" class="java.lang.Integer"/>
+	<field name="id_status" class="java.lang.Integer"/>
+	<field name="tramite" class="java.lang.String"/>
+	<field name="solicitante" class="java.lang.String"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="ua" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="53" splitType="Stretch">
+			<image scaleImage="RealHeight" hAlign="Center">
+				<reportElement uuid="d4111271-89ac-491b-b70f-c1bb14d08be6" x="13" y="0" width="545" height="53"/>
+				<imageExpression><![CDATA["..\\imagenes\\headerreporte.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2e5cff4f-b186-4b22-8270-3a3247fd7c4b" x="13" y="1" width="545" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Acuse de Recibo de Ingreso a la Ventanilla Única de Trámites y Servicios]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="307" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="4a90db53-c263-45c8-8ba9-b1b7e74939e3" style="table" x="37" y="55" width="111" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Núm. Solicitud:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="3a42879a-36f5-4257-9aea-1e8b2b6c78ba" style="table" x="151" y="55" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_solicitud}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d4ba0a8f-dedd-469f-858c-c7136da3b1f8" style="table" x="37" y="79" width="111" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Feha de ingreso:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="17d75ec6-d43b-449d-8d7f-a516025ce9cb" style="table" x="151" y="79" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_ingreso}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="395cb002-516d-476c-8174-5d416e4b5009" style="table" x="37" y="103" width="111" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Trámite:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="52f805eb-3d00-4b24-a12a-cce9296f4752" style="table" x="151" y="103" width="390" height="36"/>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tramite}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="87a6065b-3509-4e65-8873-5ff13691711a" style="table" x="37" y="143" width="111" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Solicitante:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="14d35f96-10ad-43c4-b914-24246d125048" style="table" x="151" y="143" width="390" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d9800a44-1cde-499d-aa31-726c9edc76e7" style="table" x="37" y="167" width="111" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Subsecretaría:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="28dd880a-da13-41a7-93c3-60f202c8bdc6" style="table" x="151" y="167" width="390" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ua}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="56839f40-8c46-4cb3-ab09-2577284eb73d" x="37" y="23" width="504" height="32"/>
+				<textElement textAlignment="Justified">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Por este conducto se le informa que su trámite ha sido ingresado correctamente a la Ventanilla Única de trámites y Servicios de la SEDUVI, con los datos que acontinuación se detallan:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="56839f40-8c46-4cb3-ab09-2577284eb73d" x="37" y="192" width="501" height="41"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false" isUnderline="false"/>
+					<paragraph firstLineIndent="35"/>
+				</textElement>
+				<text><![CDATA[ Es muy importante que conserve el número de solicitud, pues es reqsuisito indispensable para el seguimiento de su trámite a través de la página de la SEDUVI con dirección electrónica http://seduvi.qroo.gob.mx y a través de nuestra aplicación móvil.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="56839f40-8c46-4cb3-ab09-2577284eb73d" x="37" y="220" width="501" height="21"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[A t e n t a m e n t e]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="56839f40-8c46-4cb3-ab09-2577284eb73d" x="284" y="1" width="211" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Chetumal, Quintana Roo., a]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yy">
+				<reportElement uuid="9d2c8d86-5546-4126-9f0d-feadb11ef69e" x="480" y="1" width="58" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="936e50d1-7007-46a5-b881-218f6a9a2776" x="37" y="192" width="38" height="20"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nota:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="56839f40-8c46-4cb3-ab09-2577284eb73d" x="37" y="233" width="501" height="21"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Secretaría de Desarrollo Urbano y Vivienda]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="17" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="31" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="13" splitType="Stretch"/>
+	</summary>
+</jasperReport>

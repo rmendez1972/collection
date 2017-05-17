@@ -1,0 +1,47 @@
+@font-face{
+	font-family: sourcesans-regular;
+	src:url(fuentes/SourceSans/SourceSansPro-Regular.ttf);
+}
+
+@font-face{
+	font-family: sourcesans-light;
+	src:url(fuentes/SourceSans/SourceSansPro-Light.ttf);
+}
+
+@font-face{
+	font-family: sourcesans-extralight;
+        /*src:url(fuentes/helvetica/HelveticaNeue-Thin.otf);*/
+	src:url(fuentes/SourceSans/SourceSansPro-ExtraLight.ttf);
+}
+@font-face{
+	font-family: quattro;
+	src:url(fuentes/quattrocento/QuattrocentoBold.ttf);
+}
+
+/* fuente helvetica nue */
+
+@font-face{
+	font-family: helveticanueblackext; /* Logo SEDUVI*/
+	src:url(fuentes/helvetica/HelveticaNeue-BlackExt.otf);
+}
+
+@font-face{
+	font-family: helveticanuelightcond; /* Logo Secretaría de desarrollo urbano y vivienda*/
+	src:url(fuentes/helvetica/HelveticaNeue-LightCond.otf);
+}
+
+@font-face{
+	font-family: helveticanuethinext; /* Nombre del sistema Ventanilla Única de Gestión de Trámites y Servicios*/
+	src:url(fuentes/helvetica/HelveticaNeue-ThinExt.otf);
+}
+
+@font-face{
+	font-family: helveticanuelightext; /* body*/
+	src:url(fuentes/helvetica/HelveticaNeue-LightExt.otf);
+}
+
+
+@font-face{
+	font-family: helveticanuemedium; /* body*/
+	src:url(fuentes/helvetica/HelveticaNeue-Medium.otf);
+}

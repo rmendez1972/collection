@@ -1,0 +1,1057 @@
+@import url('reset.css');
+@import url('fuentes.css');
+
+
+/*--- Estilos Generales --*/
+
+ 
+
+
+    body {
+        font-family: helveticanuelightext;
+        background-image: url(../imagenes/seduvi2.png);
+
+    }
+    header a{text-decoration: none;color:#fff;}
+    a {text-decoration: none;color:#000;}
+    a:hove{text-decoration: underline;}
+
+    h1,h2,h3,h4{
+        font-family:helveticanuemedium;
+        padding-top: 10px;
+        margin-bottom: 10px;
+        border: 0;
+        color: #459cc1;/*#ef9c00 anarankado_ultimo ;#953b39;*/
+        border-bottom: 1px solid #e5e5e5;
+        border-bottom-style: groove;
+    }
+
+    h1{font-size:30px;}
+    h2{font-size:25px;}
+    h3{font-size:20px;}
+    h4{font-size:15px;}
+    
+    p {padding: 0.3em;}
+    
+ /*Fin de los estilos generales */
+
+ #consola{
+     margin-top:  10px;
+     background-image: url(../imagenes/tools.png);
+     background-repeat:no-repeat;
+     background-position: 5px 15px;
+     height: 100px;
+     width: 98%;
+     /*float: left;*/
+    
+
+      padding-left: 70px;
+      opacity: 0.3;
+      margin: 0 auto;
+      margin-top:  10px;
+     
+ }
+ 
+  #consola:hover{
+       background-color: #459cc1;/*Verde bandera*/
+       border-radius: 10px;
+       opacity: 1;
+        }
+ 
+ #reports{
+     margin:  10px;
+     background-image: url(../imagenes/reportesb.png);
+     background-repeat:no-repeat;
+     background-position: 5px 5px;
+     /*height: 65px;*/
+     width: 91%;
+     float: left;
+   /*background-color: #28921f;*/
+      padding-left: 70px;
+      opacity: 0.8;
+     
+ }
+ 
+ table.reportes {
+	font-family:arial;
+	margin:20px;
+	font-size: 10pt;
+	/* width: 80%; */
+	text-align: center;
+        width: 90%;
+        border-spacing: 50px;
+        
+    }
+
+
+    #wrapper_frm_reportes{
+     float: left;
+     display: block;
+     margin:  10px;
+     width: 95%;
+     padding: 5px;
+     font-family: helveticanuelightext;
+     /*opacity: 0.3;*/
+     
+    }
+    
+    .divimprimiendo{
+     float: left;
+     display: none;
+     margin:  10px;
+     width: 95%;
+     height: 2em;
+     padding: 5px;
+     font-family: helveticanuelightext;
+     border-radius: 10px;
+     background-color:  #f8b9b7;
+     font-size: 1em;
+     
+    }
+    
+    
+    
+/*--ESTILOS PARA LOS FORMULARIOS--*/
+    form {  margin: 10px;}
+    fieldset {padding: 15px;margin: 10px;border: 1px solid #000; border-radius: 10px; box-shadow: 7px 7px 10px #95A5A6 ;}
+
+    form legend {
+        display: inline;
+        padding: 0.5em;
+        font-family:helveticanuelightext;
+        font-size: 20px;
+        line-height: 40px;
+        color: #333333;
+        border: 0;
+        background: linear-gradient(45deg, cadetblue, #cccccc);
+        border-radius: 15px;
+        text-shadow: 1px 1px 0px rgba(230,230,230,1),  
+                     2px 2px 0px rgba(200,200,200,1),  
+                     3px 3px 0px rgba(180,180,180,1),  
+                     4px 4px 0px rgba(160,160,160,1);
+        
+    }
+
+    label,input,button,select,textarea {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 20px;
+      
+
+    }
+
+    input,button,select,textarea {
+      font-family: helveticanuelightext;
+    }
+
+    label {display: inline;margin-bottom: 5px; font-family: helveticanuelightext; text-shadow: 0px 0px 1px #888; padding: 5px; }
+
+    /*select,*/
+    textarea,
+    input[type="text"],
+    input[type="password"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    /*input[type="date"],*/
+    input[type="month"],
+    input[type="time"],
+    input[type="week"],
+    input[type="number"],
+    input[type="email"],
+    input[type="url"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="color"],
+    .uneditable-input {
+      display: inline-block;
+      height: 50px;
+      padding: 4px 6px;
+      margin-bottom: 10px;
+      font-size: 25px;
+      line-height: 25px;
+      color: #555555;
+      vertical-align: middle;
+      -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+              border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+input[type="email"]{text-transform: lowercase;font-size: 14px}
+
+input:-moz-placeholder,textarea:-moz-placeholder {color: #999999;}
+
+input:-ms-input-placeholder,textarea:-ms-input-placeholder {color: #999999;}
+
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #999999;}
+    
+input,textarea,.uneditable-input {width: 206px;}
+
+textarea {height: auto;width: 250px;font-size: 14px;line-height: 14px;}
+#domicilio {width: 250px;font-size: 14px;line-height: 14px;}
+
+#sexo select{ height: auto;width: 100px;}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 4px 0 0;
+  margin-top: 1px \9;
+  *margin-top: 0;
+  line-height: normal;
+}
+
+input[type="file"],
+input[type="image"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+}
+
+select,
+input[type="file"] {
+  height: 30px;
+  /* In IE7, the height of the select element cannot be changed by height, only font-size */
+
+  *margin-top: 4px;
+  /* For IE7, add top margin to align select with labels */
+
+  line-height: 30px;
+}
+
+select {width: 220px;background-color: #ffffff;border: 1px solid #cccccc;}
+
+#unidadadtva{width: 400px;background-color: #ffffff;border: 1px solid #cccccc;}
+
+#tramites{width: 460px;background-color: #ffffff;border: 1px solid #cccccc;}
+
+select[multiple],select[size] { height: auto;}
+
+select:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.uneditable-input,
+.uneditable-textarea {
+  color: #999999;
+  cursor: not-allowed;
+  background-color: #fcfcfc;
+  border-color: #cccccc;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+}
+
+.uneditable-input {overflow: hidden;white-space: nowrap;}
+
+.uneditable-textarea {width: auto;height: auto;}
+
+input:-moz-placeholder {color: #999999;font-size: 14px;text-transform: none;}
+
+input:-ms-input-placeholder {color: #999999;font-size: 14px;text-transform:none;}
+
+input::-webkit-input-placeholder {color: #999999;font-size: 14px;text-transform: none;}
+
+
+input:focus:invalid,textarea:focus:invalid,select:focus:invalid {color: #b94a48;border-color: #ee5f5b;}
+
+input:focus:invalid:focus,
+textarea:focus:invalid:focus,
+select:focus:invalid:focus,
+#sexo:focus:invalid:focus{
+  border-color: #e9322d;
+  -webkit-box-shadow: 0 0 6px #f8b9b7;
+     -moz-box-shadow: 0 0 6px #f8b9b7;
+          box-shadow: 0 0 6px #f8b9b7;
+               
+background: #fff url(../imagenes/invalid.png) no-repeat 95% center;
+box-shadow: 0 0 5px #d45252;
+border-color: #b03535;
+}
+
+
+input:required,textarea:required {background: #fff url(../imagenes/red_asterisk.png) no-repeat 98% center;}
+
+select:required {background: #fff url(../imagenes/red_asterisk.png) no-repeat 95% center;}
+#sexo:required {background: #fff url(../imagenes/red_asterisk.png) no-repeat 90% center;}
+#sexo:required:valid{background: #fff url(../imagenes/valid.png) no-repeat 90% center;
+	box-shadow: 0 0 5px #5cd053;
+	border-color: #28921f;
+}
+select:required:valid {background: #fff url(../imagenes/valid.png) no-repeat 95% center;
+	box-shadow: 0 0 5px #5cd053;
+	border-color: #28921f;
+}
+
+#fecha_r:required {background: #fff url(../imagenes/red_asterisk.png) no-repeat 80% center;}
+#fecha_r:required:valid{background: #fff url(../imagenes/valid.png) no-repeat 80% center;
+	box-shadow: 0 0 5px #5cd053;
+	border-color: #28921f;
+}
+
+
+input:required:valid, textarea:required:valid{
+	background: #fff url(../imagenes/valid.png) no-repeat 98% center;
+	box-shadow: 0 0 5px #5cd053;
+	border-color: #28921f;
+}
+
+/*Fin de los estilos para los formularios*/
+
+/********************************************************************
+*  HEADER                                                           *
+********************************************************************/
+ header {
+        height: 120px;
+        width: 100%;
+        float:left;
+        /*background: darkgray;#1abc9c;background:#E74C3C;background:#27AE60;background:#ECF0F1;background:#95A5A6;*/
+        background: #459CC1;
+        box-shadow: 0px 3px 5px #000;
+                -moz-box-shadow: 0px 3px 5px #000;
+                -webkit-box-shadow: 0px 3px 5px #000;
+        /*position:fixed;*/
+        margin-bottom: 10px;
+}
+    /*Div contenedor  del logotipo y menu principal animado*/
+    #subheader {width: 960px; margin: auto;}
+
+        #logotipo { /*Div contenedor para el logotipo SEDUVI*/
+                background:url(../imagenes/LogoSEDUVI.png);
+                background-repeat: no-repeat;
+                float: left;
+                width: 190px;
+                height: 120px;
+                padding: 0px 0px;
+                border-right: solid 2px ;
+                border-right-style: groove;
+                              
+                }
+      
+        #sistema {/*Estilo para el nombre del sistema "Ventanilla Única de Gestión..."*/
+            float: left;
+            width: 320px;
+            font-family:helveticanuethinext;
+            font-size: 24px;
+            color: #ffffff;
+            /*line-height: 25px;*/	
+            padding-top: 20px;
+            padding-left: 5px;
+            /*border-right: solid 2px ;
+            border-right-style: groove;*/
+        }
+
+    /*--- MENU principal---*/
+
+    header #subheader nav{ /*Definición del div contenedor de NAV*/
+            float: left;
+            width: 440px;
+            padding: 10px 0px;
+            opacity: 0.2; /*Reduce su intencidad de color a un 0.3*/
+
+
+    }
+        header #subheader nav:hover{opacity: 1;} /*NAV retoma su intensidad de color*/
+
+            
+
+
+    header #subheader nav > div { /*Definición de todas las areas contenedoras (divs) que están dentro de NAV*/
+            /*width: 210px;*/
+            font-family:sourcesans-extralight;
+            width: 100px;
+            height:100px;
+            float: right;
+            background: #ff8000;
+            /*opacity: 0.5;*/ /*para activar la opacidad*/
+            /*margin-right: 1px;
+            margin-bottom: 1px;*/
+            transition:all 1s linear;
+            -webkit-transition:all.5s linear;	
+    }
+
+    header #subheader nav > div a { /*Estilo para los enlaces de todos los div que cuelgan de NAV*/
+            display: inline-block;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+             /*vertical-align: center;
+           padding-top: 80px;*/
+            
+    }
+
+    /*Aplicando imagen de fondo para los div que se se encuentran dentro de NAV*/
+    header #subheader nav .reporte{background:url(../imagenes/reporte100.png);} /*Opción reportes*/
+    header #subheader nav .admin{ background:url(../imagenes/admin100.png);margin-right: 10px;}/*Opción admin*/
+    header #subheader nav .consulta{background:url(../imagenes/consulta100.png);margin-right: 10px;}/*Opción consulta*/
+    header #subheader nav .registra{background:url(../imagenes/registra100.png);margin-right: 10px;}/*Opción registra*/
+
+    /*Efecto animado para cuando el cursor está sobre alguna opción del menu principal NAV*/
+    header #subheader nav >div:hover{
+            border-radius:50%;
+            width: 100px;
+            height: 100px;
+            transform: rotate(90deg);
+            -webkit-transform:rotate(90deg);
+            opacity: 1;
+    }
+
+/*--CONTENEDOR ENVOLVENTE (WRAP)--*/
+#wrap{/*Definiendo medidas*/
+	width: 960px;
+	margin:auto;
+	clear: both; /* Clear both nunca se va a utilizar si tenemos un header que se utilizara al 100% del ancho de la pagina*/
+}
+
+
+
+
+    /*--- MAIN --*/ 
+    /*Contenedor principal para visualizar datos e interactuar con el usuario*/
+    #main { /* Delimitar cuanto va a medir width, margenes: 
+                    arriba, derecho, abajo, izquierdo y hacia qué lado va a flotar.*/
+            width: 100%;
+            height: auto;
+            float:left;
+            margin:auto;
+            background: #95a5a6; /*concrete*/
+            background: #bdc3c7; /*silver*/
+            background: #ecf0f1; /*clouds*/
+            border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    -webkit-border-radius: 5px;
+            box-shadow: 0px 2px 2px #000;
+                    -moz-box-shadow: 0px 2px 2px #000;
+                    -webkit-box-shadow: 0px 2px 2px #000;
+    }
+    
+/*--- FOOTER */
+footer {
+	width: 960px;
+	height: 50px;
+	float:left;
+        color:#ECF0F1;
+        color: #ffffff;
+	clear: both;
+
+        font-family: helveticanuelightcond;
+        font-size:14px;
+        
+	box-shadow: 0px 2px 2px #000;
+            -moz-box-shadow: 0px 2px 2px #000;
+            -webkit-box-shadow: 0px 2px 2px #000;
+	border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;	
+        background:#706b67;
+	margin-top: 20px;
+}
+
+/*-- MENU ORIZONTAL*/
+    /*Clase para aplicar estilo a los menus horizontales que se utilizaran*/
+    .menuhorizontal{
+    /*height: 65px;
+    width: 100%;*/
+    }
+    #adminnav:hover{
+    height: 65px;
+    width: 100%;
+    /*background-color: #28921f;*/
+    
+    }
+    .menuhorizontal ul{list-style:none;float:left;padding: 1%;width:95%;}
+    /*.menuhorizontal ul:hover{list-style:none;float:left;padding: 1%;width:95%;background-color: #28921f;}*/
+    .menuhorizontal ul li{
+        float:left; margin-right: 20px;margin-bottom: 10px;background: #706b67; /*#ef9c00;*/
+        padding:5px; border-radius:5px;
+        transition:all 1s linear;
+        /*width: 120px;*/
+        font-size: 16px;
+        text-align:center;
+        opacity: 0.5;
+        -webkit-transition:all.1s linear;
+    }
+    .menuhorizontal ul li a{color: #ffffff;text-decoration: none;}            
+    .menuhorizontal ul li a:hover{/*color:blue;*/}            
+    .menuhorizontal >ul li:hover{opacity: 1;}
+    
+/*FIN DE LA CLASE MENU HORIZONTAL*/
+
+#enviarrequisitos{
+    color: green;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 980px) {
+    #wrap {width:94%;height:94%;}
+    header{width:94%;height:auto;}
+    footer{height:94%;}
+    #subheader{width: 94%;height:94%;}
+    #logotipo{width: 94%; height:94%;}
+    #sistema{width: 94%;height:94%;}
+    nav{width: 94%;height:94%;}
+    header #subheader nav {width: 94%;height:94%;}
+    header #subheader nav > div {width: 94%;height:94%;background-size:94% 94%;
+        -webkit-background-size: 94% 94%;           /* Safari 3.0 */
+        -moz-background-size: 94% 94%;}
+    header #subheader nav > div a {width: 94%;height:94%;background-size:94% 94%;
+        -webkit-background-size: 94% 94%;           /* Safari 3.0 */
+        -moz-background-size: 94% 94%;}
+     
+    }
+    
+/* para 700px  o menos */
+@media screen and (max-width: 700px) {
+    #wrap {width:auto;height:auto;}
+    header{width:auto;height:auto;}
+    footer {height:auto;} 
+    #subheader{width: auto;height:auto; }
+    #logotipo{width: auto;height:auto; }
+    #sistema{width: auto;height:auto;}
+    nav {width: auto;height:auto;}
+     header #subheader nav > div {width: auto;height:auto;background-size:auto;
+        -webkit-background-size:auto;           /* Safari 3.0 */
+        -moz-background-size: auto;}
+    header #subheader nav > div a {width: auto;height:auto;background-size:auto;
+        -webkit-background-size:auto;           /* Safari 3.0 */
+        -moz-background-size: auto;}
+    }
+
+    
+/************************************************************************************
+MEDIA QUERIES
+*************************************************************************************/    
+/* para 480px  o menos */
+@media screen and (max-width: 480px) {
+    #wrap {width:auto;height:auto;}
+    #header{width:auto;height:auto;}
+       /*footer {width: auto;height:auto;} */ 
+    #subheader{width: auto;height:auto; }
+    #logotipo{width: auto;height:auto; }
+    #sistema{width: auto;height:auto;}
+    nav{width: auto;height:auto;}
+ 
+    header #subheader nav > div {width: auto;height:auto;background-size:auto;
+        -webkit-background-size:auto;}
+    header #subheader nav > div a {width: auto;height:auto;background-size:auto;
+        -webkit-background-size:auto;}
+    }
+/* FIN DISEÑO RESPONSIVO*/
+
+
+/*--CONTENIDO--Div dinamico para mostrar el contenido html*/
+#contenido{	
+        background:#ecf0f1; /*clouds*/
+        background: #bdc3c7; /*silver*/
+        background: #f2f2f2; /*concrete*/
+}
+
+/* ESTILOS PARA LOS ALERT*/
+    .dgcAlert {
+        top: 0;
+        position: fixed ;
+        display: block;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        /*float:right;*/
+        /*background: url(http://www.dgcmedia.es/recursosExternos/fondoAlert.png) repeat;*/
+        background-color: rgba(71, 71, 71, 0.8); /*color gris*/
+    text-align:center; display:none; z-index:999999999999999;
+    }
+
+    .dgcAlert .dgcVentana{
+        width: 500px;
+        //margin-left: 200px;
+        
+        background: white;
+        min-height: 150px;
+        /*position: fixed;*/
+        margin: 0 auto;
+        margin-top: 100px;
+        color: black;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .dgcAlert .dgcVentana .dgcCerrar {
+        height: 25px;width: 25px;float: right; cursor:pointer; 
+        /*background: url(http://www.dgcmedia.es/recursosExternos/cerrarAlert.jpg) no-repeat center center;*/
+        background: url(../imagenes/cerrarAlert.jpg) no-repeat center center;
+    }
+
+    .dgcAlert .dgcVentana .dgcMensaje {
+        margin: 0 auto; padding-top: 45px; 
+        text-align: center; width: 400px;font-size: 20px;
+    }
+
+    .dgcAlert .dgcVentana .dgcAceptar{
+        background:#ef9c00;/*#09C*/; bottom:20px; display:inline-block;
+        font-size: 12px; font-weight: bold; height: 24px; 
+        line-height: 24px; padding-left: 5px; padding-right: 5px;
+        text-align: center; text-transform: uppercase; 
+        width: 75px;cursor: pointer; color:#FFF; margin-top:50px;
+        border-radius: 5px;
+        opacity: 0.5;
+        
+       
+    }
+    
+    .dgcAlert .dgcVentana .dgcAceptar:hover{
+        opacity: 1;
+    }
+    
+/* FIN DE LOS ALERT*/
+
+
+
+
+
+
+/***********************************************************************
+ESPACIO PARA COLOCAR LOS ESTILOS PARA LOS DIFERENTES PLUG IN UTILIZADOS
+************************************************************************/
+
+    /* estilos para el plug in tablesorter de jquery */
+    table.tablesorter {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	/* width: 80%; */
+	text-align: left;
+    }
+    table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	padding: 4px;
+    }
+    table.tablesorter thead tr .header {
+	background-image: url(../imagenes/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+        font-size: 16px;
+    }
+    table.tablesorter tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: top;
+    }
+    table.tablesorter tbody tr.odd td {
+	background-color:#F0F0F6;
+    }
+    table.tablesorter thead tr .headerSortUp {
+	background-image: url(../imagenes/asc.gif);
+    }
+    table.tablesorter thead tr .headerSortDown {
+	background-image: url(../imagenes/desc.gif);
+    }
+    table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+    background-color: #8dbdd8;
+    }
+
+    /* termina estilos para el plug in tablesorter de jquery */
+    
+    
+    /*Estilo para el plugIn confirm de jquery */
+    
+    #confirmOverlay{
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0;
+	left:0;
+	background:url('ie.png');
+	background: -moz-linear-gradient(rgba(11,11,11,0.1), rgba(11,11,11,0.6)) repeat-x rgba(11,11,11,0.2);
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(11,11,11,0.1)), to(rgba(11,11,11,0.6))) repeat-x rgba(11,11,11,0.2);
+	z-index:100000;
+    }
+
+    #confirmBox{
+            background:url('body_bg.jpg') repeat-x left bottom #e5e5e5;
+            width:460px;
+            position:fixed;
+            left:50%;
+            top:50%;
+            margin:-130px 0 0 -230px;
+            border: 1px solid rgba(33, 33, 33, 0.6);
+
+            -moz-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+            -webkit-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+            box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+    }
+
+    #confirmBox h1,
+    #confirmBox p{
+            font:26px/1 'Cuprum','Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+            background:url('header_bg.jpg') repeat-x left bottom #f5f5f5;
+            padding: 18px 25px;
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+            color:#666;
+    }
+
+    #confirmBox h1{
+            letter-spacing:0.3px;
+            color:#888;
+    }
+
+    #confirmBox p{
+            background:none;
+            font-size:16px;
+            line-height:1.4;
+            padding-top: 35px;
+    }
+
+    #confirmButtons{
+            padding:15px 0 25px;
+            text-align:center;
+    }
+
+    #confirmBox .button{
+            display:inline-block;
+            background:url('buttons.png') no-repeat;
+            color:white;
+            position:relative;
+            height: 33px;
+
+            font:17px/33px 'Cuprum','Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+
+            margin-right: 15px;
+            padding: 0 35px 0 40px;
+            text-decoration:none;
+            border:none;
+    }
+
+    #confirmBox .button:last-child{	margin-right:0;}
+
+    #confirmBox .button span{
+            position:absolute;
+            top:0;
+            right:-5px;
+            background:url('buttons.png') no-repeat;
+            width:5px;
+            height:33px
+    }
+
+    #confirmBox .blue{				background-position:left top;text-shadow:1px 1px 0 #5889a2;}
+    #confirmBox .blue span{			background-position:-195px 0;}
+    #confirmBox .blue:hover{		background-position:left bottom;}
+    #confirmBox .blue:hover span{	background-position:-195px bottom;}
+
+    #cofnirmBox .gray{				background-position:-200px top;text-shadow:1px 1px 0 #707070;}
+    #confirmBox .gray span{			background-position:-395px 0;}
+    #confirmBox .gray:hover{		background-position:-200px bottom;}
+    #confirmBox .gray:hover span{	background-position:-395px bottom;}
+
+    /*Termina estilo dek PlugIn confirm de jquery */
+
+/*****************************************************************
+CONTROLES
+*****************************************************************/
+
+    /*Clase botona, para aplicar diseño a los botones generales (incluye submit*/
+    .botona{
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 10px;
+	background: #459cc1; /*#ef9c00;*/
+	padding: 5px;
+	border-radius: 5px;
+	/*transition:all 1s linear;
+        -webkit-transition:all.1s linear;
+        width: 120px;*/
+	font-size: 16px;
+	text-align: center;
+	opacity: 0.5;
+	border: 0;
+	vertical-align: middle;
+	display: block;
+    }
+    .botona:hover{opacity: 1; cursor: pointer;color: white;}
+    .botona a{color: green;text-decoration: none;}
+    /*fin de la clase botona*/
+    
+    
+    /*Estilo para upload del input type file*/
+    div.upload {
+	position: relative;
+	width: 300px;
+	height: 64px;
+	overflow:hidden;
+	background: transparent url(../imagenes/upload.png) center center no-repeat;
+       
+     
+        opacity: 0.5;
+	clip:rect(0px, 80px, 64px, 0px );
+        cursor: pointer;
+}
+div.upload:hover {
+	
+        opacity: 1;
+        cursor: pointer;
+	
+}
+
+div.upload input {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	margin:0;
+	padding:0;
+	filter: Alpha(Opacity=0);
+	-moz-opacity: 0;
+	opacity: 0.5;
+        cursor: pointer;
+        width: 80px;
+        height: 64px
+    
+}
+/* finde  */
+
+    
+
+    /*Clase btn-catalogo para ser usados en los enlaces (botones con imagenes)*/
+    .btn-catalogo{
+        width:50px;
+       
+        background-color: #459cc1;
+        /*border: 1px solid #b6b2b2;}*/
+        text-align: center;
+        margin-left: 5px;
+        padding:5px;
+        cursor:pointer;
+        float:left;
+        opacity: 0.5;             
+    }
+    .btn-catalogo:hover{opacity: 1;}
+    .btn-catalogo img{width: 23px;height: 23px;}
+    .btn-catalogo p{
+        font-size:10px;
+        text-align: center;
+        color: #000;
+    }
+    /*Fin de la clase btn-catalogo*/
+
+    /*Clase btn-tabla para utilizarse en los enlaces (iconos) de las tablas*/
+    .btn-tabla{
+        width:22px;
+        height:22px;
+        cursor:pointer;
+        margin-right: 5px;
+
+        -webkit-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+    .btn-tabla:hover{
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+    }
+    /*Fin de la clase bnt_tabla*/
+    
+    /*Clase btn-reports para utilizarse en los enlaces (iconos) de los reportes*/
+    .btn-report{
+        width:82px;
+        height:82px;
+        cursor:pointer;
+        margin-right: 5px;
+
+        -webkit-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+    .btn-report:hover{
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+    }
+    /*Fin de la clase bnt_tabla*/
+    
+    
+        
+    .delete{
+        width:22px;
+        height:22px;
+        cursor:pointer;
+        margin-right: 5px;
+
+        -webkit-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+    .delete:hover{
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+    }
+    /*Fin de la clase bnt_tabla*/
+
+
+    /*Clase bottonlogin, usado en la ventana de logeo*/
+    .bottonlogin{
+        width: 500px;
+        height: 100px;
+        border: none;
+        color: #ffffff;
+        font: 13px Tahoma, Arial, sans-serif;
+        /*padding: 10px 15px;*/
+        text-decoration: none;
+        cursor: pointer;
+        border: 1px solid #333;
+        letter-spacing: 1px;
+        text-shadow: 0px -1px 0px #333333;
+        background-image: url(../imagenes/loginbutton.png);
+        /**** Bordes redondeados ****/
+        /* W3C */
+        border-radius: 5px;
+        /* Firefox */
+        -moz-border-radius: 5px;
+        opacity: 0.5;
+       }
+
+        .bottonlogin:hover {
+         opacity: 1;
+
+        }
+        /*fin de la clase bottonlogin*/
+
+        /*ClaseStatus para indicar visualmente el status de una solicitud*/
+            /* #1 'TURNADO'*/
+       .statusTurnado{
+            margin-left: 5px;
+            border: 1.5px solid #000000;
+            background-color: red;
+            color: white;
+            border-radius:100%;
+            width: 10px;
+            height: 10px;
+             float: left;
+            
+        } 
+            /* #2 'TRAMITE'*/
+        .statusTramite{
+            margin-left: 5px;
+            border: 1.5px solid #000000;
+            background-color: orange;
+            color: white;
+            border-radius:100%;
+            width: 10px;
+            height: 10px;
+            float: left;
+            
+        } /*Fin de la clase stastus*/
+        
+            /* #3 'CONCLUIDO'*/
+        .statusConcluido{
+            margin-left: 5px;
+            border: 1.5px solid #000000;
+            background-color: greenyellow;
+            color: white;
+            border-radius:100%;
+            width: 10px;
+            height: 10px;
+            float: left;
+            
+        }
+      
+       .circulo{
+          margin-left: 5px;
+          border: 1.5px solid #000;
+          width: 20px;
+          height: 20px;
+          border-radius:100%;
+          /*float: left;*/
+          margin:auto;
+        }
+        .turnado{background-color: #FF0000; /*rojo*/}
+        .tramite{background-color: #FFBF00; /*amarillo#F4FA58 naranja#FFBF00"*/}
+        .concluido{background-color: #00FF00; /*verde*/}
+        .inconcluso{background-color: #2E9AFE;/*azul*/}
+        .revertido{background-color: #8258FA; /*Morado*/}
+        /*#FF0000;#FFBF00;#00FF00;#2E9AFE;#8258FA;*/
+        
+        #semaforo{
+            float: left;
+            height: 100px;
+            width: 210px;
+            background-image: url(../imagenes/semaforo.png);
+              background-repeat: no-repeat;
+              background-position: 0px -200px;
+            
+        }
+        
+       .select2.narrow {
+            width: 500px;
+        }
+        .wrap.select2-selection--single {
+            height: 100%;
+        }
+        .select2-container .wrap.select2-selection--single .select2-selection__rendered {
+            word-wrap: break-word;
+            text-overflow: inherit;
+            //white-space: normal;
+        }
