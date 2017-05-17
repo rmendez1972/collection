@@ -40,7 +40,7 @@
   <tr>
     <td width="753"><h3>Listado de Usuarios</h3></td>
     <td width="197"><div style="display:table; margin-bottom: 5px;">
-            <div class="btn-catalogo" onclick="cargar('controladorusuario?operacion=nuevo','#admin')">
+            <div class="btn-catalogo" onclick="cargar('controladorusuario?operacion=nuevo','#show')">
                 <img src="imagenes/agregar.png" />
                 <p>Agregar</p>
             </div>

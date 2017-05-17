@@ -9,44 +9,41 @@
 <!DOCTYPE>
 <html>
     <head>
-        <meta charset="UTF-8">
-	<meta name="description" content="Ventanilla unica de gestión de trámites y servicios">
-	<meta name="keywords" content="servicios, tramites, chetumal, quintana, roo">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <link href="imagenes/valid.png"  rel="shortcut icon" />
-        <!--Estilos!-->
-        <link href="css/bootstrap.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/estilos.css"/> 
-        
-        <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.10.4.custom.min.css">
-        <link rel="stylesheet" href="css/select2.min.css">
-        
-        <!-- framework jquery -->
-        <script type="text/javascript" language="JavaScript" src="js/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" language="JavaScript" src="js/jquery.tablesorter.js"></script>
-        <script src="js/jquery.confirm.js"></script>
-        <script type="text/javascript" src="js/jquery-ui.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/select2.full.min.js"></script>
-        
-        <!-- Librerias javaScript de la aplicacion tramites -->
-        <script type="text/javascript" language="JavaScript" src="js/script_tramites.js"></script>
-        
-        <!-- Confirm 
-        <script src="js/jquery.confirm.js"></script>
-        <script src="js/script_confirm.js"></script>
-        
-        Alert         
-        <script src="js/script_alert.js"></script>
-        Fecha actual!-->
-        
-        <!--<script type="text/javascript" language="JavaScript" src="js/fechaActual.js"></script>!-->
-        
-        <link href='http://fonts.googleapis.com/css?family=Cuprum&amp;subset=latin' rel='stylesheet' type='text/css'>
-        
-        <!--<link rel="stylesheet" type="text/css" href="bootstrap-responsive.css">!-->
-        
-	<title>Trámites y servicios</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../favicon.ico">
+
+        <title>Sistema de Cobrtanza</title>
+        <!-- Bootstrap core CSS -->
+            <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+            <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+            <!-- Custom styles for this template -->
+            <link href="assets/css/navbar-fixed-top.css" rel="stylesheet">
+
+            <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+            <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+            <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+            <!--[if lt IE 9]>
+              <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+              <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif]-->
+
+            <!-- Fuentes Conv_Futura-T-OT-Book y Conv_roundedelegance -->
+            <link href="assets/css/fonts.css" rel="stylesheet">
+            <!-- Iconos fuentes personalizadas para la aplicación -->
+            <link href="assets/css/iconmoon.css" rel="stylesheet">
+            <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+            <link href="assets/css/style.css" rel="stylesheet">
+
         
 
        
@@ -82,7 +79,7 @@
                 });
             }
             
-            window.addEventListener("load", cargar('fondo.html','#contenido') , false);
+            //window.addEventListener("load", cargar('fondo.html','#contenido') , false);
             
         </script>
     
@@ -97,56 +94,111 @@
                  //alert(usuario);
         </script>
         
-    <body ><strong></strong>
-	<header>
-            
-            <div id="subheader">
-		<div id="logotipo"></div>
-                <div id="sistema">Ventanilla Única de Gestión<br/> de Trámites y Servicios
-                    <div  style="font-size: 12px; color:#000; margin-top: 5px"><strong>USUARIO:</strong>
-                      
-                        <script type="text/javascript">document.write(usuario+'    ');</script>
-                        
-                       
-                        <a href="login.jsp"> <img src="imagenes/locked.png" class="btn-tabla" alt="Cerrar Sesión"  title="Cerrar Sesión"></a>
-                    </div>
-                </div>
+    <body>
+        
 
-		<nav>
-                    <!--<div class="reporte"><a href="#">Reportes</a></div>!-->
-                  
-                    <div class="reporte" id="reportes"><a href="#">Reportes</a></div> 
-                    <div class="admin" id="consolaadmin"><a href="#">Admin</a></div>
-                    <div class="consulta" id="consultar"><a href="#">Consulta</a></div>
-                    <div class="registra" id="registro" ><a href="#" >Registra</a></div>
-                </nav>
-                
-            </div> <!--fin del subheader!-->
-                
-	</header> <!--fin del header!-->
+    <!-- Fixed navbar -->
+    <!--<nav class="navbar navbar-default navbar-fixed-top" style="background-color: #ffffff;">-->
+    <nav class="navbar navbar-default navbar-fixed-top"style="border-width: 0 0 2px;">  
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!--<a class="navbar-brand" href="#">Project name</a>-->
+          <img src="assets/img/header2.png"/>     
+          <img src="assets/img/logo.png"/>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <!--<li class="active"><a href="#">Opción1</a></li>-->
+            <li><a href="#">Opción1</a></li>
+            <li><a href="#about">Opción2</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opción3 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Acción</a></li>
+                <li><a href="#">Otra accióin</a></li>
+                <li><a href="#">Cualquier cosa</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Cabecera Nav</li>
+                <li><a href="#">link1</a></li>
+                <li><a href="#">link2</a></li>
+              </ul>
+              <li><a href="#cerrar">cerrar sesión</a></li>
+            </li>
+          </ul>
+          <!-- *** comentado ismael
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/">Default</a></li>
+            <li><a href="../navbar-static-top/">Static top</a></li>
+            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+          </ul>-->
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
-	<section id="wrap"><!--Contenedor principal-->
-            <section id="main"><!--Seccion Principal-->
-                <div id="contenido"></div> <!--Vertedero princiapl-->
-                
-            </section>
-            
-            <footer> <!--Pie de página!-->
-                <p>Sistema: Ventanilla Única de Gestión de Trámites y Servicios.<br>
-                        Derechos reservados SEDUVI. Subsecretaría de Técnica, Chetumal, Q.Roo 2016.</p>
-            </footer> <!--fin del pie de página-->
-	            
-	</section> <!--fin del wrap, contenedor princiapal!-->
- <!--<script src="js/jquery.confirm.js"></script>
-        <script src="js/script_confirm.js"></script><!-->
-     <script>
-            
-            id_grupo='${requestScope.id_grupo}';
-            if (id_grupo==2){
-                document.getElementById("consolaadmin").style.display="none";
-                document.getElementById("registro").style.display="none";
-                    
-            }
-        </script>
+    <div class="container" style="padding-left:0px;padding-right:0px;">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="show">
+        <h1>Contendor principal.</h1>
+        <p>En esta sección se rendirizará todas las vista del proyecto de cobranza. Está preparada para que sea 100% responsivo, los contenedores como las tablas usarán la clase "responsive" del bootstrap</p>
+        <p>La barra de navegación se encuentra fija y el pie se ira desplazando hacia abajo.</p>
+      </div>
+
+    </div> <!-- /container -->
+
+
+
+     <!--<div id="footerwrap">-->
+	 	<div class="container" style="background-color:#00A6CA;border-radius:6px; margin-bottom:5px;">
+		 	<div class="row">
+		 		<div class="col-lg-8 col-md-8 col-sm-12">
+		 			<!--<h4>About</h4>
+		 			<div class="hline-w"></div>-->
+
+		 			<div class="col-lg-4-fondo">
+		 				Secretaría de Desarrollo Urbano y vivienda</br>
+		 				Gobierno del Estado de Quintana Roo.</br>
+		 				Administración 2016-2022.</br>
+		 				Av. Álvaro Obregón #474 Col. Centro C.P.77000</br>
+		 				<a href="http://seduvi.qroo.gob.mx" target="_blank" style="text-decoration:none;color:#384452">http://seduvi.qroo.gob.mx</a>
+
+		 			</div>
+		 		</div>
+
+		 		<div class="col-lg-4 col-md-4 col-sm-12">
+		 			<!--<h4>Social Links</h4>
+		 			<div class="hline-w"></div>-->
+		 			<p style="text-align:center;padding-top:30px;font-size:2em;">
+		 				<!--<a href="#"><i class="fa fa-dribbble"></i></a>-->
+		 				<a href="https://www.facebook.com/SEDUVI" target="_blank"><i class="fa fa-facebook" style="color:#ffffff;"></i></a>
+		 				<i>  </i>
+		 				<a href="https://twitter.com/SEDUVIQROO" target="_blank"><i class="fa fa-twitter" style="color:#ffffff;"></i></a>
+		 				<!--<a href="#"><i class="fa fa-instagram"></i></a>
+		 				<a href="#"><i class="fa fa-tumblr"></i></a>-->
+		 			</p>
+		 		</div>
+
+
+
+		 	</div><!--/row -->
+	 	</div><!--/container -->
+	 <!--</div>/footerwrap -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+  
     </body>
 </html>

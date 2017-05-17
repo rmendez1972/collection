@@ -36,13 +36,15 @@
     <link href="assets/css/iconmoon.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="css/estilos.css"/>-->
+    
 
 
 
   </head>
 
   <body>
-
+ 
     <!-- Fixed navbar -->
     <!--<nav class="navbar navbar-default navbar-fixed-top" style="background-color: #ffffff;">-->
     <nav class="navbar navbar-default navbar-fixed-top"style="border-width: 0 0 2px;">  
@@ -64,9 +66,9 @@
             <li><a href="#">Opción1</a></li>
             <li><a href="#about">Opción2</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opción3 <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catálogos<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Acción</a></li>
+                <li id="usuarios"><a href="#" >Usuarios</a></li>
                 <li><a href="#">Otra accióin</a></li>
                 <li><a href="#">Cualquier cosa</a></li>
                 <li role="separator" class="divider"></li>
@@ -90,7 +92,7 @@
     <div class="container" style="padding-left:0px;padding-right:0px;">
 
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="show">
+      <div class="show" id="show">
         <h1>Contendor principal.</h1>
         <p>En esta sección se rendirizará todas las vista del proyecto de cobranza. Está preparada para que sea 100% responsivo, los contenedores como las tablas usarán la clase "responsive" del bootstrap</p>
         <p>La barra de navegación se encuentra fija y el pie se ira desplazando hacia abajo.</p>
@@ -145,5 +147,40 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script> //Script para definir las áreas en donde se cargará el contenido
+            $(document).ready(function(){
+                $("#usuarios").click(function (event) {
+                    
+                    event.preventDefault();
+                    cargar('controladorusuario?operacion=listar','#show');
+                });
+                
+                $("#consultar").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorregistro?operacion=listar','#contenido');
+                });
+                
+                $("#consolaadmin").click(function (event) {
+                    event.preventDefault();
+                    cargar('scr_admin.jsp','#contenido');
+                });
+                
+                $("#reportes").click(function (event) {
+                    event.preventDefault();
+                    cargar('scr_reports.jsp','#contenido');
+                });
+            });
+            
+            
+            function cargar(seccion, div){
+                
+                $.post(seccion, function(datos){
+                    $(div).html(datos);
+                });
+            }
+            
+            //window.addEventListener("load", cargar('fondo.html','#contenido') , false);
+            
+        </script>
   </body>
 </html>
