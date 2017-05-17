@@ -1,0 +1,449 @@
+-- MySQL dump 10.13  Distrib 5.1.36, for Win32 (ia32)
+--
+-- Host: localhost    Database: tramites
+-- ------------------------------------------------------
+-- Server version	5.1.36-community-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `adjunto`
+--
+
+DROP TABLE IF EXISTS `adjunto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `adjunto` (
+  `id_adjunto` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) DEFAULT NULL,
+  `id_seguimiento` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  PRIMARY KEY (`id_adjunto`),
+  KEY `id_seguimiento` (`id_seguimiento`),
+  CONSTRAINT `adjunto_ibfk_1` FOREIGN KEY (`id_seguimiento`) REFERENCES `seguimiento` (`id_seguimiento`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `adjunto`
+--
+
+LOCK TABLES `adjunto` WRITE;
+/*!40000 ALTER TABLE `adjunto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `adjunto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `direcciones`
+--
+
+DROP TABLE IF EXISTS `direcciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `direcciones` (
+  `id_direccion` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) DEFAULT NULL,
+  `id_unidadadministrativa` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_direccion`)
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `direcciones`
+--
+
+LOCK TABLES `direcciones` WRITE;
+/*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
+INSERT INTO `direcciones` VALUES (15,'Dirección de Administración Urbana',3),(16,'Dirección de Atención al Rezago Habitacional',4),(17,'Dirección de Proyectos y Programas de Vivienda',4),(18,'Dirección de Ordenamiento Territorial',2);
+/*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `grupo`
+--
+
+DROP TABLE IF EXISTS `grupo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `grupo` (
+  `id_grupo` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_grupo`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `grupo`
+--
+
+LOCK TABLES `grupo` WRITE;
+/*!40000 ALTER TABLE `grupo` DISABLE KEYS */;
+INSERT INTO `grupo` VALUES (1,'ADMINISTRADORES'),(2,'SEGUIMIENTO');
+/*!40000 ALTER TABLE `grupo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `modulo`
+--
+
+DROP TABLE IF EXISTS `modulo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `modulo` (
+  `id_modulo` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) DEFAULT NULL,
+  `vista` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_modulo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `modulo`
+--
+
+LOCK TABLES `modulo` WRITE;
+/*!40000 ALTER TABLE `modulo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `modulo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `permisos`
+--
+
+DROP TABLE IF EXISTS `permisos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `permisos` (
+  `id_grupo` int(11) NOT NULL,
+  `id_modulo` int(11) NOT NULL,
+  PRIMARY KEY (`id_grupo`,`id_modulo`),
+  KEY `fk_grupo_has_modulo_modulo1_idx` (`id_modulo`),
+  KEY `fk_grupo_has_modulo_grupo1_idx` (`id_grupo`),
+  CONSTRAINT `fk_grupo_has_modulo_grupo1` FOREIGN KEY (`id_grupo`) REFERENCES `grupo` (`id_grupo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_grupo_has_modulo_modulo1` FOREIGN KEY (`id_modulo`) REFERENCES `modulo` (`id_modulo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `permisos`
+--
+
+LOCK TABLES `permisos` WRITE;
+/*!40000 ALTER TABLE `permisos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `permisos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `requisito`
+--
+
+DROP TABLE IF EXISTS `requisito`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `requisito` (
+  `id_requisito` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id_requisito`)
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `requisito`
+--
+
+LOCK TABLES `requisito` WRITE;
+/*!40000 ALTER TABLE `requisito` DISABLE KEYS */;
+INSERT INTO `requisito` VALUES (1,'COPIA DE CONTRATO'),(2,'ESTAR AL DIA EN LOS PAGOS'),(3,'REALIZAR EL PAGO EN CAJA Y PRESENTAR EL ORIGINAL DEL RECIBO CORRESPONDIENTE'),(4,'IDENTIFICACION OFICIAL (IFE) DEL BENEFICIARIO DEL LOTE'),(5,'ACREDITAR LA FORMA POR MEDIO DE LA CUAL ADQUIRIO EL LOTE (CEDULA DE INTEGRACION DE DOCUMENTOS, COMPROBANTE DE PAGO EXPEDIDO POR CAJA)'),(6,'HABITAR EL LOTE Y HABERLO OCUPADO EN FORMA PACIFICA E ININTERRUMPIDA'),(7,'ACREDITAR LOS TRABAJOS DE LIMPIEZA Y/0 CONSTRUCCION, A TRAVES DE RECIBOS Y/O FACTURAS DE COMPRA'),(8,'CONTAR CON SOLICITUD Y EXPEDIENTE VIGENTE'),(9,'CONTAR CON LA AUTORIZACION DEL SECRETARIO'),(10,'CUBRIR EL PAGO DEL ENGANCHE'),(11,'RESOLUCION DE PROCEDENCIA O IMPROCEDENCIA DEL DEPARTAMENTO JURIDICO ADMINISTRATIVO'),(12,'COPIA DEL ACTA DE MATRIMONIO O EN SU DEFECTO SEGUN SEA SU SITUACION CIVIL: CONSTANCIA DE SEPARACION, CONSTANCIA DE UNION LIBRE, SENTENCIA DE DIVORCIO, ACTA DE DEFUNCION. SEPARADAS (OS) PRESENTAR COPIA DEL ACTA DE NACIMIENTO DEL HIJO CON EL REGISTRO UNICAMENTE CON LOS APELLIDOS DE ELLA, O BIEN CONSTANCIA DE DEPENDENCIA ECONOMICA.'),(13,'COPIA DE ACTA DE NACIMIENTO DEL SOLICITANTE, CONYUGE E HIJOS.'),(14,'COPIA DE CURP DEL SOLICITANTE, CONYUGE E HIJOS'),(15,'COPIA DE IDENTIFICACION: CREDENCIAL DE ELECTOR DEL SOLICITANTE Y CONYUGE'),(16,'CONSTANCIA ORIGINAL DE INGRESOS, ESPECIFICAR SI COTIZA CON ALGUN FONDO DE VIVIENDA (INFONAVIT, FOVISSSTE, ETC) SI ES TRABAJADOR INDEPENDIENTE ELABORAR CARTA DE INGRESOS, SEÑALANDO ACTIVIDAD LABORAL, INGRESO MENSUAL Y FIRMADO POR EL SOLICITANTE Y DOS TESTIGOS'),(17,'COMPROBANTE DOMICILIARIO: COPIA DEL RECIBO DE AGUA, LUZ, TELEFONO U OTRO'),(18,'1 fotografia tamaño infantil (una del solicitante, una del conyuge) reciente'),(19,'constancia de residencia del solicitante y conyuge (aplica para quienes el domicilio que figure en la credencial de elector no sea de la localidad)'),(20,'previo a la asignacion del lote o vivienda, debera entregar original de no propiedad expedido por el registro publico de la propiedad a nombre del solicitante y conyuge'),(21,'presentar solicitud por escrito dirigida al secretario de la seduvi. personas fisicas'),(22,'copia de acta de nacimiento y curp de los solicitantes. personas fisicas'),(23,'COPIA DE COMPROBANTE DE R.F.C. personas fisicas'),(24,'COPMPROBANTE DOMICILIO (RECIBO DE AGUA, LUZ O TELEFONO). personas fisicas'),(25,'ORIGINAL DE CONSTANCIA DE INGRESOS o bien copia de talon de pago. personas fisicas'),(26,'copia de una identificacion con fotografia y firma (credencial de elector). personas fisicas'),(27,'DOS CARTAS DE REFERENCIAS PERSONALES (NOMBRE, DIRECCION Y TELEFONO). PERSONAS FISICAS'),(28,'presentar solicitud por escrito dirigida al secretario de la seduvi. personas morales'),(29,'copia del acta constitutiva de la sociedad o asociacion. personas morales'),(30,'copia del comprobante de r.f.c. con domicilio fiscal. personas morales'),(31,'copia del poder, identificacion personal y curp del representante legal. personas morales'),(32,'constancia original de ingreso mensual. personas morales'),(33,'comprobante domiciliario: recibo de agua, luz o telefono. personas morales'),(34,'presentar solicitud individual de credito'),(35,'copia de acta de matrimonio, constancia de separacion, constancia de union libre'),(36,'copia de comprobante de domicilio (recibo de agua)'),(37,'acreditar la posesion del predio'),(38,'CONTAR CON EL EXPEDIENTE DEBIDAMENTE INTEGRADO DE ACUERDO A LOS REQUISITOS QUE INDIQUEN LAS REGLAS DE OPERACION DEL PROGRAMA Y QUE SE HAYA CUBIERTO EL ENGANCHE CORRESPONDIENTE'),(39,'CONTAR CON EL EXPEDIENTE DEBIDAMENTE INTEGRADO DE ACUERDO A LOS REQUISITOS QUE INDIQUEN LAS REGLAS DE OPERACION DEL PROGRAMA PARA LOTES COMERCIALES DE ACUERDO A EL PLAN DE PAGO ADQUIRIDO POR EL BENEFICIARIO Y QUE SE HAYA CUBIERTO EL ENGANCHE CORRESPONDIENTE'),(40,'ser propietario del predio donde se pretende realizar la mejora, habitar el predio donde se pretende hacer la mejora, y tener debidamente integrado el expediente de acuerdo a los requisitos que indiquen las reglas de operacion del programa'),(41,'PRESENTAR EL ULTIMO RECIBO DE PAGO, O ALGUN COMPROBANTE QUE DEMUESTRE QUE ES EL BENEFICIARIO DEL CREDITO'),(42,'PROPORCIONAR EL NOMBRE DEL BENEFICIARIO O EL NUMERO DE CONTRATO'),(43,'que el beneficiario haya liquidado su predio y que no tenga algun inpedimento legal que lo impida'),(44,'TODO SOLICITANTE DEBE PRESENTAR ULTIMO RECIBO DE PAGO O CONTRATO CELEBRADO CON ESTA SECRETARIA, ASI COMO SU IDENTIFICACION'),(45,'SOLICITUD FIRMADA POR EL PROPIETARIO DEL PREDIO BAJO DECLARACIÓN DE PROTESTA E IDENTIFICACIÓN OFICIAL CON FOTOGRAFÍA'),(46,'ESCRITURA PÚBLICA O TÍTULO QUE ACREDITE LA PROPIEDAD, INSCRITO ANTE EL REGISTRO PÚBLICO DE LA PROPIEDAD Y DEL COMERCIO'),(47,'ACTA CONSTITUTIVA DE LA SOCIEDAD EN CASO DE SER PERSONA MORAL'),(48,'PLANO DE UBICACIÓN EN COORDENADAS DE UNIDAD TRANSVERSAL DE MEDIDA'),(49,'AUTORIZACIÓN DE USO DE SUELO DEL PROYECTO'),(50,'CERTIFICACIÓN DE MEDIDAS Y COLINDANCIAS DEL CATASTRO'),(51,'SOPORTE MATERIAL DIGITAL EN CD QUE CONTENGA: UBICACIÓN CON CUADRO DE CONSTRUCCIÓN DEL PREDIO EN COORDENADAS DE UNIDAD TRANSVERSAL DE MEDIDA EN AUTOCAD Y DE TODA LA DOCUMENTACIÓN SOLICITADA PARA EL EXPEDIENTE'),(52,'PROYECTO DE EXPLOTACIÓN, PROCEDIMIENTOS PARA LA EJECUCIÓN DE LAS FAENAS Y EN SU CASO'),(53,'RESOLUTIVO DE AUTORIZACIÓN EN MATERIA DE IMPACTO AMBIENTAL'),(54,'CERTIFICADO DE LIBERTAD DE GRAVAMEN'),(55,'PLANOS DE CONJUNTOS, MANZANAS, LOTIFICACIÓN CON ZONIFICACIÓN Y USOS DE SUELO'),(56,'PLANOS DE CONJUNTOS, MANZANAS, LOTIFICACION CON ZONIFICACION Y USOS DE SUELO'),(57,'PRESUPUESTO DE OBRA DE URBANIZACIÓN DESGLOSADO POR CONCEPTOS EN CASO DE CONTAR CON VIALIDAD INTERNA'),(58,'CONSTANCIA DE FACTIBILIDADES DE SERVICIO DE CAPA Y CFE'),(59,'SOPORTE MATERIAL DIGITAL EN CD QUE CONTENGA: UBICACIÓN CON CUADRO DE CONSTRUCCIÓN DEL PREDIO EN COORDENADAS UTM, EN AUTOCAD, PLANOS DEL PROYECTO Y EL PRESUPUESTO EN FORMATO EXCEL, Y DE TODA LA DOCUMENTACIÓN SOLICITADA PARA EL EXPEDIENTE'),(60,'LICENCIA DE CONSTRUCCIÓN'),(61,'MEMORIA DESCRIPTIVA DEL PROYECTO'),(62,'PLANOS DE CONJUNTO, ARQUITECTÓNICOS, LOTIFICACIÓN CON ZONIFICACIÓN Y USOS DE SUELO'),(63,'PLANOS DE CONJUNTO DEL PROYECTO, PLANOS ARQUITECTÓNICOS CON MEDIDAS, COLINDANCIAS Y SUPERFICIES'),(64,'RESOLUTIVO DE AUTORIZACIÓN EN MATERIA DE IMPACTO AMBIENTAL'),(65,'PLANO AUTORIZADO DEL FRACCIONAMIENTO AL QUE PERTENEZCA'),(66,'PLANOS DE CONJUNTOS Y PLANOS ARQUITECTÓNICOS'),(67,'PROYECTO DE VIALIDADES'),(68,'ACUERDO DE LOS PROPIETARIOS DE LOS TERRENOS AFECTADOS'),(69,'LICENCIA DE FUNCIONAMIENTO AMBIENTAL AVALADA POR LA SEMA'),(70,'PLANOS DE CONJUNTO, MANZANAS, LOTIFICACIÓN CON ZONIFICACIÓN Y USOS DE SUELO Y DE SEMBRADO DE VIVIENDA, PLANOS DE LOS PROYECTOS DE INSTALACIÓN'),(71,'PLANO DEL PROYECTO FUSIÓN INDICANDO LOS LOTES ORIGINALES Y LA FRACCIÓN RESULTANTES CON SUPERFICIES, MEDIDAS Y COLINDANCIAS'),(72,'PLANOS DEL PROYECTO DE CONDOMINIO, QUE INDIQUE LAS ÁREAS PRIVADAS Y COMUNES, CON MEDIDAS, COLINDANCIAS Y SUPERFICIES. TABLA DE INDIVISOS Y PRO INDIVISOS; Y REGLAMENTO DE CONDÓMINOS'),(73,'PLANO AUTORIZADO DEL FRACCIONAMIENTO AL QUE PERTENEZCA EN SU CASO'),(74,'MEMORIA DESCRIPTIVA DEL PROYECTO Y TIPO DE FINANCIAMIENTO'),(75,'ACUERDO DE COLABORACIÓN ENTRE FEDERACIÓN, ESTADO Y MUNICIPIOS'),(76,'ANTEPROYECTO EJECUTIVO'),(77,'CONVENIO DE COLABORACIÓN ENTRE EL ESTADO Y EL MUNICIPIO EN EL CUAL SE LOCALICE EL INMUEBLE'),(78,'ANUENCIA DE MODIFICACIÓN PARA EL NUEVO PROYECTO POR EL H. AYUNTAMIENTO'),(79,'ANUENCIA DEL INAH'),(80,'MEMORIA DESCRIPTIVA DEL PROYECTO DE LA MODIFICACIÓN'),(81,'PRESUPUESTO DE OBRA DE URBANIZACIÓN DESGLOSADO POR CONCEPTOS PRESENTAR EL AVANCE FÍSICO DE LA OBRA Y LO QUE FALTE POR EJECUTAR EN PLANO Y FOTOS'),(82,'PLANOS DEL PROYECTO DE CONDOMINIO, QUE INDIQUE LAS ÁREAS PRIVADAS Y COMUNES, CON MEDIDAS, COLINDANCIAS Y SUPERFICIES. TABLA DE INDIVISOS Y PRO INDIVISOS; Y REGLAMENTO DE CONDÓMINOS'),(83,'MEMORIA DESCRIPTIVA DEL PROYECTO DE LA MODIFICACIÓN'),(84,'PRESUPUESTO DE OBRA DE URBANIZACIÓN DESGLOSADO POR CONCEPTOS PRESENTAR EL AVANCE FÍSICO DE LA OBRA DE LA MODIFICACIÓN EN CASO DE TENER VIALIDAD INTERNA'),(85,'AUTORIZACIÓN DE RÉGIMEN CONDOMINAL'),(86,'VO.BO. DE LA SOCIEDAD DE CONDOMINIOS POR LAS MODIFICACIONES A REALIZAR (ACTA ASAMBLEA)'),(87,'CONSTANCIA DE COMPATIBILIDAD URBANÍSTICA ESTATAL'),(88,'PARA LAS CONSTANCIAS DE PLAZAS Y/O CENTROS COMERCIALES Y CENTRAL DE ABASTO DE CUALQUIER TIPO SE REQUERIRÁ EL PLANO DE LOTIFICACIÓN CON ZONIFICACIÓN Y USO DE SUELO'),(89,'AVANCE FÍSICO Y LO QUE FALTA POR EJECUTAR EN PLANOS'),(90,'PRESUPUESTO DE LA OBRA DE URBANIZACIÓN QUE FALTE POR EJECUTAR DESGLOSADO POR CONCEPTOS'),(91,'AVANCE FÍSICO Y LO QUE FALTA POR EJECUTAR EN PLANOS'),(92,'PRESUPUESTO DE LA OBRA DE URBANIZACIÓN QUE FALTE POR EJECUTAR DESGLOSADO POR CONCEPTOS');
+/*!40000 ALTER TABLE `requisito` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `seguimiento`
+--
+
+DROP TABLE IF EXISTS `seguimiento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `seguimiento` (
+  `id_seguimiento` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` datetime DEFAULT NULL,
+  `observaciones` varchar(400) DEFAULT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_solicitud` int(11) NOT NULL,
+  `id_status` int(11) NOT NULL,
+  `adjunto` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_seguimiento`),
+  KEY `fk_seguimiento_usuario1_idx` (`id_usuario`),
+  KEY `fk_seguimiento_solicitud1_idx` (`id_solicitud`),
+  KEY `fk_seguimiento_status1_idx` (`id_status`),
+  CONSTRAINT `fk_seguimiento_solicitud1` FOREIGN KEY (`id_solicitud`) REFERENCES `solicitud` (`id_solicitud`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_seguimiento_status1` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_seguimiento_usuario1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `seguimiento`
+--
+
+LOCK TABLES `seguimiento` WRITE;
+/*!40000 ALTER TABLE `seguimiento` DISABLE KEYS */;
+INSERT INTO `seguimiento` VALUES (1,'2016-11-11 11:06:58','PRIMER SEGUIMIENTO',8,38,2,''),(5,'2016-11-17 13:48:37','PRIMER SEGUIMIENTO',8,42,2,''),(6,'2016-11-22 09:37:49','SEGUNDO SEGUIMIENTO',8,42,2,'Mexico.png');
+/*!40000 ALTER TABLE `seguimiento` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sexo`
+--
+
+DROP TABLE IF EXISTS `sexo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sexo` (
+  `clave` varchar(1) NOT NULL DEFAULT '',
+  `descripcion` varchar(6) DEFAULT NULL,
+  PRIMARY KEY (`clave`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sexo`
+--
+
+LOCK TABLES `sexo` WRITE;
+/*!40000 ALTER TABLE `sexo` DISABLE KEYS */;
+INSERT INTO `sexo` VALUES ('M','MUJER'),('H','HOMBRE');
+/*!40000 ALTER TABLE `sexo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `solicitante`
+--
+
+DROP TABLE IF EXISTS `solicitante`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `solicitante` (
+  `id_solicitante` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) DEFAULT NULL,
+  `apellido_paterno` varchar(45) DEFAULT NULL,
+  `apellido_materno` varchar(45) DEFAULT NULL,
+  `telefono` varchar(10) DEFAULT NULL,
+  `rfc` varchar(13) DEFAULT NULL,
+  `sexo` varchar(1) NOT NULL,
+  `email` varchar(60) DEFAULT NULL,
+  `direccion` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id_solicitante`)
+) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `solicitante`
+--
+
+LOCK TABLES `solicitante` WRITE;
+/*!40000 ALTER TABLE `solicitante` DISABLE KEYS */;
+INSERT INTO `solicitante` VALUES (185,'JUAN','PEREZ','PEREZ','9838325014','MEAX7208072M5','M','rmendez1972@hotmail.com','CONOCIDO'),(186,'MARCOS','PEREZ','PEREZ','9831109345','MEAX7208072M5','H','rmendez1972@hotmail.com','CONOCIDO'),(188,'MARCOS','PEREZ','PEREZ','9831109345','MEAX7208072M5','H','rmendez1972@hotmail.com','CONOCIDO'),(189,'JUANJO','PEREZ','PEREZ','9831109134','MEAX7208072M5','H','rmendez1972@hotmail.com','CONOCIDO'),(190,'MARIA ','PEREZ','PEREZ','9831109134','MEAX7208072M5','M','rmendez1972@hotmail.com','CONOCIDO');
+/*!40000 ALTER TABLE `solicitante` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `solicitud`
+--
+
+DROP TABLE IF EXISTS `solicitud`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `solicitud` (
+  `id_solicitud` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha_ingreso` datetime DEFAULT NULL,
+  `fecha_termino` datetime DEFAULT NULL,
+  `id_tramite` int(11) NOT NULL,
+  `id_solicitante` int(11) NOT NULL,
+  `id_usuario_ingreso` int(11) NOT NULL,
+  `id_usuario_seguimiento` int(11) NOT NULL,
+  `id_status` int(11) NOT NULL,
+  PRIMARY KEY (`id_solicitud`),
+  KEY `fk_solicitud_tramite1_idx` (`id_tramite`),
+  KEY `fk_solicitud_usuario1_idx` (`id_usuario_ingreso`),
+  KEY `fk_solicitud_usuario2_idx` (`id_usuario_seguimiento`),
+  KEY `fk_solicitud_status1_idx` (`id_status`),
+  KEY `fk_solicitud_solicitante1_idx` (`id_solicitante`),
+  CONSTRAINT `fk_solicitud_solicitante1` FOREIGN KEY (`id_solicitante`) REFERENCES `solicitante` (`id_solicitante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_solicitud_status1` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_solicitud_tramite1` FOREIGN KEY (`id_tramite`) REFERENCES `tramite` (`id_tramite`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_solicitud_usuario1` FOREIGN KEY (`id_usuario_ingreso`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_solicitud_usuario2` FOREIGN KEY (`id_usuario_seguimiento`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `solicitud`
+--
+
+LOCK TABLES `solicitud` WRITE;
+/*!40000 ALTER TABLE `solicitud` DISABLE KEYS */;
+INSERT INTO `solicitud` VALUES (38,'2016-11-10 12:54:05',NULL,5,185,2,2,1),(41,'2016-11-01 00:00:00',NULL,21,188,2,2,2),(42,'2016-11-15 00:00:00',NULL,14,189,2,2,2),(43,'2016-11-15 00:00:00',NULL,14,190,2,2,3);
+/*!40000 ALTER TABLE `solicitud` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `status`
+--
+
+DROP TABLE IF EXISTS `status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `status` (
+  `id_status` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_status`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `status`
+--
+
+LOCK TABLES `status` WRITE;
+/*!40000 ALTER TABLE `status` DISABLE KEYS */;
+INSERT INTO `status` VALUES (1,'TURNADO'),(2,'TRAMITE'),(3,'CONCLUIDO');
+/*!40000 ALTER TABLE `status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tramite`
+--
+
+DROP TABLE IF EXISTS `tramite`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tramite` (
+  `id_tramite` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(400) DEFAULT NULL,
+  `dias_resolucion` int(11) DEFAULT NULL,
+  `id_unidadadministrativa` int(11) NOT NULL,
+  `id_direccion` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_tramite`),
+  KEY `fk_tramite_unidadadministrativa1_idx` (`id_unidadadministrativa`),
+  CONSTRAINT `fk_tramite_unidadadministrativa1` FOREIGN KEY (`id_unidadadministrativa`) REFERENCES `unidadadministrativa` (`id_unidadadministrativa`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tramite`
+--
+
+LOCK TABLES `tramite` WRITE;
+/*!40000 ALTER TABLE `tramite` DISABLE KEYS */;
+INSERT INTO `tramite` VALUES (1,'DESLINDE DE TERRENOS Y EXPEDICION DE CONSTANCIAS',4,2,18),(2,'ELABORACION DE CROQUIS DE LOCALIZACION',5,2,18),(3,'REGULARIZACION DE LA TENENCIA DE LA TIERRA',5,2,18),(4,'CAPTACION DE DEMANDA LOTE HABITACIONAL',30,4,16),(5,'CAPTACION DE DEMANDA LOTE COMERCIAL',30,4,16),(6,'CAPTACION DE DEMANDA MEJORAMIENTO DE VIVIENDA',30,4,16),(7,'CONTRATACION DE LOTES HABITACIONALES',30,4,16),(8,'CONTRATACION DE LOTES COMERCIALES',30,4,16),(9,'CONTRATACION DE CREDITOS DE MEJORAMIENTO DE VIVIENDA',30,4,16),(10,'CONSTANCIA DE ESTATUS FINANCIERA O ADMINISTRATIVA Y JURIDICA',3,4,16),(11,'EMISION DE ESTADOS DE CUENTA',1,4,16),(12,'ORDEN DE PAGO REFERENCIADO PAGO DE TITULACION',1,4,16),(13,'DESLINDE DE TERRENOS',30,2,18),(14,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA BANCOS DE EXTRACCION DE MATERIALES PETREOS',30,3,15),(15,'CONSTANCIA DE COMPATIBILIDAD URBANiSTICA ESTATAL PARA CENTRAL DE ABASTO DE CUALQUIER TIPO',30,3,15),(16,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA CENTRALES CAMIONERAS Y DE CARGA',30,3,15),(17,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA CLINICAS HOSPITALES Y CENTROS MEDICOS',30,3,15),(18,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA EDIFICIOS O CENTROS DE OFICINA',30,3,15),(19,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA EL PROYECTO DE VIALIDADES PRIMARIAS Y SECUNDARIAS TALES COMO PERIFERICOS LIBRAMIENTOS Y AVENIDAS DE TREINTA MTS O DE MAS DE ANCHURA',30,3,15),(20,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA ESTACIONES EXPENDEDORAS DE TODO TIPO DE COMBUSTIBLE',30,3,15),(21,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA FRACCIONAMIENTOS O CONJUNTO HABITACIONAL EN CUALQUIERA DE SUS MODALIDADES.  1. FRACCIONAMIENTO O CONJUNTO HABITACIONAL.  2. FRACCIONAMIENTO HABITACIONAL SUBURBANO O RURAL.  3. FRACCIONAMIENTO MIXTO HOTELERO- HABITACIONAL.  4. FRACCIONAMIENTO TURISTICO HOTELERO. 5. FRACCIONAMIENTO INDUSTRIAL.  6. FRACCIONAMIENTO DE SERVICIOS FUNERARIOS',30,3,15),(22,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA FUSION DE TERRENOS',30,3,15),(23,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA HOTELES EN TODAS SUS MODALIDADES',30,3,15),(24,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA INDUSTRIAS DE CUALQUIER TIPO',30,3,15),(25,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA LA CONSTITUCION O MODIFICACION DEL REGIMEN DE PROPIEDAD EN CONDOMINIO',30,3,15),(26,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA LA ELABORACION DE PROYECTOS DE EQUIPAMIENTO O INFRAESTRUCTURA PRIMARIA DE LOS CENTROS DE POBLACION QUE POR SU MAGNITUD E IMPORTANCIA REQUIERAN DE UN ANALISIS Y REVISION POR  PARTE DE LA ADMINISTRACION PUBLICA ESTATAL',30,3,15),(27,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA LA MODIFICACION DEMOLICION O AMPLIACION DE INMUEBLES DE PATRIMONIO CULTURAL',30,3,15),(28,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA MODIFICACION DE FRACCIONAMIENTO O CONJUNTO HABITACIONAL EN CUALQUIERA DE SUS MODALIDADES.   1. FRACCIONAMIENTO O CONJUNTO HABITACIONAL. 2. FRACCIONAMIENTO HABITACIONAL SUBURBANO O RURAL. 3. FRACCIONAMIENTO MIXTO HOTELERO  HABITACIONAL.  4. FRACCIONAMIENTO TURISTICO HOTELERO. 5. FRACCIONAMIENTO INDUSTRIAL. 6. FRACCIONAMIENTO DE SERVICIOS FUNERA.',30,3,15),(29,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA MODIFICACION PARA LA CONSTITUCION DEL REGIMEN DE PROPIEDAD EN CONDOMINIO',30,3,15),(30,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA PLAZAS Y O CENTROS COMERCIALES EDIFICIOS Y O CENTROS DE OFICINA CENTRALES DE ABASTO DE CUALQUIER TIPO SUPERMERCADOS Y TIENDAS DEPARTAMENTALES',30,3,15),(31,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA PRORROGA PARA FRACCIONAMIENTOS O CONJUNTO HABITACIONAL EN CUALQUIERA DE SUS MODALIDADES   1. FRACCIONAMIENTO O CONJUNTO HABITACIONAL 2. FRACCIONAMIENTO HABITACIONAL SUBURBANO O RURAL 3. FRACCIONAMIENTO MIXTO HOTELERO HABITACIONAL  4. FRACCIONAMIENTO TURISTICO-HOTELERO 5. FRACCIONAMIENTO INDUSTRIAL  6. FRACCIONAMIENTO DE SERVICIOS FUNERARIOS',30,3,15),(32,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA PRORROGA DE PLAZAS Y O CENTROS COMERCIALES EDIFICIOS Y O CENTROS DE OFICINA CENTRALES DE ABASTO DE CUALQUIER TIPO SUPERMERCADOS Y TIENDAS DEPARTAMENTALES',30,3,15),(33,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA PRORROGA PARA CENTRAL DE ABASTO DE CUALQUIER TIPO',30,3,15),(34,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA PRORROGA PARA CENTRALES CAMIONERAS Y DE CARGA',30,3,15),(35,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA PRORROGA PARA EDIFICIOS Y O CENTROS DE OFICINA',30,3,15),(36,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA PRORROGA PARA INDUSTRIAS DE CUALQUIER TIPO',30,3,15),(37,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA PRORROGA PARA LA CONSTITUCION O MODIFICACION DEL REGIMEN DE PROPIEDAD EN CONDOMINIO',30,3,15),(38,'CONSTANCIA DE COMPATIBILIDAD URBANISTICA ESTATAL PARA PRORROGA PARA SUPER MERCADOS Y TIENDAS DEPARTAMENTALES',30,3,15);
+/*!40000 ALTER TABLE `tramite` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tramite_requisito`
+--
+
+DROP TABLE IF EXISTS `tramite_requisito`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tramite_requisito` (
+  `id_tramite` int(11) NOT NULL,
+  `id_requisito` int(11) NOT NULL,
+  PRIMARY KEY (`id_tramite`,`id_requisito`),
+  KEY `fk_tramite_has_requisito_requisito1_idx` (`id_requisito`),
+  KEY `fk_tramite_has_requisito_tramite1_idx` (`id_tramite`),
+  CONSTRAINT `fk_tramite_has_requisito_requisito1` FOREIGN KEY (`id_requisito`) REFERENCES `requisito` (`id_requisito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tramite_has_requisito_tramite1` FOREIGN KEY (`id_tramite`) REFERENCES `tramite` (`id_tramite`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tramite_requisito`
+--
+
+LOCK TABLES `tramite_requisito` WRITE;
+/*!40000 ALTER TABLE `tramite_requisito` DISABLE KEYS */;
+INSERT INTO `tramite_requisito` VALUES (1,1),(2,1),(1,2),(2,2),(1,3),(2,3),(1,4),(2,4),(3,5),(3,6),(3,7),(3,8),(3,9),(3,10),(3,11),(4,12),(4,13),(6,13),(4,14),(6,14),(4,15),(6,15),(4,16),(4,17),(4,18),(4,19),(4,20),(5,21),(5,22),(5,23),(5,24),(5,25),(5,26),(5,27),(5,28),(5,29),(5,30),(5,31),(5,32),(5,33),(6,34),(6,35),(6,36),(6,37),(7,38),(8,39),(9,40),(10,41),(11,42),(12,43),(13,44),(14,45),(15,45),(16,45),(17,45),(18,45),(19,45),(20,45),(21,45),(22,45),(23,45),(24,45),(25,45),(26,45),(27,45),(28,45),(29,45),(30,45),(31,45),(32,45),(33,45),(34,45),(35,45),(36,45),(37,45),(38,45),(14,46),(15,46),(16,46),(17,46),(18,46),(20,46),(21,46),(22,46),(23,46),(24,46),(25,46),(26,46),(27,46),(28,46),(29,46),(30,46),(14,47),(15,47),(16,47),(17,47),(18,47),(20,47),(21,47),(22,47),(23,47),(24,47),(25,47),(29,47),(30,47),(14,48),(15,48),(16,48),(17,48),(18,48),(19,48),(20,48),(21,48),(22,48),(23,48),(24,48),(25,48),(26,48),(29,48),(30,48),(14,49),(15,49),(16,49),(17,49),(18,49),(19,49),(20,49),(21,49),(22,49),(23,49),(24,49),(25,49),(26,49),(29,49),(30,49),(14,50),(15,50),(16,50),(17,50),(18,50),(20,50),(21,50),(22,50),(23,50),(24,50),(25,50),(29,50),(30,50),(14,51),(26,51),(14,52),(14,53),(15,53),(16,53),(17,53),(19,53),(15,54),(21,54),(22,54),(25,54),(29,54),(15,55),(24,56),(15,57),(16,57),(17,57),(18,57),(21,57),(25,57),(30,57),(15,58),(16,58),(17,58),(18,58),(20,58),(21,58),(23,58),(25,58),(26,58),(29,58),(30,58),(15,59),(16,59),(17,59),(18,59),(19,59),(20,59),(21,59),(22,59),(23,59),(25,59),(27,59),(29,59),(30,59),(31,59),(32,59),(33,59),(34,59),(35,59),(36,59),(37,59),(38,59),(15,60),(17,60),(18,60),(20,60),(25,60),(29,60),(30,60),(31,60),(32,60),(33,60),(34,60),(35,60),(36,60),(37,60),(38,60),(15,61),(16,61),(17,61),(18,61),(20,61),(21,61),(23,61),(24,61),(30,61),(16,62),(23,62),(17,63),(20,63),(30,63),(17,64),(18,64),(20,64),(21,64),(23,64),(24,64),(25,64),(26,64),(29,64),(30,64),(18,65),(18,66),(19,67),(19,68),(20,69),(21,70),(22,71),(25,72),(29,72),(25,73),(25,74),(26,75),(26,76),(27,77),(27,78),(27,79),(29,80),(29,84),(29,85),(29,86),(29,87),(30,88),(31,89),(32,89),(33,89),(34,89),(35,89),(36,89),(37,89),(38,89),(31,90),(37,90);
+/*!40000 ALTER TABLE `tramite_requisito` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `unidadadministrativa`
+--
+
+DROP TABLE IF EXISTS `unidadadministrativa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `unidadadministrativa` (
+  `id_unidadadministrativa` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) DEFAULT NULL,
+  `email` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`id_unidadadministrativa`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `unidadadministrativa`
+--
+
+LOCK TABLES `unidadadministrativa` WRITE;
+/*!40000 ALTER TABLE `unidadadministrativa` DISABLE KEYS */;
+INSERT INTO `unidadadministrativa` VALUES (1,'Subsecretaría Técnica','tecnica@seduviqroo.gob.mx'),(2,'Subsecretaria Ordenamiento Territorial','tecnica@gmail.com'),(3,'Subsecretaria de Desarrollo Urbano','rasencio1972@gmail.com'),(4,'Subsecretaria de Vivienda','rasencio1972@gmail.com'),(5,'Subsecretaria de Desarrollo Metropolitano','xxx@hotmail.com');
+/*!40000 ALTER TABLE `unidadadministrativa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuario` (
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `usuario` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `apellido_paterno` varchar(45) DEFAULT NULL,
+  `apellido_materno` varchar(45) DEFAULT NULL,
+  `id_unidadadministrativa` int(11) NOT NULL,
+  `id_grupo` int(11) NOT NULL,
+  `id_direccion` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_usuario`),
+  KEY `fk_usuario_unidadadministrativa1_idx` (`id_unidadadministrativa`),
+  KEY `fk_usuario_grupo1_idx` (`id_grupo`),
+  CONSTRAINT `fk_usuario_grupo1` FOREIGN KEY (`id_grupo`) REFERENCES `grupo` (`id_grupo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuario_unidadadministrativa1` FOREIGN KEY (`id_unidadadministrativa`) REFERENCES `unidadadministrativa` (`id_unidadadministrativa`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (2,'ADMIN','73acd9a5972130b75066c82595a1fae3','ADMIN','ADMIN','ADMIN',4,1,18),(8,'RMENDEZ1972','2bf573e077b9b87b6db4f25a0ed289c6','RAFAEL','MENDEZ','ASENCIO',3,2,15),(12,'INVENTADO','4655c3f9c8abeccadee12885084c8da5','INVENTADO','INVENTADO','INVENTADO',4,2,18);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-11-22 13:51:14

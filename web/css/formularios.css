@@ -1,0 +1,167 @@
+@import url('reset.css');
+@import url('fuentes.css');
+
+
+
+
+
+/*--- Estilos Generales --*/
+
+
+body {
+	background:#fff ;
+	/*background:#2d2d2d ;*/
+
+	font-family: Arial,Helvetica, Sans-serif;
+        /*background-image: url(../imagenes/fondo.jpg);*/
+
+}
+
+
+#formulario_resgistra{
+	margin:auto;
+	widht:920;
+
+}
+
+.frm_titulo {
+	font-family:sourcesans-extralight;
+	font-size:30px;
+	color:#000;
+	
+}
+
+#nombre{
+	width:170px;;
+	float:left;
+}
+
+#apellido_p{
+	width:160px;
+	float:left;
+}
+
+#apellido_m{
+	width:160px;
+	float:left;
+}
+
+#direccion{
+	width:360px;
+	float:left;
+}
+
+#i_nombre{
+
+	float:left;
+}
+#i_apellido_p{
+
+	float:left;
+}
+
+
+#i_apellido_m{
+
+	float:left;
+}
+
+
+#i_direccion{
+	
+	float:left;
+}
+
+
+#rfc{
+	width:160px;
+	float:left;
+}
+
+#telefono{
+	width:160px;
+	float:left;
+}
+#email{
+	width:160px;
+	float:left;
+}
+
+#sexy{
+	width:300px;
+	float:left;
+}
+
+
+#i_rfc{
+	float:left
+	
+}
+
+#i_telefono{
+	
+	float:left;
+}
+#i_email{
+	
+	float:left;
+}
+
+#i_sexo{
+
+	float:left;
+}
+
+#frm_titulo2 {
+	font-family:sourcesans-extralight;
+	font-size:30px;
+	color:#000;
+	float:left;
+
+	
+}
+
+#unidad_a{
+	width:250px;
+	float:left;
+}
+
+#tramite {
+		width:300px;
+	float:left;
+}
+
+#fecha_r{
+	width:250px;
+	float:left;
+}
+	
+
+
+#i_unidad{
+	width:300px;
+	float:left;
+}
+
+#i_tramite {
+
+
+	float:left;
+}
+
+#requisito {
+width:100px;
+	float:left;
+}
+#fecha_r {
+	width:350px;
+	float:left;
+}
+
+#enviar {
+width:800px;
+	float:left;
+	text-align:center;
+	
+}
+
