@@ -1,7 +1,7 @@
 <%-- 
     Document   : listar_usuarios
-    Created on : 11/12/2013, 01:16:34 PM
-    Author     : arturo
+    Created on : 18/05/2017, 01:16:34 PM
+    Author     : Ismael
 --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -36,29 +36,22 @@
         </script>
     </head>
     <body>
-            <table width="960" border="0">
-  <tr>
-    <td width="753"><h3>Listado de Usuarios</h3></td>
-    <td width="197"><div style="display:table; margin-bottom: 5px;">
+  
+        <div>
+            <h3 class="bg-primary encabezado"><span class="fa fa-address-card-o" style="color: #fff"></span> Catálogo de Usuarios</h3>
+        </div>
+        <div class="container-fluid navbar-right">
             <div class="btn-catalogo" onclick="cargar('controladorusuario?operacion=nuevo','#show')">
                 <img src="imagenes/agregar.png" />
-                <p>Agregar</p>
             </div>
-            <a href="controladorusuario?operacion=reporte" target="_blank">
-                <div class="btn-catalogo">
+            <div class="btn-catalogo">    
+                <a href="controladorusuario?operacion=reporte" target="_blank">
                     <img src="imagenes/reportesb.png" />
-                    <p>Imprimir</p>
-                </div>
-            </a>
-        </div>  </td>
-  </tr>
-</table>
-
+                </a>
+            </div>
+        </div>
         
-        
-          
-        
-        <table id="usuarios" class="tablesorter" style="margin:auto; width:95%">
+        <table class="table table-hover table-responsive table-condensed" id="usuarios" style="margin:auto; width:95%">
             <thead>
                 <tr>
                     <th>Usuario</th>
@@ -82,5 +75,6 @@
                 </c:forEach>
             </tbody>
         </table>
+      
     </body>
 </html>

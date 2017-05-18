@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="assets/img/favicon.ico">
 
     <title>Sistema de Cobrtanza</title>
 
@@ -17,8 +17,8 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="assets/css/navbar-fixed-top.css" rel="stylesheet">
+    <!-- Custom styles for this template 
+    <link href="assets/css/navbar-fixed-top.css" rel="stylesheet">-->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -35,19 +35,14 @@
     <!-- Iconos fuentes personalizadas para la aplicación -->
     <link href="assets/css/iconmoon.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Estilos personalizados para la aplicación -->
     <link href="assets/css/style.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="css/estilos.css"/>-->
-    
+ </head>
 
-
-
-  </head>
-
-  <body>
- 
+ <body>
     <!-- Fixed navbar -->
     <!--<nav class="navbar navbar-default navbar-fixed-top" style="background-color: #ffffff;">-->
-    <nav class="navbar navbar-default navbar-fixed-top"style="border-width: 0 0 2px;">  
+    <nav class="navbar navbar-default navbar-fixed-top" style="border-width: 0 0 2px;padding-bottom:2px; ">  
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -57,8 +52,8 @@
             <span class="icon-bar"></span>
           </button>
           <!--<a class="navbar-brand" href="#">Project name</a>-->
-          <img src="assets/img/header2.png"/>     
-          <img src="assets/img/logo.png"/>
+          <img src="assets/img/header2.png">     
+          <img src="assets/img/logo.png">
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -66,9 +61,9 @@
             <li><a href="#">Opción1</a></li>
             <li><a href="#about">Opción2</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catálogos<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-book" style="color: #00A6CA"></span> Catálogos<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li id="usuarios"><a href="#" >Usuarios</a></li>
+                  <li id="usuarios"><a href="#" ><span class="fa fa-user"></span> Usuarios</a></li>
                 <li><a href="#">Otra accióin</a></li>
                 <li><a href="#">Cualquier cosa</a></li>
                 <li role="separator" class="divider"></li>
@@ -76,68 +71,49 @@
                 <li><a href="#">link1</a></li>
                 <li><a href="#">link2</a></li>
               </ul>
-              <li><a href="#cerrar">cerrar sesión</a></li>
+            <li><a href="#cerrar"><span class="fa fa-power-off"></span> Cerrar sesión</a></li>
             </li>
           </ul>
-          <!-- *** comentado ismael
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
-          </ul>-->
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
+    
+    <!-- Main component for a primary marketing message or call to action -->
     <div class="container" style="padding-left:0px;padding-right:0px;">
-
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="show" id="show">
-        <h1>Contendor principal.</h1>
-        <p>En esta sección se rendirizará todas las vista del proyecto de cobranza. Está preparada para que sea 100% responsivo, los contenedores como las tablas usarán la clase "responsive" del bootstrap</p>
-        <p>La barra de navegación se encuentra fija y el pie se ira desplazando hacia abajo.</p>
+     
+      <div class="show" id="show"> <!-- Sección principal para renderizar-->
+        <div class="container" style="text-align: center;padding-top: 50px;">
+            <img src="assets/img/logo-qroo_gris_50_25.png" alt="Imagen de fondo">
+        </div>
       </div>
 
     </div> <!-- /container -->
 
+    <div class="container" style="background-color:#00A6CA;border-radius:6px; margin-bottom:5px;">
+	<div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12">
 
+		<div class="col-lg-4-fondo">
+                    Secretaría de Desarrollo Urbano y vivienda</br>
+                    Gobierno del Estado de Quintana Roo.</br>
+                    Administración 2016-2022.</br>
+                    Av. Álvaro Obregón #474 Col. Centro C.P.77000</br>
+                    <a href="http://seduvi.qroo.gob.mx" target="_blank" style="text-decoration:none;color:#384452">http://seduvi.qroo.gob.mx</a>
+		</div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
 
-     <!--<div id="footerwrap">-->
-	 	<div class="container" style="background-color:#00A6CA;border-radius:6px; margin-bottom:5px;">
-		 	<div class="row">
-		 		<div class="col-lg-8 col-md-8 col-sm-12">
-		 			<!--<h4>About</h4>
-		 			<div class="hline-w"></div>-->
+		<p style="text-align:center;padding-top:30px;font-size:2em;">
+                    <!--<a href="#"><i class="fa fa-dribbble"></i></a>-->
+                    <a href="https://www.facebook.com/SEDUVI" target="_blank"><i class="fa fa-facebook" style="color:#ffffff;"></i></a>
+                    <i>  </i>
+                    <a href="https://twitter.com/SEDUVIQROO" target="_blank"><i class="fa fa-twitter" style="color:#ffffff;"></i></a>
 
-		 			<div class="col-lg-4-fondo">
-		 				Secretaría de Desarrollo Urbano y vivienda</br>
-		 				Gobierno del Estado de Quintana Roo.</br>
-		 				Administración 2016-2022.</br>
-		 				Av. Álvaro Obregón #474 Col. Centro C.P.77000</br>
-		 				<a href="http://seduvi.qroo.gob.mx" target="_blank" style="text-decoration:none;color:#384452">http://seduvi.qroo.gob.mx</a>
+		</p>
+            </div>
 
-		 			</div>
-		 		</div>
-
-		 		<div class="col-lg-4 col-md-4 col-sm-12">
-		 			<!--<h4>Social Links</h4>
-		 			<div class="hline-w"></div>-->
-		 			<p style="text-align:center;padding-top:30px;font-size:2em;">
-		 				<!--<a href="#"><i class="fa fa-dribbble"></i></a>-->
-		 				<a href="https://www.facebook.com/SEDUVI" target="_blank"><i class="fa fa-facebook" style="color:#ffffff;"></i></a>
-		 				<i>  </i>
-		 				<a href="https://twitter.com/SEDUVIQROO" target="_blank"><i class="fa fa-twitter" style="color:#ffffff;"></i></a>
-		 				<!--<a href="#"><i class="fa fa-instagram"></i></a>
-		 				<a href="#"><i class="fa fa-tumblr"></i></a>-->
-		 			</p>
-		 		</div>
-
-
-
-		 	</div><!--/row -->
-	 	</div><!--/container -->
-	 <!--</div>/footerwrap -->
-
+ 	</div><!--/row -->
+    </div><!--/container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -181,6 +157,6 @@
             
             //window.addEventListener("load", cargar('fondo.html','#contenido') , false);
             
-        </script>
+    </script>
   </body>
 </html>

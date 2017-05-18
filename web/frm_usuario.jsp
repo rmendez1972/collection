@@ -12,7 +12,7 @@
     <a href="../src/java/controladores/ControladorUsuario.java"></a>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="css/estilos.css"/>
+        <!--<link rel="stylesheet" type="text/css" href="css/estilos.css"/>-->
         <title>frm_usuario</title>
         <script>
             function registrar(){
@@ -71,8 +71,11 @@
         </script>
     </head>
     <body>
+        <div >
+        <h3 class="bg-primary encabezado"><span class="fa fa-address-book-o" style="color: #fff"></span> Registro de usuarios.</h3>
+        </div>
         <form id="form_UA" onsubmit="return registrar()">
-            <h1>Registro de usuarios.</h1>
+            
             <table border="0" align="center">
                 <tr>
                     <td>Usuario:</td>
