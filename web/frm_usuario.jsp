@@ -71,9 +71,9 @@
         </script>
     </head>
     <body>
-        <div >
+       
         <h3 class="bg-primary encabezado"><span class="fa fa-address-book-o" style="color: #fff"></span> Registro de usuarios.</h3>
-        </div>
+   
         <form id="form_UA" onsubmit="return registrar()">
             
             <table border="0" align="center">

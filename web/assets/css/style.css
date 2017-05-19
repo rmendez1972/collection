@@ -10,12 +10,13 @@ body {
 
 .show{ /*Contenedor principal en donde se mostrará toda la parte dinamica*/
 	padding-top:30px;
-	padding-bottom:30px;
-	margin-bottom:0px;
+	padding-bottom:10px;
+	margin-bottom:10px;
 	color:inherit;
 	background-color:#eee;
 	min-height: 500px;
   	background-image: url("../../assets/img/fondo_soles_grises.png");
+        
   	background-repeat: no-repeat;
   	background-position: bottom left;
 }
@@ -46,7 +47,7 @@ body {
 @media screen and (min-width:768px){
 	.show{
 		padding-top:.5px; /*48px*/
-		padding-bottom:0px; /*48px*/
+		padding-bottom:10px; /*48px*/
                     margin-top:20px;
 	}
 	.container .show,.container-fluid .show{
@@ -154,3 +155,13 @@ body {
         padding-left: 5px;
         text-align: center;
 }/*Fin de la clase encabezado*/
+
+.listado {
+	text-align:left;
+	color:#7b7d80;
+	margin-top:50px;
+	border: 2px solid #7b7d80;
+	border-radius: 5px;
+	padding:5px;
+        
+}
