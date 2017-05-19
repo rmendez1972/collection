@@ -36,10 +36,10 @@
         </script>
     </head>
     <body>
-  
-        <div>
-            <h3 class="bg-primary encabezado"><span class="fa fa-address-card-o" style="color: #fff"></span> Catálogo de Usuarios</h3>
-        </div>
+        <h3 class="bg-primary encabezado">
+            <span class="fa fa-address-card-o" style="color: #fff"></span> Catálogo de Usuarios
+        </h3>
+      
         <div class="container-fluid navbar-right">
             <div class="btn-catalogo" onclick="cargar('controladorusuario?operacion=nuevo','#show')">
                 <img src="imagenes/agregar.png" />
@@ -51,7 +51,8 @@
             </div>
         </div>
         
-        <table class="table table-hover table-responsive table-condensed" id="usuarios" style="margin:auto; width:95%">
+        <div class="table-responsive listado">
+        <table class="table table-condensed table-hover" id="usuarios">
             <thead>
                 <tr>
                     <th>Usuario</th>
@@ -59,7 +60,7 @@
                     <th>Subsecretaría</th>
                     <th>Dirección</th>
                     <th>Grupo</th>
-                    <th width="80">Acciones</th>
+                    <th >Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -75,6 +76,7 @@
                 </c:forEach>
             </tbody>
         </table>
+        </div>    
       
     </body>
 </html>
