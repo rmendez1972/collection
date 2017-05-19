@@ -2,7 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/index.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/css/estilos.css</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_usuarios.jsp</file>
@@ -10,13 +9,6 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/index.html</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/scr_admin.jsp</file>
-=======
-            <file>file:/G:/cobranza/web/frm_usuario.jsp</file>
-            <file>file:/G:/cobranza/web/index.html</file>
-            <file>file:/G:/cobranza/web/listar_usuarios.jsp</file>
-            <file>file:/G:/cobranza/web/assets/css/font-awesome.min.css</file>
-            <file>file:/G:/cobranza/web/assets/css/style.css</file>
->>>>>>> 29ab28b3703a9416941b08319cbfa2e8b1c537d2
         </group>
     </open-files>
 </project-private>
