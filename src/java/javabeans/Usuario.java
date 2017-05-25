@@ -26,6 +26,7 @@ public class Usuario {
     private String unidadAdministrativa;
     private String grupo;
     private String direccion;
+
     
     
     public Usuario( String usuario, String password){
@@ -43,9 +44,10 @@ public class Usuario {
         this.id_unidadadministrativa=id_unidadadministrativa;
         this.id_grupo=id_grupo;
         this.id_direccion=id_direccion;
+
     }
 
-    public int getId_usuario() {
+     public int getId_usuario() {
         return id_usuario;
     }
 

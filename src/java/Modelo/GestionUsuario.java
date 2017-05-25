@@ -31,7 +31,7 @@ public class GestionUsuario {
     public Usuario login(Usuario usuario){
         Usuario usr=null;
         Object params[]={usuario.getUsuario(),usuario.getPassword(),usuario.getId_grupo()};
-        ResultSet res=Conexion.ejecutarConsulta("select * from usuario where usuario=? and password=md5(?)", params);
+        ResultSet res=Conexion.ejecutarConsulta("select * from usuarios where usuario=? and password=md5(?)", params);
         try{
             if(res.next())
                 usr=new Usuario(res.getInt("id_usuario"), res.getString("usuario"), res.getString("password"), res.getString("nombre"), res.getString("apellido_paterno"), res.getString("apellido_materno"), res.getInt("id_unidadadministrativa"), res.getInt("id_grupo"), res.getInt("id_direccion"));

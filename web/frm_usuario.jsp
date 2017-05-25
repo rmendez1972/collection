@@ -46,7 +46,7 @@
                 }
                 
                 $.post("controladorusuario?operacion=nuevoGuardar", params, function(datos){
-                    $("#admin").html(datos);
+                    $("#show").html(datos);
                 },"html");
                 
                 return false;

@@ -63,19 +63,29 @@ public class Controladorlogin extends HttpServlet
             Usuario usuario;
             
             usuario = (Usuario)request.getAttribute("usuario");
-           
+            /*
+            //iniciando variables
+            String usua = null;
+            String pass = null;
+            Integer id_usuario= null;
+            Integer id_nivel= null;
+           */
             // verificando la existencia del usuario en la db
             GestionUsuario gu=new GestionUsuario(); //instancia del objeto Modelo que gestiona las operaciones
             usuario = gu.login(usuario);
            
             if (usuario!=null)
-            {    
+            {
+               /* usua = usuario.getUsuario();
+                pass = usuario.getPassword();
+                id_usuario= usuario.getId_usuario();
+                id_nivel= usuario.getId_nivel(); */
                 int id_grupo=usuario.getId_grupo();
                 HttpSession session = request.getSession();
                 session.setAttribute("usuario", usuario);
                 request.setAttribute("id_grupo", id_grupo);
                 
-                RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
+                RequestDispatcher rd=request.getRequestDispatcher("index.html");
                 rd.forward(request,response);
           
                 
