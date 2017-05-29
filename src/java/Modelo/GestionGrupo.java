@@ -7,11 +7,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import javabeans.Grupo;
 import javabeans.Modulo;
+
+import javabeans.Delegacion;
 /**
  *
  * @author arturo
  */
-public class GestionGrupo {
+public class GestionGrupo { /*
     public boolean registroGrupo(Grupo grupo){
         Object params[]={grupo.getNombre()};
         return Conexion.ejecutar("insert into grupo (nombre) values(?)", params);
@@ -28,20 +30,21 @@ public class GestionGrupo {
         }catch(Exception e){}
         return grupo;
     }
-    
+    */
     public ArrayList obtenerTodos(){
         ArrayList grupos=new ArrayList();
-        ResultSet res=Conexion.ejecutarConsulta("select * from grupo order by nombre asc", null);
+        ResultSet res=Conexion.ejecutarConsulta("select * from delegaciones order by descripcion asc", null);
         try{
             while(res.next()){
-                Grupo g=new Grupo(res.getInt("id_grupo"), res.getString("nombre"));
+                //Grupo g=new Grupo(res.getInt("id_grupo"), res.getString("nombre"));
+                Delegacion g=new Delegacion(res.getInt("id_delegacion"), res.getString("descripcion"), res.getString("direccion"));
                 grupos.add(g);
             }
             res.close();
         }catch(Exception e){}
         return grupos;
     }
-    
+    /*
     public ArrayList obtenerPermisos(int id_grupo){
         ArrayList perm=new ArrayList();
         Object params[]={id_grupo};
@@ -54,5 +57,5 @@ public class GestionGrupo {
             res.close();
         }catch(Exception e){}
         return perm;
-    }
+    } */
 }

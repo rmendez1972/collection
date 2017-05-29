@@ -8,7 +8,7 @@
     </property>
   </jsp-config>
   <resource-ref>
-    <res-ref-name>jdbc/tramites</res-ref-name>
-    <jndi-name>jdbc/tramites</jndi-name>
+    <res-ref-name>jdbc/cobranza</res-ref-name>
+    <jndi-name>jdbc/cobranza</jndi-name>
   </resource-ref>
 </glassfish-web-app>

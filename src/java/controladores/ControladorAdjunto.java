@@ -2,6 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package controladores;
 
 import Modelo.GestionAdjunto;
@@ -54,6 +55,7 @@ import net.sf.jasperreports.engine.JasperRunManager;
  *
  * @author Rafael Méndez
  */
+/*
 @MultipartConfig
 public class ControladorAdjunto extends ControladorBase {
     public Connection cn;
@@ -553,3 +555,4 @@ public class ControladorAdjunto extends ControladorBase {
         
     }
 }
+*/
