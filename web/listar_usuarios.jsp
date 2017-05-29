@@ -57,9 +57,16 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
+<<<<<<< HEAD
                     <th>Nivel</th>
                     <th>Cargo</th>
                     <th>Delegacion</th>
+=======
+                    <th>Subsecretaría</th>
+                    <th>Dirección</th>
+                    <th>Grupo</th>
+                    <th >Acciones</th>
+>>>>>>> 51b441ef344d6203b5fb1f4852dc8c9b20298e24
                 </tr>
             </thead>
             <tbody>
