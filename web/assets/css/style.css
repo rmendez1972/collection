@@ -46,17 +46,13 @@ body {
 
 @media screen and (min-width:768px){
 	.show{
-<<<<<<< HEAD
 
-		padding-top:.5px; /*48px*/
 
 		padding-top:5px; /*48px*/
 
-=======
-		padding-top:5px; /*48px*/
->>>>>>> 51b441ef344d6203b5fb1f4852dc8c9b20298e24
+
 		padding-bottom:10px; /*48px*/
-                    margin-top:20px;
+                margin-top:20px;
 	}
 	.container .show,.container-fluid .show{
 		padding-right:10px;padding-left:10px;
@@ -172,7 +168,7 @@ body {
 	border-radius: 5px;
 	padding:5px;
         
-<<<<<<< HEAD
+
 }
 
 /*Estilo para el plugIn confirm de jquery */
@@ -266,6 +262,5 @@ body {
     #confirmBox .gray:hover span{	background-position:-395px bottom;}
 
     /*Termina estilo dek PlugIn confirm de jquery */
-=======
-}
->>>>>>> 51b441ef344d6203b5fb1f4852dc8c9b20298e24
+
+   
