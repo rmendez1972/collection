@@ -17,15 +17,16 @@
             var params=new Object();
             params.id=id;
             $.post("controladorusuario?operacion=editar", params, function(datos){
-                $("#admin").html(datos);
+                $("#show").html(datos);
             },"html");
         }   
         function eliminarUsuario(id){
+            
             confirma("", "Eliminar Usuario", "Confirmar eliminación", "eliminar", function(){
                 var params=new Object();
                 params.id=id;
                 $.post("controladorusuario?operacion=eliminar", params, function(datos){
-                    $("#admin").html(datos);
+                    $("#show").html(datos);
                 },"html");
             });
         }
@@ -55,23 +56,27 @@
         <table class="table table-condensed table-hover" id="usuarios">
             <thead>
                 <tr>
-                    <th>Usuario</th>
                     <th>Nombre</th>
+<<<<<<< HEAD
+                    <th>Nivel</th>
+                    <th>Cargo</th>
+                    <th>Delegacion</th>
+=======
                     <th>Subsecretaría</th>
                     <th>Dirección</th>
                     <th>Grupo</th>
                     <th >Acciones</th>
+>>>>>>> 51b441ef344d6203b5fb1f4852dc8c9b20298e24
                 </tr>
             </thead>
             <tbody>
                 <c:forEach var="usr" items="${requestScope.usuarios}" varStatus="loop"> 
-                    <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}"> 
-                        <td> <c:out value="${usr.usuario}" /></td>
-                        <td><c:out value="${usr.nombre} ${usr.apellido_paterno} ${usr.apellido_materno}" /></td>
-                        <td><c:out value="${usr.unidadAdministrativa}" /></td>
-                        <td><c:out value="${usr.direccion}" /></td>
-                        <td><c:out value="${usr.grupo}" /></td>
-                        <td><img src="imagenes/editar.png" class="btn-tabla" title="Editar Usuario" onclick="editarUsuario(${usr.id_usuario});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Usuario" onclick="eliminarUsuario(${usr.id_usuario})" /></td>
+                    <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
+                        <td> <c:out value="${usr.nombre}" /></td>
+                        <td> <c:out value="${usr.nivel}" /></td>
+                        <td><c:out value="${usr.cargo}" /></td>
+                        <td><c:out value="${usr.delegacion}" /></td>
+                        <td><img src="imagenes/editar.png" class="btn-tabla" title="Editar Usuario" onclick="editarUsuario(${usr.id_usuario});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Usuario" onclick="eliminarUsuario(${usr.id_usuario});" /></td>
                     </tr>
                 </c:forEach>
             </tbody>

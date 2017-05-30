@@ -7,12 +7,14 @@ package Modelo;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import javabeans.UnidadAdministrativa;
+import javabeans.Nivel;
 /**
  *
  * @author arturo
  */
 public class GestionUnidadAdministrativa {
     
+    /*
     public boolean registroUnidadAdministrativa(UnidadAdministrativa unidad){
         Object params[]={unidad.getNombre(), unidad.getEmail()};
         return Conexion.ejecutar("insert into unidadadministrativa (nombre, email) values(?, ?)", params);
@@ -35,22 +37,24 @@ public class GestionUnidadAdministrativa {
         }catch(Exception e){}
         return ua;
     }
-    
+    */
     public ArrayList obtenerTodos(){
         ArrayList ua=new ArrayList();
-        ResultSet res=Conexion.ejecutarConsulta("select * from unidadadministrativa order by nombre asc", null);
+        ResultSet res=Conexion.ejecutarConsulta("select * from niveles order by descripcion asc", null);
         try{
             while(res.next()){
-                UnidadAdministrativa unidad=new UnidadAdministrativa(res.getInt("id_unidadadministrativa"), res.getString("nombre"), res.getString("email"));
+                //UnidadAdministrativa unidad=new UnidadAdministrativa(res.getInt("id_unidadadministrativa"), res.getString("nombre"), res.getString("email"));
+                Nivel unidad=new Nivel(res.getInt("id_nivel"), res.getString("descripcion"), res.getString("privilegios"));
                 ua.add(unidad);
             }
             res.close();
         }catch(Exception e){}
         return ua;
     }
-    
+    /*
     public boolean eliminarPorId(int id_unidadAdministrativa){
         Object params[]={id_unidadAdministrativa};
         return Conexion.ejecutar("delete from unidadadministrativa where id_unidadAdministrativa=?", params);
     }
+    */
 }

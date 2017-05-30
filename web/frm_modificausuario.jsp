@@ -1,7 +1,7 @@
 <%-- 
     Document   : frm_modificausuario
-    Created on : 13/12/2013, 04:21:38 PM
-    Author     : arturo
+    Created on : 26/05/2017, 01:33:00 PM
+    Author     : marlon
 --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,25 +16,25 @@
                 params.id_usuario=$("#id_usuario").val();
                 params.usuario=$("#usuario").val();
                 params.nombre=$("#nombre").val();
-                params.apellido_paterno=$("#paterno").val();
-                params.apellido_materno=$("#materno").val();
-                params.id_unidadadministrativa=$("#unidadAdministrativa").val();
-                params.id_direccion=$("#direccion").val();
-                params.id_grupo=$("#grupo").val();
+                params.direccion=$("#direccion").val();
+                params.cargo=$("#cargo").val();
+                params.serie=$("#serie").val();
+                params.id_nivel=$("#id_nivel").val();
+                params.id_delegacion=$("#id_delegacion").val();
                 
-                if(params.id_unidadadministrativa == 0){
-                    alert("Seleccione una unidad administrativa");
+                if(params.id_nivel == 0){
+                    alert("Seleccione un nivel");
                     return false;
                 }
-                if(params.id_grupo == 0){
-                    alert("Seleccione un grupo");
+                if(params.id_delegacion == 0){
+                    alert("Seleccione una delegacion");
                     return false;
                 }
                 
                 
                 
                 $.post("controladorusuario?operacion=editarGuardar", params, function(datos){
-                    $("#admin").html(datos);
+                    $("#show").html(datos);
                 },"html");
                 
                 return false;
@@ -69,50 +69,39 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td><input type="text" id="usuario" required autofocus required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{5,12})" maxlength="12" placeholder="Mín.5 Máx. 12 caracteres" value="${usr.usuario}" /></td>
+                    <td><input type="text" id="usuario" required autofocus required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{5,8})" maxlength="8" placeholder="Mín.5 Máx. 8 caracteres" value="${usr.usuario}" /></td>
                     <td><input type="password" id="password" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{5,12})" maxlength="12" disabled="false" placeholder="Mín.5 Máx. 12 caracteres"value="******" /></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Nombre:</td>
-                    <td>Apellido paterno:</td>
-                    <td>Apellido materno:</td>
+                    <td>Nombre Completo:</td>
+                    <td>Direccion:</td>
+                    <td>Cargo:</td>
+                    <td>Serie</td>
                 </tr>
                 <tr>
-                    <td><input type="text" id="nombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ ]{4,15})" placeholder="Mín.4 Máx.15 caracteres"value="${usr.nombre}" /></td>
-                    <td><input type="text" id="paterno" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ ]{2,15})" placeholder="Mín.2 Máx.15 caracteres" value="${usr.apellido_paterno}" /></td>
-                    <td><input type="text" id="materno" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ ]{4,15})" placeholder="Mín.4 Máx.15 caracteres" value="${usr.apellido_materno}" /></td>
+                    <td><input type="text" id="nombre" required placeholder="Mín.4 Máx.15 caracteres"value="${usr.nombre}" /></td>
+                    <td><input type="text" id="direccion" required  placeholder="Mín.2 Máx.15 caracteres" value="${usr.direccion}" /></td>
+                    <td><input type="text" id="cargo" required  placeholder="Mín.4 Máx.15 caracteres" value="${usr.cargo}" /></td>
+                    <td><input type="text" id="serie" required  placeholder="Mín.4 Máx.15 caracteres" value="${usr.serie}" /></td>
                 </tr>
                 <tr>
-                    <td>Unidad administrativa:</td>
-                    <td>Dirección:</td>
-                    <td>Grupo:</td>
-                    <td></td>
+                    <td>Nivel:</td>
+                    <td>Delegacion:</td>                   
                 </tr>
                 <tr>
-                    <td><select id="unidadAdministrativa" required style="width: 300" onChange="actualizaDir(this.value)">
+                    <td><select id="id_nivel" required style="width: 300" onChange="actualizaDir(this.value)">
                             <option value="">Seleccione una</option>
                             <c:forEach  var="ua" items="${requestScope.ua}">
-                                <OPTION VALUE="${ua.id_unidadAdministrativa}" ${ua.id_unidadAdministrativa == usr.id_unidadadministrativa ? 'selected':''}>${ua.nombre}</OPTION>
+                                <OPTION VALUE="${ua.id_nivel}" ${ua.id_nivel == usr.id_nivel ? 'selected':''}>${ua.descripcion}</OPTION>
                             </c:forEach>
                         </select>
                     </td>
-                   
-                    <td>
-                        <div id="id_direccion">
-                            <select id="direccion" required style="width: 300">
-                                <option value="">Seleccione una Dirección</option>
-                                <c:forEach  var="dir" items="${requestScope.dir}">
-                                    <OPTION VALUE="${dir.id_direccion}" ${dir.id_direccion == usr.id_direccion ? 'selected':''}>${dir.nombre}</OPTION>
-                                </c:forEach>
-                            </select>
-                        </div>
-                    </td>
-                    
-                    <td><select id="grupo" required >
+                                     
+                    <td><select id="id_delegacion" required >
                             <option value="">Seleccione uno</option>
                             <c:forEach  var="grupo" items="${requestScope.grupo}">
-                                <OPTION VALUE="${grupo.id_grupo}" ${grupo.id_grupo == usr.id_grupo ? 'selected':''}>${grupo.nombre}</OPTION>
+                                <OPTION VALUE="${grupo.id_delegacion}" ${grupo.id_delegacion == usr.id_del ? 'selected':''}>${grupo.descripcion}</OPTION>
                               </c:forEach>
                         </select>
                     </td>

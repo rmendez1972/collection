@@ -82,7 +82,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
  */
 
  
-
+/*
 @WebServlet(name = "ControladorSeguimiento", urlPatterns = {"/controladorseguimiento"})
 @MultipartConfig
 public class ControladorSeguimiento extends HttpServlet 
@@ -939,3 +939,4 @@ public class ControladorSeguimiento extends HttpServlet
          
     }
 }
+*/

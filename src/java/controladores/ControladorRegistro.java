@@ -2,6 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package controladores;
 
 import Modelo.GestionRequisito;
@@ -81,6 +82,7 @@ import javabeans.UsuarioApi;
  *
  * @author rmendez1972
  */
+/*
 @WebServlet(name = "ControladorRegistro", urlPatterns = {"/controladorregistro"})
 public class ControladorRegistro extends HttpServlet 
 {
@@ -843,6 +845,7 @@ public class ControladorRegistro extends HttpServlet
             
             Integer id_grupo=usuario.getId_grupo();
             Integer id_unidadadministrativa=usuario.getId_unidadadministrativa();*/
+/*
             
             Integer id_solicitud;   
             Solicitud solicitud=null;
@@ -971,3 +974,4 @@ public class ControladorRegistro extends HttpServlet
    
     }
 }
+*/

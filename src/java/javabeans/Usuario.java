@@ -14,18 +14,18 @@ public class Usuario {
         super();
     }
     
-    private int id_usuario;
     private String usuario;
     private String password;
+    private int id_usuario;
+    private int id_nivel;
+    private int id_del;
+    private String serie;
+    private String delegacion;
     private String nombre;
-    private String apellido_paterno;
-    private String apellido_materno;
-    private int id_unidadadministrativa;
-    private int id_grupo;
-    private int id_direccion;
-    private String unidadAdministrativa;
-    private String grupo;
+    private String cargo;
     private String direccion;
+    private String nivel;
+
     
     
     public Usuario( String usuario, String password){
@@ -33,24 +33,17 @@ public class Usuario {
         this.password=password;
      }
     
-    public Usuario(int id_usuario, String usuario, String password, String nombre, String apellido_paterno, String apellido_materno, int id_unidadadministrativa, int id_grupo, int id_direccion){
-        this.id_usuario=id_usuario;
-        this.usuario=usuario;
-        this.password=password;
-        this.nombre=nombre;
-        this.apellido_paterno=apellido_paterno;
-        this.apellido_materno=apellido_materno;
-        this.id_unidadadministrativa=id_unidadadministrativa;
-        this.id_grupo=id_grupo;
-        this.id_direccion=id_direccion;
-    }
-
-    public int getId_usuario() {
-        return id_usuario;
-    }
-
-    public void setId_usuario(int id_usuario) {
+    public Usuario(int id_usuario, String usuario, String password, int id_nivel, int id_del, String serie, String nombre, String cargo, String direccion){
+        this.usuario = usuario;
+        this.password = password;
         this.id_usuario = id_usuario;
+        this.id_nivel = id_nivel;
+        this.id_del = id_del;
+        this.serie = serie;
+        this.nombre = nombre;
+        this.cargo = cargo;
+        this.direccion = direccion;
+
     }
 
     public String getUsuario() {
@@ -69,6 +62,54 @@ public class Usuario {
         this.password = password;
     }
 
+    public Integer getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(Integer id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+
+    public Integer getId_nivel() {
+        return id_nivel;
+    }
+
+    public void setId_nivel(Integer id_nivel) {
+        this.id_nivel = id_nivel;
+    }
+
+    public Integer getId_del() {
+        return id_del;
+    }
+
+    public void setId_del(Integer id_del) {
+        this.id_del = id_del;
+    }
+
+    public String getSerie() {
+        return serie;
+    }
+
+    public void setSerie(String serie) {
+        this.serie = serie;
+    }
+    
+    public String getDelegacion() {
+        return delegacion;
+    }
+
+    public void setDelegacion(String delegacion) {
+        this.delegacion = delegacion;
+    }
+    
+    public String getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(String nivel) {
+        this.nivel = nivel;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -77,63 +118,14 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getApellido_paterno() {
-        return apellido_paterno;
+    public String getCargo() {
+        return cargo;
     }
 
-    public void setApellido_paterno(String apellido_paterno) {
-        this.apellido_paterno = apellido_paterno;
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
-    public String getApellido_materno() {
-        return apellido_materno;
-    }
-
-    public void setApellido_materno(String apellido_materno) {
-        this.apellido_materno = apellido_materno;
-    }
-
-    public int getId_unidadadministrativa() {
-        return id_unidadadministrativa;
-    }
-
-    public void setId_unidadadministrativa(int id_unidadadministrativa) {
-        this.id_unidadadministrativa = id_unidadadministrativa;
-    }
-
-    public int getId_grupo() {
-        return id_grupo;
-    }
-
-    public void setId_grupo(int id_grupo) {
-        this.id_grupo = id_grupo;
-    }
-
-    public String getUnidadAdministrativa() {
-        return unidadAdministrativa;
-    }
-
-    public void setUnidadAdministrativa(String unidadAdministrativa) {
-        this.unidadAdministrativa = unidadAdministrativa;
-    }
-
-    public String getGrupo() {
-        return grupo;
-    }
-
-    public void setGrupo(String grupo) {
-        this.grupo = grupo;
-    }
-    
-    public int getId_direccion() {
-        return id_direccion;
-    }
-
-    public void setId_direccion(int id_direccion) {
-        this.id_direccion = id_direccion;
-    }
-    
-    
     public String getDireccion() {
         return direccion;
     }

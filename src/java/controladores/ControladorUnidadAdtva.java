@@ -21,6 +21,7 @@ import net.sf.jasperreports.engine.JasperRunManager;
  *
  * @author arturo
  */
+/*
 public class ControladorUnidadAdtva extends ControladorBase {
 
     public void listar(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -101,3 +102,4 @@ public class ControladorUnidadAdtva extends ControladorBase {
         generarReporte("ReporteUnidades.jasper", param, request, response);
     }
 }
+*/

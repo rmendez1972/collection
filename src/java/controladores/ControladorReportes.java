@@ -75,6 +75,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
  *
  * @author rmendez1972
  */
+/*
 @WebServlet(name = "ControladorReportes", urlPatterns = {"/controladorreportes"})
 public class ControladorReportes extends HttpServlet 
 {
@@ -479,7 +480,7 @@ public class ControladorReportes extends HttpServlet
             } catch (ParseException ex) {
                 Logger.getLogger(ControladorReportes.class.getName()).log(Level.SEVERE, null, ex);
             }*/
-            
+            /*
             try {
                  cn=conectaMysql.getConnection();
             } catch (SQLException ex) {
@@ -558,7 +559,7 @@ public class ControladorReportes extends HttpServlet
             } catch (ParseException ex) {
                 Logger.getLogger(ControladorReportes.class.getName()).log(Level.SEVERE, null, ex);
             }*/
-            
+            /*
             try {
                  cn=conectaMysql.getConnection();
             } catch (SQLException ex) {
@@ -612,3 +613,4 @@ public class ControladorReportes extends HttpServlet
    
    
 }
+*/

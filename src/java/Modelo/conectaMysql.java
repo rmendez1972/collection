@@ -35,7 +35,7 @@ public  class conectaMysql
         try 
         {
             Context env = (Context) new InitialContext().lookup("java:comp/env");
-            pool = (DataSource) env.lookup("jdbc/tramites");
+            pool = (DataSource) env.lookup("jdbc/cobranza");
             if (pool == null) 
             {
                 throw new ServletException("No se encontró el DataSource");
