@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteUsuarios" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8d49dae9-11de-4574-8c56-721e2087b1fe">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="titulo" class="java.lang.String"/>
+	<parameter name="sql" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from requisito $P!{sql} order by nombre asc]]>
+	</queryString>
+	<field name="id_requisito" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Immediate">
+			<image scaleImage="RealHeight" hAlign="Center" isUsingCache="false">
+				<reportElement uuid="99710fe6-86d3-4619-9304-7f86aa7912b1" x="0" y="-3" width="745" height="82"/>
+				<imageExpression><![CDATA["..\\imagenes\\seduvi.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="06d7dbe0-d4e4-45ca-a2f8-c681c6933dc0" x="0" y="1" width="752" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ventanilla Unica de Gestión de Trámites y Servicios]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="79fbb0a4-c1df-4ff5-979d-0db4bfa2ad84" x="6" y="17" width="746" height="45"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{titulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="34f772ec-45ef-4cd0-8c68-77ab61757df8" x="6" y="2" width="77" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="716750bd-0467-4efd-8620-21d6c05c8d45" x="83" y="2" width="662" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="cad955ba-dcff-413e-960d-ab868370b9b8" x="0" y="29" width="752" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="80a7765a-9f42-4270-b77c-785b21f9c810" x="6" y="6" width="77" height="38"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_requisito}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="f9b0cca3-ec6b-4266-bb93-9c836de06e6c" x="83" y="6" width="662" height="38"/>
+				<textElement>
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="a0b5696e-3ba9-4296-a362-e7894bccd469" x="83" y="10" width="108" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="7d1bab7e-0e0f-4050-b36a-7e5e9e4cac9b" x="705" y="10" width="40" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="51a3c960-f02c-414d-ae6a-b6067eacb9a4" x="6" y="10" width="74" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Reporte:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="cb62d044-f498-4b8f-904d-a23de4369c1e" x="607" y="10" width="98" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="10" splitType="Stretch"/>
+	</summary>
+</jasperReport>

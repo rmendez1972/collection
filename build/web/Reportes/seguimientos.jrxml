@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe145593-eaf5-49dc-971a-1de1a3559efe">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="168"/>
+	<parameter name="sql" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select S.fecha,S.observaciones,S.id_solicitud,S.id_status,T.nombre as estatus,O.id_tramite,O.id_solicitud,O.id_solicitante,M.nombre as tramite,M.id_tramite, concat(A.nombre," ",A.apellido_paterno," ",A.apellido_materno)as solicitante,A.id_solicitante, UA.nombre as subsecretaria, D.nombre as direccion from seguimiento S inner join status T on S.id_status=T.id_status inner join solicitud O on O.id_solicitud=S.id_solicitud inner join tramite M on M.id_tramite=O.id_tramite inner join solicitante A on A.id_solicitante=O.id_solicitante inner join unidadadministrativa UA on M.id_unidadadministrativa=UA.id_unidadadministrativa inner join direcciones D on M.id_direccion=D.id_direccion $P!{sql} order by S.fecha desc]]>
+	</queryString>
+	<field name="fecha" class="java.sql.Timestamp"/>
+	<field name="observaciones" class="java.lang.String"/>
+	<field name="id_solicitud" class="java.lang.Integer"/>
+	<field name="id_status" class="java.lang.Integer"/>
+	<field name="estatus" class="java.lang.String"/>
+	<field name="id_tramite" class="java.lang.Integer"/>
+	<field name="id_solicitante" class="java.lang.Integer"/>
+	<field name="tramite" class="java.lang.String"/>
+	<field name="solicitante" class="java.lang.String"/>
+	<field name="subsecretaria" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="67" splitType="Stretch">
+			<image scaleImage="RealHeight" hAlign="Center">
+				<reportElement uuid="26bdebd4-80af-4d7c-ab23-15496ca8ea17" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="752" height="67"/>
+				<imageExpression><![CDATA["..\\imagenes\\headerreporte.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="129" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2e5cff4f-b186-4b22-8270-3a3247fd7c4b" x="0" y="7" width="752" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ventanilla Única de Gestión de Trámites y Servicios]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2e5cff4f-b186-4b22-8270-3a3247fd7c4b" x="0" y="27" width="752" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Seguimientos]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="6a15e438-0922-4573-8427-afda9246ec94" x="80" y="47" width="100" height="15"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{id_solicitud}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0d04a18c-360a-4ab6-b3b8-9f53dfe7d837" x="80" y="64" width="664" height="15"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{solicitante}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="87488d78-09ea-4db6-a725-f918181f4808" x="80" y="107" width="664" height="14"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{tramite}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a3e3fa27-d3d3-43de-b79e-731d784ed065" x="1" y="47" width="75" height="15"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Núm. solicitud:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a3e3fa27-d3d3-43de-b79e-731d784ed065" x="1" y="64" width="75" height="15"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Solicitante:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a3e3fa27-d3d3-43de-b79e-731d784ed065" x="1" y="106" width="75" height="15"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trámite:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a3e3fa27-d3d3-43de-b79e-731d784ed065" x="0" y="78" width="75" height="15"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subsecretaría:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="87488d78-09ea-4db6-a725-f918181f4808" x="79" y="79" width="664" height="14"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{subsecretaria}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a3e3fa27-d3d3-43de-b79e-731d784ed065" x="1" y="91" width="75" height="15"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="87488d78-09ea-4db6-a725-f918181f4808" x="79" y="93" width="664" height="14"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="240d2834-c42e-4c69-8b77-a06e991f4456" x="2" y="2" width="111" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b87e15f-563a-4c14-91c4-de09389b2ce0" x="643" y="3" width="107" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Estatus]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="91bfc418-7516-4b9c-be06-27b7354fd954" x="2" y="23" width="747" height="2"/>
+			</line>
+			<staticText>
+				<reportElement uuid="9b87e15f-563a-4c14-91c4-de09389b2ce0" x="125" y="3" width="490" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Seguimiento]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="8351cd7d-d18e-4359-94ef-0edd2abd53a2" x="2" y="5" width="111" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="8e335f48-8af7-4396-9e0f-97587c4c7913" x="125" y="5" width="490" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4c0657d1-68d8-404a-87ed-d9b8e4e495a5" x="642" y="0" width="107" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{estatus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement uuid="feb96451-ae28-4d53-9456-7d36e4e837eb" x="608" y="4" width="98" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="3c1e9509-f262-49f6-b261-b830f660c056" x="706" y="4" width="40" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="c5a8dcd2-c6da-456e-bfe4-a77fd0f14e6f" x="82" y="4" width="108" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="240d2834-c42e-4c69-8b77-a06e991f4456" x="5" y="4" width="74" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Reporte:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="13" splitType="Stretch"/>
+	</summary>
+</jasperReport>

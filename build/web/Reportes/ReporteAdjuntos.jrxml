@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe145593-eaf5-49dc-971a-1de1a3559efe">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="sql" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select AD.nombre as adjunto,AD.id_usuario as id_usuario,AD.id_seguimiento as id_seguimiento, U.nombre as usuarioadjunta,S.fecha as fecha, S.observaciones as observaciones, O.id_solicitud as id_solicitud, T.nombre as tramite,UA.nombre as subsecretaria, D.nombre as direccion, concat(SO.nombre," ",SO.apellido_paterno," ",SO.apellido_materno) as solicitante from adjunto AD inner join usuario U on AD.id_usuario=U.id_usuario inner join Seguimiento S on AD.id_seguimiento=S.id_seguimiento inner join Solicitud O on S.id_solicitud=O.id_solicitud inner join tramite T on O.id_tramite=T.id_tramite inner join direcciones D on T.id_direccion=D.id_direccion  inner join unidadadministrativa UA on T.id_unidadadministrativa=UA.id_unidadadministrativa inner join solicitante SO on O.id_solicitante=SO.id_solicitante $P!{sql} order by AD.nombre asc]]>
+	</queryString>
+	<field name="adjunto" class="java.lang.String"/>
+	<field name="id_usuario" class="java.lang.Integer"/>
+	<field name="id_seguimiento" class="java.lang.Integer"/>
+	<field name="usuarioadjunta" class="java.lang.String"/>
+	<field name="fecha" class="java.sql.Timestamp"/>
+	<field name="observaciones" class="java.lang.String"/>
+	<field name="id_solicitud" class="java.lang.Integer"/>
+	<field name="tramite" class="java.lang.String"/>
+	<field name="subsecretaria" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="solicitante" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="67" splitType="Stretch">
+			<image scaleImage="RealHeight" hAlign="Center">
+				<reportElement uuid="26bdebd4-80af-4d7c-ab23-15496ca8ea17" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="752" height="67"/>
+				<imageExpression><![CDATA["..\\imagenes\\headerreporte.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="145" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2e5cff4f-b186-4b22-8270-3a3247fd7c4b" x="0" y="7" width="752" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ventanilla Única de Gestión de Trámites y Servicios]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2e5cff4f-b186-4b22-8270-3a3247fd7c4b" x="0" y="27" width="752" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Anexos de Seguimientos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a3e3fa27-d3d3-43de-b79e-731d784ed065" x="0" y="47" width="75" height="15"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Núm. solicitud:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a3e3fa27-d3d3-43de-b79e-731d784ed065" x="0" y="64" width="75" height="15"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Solicitante:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a3e3fa27-d3d3-43de-b79e-731d784ed065" x="1" y="110" width="75" height="15"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trámite:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a3e3fa27-d3d3-43de-b79e-731d784ed065" x="0" y="79" width="75" height="15"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subsecretaría:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a3e3fa27-d3d3-43de-b79e-731d784ed065" x="0" y="94" width="75" height="15"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="086722a1-9e92-4045-a381-16c0882541d4" x="78" y="47" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{id_solicitud}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="35243ff2-3c38-41df-957e-7d5ce3b8639d" x="79" y="67" width="347" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{solicitante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="49ce4cf6-d8f1-43e3-973f-fdfe57204ee6" x="79" y="82" width="347" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{subsecretaria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="21a36308-e3e6-4706-a36d-fe0ad8de0834" x="80" y="94" width="344" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cee246fc-7f39-4c9f-9d47-798fe95d9c93" x="80" y="110" width="672" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tramite}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a3e3fa27-d3d3-43de-b79e-731d784ed065" x="0" y="127" width="75" height="15"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Seguimiento]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7feb19f2-e7a5-4c53-80ac-bde9e2297c79" x="171" y="127" width="579" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="68732e65-98c3-40b3-ad56-06f42ac25209" x="78" y="127" width="93" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="240d2834-c42e-4c69-8b77-a06e991f4456" x="2" y="2" width="424" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nombre del Archivo Adjuntos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b87e15f-563a-4c14-91c4-de09389b2ce0" x="486" y="3" width="264" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Usuario que adjunta]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="91bfc418-7516-4b9c-be06-27b7354fd954" x="2" y="23" width="747" height="2"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="ffaa4554-a7af-4fff-b612-8faa54862503" x="2" y="0" width="390" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{adjunto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="817c5cdd-c199-4c6b-a454-a646c20184cb" x="492" y="0" width="258" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{usuarioadjunta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement uuid="feb96451-ae28-4d53-9456-7d36e4e837eb" x="608" y="4" width="98" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="3c1e9509-f262-49f6-b261-b830f660c056" x="706" y="4" width="40" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="c5a8dcd2-c6da-456e-bfe4-a77fd0f14e6f" x="82" y="4" width="108" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="240d2834-c42e-4c69-8b77-a06e991f4456" x="5" y="4" width="74" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Reporte:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="13" splitType="Stretch"/>
+	</summary>
+</jasperReport>
