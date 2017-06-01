@@ -13,19 +13,19 @@
         
         <script>
 
-        function editarUsuario(id){
+        function editarSalmin(id){
             var params=new Object();
             params.id=id;
-            $.post("controladorusuario?operacion=editar", params, function(datos){
+            $.post("controladorsalmin?operacion=editar", params, function(datos){
                 $("#show").html(datos);
             },"html");
         }   
-        function eliminarUsuario(id){
+        function eliminarSalmin(id){
             
             confirma("", "Eliminar Usuario", "Confirmar eliminación", "eliminar", function(){
                 var params=new Object();
                 params.id=id;
-                $.post("controladorusuario?operacion=eliminar", params, function(datos){
+                $.post("controladorsalmin?operacion=eliminar", params, function(datos){
                     $("#show").html(datos);
                 },"html");
             });
@@ -46,7 +46,7 @@
                 <img src="imagenes/agregar.png" />
             </div>
             <div class="btn-catalogo">    
-                <a href="controladorusuario?operacion=reporte" target="_blank">
+                <a href="controladorsalmin?operacion=reporte" target="_blank">
                     <img src="imagenes/reportesb.png" />
                 </a>
             </div>
@@ -68,7 +68,7 @@
                     <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}"> 
                         <td><c:out value="${sal.fecha}" /></td>
                         <td><c:out value="$${sal.importe}" /></td>
-                        <td><img src="imagenes/editar.png" class="btn-tabla" title="Editar Registro" onclick="editarStatus(${sal.id_salmin})" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Registro" onclick="eliminarStatus(${sal.id_salmin})" /></td>
+                        <td><img src="imagenes/editar.png" class="btn-tabla" title="Editar Registro" onclick="editarSalmin(${sal.id_salmin})" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Registro" onclick="eliminarSalmin(${sal.id_salmin})" /></td>
                     </tr>
                 </c:forEach>
             </tbody>

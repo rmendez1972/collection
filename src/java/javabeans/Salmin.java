@@ -13,25 +13,25 @@ import java.math.BigDecimal;
  */
 public class Salmin {
     //declaracion de variables
-    private int id_salmin;
+    private Integer id_salmin;
     private Date fecha;
     private BigDecimal importe;
     
     //constructor
-    public Salmin(){}
+    public Salmin(){ super(); }
     
-    public Salmin(int id_salmin, Date fecha, BigDecimal importe){
+    public Salmin(Integer id_salmin, Date fecha, BigDecimal importe){
         this.id_salmin=id_salmin;
         this.fecha=fecha;
         this.importe=importe;
     }
     
     //get y set
-    public int getId_salmin(){
+    public Integer getId_salmin(){
         return id_salmin;
     }
     
-    public void setId_salmin(int id_salmin){
+    public void setId_salmin(Integer id_salmin){
         this.id_salmin = id_salmin;
     }
     

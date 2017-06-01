@@ -10,12 +10,16 @@ package javabeans;
  * @author Marlon
  */
 public class Nivel {
+    
+    
+    
     private int id_nivel;
     private String descripcion;
     private String privilegios;
     
     //constructor de la clase
     public Nivel(){
+        super();
     }
     
     public Nivel(int id_nivel, String descripcion, String privilegios){

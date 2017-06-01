@@ -14,7 +14,12 @@
             function registrar(){
                 var params=new Object();
                 params.fecha=$("#fecha").val();
-                //params.importe=$("#importe").val();
+                params.importe=$("#importe").val();
+                
+                if(params.importe < 0){
+                    alert("Sólo se aceptan números positivos");
+                    return false;
+                }
                                           
                 $.post("controladorsalmin?operacion=nuevoGuardar", params, function(datos){
                     $("#show").html(datos);
@@ -22,11 +27,12 @@
                 
                 return false;
             }
-            
+            /*inicializando campo tipo date a la fecha del dia*/
+            document.getElementById('fecha').value=fechaActual();
         </script>
     </head>
     <body>
-        <h3 class="bg-primary encabezado"><span class="fa fa-address-book-o" style="color: #fff"></span> Registro Salario Minimo.</h3>
+        <h3 class="bg-primary encabezado"><span class="fa fa-dollar" style="color: #fff"></span> Registro Salario Minimo.</h3>
    
         <form id="form_UA" onsubmit="return registrar()">
             
@@ -38,7 +44,7 @@
                 </tr>
                 <tr>
                     <td><input type="date" id="fecha" required /></td>
-                    <td><input type="text" id="importe" maxlength="15"/></td>
+                    <td><input type="number" step="0.01" id="importe" required  placeholder="Sólo se aceptan dos decimales" maxlength="12"/></td>
                                         
                 </tr>
                 <tr>
