@@ -14,30 +14,31 @@ import javabeans.Nivel;
  */
 public class GestionUnidadAdministrativa {
     
-    /*
-    public boolean registroUnidadAdministrativa(UnidadAdministrativa unidad){
-        Object params[]={unidad.getNombre(), unidad.getEmail()};
-        return Conexion.ejecutar("insert into unidadadministrativa (nombre, email) values(?, ?)", params);
+    
+    public boolean registroNivel(Nivel nivel){
+        Object params[]={nivel.getDescripcion(), nivel.getPrivilegios()};
+        return Conexion.ejecutar("insert into niveles (descripcion, privilegios) values(?, ?)", params);
     }
     
-    public boolean actualizar(UnidadAdministrativa unidad){
-        Object params[]={unidad.getNombre(), unidad.getEmail(), unidad.getId_unidadAdministrativa()};
-        return Conexion.ejecutar("update unidadadministrativa set nombre=?, email=? where id_unidadAdministrativa=?", params);
+    public boolean actualizar(Nivel nivel){
+        Object params[]={nivel.getDescripcion(), nivel.getPrivilegios(), nivel.getId_nivel()};
+        return Conexion.ejecutar("update niveles set descripcion=?, privilegios=? where id_nivel=?", params);
     }
     
-    public UnidadAdministrativa obtenerPorId(int id_unidadAdministrativa){
-        UnidadAdministrativa ua=null;
-        Object params[]={id_unidadAdministrativa};
-        ResultSet res=Conexion.ejecutarConsulta("select * from unidadadministrativa where id_unidadadministrativa=?", params);
+    public Nivel obtenerPorId(int id_nivel){
+        //UnidadAdministrativa ua=null;
+        Object params[]={id_nivel};
+        Nivel niv = null;
+        ResultSet res=Conexion.ejecutarConsulta("select * from niveles where id_nivel=?", params);
         try{
             while(res.next()){
-                ua=new UnidadAdministrativa(res.getInt("id_unidadadministrativa"),res.getString("nombre"), res.getString("email"));
+                niv=new Nivel(res.getInt("id_nivel"),res.getString("descripcion"), res.getString("privilegios"));
             }
             res.close();
         }catch(Exception e){}
-        return ua;
+        return niv;
     }
-    */
+    
     public ArrayList obtenerTodos(){
         ArrayList ua=new ArrayList();
         ResultSet res=Conexion.ejecutarConsulta("select * from niveles order by descripcion asc", null);
@@ -51,10 +52,10 @@ public class GestionUnidadAdministrativa {
         }catch(Exception e){}
         return ua;
     }
-    /*
-    public boolean eliminarPorId(int id_unidadAdministrativa){
-        Object params[]={id_unidadAdministrativa};
-        return Conexion.ejecutar("delete from unidadadministrativa where id_unidadAdministrativa=?", params);
+    
+    public boolean eliminarPorId(int id_nivel){
+        Object params[]={id_nivel};
+        return Conexion.ejecutar("delete from niveles where id_nivel=?", params);
     }
-    */
+    
 }
