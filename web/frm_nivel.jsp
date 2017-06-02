@@ -33,8 +33,8 @@
                     <td>Privilegios</td>
                 </tr>
                 <tr>
-                    <td><input type="text" id="descripcion" pattern="([a-zA-Z ]{3,20})"  placeholder="Mínimo 5 caracteres" required style="width: 300px; font-size: 25px"/></td>
-                    <td><input type="text" id="privilegios" pattern="([a-zA-Z ]{3,20})"  placeholder="Mínimo 5 caracteres" required style="width: 300px; font-size: 25px"/></td>
+                    <td><input type="text" id="descripcion" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style="width: 300px; font-size: 25px"/></td>
+                    <td><input type="text" id="privilegios" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style="width: 300px; font-size: 25px"/></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" value="Aceptar" class="frm-btn" /> <input type="reset" value="Cancelar" class="frm-btn" /></td>

@@ -65,7 +65,7 @@
                 <c:forEach var="cpp" items="${requestScope.cpps}" varStatus="loop"> 
                     <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
                         <td> <c:out value="${cpp.fecha}" /></td>
-                        <td> <c:out value="${cpp.importe}" /></td>
+                        <td> <c:out value="$${cpp.importe}" /></td>
                         <td><img src="imagenes/editar.png" class="btn-tabla" title="Editar CPP" onclick="editarCpp(${cpp.id_cpp});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar CPP" onclick="eliminarCpp(${cpp.id_cpp});" /></td>
                     </tr>
                 </c:forEach>
