@@ -78,6 +78,7 @@
                 <li class="dropdown-header">Tasas Financieras</li>
                 <li id="cpp"><a href="#" ><span class="fa fa-dollar"></span>CPP</a></li>
                 <li id="salmin"><a href="#" ><span class="fa fa-dollar"></span> Salarios Minimos</a></li>
+                <li id="caja"><a href="#" ><span class="fa fa-bank"></span> Caja</a></li>
                 <li><a href="#">link2</a></li>
               </ul>
             <li><a href="#cerrar"><span class="fa fa-power-off"></span> Cerrar sesión</a></li>
@@ -153,6 +154,12 @@
                     
                     event.preventDefault();
                     cargar('controladorsalmin?operacion=listar','#show');
+                });
+                
+                $("#caja").click(function (event) {
+                    
+                    event.preventDefault();
+                    cargar('controladorcaja?operacion=listar','#show');
                 });
                 
                 $("#consultar").click(function (event) {
