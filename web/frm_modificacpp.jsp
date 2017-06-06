@@ -29,36 +29,52 @@
                 return false;
             }
             
-             /*inicializando campo tipo date a la fecha del dia*/
-            document.getElementById('fecha').value=fechaActual();
+            
+            function listar(){
+                               
+                $.post("controladorcpp?operacion=listar", function(datos){
+                    $("#show").html(datos);
+                },"html");
+                
+                return false;
+            }
+            
+             
         </script>
     </head>
     <body>
-        <form id="form_UA" onsubmit="return registrar()">
-            <input type="hidden" name="id_cpp" id="id_cpp" value="${cpp.id_cpp}" />
-            <h1>Modificar CPP.</h1>
-            <table border="0" align="center">
-                <tr>
-                    <td>Fecha:</td>
-                    <td>Importe:</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td><input type="date" id="fecha" required autofocus required value="${cpp.fecha}" /></td>
-                    <td><input type="number" step="0.01" id="importe" required  placeholder="Solo se aceptan dos decimales" maxlength="12" value="${cpp.importe}" /></td>
-                    <td></td>
-                </tr>
-                
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Aceptar" class="frm-btn" /></td>
-                    <td><input type="reset" value="Cancelar" class="frm-btn" /></td>
-                    <td></td>
-                </tr>
-            </table>
-        </form>
+        <div class="panel panel-primary" style="margin-top: 60px">
+            <div class="panel-heading"><h4><span class="fa fa-address-book-o" style="color: #fff"></span>Modificar CPP</h4></div>
+                <div class="panel-body transparent">
+                    <form id="form_UA" onsubmit="return registrar()"  class="form-horizontal">
+                        <input type="hidden" name="id_cpp" id="id_cpp" value="${cpp.id_cpp}" />
+            
+                        <div class="form-group">
+                            <label for="fecha" class="col-xs-12 col-md-2 control-label col-md-offset-3">Fecha:</label>
+                            <div class="col-xs-12 col-md-2">
+                                <input type="date" id="fecha" class="form-control" required autofocus required value="${cpp.fecha}" />
+
+                            </div>
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <label for="importe" class="col-xs-12 col-md-2 control-label col-md-offset-3">Importe:</label>
+                            <div class="col-xs-12 col-md-2">
+                                <input type="number" step="0.01" id="importe" class="form-control" required  placeholder="Solo se aceptan dos decimales" maxlength="12" value="${cpp.importe}" />
+
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="text-align:center">
+                            <input type="submit" value="Modificar" class="btn btn-primary" />
+                            <input type="reset" value="Cancelar" onclick="return listar()" class="btn btn-default" />
+                        </div>
+
+
+                    </form>
+                </div>
+        </div>
+        
     </body>
 </html>

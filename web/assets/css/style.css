@@ -319,3 +319,13 @@ body {
     }
     
 /* FIN DE LOS ALERT*/  
+
+.transparent{    
+    background-color: rgba(0,0,0,0.08);
+    border: 1px #337ab7;
+}
+
+.panel{
+    background-color: transparent;
+    
+}
