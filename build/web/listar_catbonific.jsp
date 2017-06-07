@@ -30,6 +30,11 @@
             });
         }
         
+        $(document).ready(function(){
+            
+            $('#bonificacionlist').DataTable();
+        });
+        
         <c:if test="${msg != null}">
             alert('${msg}');
         </c:if>
@@ -52,7 +57,7 @@
         </div>
         
         <div class="table-responsive listado">
-        <table class="table table-condensed table-hover" id="usuarios">
+        <table class="table table-condensed table-hover" id="bonificacionlist">
             <thead>
                 <tr>
                     <th>Clave Bonificación</th>

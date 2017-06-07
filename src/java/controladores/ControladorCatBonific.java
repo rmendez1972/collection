@@ -91,5 +91,10 @@ public class ControladorCatBonific extends ControladorBase{
         rd.forward(request,response);
          
      }
+     
+     public void reporte(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        Map param = new HashMap();
+        generarReporte("ReporteCatBonific.jasper", param, request, response);
+    }
     
 }

@@ -22,24 +22,47 @@
                 
                 return false;
             }
+            
+            function listar(){
+                               
+                $.post("controladornivel?operacion=listar", function(datos){
+                    $("#show").html(datos);
+                },"html");
+                
+                return false;
+            }
         </script>
     </head>
     <body>
-        <h1>Nuevo Nivel</h1>
-        <form id="form_UA" onsubmit="return registrar()">
-            <table border="0" align="center">
-                <tr>
-                    <td>Nombre:</td>
-                    <td>Privilegios</td>
-                </tr>
-                <tr>
-                    <td><input type="text" id="descripcion" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style="width: 300px; font-size: 25px"/></td>
-                    <td><input type="text" id="privilegios" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style="width: 300px; font-size: 25px"/></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><input type="submit" value="Aceptar" class="frm-btn" /> <input type="reset" value="Cancelar" class="frm-btn" /></td>
-                </tr>
-            </table>
-        </form>
+        
+        <div class="panel panel-primary" style="margin-top: 60px">
+            <div class="panel-heading"><h4><span class="fa fa-sort-amount-desc" style="color: #fff"></span> Registro de Nivel</h4></div>
+                <div class="panel-body transparent">
+                    <form id="form_UA" onsubmit="return registrar()"  class="form-horizontal">
+            
+                        <div class="form-group">
+                            <label for="Nombre" class="col-xs-12 col-md-2 control-label col-md-offset-3">Nombre:</label>
+                            <div class="col-xs-12 col-md-2">
+                                <input type="text" name="descripcion" class="form-control"  id="descripcion" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style=" text-transform:uppercase; width: 300px; font-size: 25px " />
+                            </div>
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <label for="importe" class="col-xs-12 col-md-2 control-label col-md-offset-3">Privilegios:</label>
+                            <div class="col-xs-12 col-md-2">
+                                <input type="text" name="privilegios" class="form-control" id="privilegios" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" />
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="text-align:center">
+                            <input type="submit" value="Aceptar" class="btn btn-primary" />
+                            <input type="reset" value="Cancelar" onclick="return listar()" class="btn btn-default" />
+                        </div>
+
+
+                    </form>
+                </div>
+        </div>
     </body>
 </html>
