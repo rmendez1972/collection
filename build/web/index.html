@@ -79,8 +79,9 @@
                 <li class="dropdown-header">Tasas Financieras</li>
                 <li id="cpp"><a href="#" ><span class="fa fa-dollar"></span>CPP</a></li>
                 <li id="salmin"><a href="#" ><span class="fa fa-dollar"></span> Salarios Minimos</a></li>
-                <li id="caja"><a href="#" ><span class="fa fa-bank"></span> Caja</a></li>
-                <li><a href="#">link2</a></li>
+                <li id="caja"><a href="#" ><span class="fa fa-bank"></span> Cajas</a></li>
+                <li role="separator" class="divider"></li>
+                <li id="tipocredito"><a href="#" ><span class="fa fa-credit-card-alt"></span>Tipos de Crédito</a></li>
               </ul>
             <li><a href="#cerrar"><span class="fa fa-power-off"></span> Cerrar sesión</a></li>
             </li>
@@ -174,6 +175,11 @@
                 $("#cpp").click(function (event) {
                     event.preventDefault();
                     cargar('controladorcpp?operacion=listar','#show');
+                });
+                
+                $("#tipocredito").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladortipocredito?operacion=listar','#show');
                 });
                 
                 $("#reportes").click(function (event) {

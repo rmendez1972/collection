@@ -1,7 +1,7 @@
 <%-- 
     Document   : listar_usuarios
     Created on : 18/05/2017, 01:16:34 PM
-    Author     : Ismael
+    Author     : Rafael Méndez
 --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

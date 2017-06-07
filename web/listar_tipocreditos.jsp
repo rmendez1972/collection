@@ -13,19 +13,19 @@
         
         <script>
 
-        function editarCpp(id){
+        function editarTipocredito(id){
             var params=new Object();
             params.id=id;
-            $.post("controladorcpp?operacion=editar", params, function(datos){
+            $.post("controladortipocredito?operacion=editar", params, function(datos){
                 $("#show").html(datos);
             },"html");
         }   
-        function eliminarCpp(id){
+        function eliminarTipocredito(id){
             
-            confirma("", "Eliminar CPP", "Confirmar eliminación", "eliminar", function(){
+            confirma("", "Eliminar Tipo de Crédito", "Confirmar eliminación", "eliminar", function(){
                 var params=new Object();
                 params.id=id;
-                $.post("controladorcpp?operacion=eliminar", params, function(datos){
+                $.post("controladortipocredito?operacion=eliminar", params, function(datos){
                     $("#show").html(datos);
                 },"html");
             });
@@ -33,7 +33,7 @@
         
         $(document).ready(function(){
             
-            $('#usuarioslist').DataTable();
+            $('#tipocreditolist').DataTable();
         });
         
         
@@ -44,35 +44,33 @@
     </head>
     <body>
         <h3 class="bg-primary encabezado">
-            <span class="fa fa-dollar" style="color: #fff"></span> Catálogo de CPP
+            <span class="fa fa-credit-card-alt" style="color: #fff"></span> Catálogo de Tipos de Crédito
         </h3>
       
         <div class="container-fluid navbar-right">
-            <div class="btn-catalogo"  onclick="cargar('controladorcpp?operacion=nuevo','#show')">
+            <div class="btn-catalogo"  onclick="cargar('controladortipocredito?operacion=nuevo','#show')">
                 <img src="imagenes/agregar.png" alt="Nuevo" />
             </div>
             <div class="btn-catalogo">    
-                <a href="controladorcpp?operacion=reporte" target="_blank" >
+                <a href="controladortipocredito?operacion=reporte" target="_blank" >
                     <img src="imagenes/reportesb.png" alt="Imprimir"/>
                 </a>
             </div>
         </div>
         
         <div class="table-responsive listado">
-        <table class="table table-condensed table-hover" id="usuarioslist">
+        <table class="table table-condensed table-hover" id="tipocreditolist">
             <thead>
                 <tr>
-                    <th>Fecha</th>
-                    <th>Importe</th>
+                    <th>Descripcion</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="cpp" items="${requestScope.cpps}" varStatus="loop"> 
+                <c:forEach var="tipocredito" items="${requestScope.tipocreditos}" varStatus="loop"> 
                     <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
-                        <th> <c:out value="${cpp.fecha}" /></th>
-                        <th> <c:out value="$${cpp.importe}" /></th>
-                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar CPP" onclick="editarCpp(${cpp.id_cpp});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar CPP" onclick="eliminarCpp(${cpp.id_cpp});" /></th>
+                        <th> <c:out value="${tipocredito.descripcion}" /></th>
+                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar CPP" onclick="editarTipocredito(${tipocredito.id_tipocredito});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Tipo de Crédito" onclick="eliminarTipocredito(${tipocredito.id_tipocredito});" /></th>
                     </tr>
                 </c:forEach>
             </tbody>
