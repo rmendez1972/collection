@@ -31,6 +31,11 @@
             });
         }
         
+        $(document).ready(function(){
+            
+            $('#salminlist').DataTable();
+        });
+        
         <c:if test="${msg != null}">
             alert('${msg}');
         </c:if>
@@ -53,7 +58,7 @@
         </div>
         
         <div class="table-responsive listado">
-        <table class="table table-condensed table-hover" id="usuarios">
+        <table class="table table-condensed table-hover" id="salminlist">
             <thead>
                 <tr>
                     <th>Fecha</th>
@@ -66,9 +71,9 @@
             <tbody>
                 <c:forEach var="sal" items="${requestScope.salmin}" varStatus="loop"> 
                     <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}"> 
-                        <td><c:out value="${sal.fecha}" /></td>
-                        <td><c:out value="$${sal.importe}" /></td>
-                        <td><img src="imagenes/editar.png" class="btn-tabla" title="Editar Registro" onclick="editarSalmin(${sal.id_salmin})" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Registro" onclick="eliminarSalmin(${sal.id_salmin})" /></td>
+                        <th><c:out value="${sal.fecha}" /></th>
+                        <th><c:out value="$${sal.importe}" /></th>
+                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Registro" onclick="editarSalmin(${sal.id_salmin})" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Registro" onclick="eliminarSalmin(${sal.id_salmin})" /></th>
                     </tr>
                 </c:forEach>
             </tbody>

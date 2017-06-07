@@ -1,7 +1,7 @@
 <%-- 
     Document   : listar_usuarios
     Created on : 18/05/2017, 01:16:34 PM
-    Author     : Ismael
+    Author     : Rafael Méndez
 --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,6 +31,12 @@
             });
         }
         
+        $(document).ready(function(){
+            
+            $('#usuarioslist').DataTable();
+        });
+        
+        
         <c:if test="${msg != null}">
             alert('${msg}');
         </c:if>
@@ -53,7 +59,7 @@
         </div>
         
         <div class="table-responsive listado">
-        <table class="table table-condensed table-hover" id="usuarios">
+        <table class="table table-condensed table-hover" id="usuarioslist">
             <thead>
                 <tr>
                     <th>Fecha</th>
@@ -64,14 +70,16 @@
             <tbody>
                 <c:forEach var="cpp" items="${requestScope.cpps}" varStatus="loop"> 
                     <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
-                        <td> <c:out value="${cpp.fecha}" /></td>
-                        <td> <c:out value="$${cpp.importe}" /></td>
-                        <td><img src="imagenes/editar.png" class="btn-tabla" title="Editar CPP" onclick="editarCpp(${cpp.id_cpp});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar CPP" onclick="eliminarCpp(${cpp.id_cpp});" /></td>
+                        <th> <c:out value="${cpp.fecha}" /></th>
+                        <th> <c:out value="$${cpp.importe}" /></th>
+                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar CPP" onclick="editarCpp(${cpp.id_cpp});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar CPP" onclick="eliminarCpp(${cpp.id_cpp});" /></th>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
+        
+            
         </div>    
-      
+        
     </body>
 </html>
