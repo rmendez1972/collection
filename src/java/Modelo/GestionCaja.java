@@ -64,7 +64,7 @@ public class GestionCaja {
        String id_usuario = caja.getId_usuario().toString();
        
        Object params[]={fecha, folio_inicial, folio_final, poliza, monto_inicial, id_usuario, id_caja};
-       return Conexion.ejecutar("update cajas set fecha=?, folio_inicial=?, folio_final=?, poliza=?, monto_inicial=?, id_usuario=? where id_caja=?", params);
+       return Conexion.ejecutar("update cajas set fecha=?, folio_inicial=?, folio_final=?, poliza=UPPER(?), monto_inicial=?, id_usuario=? where id_caja=?", params);
        
     }
     

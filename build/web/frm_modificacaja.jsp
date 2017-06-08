@@ -32,50 +32,72 @@
                 
                 return false;
             }
+            
+            function listar(){
+                               
+                $.post("controladorcaja?operacion=listar", function(datos){
+                    $("#show").html(datos);
+                },"html");
+                
+                return false;
+            }
         </script>
     </head>
     <body>
-        <form id="form_UA" onsubmit="return registrar()">
-            <h3 class="bg-primary encabezado"><span class="fa fa-bank" style="color: #fff"></span> Registro Caja</h3>
-            <input type="hidden" name="id_caja" id="id_caja" value="${caja.id_caja}" />
-            <table border="0" align="center">
-                <tr>
-                    <td>Fecha:</td>
-                    <td>Folio Inicial:</td>
-                    <td>Folio Final:</td>
-                    <td>Poliza:</td>
-                    <td>Monto Inicial:</td>
-                </tr>
-                <tr>
-                    <td><input type="date" id="fecha" required value="${caja.fecha}" /></td>
-                    <td><input type="number" id="folio_inicial" required  placeholder="Sólo se aceptan decimales" value="${caja.folio_inicial}"/></td>
-                    <td><input type="number" id="folio_final" required  placeholder="Sólo se aceptan decimales" value="${caja.folio_final}"/></td>
-                    <td><input type="text" id="poliza" required autofocus required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{0,8})" maxlength="4" placeholder="Máx. 4 caracteres" value="${caja.poliza}"/></td>
-                    <td><input type="number" step="0.01" id="monto_inicial" required  placeholder="Sólo se aceptan decimales" maxlength="20" value="${caja.monto_inicial}"/></td>
-                </tr>
-                <tr>
-                    <td>Usuario</td>
-                </tr>
-                <tr>
-                    <td>
-                        <select id="id_usuario" required>
-                            <option value="">Seleccione uno</option>
-                            <c:forEach  var="usuario" items="${requestScope.usuario}">
-                                <OPTION VALUE="${usuario.id_usuario}" ${usuario.id_usuario == caja.id_usuario ? 'selected':''} >${usuario.usuario}</OPTION>
-                              </c:forEach>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Aceptar" class="frm-btn" /></td>
-                    <td><input type="reset" value="Cancelar" class="frm-btn" /></td>
-                    <td></td>
-                </tr>
-            </table>
-        </form>
+        
+        <div class="panel panel-primary" style="margin-top: 60px">
+            <div class="panel-heading"><h4><span class="fa fa-bank" style="color: #fff"></span> Modificar Caja</h4></div>
+                <div class="panel-body transparent">
+                    <form id="form_UA" onsubmit="return registrar()"  class="form-horizontal">
+                        <input type="hidden" name="id_caja" id="id_caja" value="${caja.id_caja}" />
+                        <div class="form-group">
+                            <label for="fecha" class="col-xs-12 col-md-2 control-label">Fecha:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="date" name="fecha" class="form-control" id="fecha" required autofocus required value="${caja.fecha}" />
+                            </div>
+                            
+                            <label for="folio_inicial" class="col-xs-12 col-md-2 control-label ">Folio Inicial:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="number" name="folio_inicial" class="form-control" id="folio_inicial" required  placeholder="SÓLO SE ACEPTAN DECIMALES" value="${caja.folio_inicial}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="folio_final" class="col-xs-12 col-md-2 control-label ">Folio Final:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="number" name="folio_final" class="form-control" id="folio_final" required  placeholder="SÓLO SE ACEPTAN DECIMALES" value="${caja.folio_final}"/>
+                            </div>
+                            
+                            <label for="fecha" class="col-xs-12 col-md-2 control-label ">Poliza:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="text" name="poliza" class="form-control" id="poliza" required autofocus required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{0,8})" maxlength="4" placeholder="Máx. 4 caracteres" style="text-transform:uppercase" value="${caja.poliza}" />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="importe" class="col-xs-12 col-md-2 control-label ">Monto Inicial:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="number" step="0.01" class="form-control" id="monto_inicial" required  placeholder="SÓLO SE ACEPTAN DECIMALES" maxlength="12" value="${caja.monto_inicial}"/>
+                            </div>
+                            
+                            <label for="fecha" class="col-xs-12 col-md-2 control-label ">Usuario:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <select id="id_usuario" class="form-control" required>
+                                    <option value="">Seleccione uno</option>
+                                    <c:forEach  var="usuario" items="${requestScope.usuario}">
+                                        <OPTION VALUE="${usuario.id_usuario}" ${usuario.id_usuario == caja.id_usuario ? 'selected':''} >${usuario.usuario}</OPTION>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="text-align:center">
+                            <input type="submit" value="Aceptar" class="btn btn-primary" />
+                            <input type="reset" value="Cancelar" onclick="return listar()" class="btn btn-default" />
+                        </div>
+                    </form>
+                </div>
+        </div>
+  
     </body>
 </html>

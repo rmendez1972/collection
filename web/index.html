@@ -79,14 +79,16 @@
                 <li class="dropdown-header">Tasas Financieras</li>
                 <li id="cpp"><a href="#" ><span class="fa fa-dollar"></span>CPP</a></li>
                 <li id="salmin"><a href="#" ><span class="fa fa-dollar"></span> Salarios Minimos</a></li>
+                <li id="emisores"><a href="#" ><span class="fa fa-podcast"></span> Emisores</a></li>
                 <li id="caja"><a href="#" ><span class="fa fa-bank"></span> Cajas</a></li>
                 <li role="separator" class="divider"></li>
                 <li id="tipocredito"><a href="#" ><span class="fa fa-credit-card-alt"></span>Tipos de Crédito</a></li>
                 <li id="banco"><a href="#" ><span class="fa fa-bank"></span>Bancos</a></li>
                 <li id="bonificacion"><a href="#" ><span class="fa fa-handshake-o"></span>Bonificaciones</a></li>
+
               </ul>
             <li><a href="#cerrar"><span class="fa fa-power-off"></span> Cerrar sesión</a></li>
-            </li>
+            
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -167,6 +169,12 @@
                     
                     event.preventDefault();
                     cargar('controladorcaja?operacion=listar','#show');
+                });
+                
+                $("#emisores").click(function (event) {
+                    
+                    event.preventDefault();
+                    cargar('controladorcatbonific?operacion=listar','#show');
                 });
                 
                 $("#consultar").click(function (event) {

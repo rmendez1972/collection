@@ -55,7 +55,7 @@ public class ControladorCaja extends ControladorBase{
         caja.setFecha(fecha);
         caja.setFolio_inicial(Integer.parseInt(request.getParameter("folio_inicial")));
         caja.setFolio_final(Integer.parseInt(request.getParameter("folio_final")));
-        caja.setPoliza(request.getParameter("poliza"));
+        caja.setPoliza(request.getParameter("poliza").toUpperCase());
         //conversion del dato a bigdecimal
         BigDecimal big = new BigDecimal(request.getParameter("monto_inicial"));
         caja.setMonto_inicial(big);
@@ -104,7 +104,7 @@ public class ControladorCaja extends ControladorBase{
         caja.setFecha(fecha);
         caja.setFolio_inicial(Integer.parseInt(request.getParameter("folio_inicial")));
         caja.setFolio_final(Integer.parseInt(request.getParameter("folio_final")));
-        caja.setPoliza(request.getParameter("poliza"));
+        caja.setPoliza(request.getParameter("poliza").toUpperCase());
         //conversion del dato a bigdecimal
         BigDecimal big = new BigDecimal(request.getParameter("monto_inicial"));
         caja.setMonto_inicial(big);

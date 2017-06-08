@@ -17,12 +17,12 @@ public class GestionUnidadAdministrativa {
     
     public boolean registroNivel(Nivel nivel){
         Object params[]={nivel.getDescripcion(), nivel.getPrivilegios()};
-        return Conexion.ejecutar("insert into niveles (descripcion, privilegios) values(?, ?)", params);
+        return Conexion.ejecutar("insert into niveles (descripcion, privilegios) values(UPPER(?), UPPER(?))", params);
     }
     
     public boolean actualizar(Nivel nivel){
         Object params[]={nivel.getDescripcion(), nivel.getPrivilegios(), nivel.getId_nivel()};
-        return Conexion.ejecutar("update niveles set descripcion=?, privilegios=? where id_nivel=?", params);
+        return Conexion.ejecutar("update niveles set descripcion=UPPER(?), privilegios=UPPER(?) where id_nivel=?", params);
     }
     
     public Nivel obtenerPorId(int id_nivel){

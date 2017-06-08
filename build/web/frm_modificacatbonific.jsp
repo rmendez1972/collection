@@ -1,9 +1,9 @@
 <%-- 
-    Document   : frm_nivel
-    Created on : 30/05/2017, 03:04:13 PM
+    Document   : frm_modificacatbonific
+    Created on : 7/06/2017, 09:13:36 AM
     Author     : Marlon
 --%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,10 +13,10 @@
         <script>
             function registrar(){
                 var params=new Object();
-                params.descripcion=$("#descripcion").val();
-                params.privilegios=$("#privilegios").val();
+                params.id_bonific=$("#id_bonific").val();
+                params.descripcion=$("#descripcion").val();                
                 
-                $.post("controladornivel?operacion=nuevoGuardar", params, function(datos){
+                $.post("controladorcatbonific?operacion=editarGuardar", params, function(datos){
                     $('#show').html(datos);
                 },"html");
                 
@@ -25,7 +25,7 @@
             
             function listar(){
                                
-                $.post("controladornivel?operacion=listar", function(datos){
+                $.post("controladorcatbonific?operacion=listar", function(datos){
                     $("#show").html(datos);
                 },"html");
                 
@@ -36,22 +36,15 @@
     <body>
         
         <div class="panel panel-primary" style="margin-top: 60px">
-            <div class="panel-heading"><h4><span class="fa fa-sort-amount-desc" style="color: #fff"></span> Registro de Nivel</h4></div>
+            <div class="panel-heading"><h4><span class="fa fa-podcast" style="color: #fff"></span> Editar Emisor</h4></div>
                 <div class="panel-body transparent">
                     <form id="form_UA" onsubmit="return registrar()"  class="form-horizontal">
-            
-                        <div class="form-group">
-                            <label for="Nombre" class="col-xs-12 col-md-2 control-label col-md-offset-3">Nombre:</label>
-                            <div class="col-xs-12 col-md-2">
-                                <input type="text" name="descripcion" class="form-control"  id="descripcion" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style=" text-transform:uppercase; width: 300px; font-size: 25px " />
-                            </div>
-                            
-                        </div>
+                        <input type="hidden" id="id_bonific" name="id_bonific" value="${catbon.id_bonific}" />
 
                         <div class="form-group">
-                            <label for="importe" class="col-xs-12 col-md-2 control-label col-md-offset-3">Privilegios:</label>
+                            <label for="descripcion" class="col-xs-12 col-md-2 control-label col-md-offset-3">Descripción:</label>
                             <div class="col-xs-12 col-md-2">
-                                <input type="text" name="privilegios" class="form-control" id="privilegios" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" />
+                                <input type="text" name="descripcion" class="form-control" id="descripcion" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9\0-9]{5,50})"  placeholder="Max 50 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${catbon.descripcion}" />
                             </div>
                         </div>
 

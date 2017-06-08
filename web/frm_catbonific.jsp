@@ -1,7 +1,7 @@
 <%-- 
-    Document   : frm_nivel
-    Created on : 30/05/2017, 03:04:13 PM
-    Author     : Marlon
+    Document   : frm_catbonific
+    Created on : 6/06/2017, 11:40:56 AM
+    Author     : SEDUVI
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,10 +14,9 @@
             function registrar(){
                 var params=new Object();
                 params.descripcion=$("#descripcion").val();
-                params.privilegios=$("#privilegios").val();
-                
-                $.post("controladornivel?operacion=nuevoGuardar", params, function(datos){
-                    $('#show').html(datos);
+                                          
+                $.post("controladorcatbonific?operacion=nuevoGuardar", params, function(datos){
+                    $("#show").html(datos);
                 },"html");
                 
                 return false;
@@ -25,7 +24,7 @@
             
             function listar(){
                                
-                $.post("controladornivel?operacion=listar", function(datos){
+                $.post("controladorcatbonific?operacion=listar", function(datos){
                     $("#show").html(datos);
                 },"html");
                 
@@ -36,22 +35,14 @@
     <body>
         
         <div class="panel panel-primary" style="margin-top: 60px">
-            <div class="panel-heading"><h4><span class="fa fa-sort-amount-desc" style="color: #fff"></span> Registro de Nivel</h4></div>
+            <div class="panel-heading"><h4><span class="fa fa-podcast" style="color: #fff"></span> Nuevo Emisor</h4></div>
                 <div class="panel-body transparent">
                     <form id="form_UA" onsubmit="return registrar()"  class="form-horizontal">
-            
-                        <div class="form-group">
-                            <label for="Nombre" class="col-xs-12 col-md-2 control-label col-md-offset-3">Nombre:</label>
-                            <div class="col-xs-12 col-md-2">
-                                <input type="text" name="descripcion" class="form-control"  id="descripcion" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style=" text-transform:uppercase; width: 300px; font-size: 25px " />
-                            </div>
-                            
-                        </div>
 
                         <div class="form-group">
-                            <label for="importe" class="col-xs-12 col-md-2 control-label col-md-offset-3">Privilegios:</label>
+                            <label for="descripcion" class="col-xs-12 col-md-2 control-label col-md-offset-3">Descripción:</label>
                             <div class="col-xs-12 col-md-2">
-                                <input type="text" name="privilegios" class="form-control" id="privilegios" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" />
+                                <input type="text" name="descripcion" class="form-control" id="descripcion" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9\0-9]{5,50})"  placeholder="Max 50 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px"/>
                             </div>
                         </div>
 
@@ -64,5 +55,6 @@
                     </form>
                 </div>
         </div>
+
     </body>
 </html>

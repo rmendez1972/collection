@@ -47,8 +47,8 @@ public class ControladorNivel extends ControladorBase {
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         GestionUnidadAdministrativa modelo=new GestionUnidadAdministrativa();
         Nivel nivel=new Nivel();
-        nivel.setDescripcion(request.getParameter("descripcion"));
-        nivel.setPrivilegios(request.getParameter("privilegios"));
+        nivel.setDescripcion(request.getParameter("descripcion").toUpperCase());
+        nivel.setPrivilegios(request.getParameter("privilegios").toUpperCase());
         
         if(modelo.registroNivel(nivel))
             request.setAttribute("msg", "Datos guardados");
@@ -74,8 +74,8 @@ public class ControladorNivel extends ControladorBase {
         GestionUnidadAdministrativa modelo=new GestionUnidadAdministrativa();
         Nivel nivel=new Nivel();
         nivel.setId_nivel(Integer.parseInt(request.getParameter("id_nivel")));
-        nivel.setDescripcion(request.getParameter("descripcion"));
-        nivel.setPrivilegios(request.getParameter("privilegios"));
+        nivel.setDescripcion(request.getParameter("descripcion").toUpperCase());
+        nivel.setPrivilegios(request.getParameter("privilegios").toUpperCase());
         
         if(modelo.actualizar(nivel))
             request.setAttribute("msg", "Datos guardados");
