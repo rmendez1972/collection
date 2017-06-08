@@ -11,25 +11,25 @@ package javabeans;
  */
 public class CatEmisores {
     
-    private int id_bonific;
+    private int id_emisor;
     private String descripcion;
     
     public CatEmisores(){
         super();
     }
     
-    public CatEmisores(int id_bonific, String descripcion){
-        this.id_bonific = id_bonific;
+    public CatEmisores(int id_emisor, String descripcion){
+        this.id_emisor = id_emisor;
         this.descripcion = descripcion;
     }
     
     //get y set de id_bonific
-    public int getId_bonific(){
-        return id_bonific;
+    public int getId_emisor(){
+        return id_emisor;
     }
     
-    public void setId_bonific(int id_bonific){
-        this.id_bonific = id_bonific;
+    public void setId_emisor(int id_emisor){
+        this.id_emisor = id_emisor;
     }
     
     

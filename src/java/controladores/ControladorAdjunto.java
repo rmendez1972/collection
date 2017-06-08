@@ -12,7 +12,7 @@ import Modelo.GestionSolicitante;
 import Modelo.GestionSolicitud;
 import Modelo.GestionStatus;
 import Modelo.GestionTramite;
-import Modelo.GestionUnidadAdministrativa;
+import Modelo.GestionNiveles;
 import Modelo.conectaMysql;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

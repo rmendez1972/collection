@@ -5,7 +5,7 @@
  */
 package controladores;
 
-import Modelo.GestionCatBonific;
+import Modelo.GestionEmisor;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,77 +22,77 @@ import javabeans.CatEmisores;
  *
  * @author Marlon
  */
-@WebServlet(name = "ControladorCatBonific", urlPatterns = {"/controladorcatbonific"})
-public class ControladorCatBonific extends ControladorBase{
+@WebServlet(name = "ControladorEmisor", urlPatterns = {"/controladoremisor"})
+public class ControladorEmisor extends ControladorBase{
     
     public void listar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        GestionCatBonific modelo = new GestionCatBonific();
-        ArrayList catbon = modelo.obtenerTodos();
-        request.setAttribute("catbon", catbon);
-        RequestDispatcher rd=request.getRequestDispatcher("listar_catbonific.jsp");
+        GestionEmisor modelo = new GestionEmisor();
+        ArrayList emisor = modelo.obtenerTodos();
+        request.setAttribute("emisor", emisor);
+        RequestDispatcher rd=request.getRequestDispatcher("listar_emisor.jsp");
         rd.forward(request,response);
     }
     
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        RequestDispatcher rd=request.getRequestDispatcher("frm_catbonific.jsp");
+        RequestDispatcher rd=request.getRequestDispatcher("frm_emisor.jsp");
         rd.forward(request,response);
     }
     
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        GestionCatBonific modelo = new GestionCatBonific();
-        CatEmisores cb= new CatEmisores();
-        cb.setDescripcion(request.getParameter("descripcion"));
+        GestionEmisor modelo = new GestionEmisor();
+        CatEmisores ce= new CatEmisores();
+        ce.setDescripcion(request.getParameter("descripcion").toUpperCase());
         
-        if(modelo.registroCatboni(cb))
+        if(modelo.registroEmisor(ce))
             request.setAttribute("msg", "Datos guardados");
         else
             request.setAttribute("msg", "Error al guardar, intente de nuevo más tarde");
-        RequestDispatcher rd=request.getRequestDispatcher("controladorcatbonific?operacion=listar");
+        RequestDispatcher rd=request.getRequestDispatcher("controladoremisor?operacion=listar");
         rd.forward(request,response);
     }
     
      public void editar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id = Integer.parseInt(request.getParameter("id"));
-        GestionCatBonific modelo = new GestionCatBonific();
-        CatEmisores catbon = modelo.obtenerPorId(id);
+        GestionEmisor modelo = new GestionEmisor();
+        CatEmisores emisor = modelo.obtenerPorId(id);
                 
-        request.setAttribute("catbon", catbon);
-        RequestDispatcher rd=request.getRequestDispatcher("frm_modificacatbonific.jsp");
+        request.setAttribute("emisor", emisor);
+        RequestDispatcher rd=request.getRequestDispatcher("frm_modificaemisor.jsp");
         rd.forward(request,response);
     
     }
      
      public void eliminar(HttpServletRequest request, HttpServletResponse response) throws Exception{
          int id = Integer.parseInt(request.getParameter("id"));
-         GestionCatBonific modelo = new GestionCatBonific();
+         GestionEmisor modelo = new GestionEmisor();
          
         if(modelo.eliminarPorId(id))
             request.setAttribute("msg", "Registro Eliminado");
         else
             request.setAttribute("msg", "No se pudo eliminar, intente de nuevo más tarde");
-        RequestDispatcher rd=request.getRequestDispatcher("controladorcatbonific?operacion=listar");
+        RequestDispatcher rd=request.getRequestDispatcher("controladoremisor?operacion=listar");
         rd.forward(request,response);
          
      }
      
      public void editarGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-         GestionCatBonific modelo = new GestionCatBonific();
-         CatEmisores catbon = new CatEmisores();
-         catbon.setId_bonific(Integer.parseInt(request.getParameter("id_bonific")));
-         catbon.setDescripcion(request.getParameter("descripcion"));
+         GestionEmisor modelo = new GestionEmisor();
+         CatEmisores ce = new CatEmisores();
+         ce.setId_emisor(Integer.parseInt(request.getParameter("id_emisor")));
+         ce.setDescripcion(request.getParameter("descripcion").toUpperCase());
          
-        if(modelo.actualizar(catbon))
+        if(modelo.actualizar(ce))
             request.setAttribute("msg", "Datos guardados");
         else
             request.setAttribute("msg", "Error al guardar, intente de nuevo más tarde");
-        RequestDispatcher rd=request.getRequestDispatcher("controladorcatbonific?operacion=listar");
+        RequestDispatcher rd=request.getRequestDispatcher("controladoremisor?operacion=listar");
         rd.forward(request,response);
          
      }
      
      public void reporte(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Map param = new HashMap();
-        generarReporte("ReporteCatBonific.jasper", param, request, response);
+        generarReporte("ReporteEmisor.jasper", param, request, response);
     }
-    
+   
 }

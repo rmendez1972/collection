@@ -5,7 +5,7 @@
  */
 package controladores;
 
-import Modelo.GestionUnidadAdministrativa;
+import Modelo.GestionNiveles;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -30,8 +30,8 @@ import net.sf.jasperreports.engine.JasperRunManager;
 public class ControladorNivel extends ControladorBase {
     
     public void listar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        //el modelo llamado GestionUnidadAdministrativa es el que hace llamado a los datos de Niveles, UnidadAdministrativa = Niveles
-        GestionUnidadAdministrativa modelo=new GestionUnidadAdministrativa();
+        //el modelo llamado GestionNiveles es el que hace llamado a los datos de Niveles, UnidadAdministrativa = Niveles
+        GestionNiveles modelo=new GestionNiveles();
         ArrayList niveles=modelo.obtenerTodos();
         request.setAttribute("niveles", niveles);
             
@@ -45,7 +45,7 @@ public class ControladorNivel extends ControladorBase {
     }
     
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        GestionUnidadAdministrativa modelo=new GestionUnidadAdministrativa();
+        GestionNiveles modelo=new GestionNiveles();
         Nivel nivel=new Nivel();
         nivel.setDescripcion(request.getParameter("descripcion").toUpperCase());
         nivel.setPrivilegios(request.getParameter("privilegios").toUpperCase());
@@ -60,7 +60,7 @@ public class ControladorNivel extends ControladorBase {
     
     public void editar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id = Integer.parseInt(request.getParameter("id"));
-        GestionUnidadAdministrativa modelo = new GestionUnidadAdministrativa();
+        GestionNiveles modelo = new GestionNiveles();
         
         Nivel niveles = modelo.obtenerPorId(id);
         
@@ -71,7 +71,7 @@ public class ControladorNivel extends ControladorBase {
     }
     
     public void editarGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        GestionUnidadAdministrativa modelo=new GestionUnidadAdministrativa();
+        GestionNiveles modelo=new GestionNiveles();
         Nivel nivel=new Nivel();
         nivel.setId_nivel(Integer.parseInt(request.getParameter("id_nivel")));
         nivel.setDescripcion(request.getParameter("descripcion").toUpperCase());
@@ -87,7 +87,7 @@ public class ControladorNivel extends ControladorBase {
     
     public void eliminar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id=Integer.parseInt(request.getParameter("id"));
-        GestionUnidadAdministrativa modelo=new GestionUnidadAdministrativa();
+        GestionNiveles modelo=new GestionNiveles();
         
         if(modelo.eliminarPorId(id))
             request.setAttribute("msg", "Registro eliminado");

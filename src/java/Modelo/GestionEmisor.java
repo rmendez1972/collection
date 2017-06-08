@@ -13,47 +13,48 @@ import javabeans.CatEmisores;
  *
  * @author Marlon
  */
-public class GestionCatBonific {
+public class GestionEmisor {
     
     public ArrayList obtenerTodos(){
         ArrayList lista=new ArrayList();
         ResultSet res=Conexion.ejecutarConsulta("select * from cat_emisores order by descripcion asc", null);
         try{
             while(res.next()){
-                CatEmisores cb=new CatEmisores(res.getInt("id_emisor"), res.getString("descripcion"));
-                lista.add(cb);
+                CatEmisores ce=new CatEmisores(res.getInt("id_emisor"), res.getString("descripcion"));
+                lista.add(ce);
             }
             res.close();
         }catch(Exception e){}
         return lista;
     }
     
-    public boolean registroCatboni(CatEmisores cb){
-        Object params[]={cb.getDescripcion()};
+    public boolean registroEmisor(CatEmisores ce){
+        Object params[]={ce.getDescripcion()};
         return Conexion.ejecutar("insert into cat_emisores(descripcion) values (UPPER(?))", params);
     }
     
-    public CatEmisores obtenerPorId(int id_bonific){
-        Object params[]={id_bonific};
-        CatEmisores cb = null;
+    public CatEmisores obtenerPorId(int id_emisor){
+        Object params[]={id_emisor};
+        CatEmisores ce = null;
         ResultSet res=Conexion.ejecutarConsulta("select * from cat_emisores where id_emisor=?", params);
         try{
             while(res.next()){
-                cb=new CatEmisores(res.getInt("id_emisor"), res.getString("descripcion"));
+                ce=new CatEmisores(res.getInt("id_emisor"), res.getString("descripcion"));
             }
             res.close();
         }catch(Exception e){}
-        return cb;
+        return ce;
     }
     
-    public boolean eliminarPorId(int id_bonific){
-        Object params[]={id_bonific};
+    public boolean eliminarPorId(int id_emisor){
+        Object params[]={id_emisor};
         return Conexion.ejecutar("delete from cat_emisores where id_emisor=?", params);
     }
     
-    public boolean actualizar(CatEmisores cb){
-        Object params[]={cb.getDescripcion(), cb.getId_bonific()};
-        return Conexion.ejecutar("update cat_emisores set descripcion=? where id_emisor=?", params);
+    
+    public boolean actualizar(CatEmisores ce){
+        Object params[]={ce.getDescripcion(), ce.getId_emisor()};
+        return Conexion.ejecutar("update cat_emisores set descripcion=UPPER(?) where id_emisor=?", params);
     }
     
 }

@@ -5,8 +5,8 @@
 package controladores;
 
 import Modelo.GestionDirecciones;
-import Modelo.GestionGrupo;
-import Modelo.GestionUnidadAdministrativa;
+import Modelo.GestionDelegacion;
+import Modelo.GestionNiveles;
 import Modelo.GestionUsuario;
 import java.io.File;
 import java.io.PrintWriter;
@@ -55,18 +55,18 @@ public class ControladorUsuario extends ControladorBase {
             GestionUsuario modelo=new GestionUsuario();
             Usuario usr=modelo.obtenerPorId(id);
             
-            GestionUnidadAdministrativa mod_ua=new GestionUnidadAdministrativa();
-            GestionGrupo mod_grp=new GestionGrupo();
+            GestionNiveles mod_niv=new GestionNiveles();
+            GestionDelegacion mod_del=new GestionDelegacion();
             //GestionDirecciones mod_dir=new GestionDirecciones();
             
-            ArrayList ua=mod_ua.obtenerTodos();
-            ArrayList grupos=mod_grp.obtenerTodos();
+            ArrayList niv=mod_niv.obtenerTodos();
+            ArrayList del=mod_del.obtenerTodos();
             //ArrayList dir=mod_dir.obtenerTodos();
             
             request.setAttribute("usr", usr);
-            request.setAttribute("ua", ua);
+            request.setAttribute("niv", niv);
             //request.setAttribute("dir", dir);
-            request.setAttribute("grupo", grupos);
+            request.setAttribute("del", del);
             
             RequestDispatcher rd=request.getRequestDispatcher("frm_modificausuario.jsp");
             rd.forward(request,response);
@@ -98,13 +98,13 @@ public class ControladorUsuario extends ControladorBase {
     }
     
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
-            GestionUnidadAdministrativa mod_ua=new GestionUnidadAdministrativa();
-            GestionGrupo mod_grp=new GestionGrupo();
-            ArrayList ua=mod_ua.obtenerTodos();
-            ArrayList grupos=mod_grp.obtenerTodos();
+            GestionNiveles mod_niv=new GestionNiveles();
+            GestionDelegacion mod_del=new GestionDelegacion();
+            ArrayList niv=mod_niv.obtenerTodos();
+            ArrayList del=mod_del.obtenerTodos();
             
-            request.setAttribute("ua", ua);
-            request.setAttribute("grupo", grupos);
+            request.setAttribute("niv", niv);
+            request.setAttribute("del", del);
             
             RequestDispatcher rd=request.getRequestDispatcher("frm_usuario.jsp");
             rd.forward(request,response);

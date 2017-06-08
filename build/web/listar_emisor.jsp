@@ -12,19 +12,19 @@
         <title>JSP Page</title>
         <script>
            
-        function editarCB(id){
+        function editarEmisor(id){
             var params=new Object();
             params.id=id;
-            $.post("controladorcatbonific?operacion=editar", params, function(datos){
+            $.post("controladoremisor?operacion=editar", params, function(datos){
                 $("#show").html(datos);
             },"html");
         }   
-        function eliminarCB(id){
+        function eliminarEmisor(id){
             
             confirma("", "Eliminar Usuario", "Confirmar eliminación", "eliminar", function(){
                 var params=new Object();
                 params.id=id;
-                $.post("controladorcatbonific?operacion=eliminar", params, function(datos){
+                $.post("controladoremisor?operacion=eliminar", params, function(datos){
                     $("#show").html(datos);
                 },"html");
             });
@@ -46,11 +46,11 @@
         </h3>
       
         <div class="container-fluid navbar-right">
-            <div class="btn-catalogo" onclick="cargar('controladorcatbonific?operacion=nuevo','#show')">
+            <div class="btn-catalogo" onclick="cargar('controladoremisor?operacion=nuevo','#show')">
                 <img src="imagenes/agregar.png" />
             </div>
             <div class="btn-catalogo">    
-                <a href="controladorcatbonific?operacion=reporte" target="_blank">
+                <a href="controladoremisor?operacion=reporte" target="_blank">
                     <img src="imagenes/reportesb.png" />
                 </a>
             </div>
@@ -65,10 +65,10 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="cb" items="${requestScope.catbon}" varStatus="loop"> 
+                <c:forEach var="emisor" items="${requestScope.emisor}" varStatus="loop"> 
                     <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
-                        <td> <c:out value="${cb.descripcion}" /></td>
-                        <td><img src="imagenes/editar.png" class="btn-tabla" title="Editar Registro" onclick="editarCB(${cb.id_bonific});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Registro" onclick="eliminarCB(${cb.id_bonific});" /></td>
+                        <td> <c:out value="${emisor.descripcion}" /></td>
+                        <td><img src="imagenes/editar.png" class="btn-tabla" title="Editar Registro" onclick="editarEmisor(${emisor.id_emisor});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Registro" onclick="eliminarEmisor(${emisor.id_emisor});" /></td>
                     </tr>
                 </c:forEach>
             </tbody>

@@ -73,6 +73,7 @@
               <ul class="dropdown-menu">
                 <li id="usuarios"><a href="#" ><span class="fa fa-user"></span> Usuarios</a></li>
                 <li id="niveles"><a href="#" ><span class="fa fa-sort-amount-desc"></span> Niveles</a></li>
+                <li id="delegaciones"><a href="#" ><span class="fa fa-group"></span> Delegaciones</a></li>
                 <li><a href="#">Otra accióin</a></li>
                 <li><a href="#">Cualquier cosa</a></li>
                 <li role="separator" class="divider"></li>
@@ -159,6 +160,11 @@
                     cargar('controladornivel?operacion=listar','#show');
                 });
                 
+                $("#delegaciones").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladordelegacion?operacion=listar','#show');
+                });
+                
                 $("#salmin").click(function (event) {
                     
                     event.preventDefault();
@@ -174,7 +180,7 @@
                 $("#emisores").click(function (event) {
                     
                     event.preventDefault();
-                    cargar('controladorcatbonific?operacion=listar','#show');
+                    cargar('controladoremisor?operacion=listar','#show');
                 });
                 
                 $("#consultar").click(function (event) {
