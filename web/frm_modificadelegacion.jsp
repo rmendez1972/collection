@@ -1,10 +1,9 @@
 <%-- 
-    Document   : frm_modificanivel
-    Created on : 30/05/2017, 04:13:22 PM
+    Document   : frm_modificadelegacion
+    Created on : 8/06/2017, 01:59:28 PM
     Author     : Marlon
 --%>
 
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,11 +13,11 @@
         <script>
             function registrar(){
                 var params=new Object();
-                params.id_nivel=$("#id_nivel").val();
+                params.id_delegacion=$("#id_delegacion").val();
                 params.descripcion=$("#descripcion").val();
-                params.privilegios=$("#privilegios").val();                
+                params.direccion=$("#direccion").val();                
                 
-                $.post("controladornivel?operacion=editarGuardar", params, function(datos){
+                $.post("controladordelegacion?operacion=editarGuardar", params, function(datos){
                     $('#show').html(datos);
                 },"html");
                 
@@ -27,7 +26,7 @@
             
             function listar(){
                                
-                $.post("controladornivel?operacion=listar", function(datos){
+                $.post("controladordelegacion?operacion=listar", function(datos){
                     $("#show").html(datos);
                 },"html");
                 
@@ -36,24 +35,23 @@
         </script>
     </head>
     <body>
-        
-            <div class="panel panel-primary" style="margin-top: 60px">
-            <div class="panel-heading"><h4><span class="fa fa-sort-amount-desc" style="color: #fff"></span> Modificar Nivel</h4></div>
+        <div class="panel panel-primary" style="margin-top: 60px">
+            <div class="panel-heading"><h4><span class="fa fa-sort-amount-desc" style="color: #fff"></span> Registro de Nivel</h4></div>
                 <div class="panel-body transparent">
                     <form id="form_UA" onsubmit="return registrar()"  class="form-horizontal">
-                        <input type="hidden" id="id_nivel" name="id_nivel" value="${niveles.id_nivel}" />
+                        <input type="hidden" id="id_delegacion" name="id_delegacion" value="${del.id_delegacion}" />
                         <div class="form-group">
                             <label for="Nombre" class="col-xs-12 col-md-2 control-label col-md-offset-3">Nombre:</label>
                             <div class="col-xs-12 col-md-2">
-                                <input type="text" name="descripcion" class="form-control"  id="descripcion" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${niveles.descripcion}" />
+                                <input type="text" name="descripcion" class="form-control"  id="descripcion" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style=" text-transform:uppercase; width: 300px; font-size: 25px " value="${del.descripcion}" />
                             </div>
                             
                         </div>
 
                         <div class="form-group">
-                            <label for="importe" class="col-xs-12 col-md-2 control-label col-md-offset-3">Privilegios:</label>
+                            <label for="direccion" class="col-xs-12 col-md-2 control-label col-md-offset-3">Dirección:</label>
                             <div class="col-xs-12 col-md-2">
-                                <input type="text" name="privilegios" class="form-control" id="privilegios" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${niveles.privilegios}" />
+                                <input type="text" name="direccion" class="form-control" id="direccion" pattern="([a-zA-Z ]{5,80})"  placeholder="Max.80 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${del.direccion}" />
                             </div>
                         </div>
 
@@ -66,6 +64,5 @@
                     </form>
                 </div>
         </div>
-        
     </body>
 </html>

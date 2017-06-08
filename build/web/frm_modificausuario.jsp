@@ -117,8 +117,8 @@
                             <div class="col-xs-12 col-md-4">
                                 <select id="id_nivel" required class="form-control"  onChange="actualizaDir(this.value)"> 
                                     <option value="">SELECCIONE UNA</option>
-                                    <c:forEach  var="ua" items="${requestScope.ua}">
-                                        <OPTION VALUE="${ua.id_nivel}" ${ua.id_nivel == usr.id_nivel ? 'selected':''}>${ua.descripcion}</OPTION>
+                                    <c:forEach  var="niv" items="${requestScope.niv}">
+                                        <OPTION VALUE="${niv.id_nivel}" ${niv.id_nivel == usr.id_nivel ? 'selected':''}>${niv.descripcion}</OPTION>
                                     </c:forEach>
                                 </select>
                             </div>
@@ -126,8 +126,8 @@
                             <div class="col-xs-12 col-md-4">
                                 <select id="id_delegacion" required class="form-control">
                                     <option value="">SELECCIONE UNA</option>
-                                        <c:forEach  var="grupo" items="${requestScope.grupo}">
-                                            <OPTION VALUE="${grupo.id_delegacion}" ${grupo.id_delegacion == usr.id_del ? 'selected':''}>${grupo.descripcion}</OPTION>
+                                        <c:forEach  var="del" items="${requestScope.del}">
+                                            <OPTION VALUE="${del.id_delegacion}" ${del.id_delegacion == usr.id_del ? 'selected':''}>${del.descripcion}</OPTION>
                                         </c:forEach>
                                 </select>
 

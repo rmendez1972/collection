@@ -6,13 +6,12 @@ package Modelo;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import javabeans.UnidadAdministrativa;
 import javabeans.Nivel;
 /**
  *
  * @author arturo
  */
-public class GestionUnidadAdministrativa {
+public class GestionNiveles {
     
     
     public boolean registroNivel(Nivel nivel){

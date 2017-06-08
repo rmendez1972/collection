@@ -4,7 +4,7 @@
  */
 package controladores;
 
-import Modelo.GestionGrupo;
+import Modelo.GestionDelegacion;
 import Modelo.GestionModulo;
 import Modelo.GestionPermiso;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ControladorPermiso extends ControladorBase {
     public void listar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        GestionGrupo mod_grupo=new GestionGrupo();
+        GestionDelegacion mod_grupo=new GestionDelegacion();
         ArrayList grupos=mod_grupo.obtenerTodos();
         request.setAttribute("grupos", grupos);
         RequestDispatcher rd=request.getRequestDispatcher("listar_permisos.jsp");

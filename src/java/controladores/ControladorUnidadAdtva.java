@@ -4,7 +4,7 @@
  */
 package controladores;
 
-import Modelo.GestionUnidadAdministrativa;
+import Modelo.GestionNiveles;
 import java.io.File;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import net.sf.jasperreports.engine.JasperRunManager;
 public class ControladorUnidadAdtva extends ControladorBase {
 
     public void listar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        GestionUnidadAdministrativa modelo=new GestionUnidadAdministrativa();
+        GestionNiveles modelo=new GestionNiveles();
             ArrayList ua=modelo.obtenerTodos();
             
             request.setAttribute("ua",ua);
@@ -42,7 +42,7 @@ public class ControladorUnidadAdtva extends ControladorBase {
     public void guardarNuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
         String nombre=request.getParameter("nombre");
         String email=request.getParameter("email");
-            GestionUnidadAdministrativa modelo=new GestionUnidadAdministrativa();
+            GestionNiveles modelo=new GestionNiveles();
             UnidadAdministrativa ua=new UnidadAdministrativa();
             ua.setNombre(nombre);
             ua.setEmail(email);
@@ -60,7 +60,7 @@ public class ControladorUnidadAdtva extends ControladorBase {
     
     public void eliminar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id_unidad=Integer.parseInt(request.getParameter("id"));
-            GestionUnidadAdministrativa modelo=new GestionUnidadAdministrativa();
+            GestionNiveles modelo=new GestionNiveles();
             if(modelo.eliminarPorId(id_unidad)){
                 RequestDispatcher rd=request.getRequestDispatcher("controladorunidadadtva?operacion=listar");
                 request.setAttribute("msg", "Datos eliminados");
@@ -75,7 +75,7 @@ public class ControladorUnidadAdtva extends ControladorBase {
     
     public void modificar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id_unidad=Integer.parseInt(request.getParameter("id"));
-            GestionUnidadAdministrativa modelo=new GestionUnidadAdministrativa();
+            GestionNiveles modelo=new GestionNiveles();
             UnidadAdministrativa ua=modelo.obtenerPorId(id_unidad);
             request.setAttribute("ua", ua);
             RequestDispatcher rd=request.getRequestDispatcher("frm_unidadAdministrativaEditar.jsp");
@@ -84,7 +84,7 @@ public class ControladorUnidadAdtva extends ControladorBase {
     
     public void modificarGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         UnidadAdministrativa ua=new UnidadAdministrativa(Integer.parseInt(request.getParameter("id_unidadAdministrativa")), request.getParameter("nombre"), request.getParameter("email"));
-            GestionUnidadAdministrativa modelo=new GestionUnidadAdministrativa();
+            GestionNiveles modelo=new GestionNiveles();
             if(modelo.actualizar(ua)){
                 RequestDispatcher rd=request.getRequestDispatcher("controladorunidadadtva?operacion=listar");
                 request.setAttribute("msg", "Datos guardados");

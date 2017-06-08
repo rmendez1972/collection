@@ -5,7 +5,7 @@
 package controladores;
 
 import Modelo.GestionDirecciones;
-import Modelo.GestionUnidadAdministrativa;
+import Modelo.GestionNiveles;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.File;
@@ -66,7 +66,7 @@ public class ControladorDirecciones extends ControladorBase {
     }
     
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        GestionUnidadAdministrativa mod_ua=new GestionUnidadAdministrativa();
+        GestionNiveles mod_ua=new GestionNiveles();
         ArrayList ua=mod_ua.obtenerTodos();
         request.setAttribute("ua", ua);
         RequestDispatcher rd=request.getRequestDispatcher("frm_direccion.jsp");
@@ -111,7 +111,7 @@ public class ControladorDirecciones extends ControladorBase {
             GestionDirecciones modelo=new GestionDirecciones();
             Direcciones di=modelo.obtenerPorId(id_direccion);
             
-            GestionUnidadAdministrativa mod_ua=new GestionUnidadAdministrativa();
+            GestionNiveles mod_ua=new GestionNiveles();
             ArrayList ua=mod_ua.obtenerTodos();
             
             request.setAttribute("ua", ua);

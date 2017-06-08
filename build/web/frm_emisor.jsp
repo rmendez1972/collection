@@ -1,9 +1,9 @@
 <%-- 
-    Document   : frm_modificacatbonific
-    Created on : 7/06/2017, 09:13:36 AM
-    Author     : Marlon
+    Document   : frm_catbonific
+    Created on : 6/06/2017, 11:40:56 AM
+    Author     : SEDUVI
 --%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,11 +13,10 @@
         <script>
             function registrar(){
                 var params=new Object();
-                params.id_bonific=$("#id_bonific").val();
-                params.descripcion=$("#descripcion").val();                
-                
-                $.post("controladorcatbonific?operacion=editarGuardar", params, function(datos){
-                    $('#show').html(datos);
+                params.descripcion=$("#descripcion").val();
+                                          
+                $.post("controladoremisor?operacion=nuevoGuardar", params, function(datos){
+                    $("#show").html(datos);
                 },"html");
                 
                 return false;
@@ -25,7 +24,7 @@
             
             function listar(){
                                
-                $.post("controladorcatbonific?operacion=listar", function(datos){
+                $.post("controladoremisor?operacion=listar", function(datos){
                     $("#show").html(datos);
                 },"html");
                 
@@ -36,15 +35,14 @@
     <body>
         
         <div class="panel panel-primary" style="margin-top: 60px">
-            <div class="panel-heading"><h4><span class="fa fa-podcast" style="color: #fff"></span> Editar Emisor</h4></div>
+            <div class="panel-heading"><h4><span class="fa fa-podcast" style="color: #fff"></span> Nuevo Emisor</h4></div>
                 <div class="panel-body transparent">
                     <form id="form_UA" onsubmit="return registrar()"  class="form-horizontal">
-                        <input type="hidden" id="id_bonific" name="id_bonific" value="${catbon.id_bonific}" />
 
                         <div class="form-group">
                             <label for="descripcion" class="col-xs-12 col-md-2 control-label col-md-offset-3">Descripción:</label>
                             <div class="col-xs-12 col-md-2">
-                                <input type="text" name="descripcion" class="form-control" id="descripcion" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9\0-9]{5,50})"  placeholder="Max 50 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${catbon.descripcion}" />
+                                <input type="text" name="descripcion" class="form-control" id="descripcion" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9\0-9]{5,50})"  placeholder="Max 50 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px"/>
                             </div>
                         </div>
 
@@ -57,5 +55,6 @@
                     </form>
                 </div>
         </div>
+
     </body>
 </html>

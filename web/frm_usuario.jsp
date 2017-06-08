@@ -135,8 +135,8 @@
                             <div class="col-xs-12 col-md-4">
                                 <select id="id_nivel" required class="form-control"  onChange="actualizaDir(this.value)"> 
                                     <option value="">SELECCIONE UNA</option>
-                                    <c:forEach  var="ua" items="${requestScope.ua}">
-                                        <OPTION VALUE="${ua.id_nivel}">${ua.descripcion}</OPTION>
+                                    <c:forEach  var="niv" items="${requestScope.niv}">
+                                        <OPTION VALUE="${niv.id_nivel}">${niv.descripcion}</OPTION>
                                     </c:forEach>
                                 </select>
                             </div> 
@@ -147,8 +147,8 @@
                             <div class="col-xs-12 col-md-4">
                                 <select id="id_delegacion" required class="form-control">
                                     <option value="">SELECCIONE UNA</option>
-                                        <c:forEach  var="grupo" items="${requestScope.grupo}">
-                                            <OPTION VALUE="${grupo.id_delegacion}">${grupo.descripcion}</OPTION>
+                                        <c:forEach  var="del" items="${requestScope.del}">
+                                            <OPTION VALUE="${del.id_delegacion}">${del.descripcion}</OPTION>
                                         </c:forEach>
                                 </select>
                             </div>

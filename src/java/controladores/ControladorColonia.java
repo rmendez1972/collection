@@ -5,8 +5,19 @@
 
 package controladores;
 
+<<<<<<< HEAD:src/java/controladores/ControladorColonia.java
 import Modelo.GestionColonia;
 import Modelo.GestionDelegacion;
+=======
+import Modelo.GestionAdjunto;
+import Modelo.GestionSeguimiento;
+import Modelo.GestionSexo;
+import Modelo.GestionSolicitante;
+import Modelo.GestionSolicitud;
+import Modelo.GestionStatus;
+import Modelo.GestionTramite;
+import Modelo.GestionNiveles;
+>>>>>>> 2169a3f8cea23ed6250c5dcf738705d633eb86f3:src/java/controladores/ControladorAdjunto.java
 import Modelo.conectaMysql;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

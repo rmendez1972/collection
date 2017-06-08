@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBase.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorUsuario.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/index.html</file>
@@ -41,6 +42,15 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Solicitud.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/.gitignore</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/assets/js/script_cobranza.js</file>
+=======
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/index.html</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/javabeans/Delegacion.java</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/listar_delegaciones.jsp</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/controladores/ControladorDelegacion.java</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/frm_modificadelegacion.jsp</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/Modelo/GestionDelegacion.java</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/frm_delegacion.jsp</file>
+>>>>>>> 2169a3f8cea23ed6250c5dcf738705d633eb86f3
         </group>
     </open-files>
 </project-private>
