@@ -68,31 +68,27 @@ public class ControladorTipocredito extends ControladorBase
         rd.forward(request,response);
     }
     
-    /*
+    
     public void editarGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        Cpp cpp=new Cpp();
-        Integer id_cpp=Integer.parseInt(request.getParameter("id_cpp"));
-        cpp.setId_cpp(id_cpp);
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Date fecha = df.parse(request.getParameter("fecha"));
-        cpp.setFecha(fecha);
-        BigDecimal big = new BigDecimal(request.getParameter("importe"));
-        cpp.setImporte(big);
+        Tipocredito tipocredito=new Tipocredito();
+        Integer id_tipocredito=Integer.parseInt(request.getParameter("id_tipocredito"));
+        tipocredito.setId_tipocredito(id_tipocredito);
+        tipocredito.setDescripcion(request.getParameter("descripcion").toUpperCase());
           
          
-        GestionCpp modelo=new GestionCpp();
-        if(modelo.actualizarCpp(cpp)){
-            RequestDispatcher rd=request.getRequestDispatcher("controladorcpp?operacion=listar");
+        GestionTipocredito modelo=new GestionTipocredito();
+        if(modelo.actualizar(tipocredito)){
+            RequestDispatcher rd=request.getRequestDispatcher("controladortipocredito?operacion=listar");
             request.setAttribute("msg", "Datos guardados");
             rd.forward(request,response);
         }
         else{
-            RequestDispatcher rd=request.getRequestDispatcher("controladorcpp?operacion=editar");
+            RequestDispatcher rd=request.getRequestDispatcher("controladortipocredito?operacion=editar");
             request.setAttribute("msg", "Error al guardar. Intente de nuevo más tarde");
             rd.forward(request,response);
         }
     }
-    */
+    
     
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
             RequestDispatcher rd=request.getRequestDispatcher("frm_tipocredito.jsp");
@@ -116,10 +112,10 @@ public class ControladorTipocredito extends ControladorBase
             rd.forward(request,response);
         }
     }
-    /*
+    
     public void reporte(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Map param = new HashMap();
-        generarReporte("ReporteCpp.jasper", param, request, response);
-    } */
+        generarReporte("ReporteTipocredito.jasper", param, request, response);
+    }
 }
 
