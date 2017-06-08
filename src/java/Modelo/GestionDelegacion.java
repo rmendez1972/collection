@@ -30,17 +30,17 @@ public class GestionDelegacion {
     }
     
     public ArrayList obtenerTodos(){
-        ArrayList grupos=new ArrayList();
+        ArrayList lista=new ArrayList();
         ResultSet res=Conexion.ejecutarConsulta("select * from delegaciones order by descripcion asc", null);
         try{
             while(res.next()){
                 //Grupo g=new Grupo(res.getInt("id_grupo"), res.getString("nombre"));
-                Delegacion g=new Delegacion(res.getInt("id_delegacion"), res.getString("descripcion"), res.getString("direccion"));
-                grupos.add(g);
+                Delegacion del=new Delegacion(res.getInt("id_delegacion"), res.getString("descripcion"), res.getString("direccion"));
+                lista.add(del);
             }
             res.close();
         }catch(Exception e){}
-        return grupos;
+        return lista;
     }
     
     public boolean actualizar(Delegacion del){
