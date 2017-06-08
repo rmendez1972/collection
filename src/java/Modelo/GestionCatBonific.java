@@ -7,7 +7,7 @@ package Modelo;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import javabeans.CatBonificacion;
+import javabeans.CatEmisores;
 
 /**
  *
@@ -17,10 +17,10 @@ public class GestionCatBonific {
     
     public ArrayList obtenerTodos(){
         ArrayList lista=new ArrayList();
-        ResultSet res=Conexion.ejecutarConsulta("select * from cat_bonific order by clave_bonific asc", null);
+        ResultSet res=Conexion.ejecutarConsulta("select * from cat_emisores order by descripcion asc", null);
         try{
             while(res.next()){
-                CatBonificacion cb=new CatBonificacion(res.getInt("id_bonific"), res.getString("clave_bonific"), res.getString("descripcion"));
+                CatEmisores cb=new CatEmisores(res.getInt("id_emisor"), res.getString("descripcion"));
                 lista.add(cb);
             }
             res.close();
@@ -28,18 +28,18 @@ public class GestionCatBonific {
         return lista;
     }
     
-    public boolean registroCatboni(CatBonificacion cb){
-        Object params[]={cb.getClave_bonific(), cb.getDescripcion()};
-        return Conexion.ejecutar("insert into cat_bonific(clave_bonific, descripcion) values (UPPER(?),UPPER(?))", params);
+    public boolean registroCatboni(CatEmisores cb){
+        Object params[]={cb.getDescripcion()};
+        return Conexion.ejecutar("insert into cat_emisores(descripcion) values (UPPER(?))", params);
     }
     
-    public CatBonificacion obtenerPorId(int id_bonific){
+    public CatEmisores obtenerPorId(int id_bonific){
         Object params[]={id_bonific};
-        CatBonificacion cb = null;
-        ResultSet res=Conexion.ejecutarConsulta("select * from cat_bonific where id_bonific=?", params);
+        CatEmisores cb = null;
+        ResultSet res=Conexion.ejecutarConsulta("select * from cat_emisores where id_emisor=?", params);
         try{
             while(res.next()){
-                cb=new CatBonificacion(res.getInt("id_bonific"),res.getString("clave_bonific"), res.getString("descripcion"));
+                cb=new CatEmisores(res.getInt("id_emisor"), res.getString("descripcion"));
             }
             res.close();
         }catch(Exception e){}
@@ -48,12 +48,12 @@ public class GestionCatBonific {
     
     public boolean eliminarPorId(int id_bonific){
         Object params[]={id_bonific};
-        return Conexion.ejecutar("delete from cat_bonific where id_bonific=?", params);
+        return Conexion.ejecutar("delete from cat_emisores where id_emisor=?", params);
     }
     
-    public boolean actualizar(CatBonificacion cb){
-        Object params[]={cb.getClave_bonific(), cb.getDescripcion(), cb.getId_bonific()};
-        return Conexion.ejecutar("update cat_bonific set clave_bonific=?, descripcion=? where id_bonific=?", params);
+    public boolean actualizar(CatEmisores cb){
+        Object params[]={cb.getDescripcion(), cb.getId_bonific()};
+        return Conexion.ejecutar("update cat_emisores set descripcion=? where id_emisor=?", params);
     }
     
 }

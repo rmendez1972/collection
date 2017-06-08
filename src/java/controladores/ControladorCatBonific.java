@@ -16,7 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JasperRunManager;
-import javabeans.CatBonificacion;
+import javabeans.CatEmisores;
 
 /**
  *
@@ -40,8 +40,7 @@ public class ControladorCatBonific extends ControladorBase{
     
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         GestionCatBonific modelo = new GestionCatBonific();
-        CatBonificacion cb= new CatBonificacion();
-        cb.setClave_bonific(request.getParameter("clave_bonific"));
+        CatEmisores cb= new CatEmisores();
         cb.setDescripcion(request.getParameter("descripcion"));
         
         if(modelo.registroCatboni(cb))
@@ -55,7 +54,7 @@ public class ControladorCatBonific extends ControladorBase{
      public void editar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id = Integer.parseInt(request.getParameter("id"));
         GestionCatBonific modelo = new GestionCatBonific();
-        CatBonificacion catbon = modelo.obtenerPorId(id);
+        CatEmisores catbon = modelo.obtenerPorId(id);
                 
         request.setAttribute("catbon", catbon);
         RequestDispatcher rd=request.getRequestDispatcher("frm_modificacatbonific.jsp");
@@ -78,9 +77,8 @@ public class ControladorCatBonific extends ControladorBase{
      
      public void editarGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
          GestionCatBonific modelo = new GestionCatBonific();
-         CatBonificacion catbon = new CatBonificacion();
+         CatEmisores catbon = new CatEmisores();
          catbon.setId_bonific(Integer.parseInt(request.getParameter("id_bonific")));
-         catbon.setClave_bonific(request.getParameter("clave_bonific"));
          catbon.setDescripcion(request.getParameter("descripcion"));
          
         if(modelo.actualizar(catbon))

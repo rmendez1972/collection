@@ -9,19 +9,17 @@ package javabeans;
  *
  * @author Marlon
  */
-public class CatBonificacion {
+public class CatEmisores {
     
     private int id_bonific;
-    private String clave_bonific;
     private String descripcion;
     
-    public CatBonificacion(){
+    public CatEmisores(){
         super();
     }
     
-    public CatBonificacion(int id_bonific, String clave_bonific, String descripcion){
+    public CatEmisores(int id_bonific, String descripcion){
         this.id_bonific = id_bonific;
-        this.clave_bonific = clave_bonific;
         this.descripcion = descripcion;
     }
     
@@ -34,14 +32,6 @@ public class CatBonificacion {
         this.id_bonific = id_bonific;
     }
     
-    //get y set clave_bonific
-    public String getClave_bonific(){
-        return clave_bonific;
-    }
-    
-    public void setClave_bonific(String clave_bonific){
-        this.clave_bonific = clave_bonific;
-    }
     
     //get y set descripcion
     public String getDescripcion(){

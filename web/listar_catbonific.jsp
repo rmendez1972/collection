@@ -42,7 +42,7 @@
     </head>
     <body>
         <h3 class="bg-primary encabezado">
-            <span class="fa fa-level-up" style="color: #fff"></span> Catálogo de Bonificaciones
+            <span class="fa fa-podcast" style="color: #fff"></span> Catálogo de Emisores
         </h3>
       
         <div class="container-fluid navbar-right">
@@ -60,7 +60,6 @@
         <table class="table table-condensed table-hover" id="bonificacionlist">
             <thead>
                 <tr>
-                    <th>Clave Bonificación</th>
                     <th>Descripción</th>
                     <th>Acciones</th>
                 </tr>
@@ -68,7 +67,6 @@
             <tbody>
                 <c:forEach var="cb" items="${requestScope.catbon}" varStatus="loop"> 
                     <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
-                        <td> <c:out value="${cb.clave_bonific}" /></td>
                         <td> <c:out value="${cb.descripcion}" /></td>
                         <td><img src="imagenes/editar.png" class="btn-tabla" title="Editar Registro" onclick="editarCB(${cb.id_bonific});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Registro" onclick="eliminarCB(${cb.id_bonific});" /></td>
                     </tr>

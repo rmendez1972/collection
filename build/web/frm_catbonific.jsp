@@ -13,7 +13,6 @@
         <script>
             function registrar(){
                 var params=new Object();
-                params.clave_bonific=$("#clave_bonific").val();
                 params.descripcion=$("#descripcion").val();
                                           
                 $.post("controladorcatbonific?operacion=nuevoGuardar", params, function(datos){
@@ -36,17 +35,9 @@
     <body>
         
         <div class="panel panel-primary" style="margin-top: 60px">
-            <div class="panel-heading"><h4><span class="fa fa-level-up" style="color: #fff"></span> Nueva Bonificación</h4></div>
+            <div class="panel-heading"><h4><span class="fa fa-podcast" style="color: #fff"></span> Nuevo Emisor</h4></div>
                 <div class="panel-body transparent">
                     <form id="form_UA" onsubmit="return registrar()"  class="form-horizontal">
-            
-                        <div class="form-group">
-                            <label for="clave_bonific" class="col-xs-12 col-md-2 control-label col-md-offset-3">Clave Bonificación:</label>
-                            <div class="col-xs-12 col-md-2">
-                                <input type="text" name="clave_bonific" class="form-control" id="clave_bonific" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9\0-9]{1,5})"  placeholder="Max 5 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" maxlength="5"/>
-                            </div>
-                            
-                        </div>
 
                         <div class="form-group">
                             <label for="descripcion" class="col-xs-12 col-md-2 control-label col-md-offset-3">Descripción:</label>
