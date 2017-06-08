@@ -82,6 +82,8 @@
                 <li id="caja"><a href="#" ><span class="fa fa-bank"></span> Cajas</a></li>
                 <li role="separator" class="divider"></li>
                 <li id="tipocredito"><a href="#" ><span class="fa fa-credit-card-alt"></span>Tipos de Crédito</a></li>
+                <li id="banco"><a href="#" ><span class="fa fa-bank"></span>Bancos</a></li>
+                <li id="bonificacion"><a href="#" ><span class="fa fa-handshake-o"></span>Bonificaciones</a></li>
               </ul>
             <li><a href="#cerrar"><span class="fa fa-power-off"></span> Cerrar sesión</a></li>
             </li>
@@ -180,6 +182,16 @@
                 $("#tipocredito").click(function (event) {
                     event.preventDefault();
                     cargar('controladortipocredito?operacion=listar','#show');
+                });
+                
+                $("#banco").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorbanco?operacion=listar','#show');
+                });
+                
+                $("#bonificacion").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorbonificacion?operacion=listar','#show');
                 });
                 
                 $("#reportes").click(function (event) {

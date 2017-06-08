@@ -46,7 +46,7 @@
                         <div class="form-group">
                             <label for="descripcion" class="col-xs-12 col-md-2 control-label col-md-offset-3">Descripción:</label>
                             <div class="col-xs-12 col-md-3">
-                                <input type="text" name="descripcion" class="form-control" maxlength="50" id="descripcion" required autofocus />
+                                <input type="text" name="descripcion" class="form-control" maxlength="50" style="text-transform:uppercase" id="descripcion" required autofocus />
 
                             </div>
                             

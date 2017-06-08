@@ -13,16 +13,10 @@
         <script>
             function registrar(){
                 var params=new Object();
-                params.id_cpp=$("#id_cpp").val();
-                params.fecha=$("#fecha").val();
-                params.importe=$("#importe").val();
-                                
-                if(params.importe < 0){
-                    alert("Sólo se aceptan números positivos");
-                    return false;
-                }
-                
-                $.post("controladorcpp?operacion=editarGuardar", params, function(datos){
+                params.id_tipocredito=$("#id_tipocredito").val();
+                params.descripcion=$("#descripcion").val();
+                              
+                $.post("controladortipocredito?operacion=editarGuardar", params, function(datos){
                     $("#show").html(datos);
                 },"html");
                 
@@ -32,7 +26,7 @@
             
             function listar(){
                                
-                $.post("controladorcpp?operacion=listar", function(datos){
+                $.post("controladortipocredito?operacion=listar", function(datos){
                     $("#show").html(datos);
                 },"html");
                 
@@ -44,15 +38,15 @@
     </head>
     <body>
         <div class="panel panel-primary" style="margin-top: 60px">
-            <div class="panel-heading"><h4><span class="fa fa-credit-card-alt" style="color: #fff"></span>Modificar Tipo de Crédito</h4></div>
+            <div class="panel-heading"><h4><span class="fa fa-credit-card-alt" style="color: #fff; padding: 5px;"></span>Modificar Tipo de Crédito</h4></div>
                 <div class="panel-body transparent">
                     <form id="form_UA" onsubmit="return registrar()"  class="form-horizontal">
-                        <input type="hidden" name="id_cpp" id="id_cpp" value="${tipocredito.id_tipocredito}" />
+                        <input type="hidden" name="id_tipocredito" id="id_tipocredito" value="${tipocredito.id_tipocredito}" />
             
                         <div class="form-group">
                             <label for="descripcion" class="col-xs-12 col-md-2 control-label col-md-offset-3">Descripción:</label>
-                            <div class="col-xs-12 col-md-2">
-                                <input type="text" id="descripcion" class="form-control" required autofocus  value="${tipocredito.descripcion}" />
+                            <div class="col-xs-12 col-md-3">
+                                <input type="text" id="descripcion" class="form-control" maxlength="50" style="text-transform:uppercase" required autofocus  value="${tipocredito.descripcion}" />
 
                             </div>
                             
