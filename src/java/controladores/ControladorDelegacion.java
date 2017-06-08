@@ -8,6 +8,8 @@ package controladores;
 import Modelo.GestionDelegacion;
 import javabeans.Delegacion;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -85,6 +87,11 @@ public class ControladorDelegacion extends ControladorBase{
             request.setAttribute("msg", "No se pudo eliminar, el status se encuentra en uso");
         RequestDispatcher rd=request.getRequestDispatcher("controladordelegacion?operacion=listar");
         rd.forward(request,response);
+    }
+    
+    public void reporte(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        Map param = new HashMap();
+        generarReporte("ReporteDelegacion.jasper", param, request, response);
     }
     
 }
