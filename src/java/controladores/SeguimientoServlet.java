@@ -4,7 +4,7 @@
  */
 package controladores;
 
-import Modelo.GestionAdjunto;
+import Modelo.GestionColonia;
 import Modelo.GestionSeguimiento;
 import Modelo.GestionTramite;
 import Modelo.GestionSolicitud;
@@ -27,7 +27,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javabeans.Tramite;
 import javabeans.Solicitud;
-import javabeans.Adjunto;
+import javabeans.Colonia;
 import javabeans.Seguimiento;
 
 import javax.servlet.RequestDispatcher;

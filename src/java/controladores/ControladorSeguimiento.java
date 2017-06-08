@@ -4,7 +4,7 @@
  */
 package controladores;
 
-import Modelo.GestionAdjunto;
+import Modelo.GestionColonia;
 import control.Tools;
 import Modelo.GestionSeguimiento;
 import Modelo.GestionSexo;

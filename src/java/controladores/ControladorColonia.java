@@ -5,14 +5,8 @@
 
 package controladores;
 
-import Modelo.GestionAdjunto;
-import Modelo.GestionSeguimiento;
-import Modelo.GestionSexo;
-import Modelo.GestionSolicitante;
-import Modelo.GestionSolicitud;
-import Modelo.GestionStatus;
-import Modelo.GestionTramite;
-import Modelo.GestionUnidadAdministrativa;
+import Modelo.GestionColonia;
+import Modelo.GestionDelegacion;
 import Modelo.conectaMysql;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -34,12 +28,8 @@ import java.util.Scanner;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javabeans.Adjunto;
-import javabeans.Seguimiento;
-import javabeans.Solicitante;
-import javabeans.Solicitud;
-import javabeans.Tramite;
-import javabeans.Usuario;
+import javabeans.Colonia;
+import javabeans.Delegacion;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletOutputStream;
