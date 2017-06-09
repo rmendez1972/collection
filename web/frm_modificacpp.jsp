@@ -46,7 +46,7 @@
         <div class="panel panel-primary" style="margin-top: 60px">
             <div class="panel-heading"><h4><span class="fa fa-address-book-o" style="color: #fff"></span>Modificar CPP</h4></div>
                 <div class="panel-body transparent">
-                    <form id="form_UA" onsubmit="return registrar()"  class="form-horizontal">
+                    <form id="form_CPP" onsubmit="return registrar()"  class="form-horizontal">
                         <input type="hidden" name="id_cpp" id="id_cpp" value="${cpp.id_cpp}" />
             
                         <div class="form-group">
