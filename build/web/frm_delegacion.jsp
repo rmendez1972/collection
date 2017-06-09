@@ -35,14 +35,14 @@
     </head>
     <body>
         <div class="panel panel-primary" style="margin-top: 60px">
-            <div class="panel-heading"><h4><span class="fa fa-sort-amount-desc" style="color: #fff"></span> Registro de Nivel</h4></div>
+            <div class="panel-heading"><h4><span class="fa fa-group" style="color: #fff"></span> Registro de Delegacion</h4></div>
                 <div class="panel-body transparent">
-                    <form id="form_UA" onsubmit="return registrar()"  class="form-horizontal">
+                    <form id="form_DE" onsubmit="return registrar()"  class="form-horizontal">
             
                         <div class="form-group">
                             <label for="Nombre" class="col-xs-12 col-md-2 control-label col-md-offset-3">Nombre:</label>
                             <div class="col-xs-12 col-md-2">
-                                <input type="text" name="descripcion" class="form-control"  id="descripcion" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style=" text-transform:uppercase; width: 300px; font-size: 25px " />
+                                <input type="text" name="descripcion" class="form-control"  id="descripcion" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ#.\0-9]{5,50})"  placeholder="Mínimo 5 caracteres" required style=" text-transform:uppercase; width: 300px; font-size: 25px " />
                             </div>
                             
                         </div>
@@ -50,7 +50,7 @@
                         <div class="form-group">
                             <label for="direccion" class="col-xs-12 col-md-2 control-label col-md-offset-3">Dirección:</label>
                             <div class="col-xs-12 col-md-2">
-                                <input type="text" name="direccion" class="form-control" id="direccion" pattern="([a-zA-Z ]{5,80})"  placeholder="Max.80 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" />
+                                <input type="text" name="direccion" class="form-control" id="direccion" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ#.\0-9]{5,80})"  placeholder="Max.80 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" />
                             </div>
                         </div>
 
