@@ -127,11 +127,11 @@
                         
                         <div class="form-group">
                             <label for="serie" class="col-xs-12 col-md-2 control-label">Serie:</label>
-                            <div class="col-xs-12 col-md-4">
-                                <input type="text" name="serie" class="form-control" id="serie" required placeholder="Máx.1 caracteres" maxlength="1" style="text-transform:uppercase"/>
+                            <div class="col-xs-12 col-md-1">
+                                <input type="text" name="serie" class="form-control" id="serie" required pattern="([a-zA-Z]{1,1})" placeholder="Máx.1 caracteres" maxlength="1" style="text-transform:uppercase; width: 70px;"/>
                             </div>
                             
-                            <label for="nivel" class="col-xs-12 col-md-2 control-label ">Nivel:</label>
+                            <label for="nivel" class="col-xs-12 col-md-5 control-label ">Nivel:</label>
                             <div class="col-xs-12 col-md-4">
                                 <select id="id_nivel" required class="form-control"  onChange="actualizaDir(this.value)"> 
                                     <option value="0">SELECCIONE UNA</option>

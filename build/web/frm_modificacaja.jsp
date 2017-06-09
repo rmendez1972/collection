@@ -69,8 +69,8 @@
                             </div>
                             
                             <label for="fecha" class="col-xs-12 col-md-2 control-label ">Poliza:</label>
-                            <div class="col-xs-12 col-md-4">
-                                <input type="text" name="poliza" class="form-control" id="poliza" required autofocus required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{0,8})" maxlength="4" placeholder="Máx. 4 caracteres" style="text-transform:uppercase" value="${caja.poliza}" />
+                            <div class="col-xs-12 col-md-1">
+                                <input type="text" name="poliza" class="form-control" id="poliza" required autofocus required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{4,4})" maxlength="4" placeholder="Máx. 4 caracteres" style="text-transform:uppercase; width: 70px;" value="${caja.poliza}" />
                             </div>
                         </div>
                         

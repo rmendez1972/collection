@@ -50,11 +50,11 @@
             
                         <div class="form-group">
                             <label for="clave_div" class="col-xs-12 col-md-2 control-label">Clave Diversos:</label>
-                            <div class="col-xs-12 col-md-4">
-                                <input type="text" name="clave_div" class="form-control" id="clave_div" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{1,3})"  maxlength="3" placeholder="Máx. 3 caracteres" style="text-transform:uppercase" />
+                            <div class="col-xs-12 col-md-1">
+                                <input type="text" name="clave_div" class="form-control" id="clave_div" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{3,3})"  maxlength="3" placeholder="Máx. 3 caracteres" style="text-transform:uppercase; width: 70px;" />
                             </div>
                             
-                            <label for="descripcion" class="col-xs-12 col-md-2 control-label ">Descripción:</label>
+                            <label for="descripcion" class="col-xs-12 col-md-5 control-label ">Descripción:</label>
                             <div class="col-xs-12 col-md-4">
                                 <input type="text" name="descripcion" class="form-control" id="descripcion" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{1,50})"  maxlength="50" placeholder="Máx. 50 caracteres" style="text-transform:uppercase"  />
                             </div>

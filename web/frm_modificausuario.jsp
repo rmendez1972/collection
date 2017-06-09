@@ -115,8 +115,8 @@
                                 <input type="text" name="cargo" class="form-control" id="cargo" required  placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${usr.cargo}" />
                             </div>
                             <label for="serie" class="col-xs-12 col-md-2 control-label">Serie:</label>
-                            <div class="col-xs-12 col-md-4">
-                                <input type="text" name="serie" class="form-control" id="serie" required placeholder="Máx.1 caracteres" maxlength="1" style="text-transform:uppercase" value="${usr.serie}" />
+                            <div class="col-xs-12 col-md-1">
+                                <input type="text" name="serie" class="form-control" id="serie" required pattern="([a-zA-Z]{1,1})" placeholder="Máx.1 caracteres" maxlength="1" style="text-transform:uppercase; width: 70px;" value="${usr.serie}" />
                             </div>
                         </div>
                         
