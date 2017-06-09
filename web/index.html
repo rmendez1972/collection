@@ -82,6 +82,7 @@
                 <li id="salmin"><a href="#" ><span class="fa fa-dollar"></span> Salarios Minimos</a></li>
                 <li id="emisores"><a href="#" ><span class="fa fa-podcast"></span> Emisores</a></li>
                 <li id="caja"><a href="#" ><span class="fa fa-bank"></span> Cajas</a></li>
+                <li id="clvdiv"><a href="#" ><span class="fa fa-tag"></span> Clave Diversos</a></li>
                 <li role="separator" class="divider"></li>
                 <li id="tipocredito"><a href="#" ><span class="fa fa-credit-card-alt"></span>Tipos de Crédito</a></li>
                 <li id="banco"><a href="#" ><span class="fa fa-bank"></span>Bancos</a></li>
@@ -212,6 +213,11 @@
                 $("#colonia").click(function (event) {
                     event.preventDefault();
                     cargar('controladorcolonia?operacion=listar','#show');
+                });
+                
+                $("#clvdiv").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorclavediversos?operacion=listar','#show');
                 });
                 
                 $("#reportes").click(function (event) {
