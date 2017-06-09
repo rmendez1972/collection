@@ -75,15 +75,21 @@
                 <li id="niveles"><a href="#" ><span class="fa fa-sort-amount-desc"></span> Niveles</a></li>
                 <li id="delegaciones"><a href="#" ><span class="fa fa-group"></span> Delegaciones</a></li>
                 <li><a href="#">Otra accióin</a></li>
-                <li><a href="#">Cualquier cosa</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Tasas Financieras</li>
                 <li id="cpp"><a href="#" ><span class="fa fa-dollar"></span>CPP</a></li>
                 <li id="salmin"><a href="#" ><span class="fa fa-dollar"></span> Salarios Minimos</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Claves de Movimiento</li>
+                <li id="clavemov"><a href="#" ><span class="fa fa-file-text"></span>Claves de Movimiento</a></li>
+                <li role="separator" class="divider"></li>
                 <li id="emisores"><a href="#" ><span class="fa fa-podcast"></span> Emisores</a></li>
                 <li id="caja"><a href="#" ><span class="fa fa-bank"></span> Cajas</a></li>
+<<<<<<< HEAD
+=======
                 <li id="clvdiv"><a href="#" ><span class="fa fa-tag"></span> Clave Diversos</a></li>
                 <li role="separator" class="divider"></li>
+>>>>>>> e7596330614ad39774ec138a6f2923e9864cfb65
                 <li id="tipocredito"><a href="#" ><span class="fa fa-credit-card-alt"></span>Tipos de Crédito</a></li>
                 <li id="banco"><a href="#" ><span class="fa fa-bank"></span>Bancos</a></li>
                 <li id="bonificacion"><a href="#" ><span class="fa fa-handshake-o"></span>Bonificaciones</a></li>
@@ -215,9 +221,15 @@
                     cargar('controladorcolonia?operacion=listar','#show');
                 });
                 
+<<<<<<< HEAD
+                $("#clavemov").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorclavemov?operacion=listar','#show');
+=======
                 $("#clvdiv").click(function (event) {
                     event.preventDefault();
                     cargar('controladorclavediversos?operacion=listar','#show');
+>>>>>>> e7596330614ad39774ec138a6f2923e9864cfb65
                 });
                 
                 $("#reportes").click(function (event) {
