@@ -5,19 +5,8 @@
 
 package controladores;
 
-<<<<<<< HEAD:src/java/controladores/ControladorColonia.java
 import Modelo.GestionColonia;
 import Modelo.GestionDelegacion;
-=======
-import Modelo.GestionAdjunto;
-import Modelo.GestionSeguimiento;
-import Modelo.GestionSexo;
-import Modelo.GestionSolicitante;
-import Modelo.GestionSolicitud;
-import Modelo.GestionStatus;
-import Modelo.GestionTramite;
-import Modelo.GestionNiveles;
->>>>>>> 2169a3f8cea23ed6250c5dcf738705d633eb86f3:src/java/controladores/ControladorAdjunto.java
 import Modelo.conectaMysql;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -44,6 +33,7 @@ import javabeans.Delegacion;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -56,9 +46,8 @@ import net.sf.jasperreports.engine.JasperRunManager;
  *
  * @author Rafael Méndez
  */
-/*
-@MultipartConfig
-public class ControladorAdjunto extends ControladorBase {
+@WebServlet(name = "ControladorColonia", urlPatterns = {"/controladorcolonia"})
+public class ControladorColonia extends ControladorBase {
     public Connection cn;
     
     private String getFileName(Part part) 
@@ -126,382 +115,94 @@ public class ControladorAdjunto extends ControladorBase {
     }        
 
     public void listar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        Usuario usuario;
-        ArrayList adjuntos;
-        Seguimiento seguimiento;
-        Solicitud solicitud;
-        Solicitante solicitante;
-        Tramite tramite;
-        Integer id_seguimiento,id_tramite,id_solicitante,id_solicitud;
-        String mensaje="Listado de archivos adjuntos exitoso";
-        String pathadjuntos="adjuntos/";
-        String pathuploads="http://localhost:3001/upload/";
-        //recupero el usuario de la sesion 
-        HttpSession objSession = request.getSession(); 
-        usuario = (Usuario)(objSession.getAttribute("usuario")); 
+        GestionColonia modelo=new GestionColonia();
+        ArrayList colonias=modelo.obtenerTodos();
+        request.setAttribute("colonias", colonias);
             
-        Integer id_grupo=usuario.getId_grupo();
-        Integer id_unidadadministrativa=usuario.getId_unidadadministrativa();
-            
-        //obetnes datos del seguimiento por id_seguimiento
-        String midseguimiento;   
-        midseguimiento = request.getParameter("id_seguimiento");  
-        id_seguimiento=Integer.parseInt(midseguimiento);
-        
-        
-        GestionSeguimiento gs=new GestionSeguimiento(); 
-        seguimiento = gs.obtenerPorId(id_seguimiento);
-        id_solicitud = seguimiento.getId_solicitud();
-        
-            
-        GestionSolicitud gsol=new GestionSolicitud(); 
-        solicitud=gsol.obtenerPorId(id_solicitud);
-        id_tramite = solicitud.getId_tramite();
-        id_solicitante = solicitud.getId_solicitante();
-            
-        GestionSolicitante gsoli= new GestionSolicitante();
-        solicitante= gsoli.obtenerPorId(id_solicitante);
-                    
-        GestionTramite gtm=new GestionTramite(); 
-        tramite=gtm.obtenerPorId(id_tramite);
-        id_unidadadministrativa=tramite.getId_unidadadministrativa();
-            
-            
-            
-             
-            
-            
-        GestionAdjunto gad=new GestionAdjunto(); 
-        adjuntos = gad.obtenerPorSeguimiento(id_seguimiento);
-            
-            
-        request.setAttribute("mensaje",mensaje);
-        request.setAttribute("seguimiento",seguimiento);
-        request.setAttribute("solicitante",solicitante);
-        request.setAttribute("solicitud",solicitud);
-        request.setAttribute("tramite",tramite);
-        request.setAttribute("adjuntos",adjuntos);
-        request.setAttribute("pathadjuntos",pathadjuntos);
-        request.setAttribute("pathuploads",pathuploads);
-        if (id_grupo==1)
-        {    
-            RequestDispatcher rd=request.getRequestDispatcher("listaradjunto_registrante.jsp");
-            rd.forward(request,response);
-        }else
-        {
-            RequestDispatcher rd=request.getRequestDispatcher("listaradjunto.jsp");
-            rd.forward(request,response);
-            
-        }
+        RequestDispatcher rd=request.getRequestDispatcher("listar_colonias.jsp");
+        rd.forward(request,response);
     }
     
-    public void listarjson(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        Usuario usuario;
-        ArrayList adjuntos;
-        Seguimiento seguimiento;
-        Solicitud solicitud;
-        Solicitante solicitante;
-        Tramite tramite;
-        Integer id_seguimiento,id_tramite,id_solicitante,id_solicitud;
-        //String mensaje="Listado de archivos adjuntos exitoso";
-        //String pathadjuntos="build/web/adjuntos/";
-        //recupero el usuario de la sesion 
-        //HttpSession objSession = request.getSession(); 
-        //usuario = (Usuario)(objSession.getAttribute("usuario")); 
-            
-        //Integer id_grupo=usuario.getId_grupo();
-        //Integer id_unidadadministrativa=usuario.getId_unidadadministrativa();
-            
-        //obetnes datos del seguimiento por id_seguimiento
-        String midseguimiento;   
-        midseguimiento = request.getParameter("id_seguimiento");  
-        id_seguimiento=Integer.parseInt(midseguimiento);
-        
-        
-        GestionSeguimiento gs=new GestionSeguimiento(); 
-        seguimiento = gs.obtenerPorId(id_seguimiento);
-        id_solicitud = seguimiento.getId_solicitud();
-        ArrayList seg=new ArrayList();
-        seg.add(seguimiento);
-            
-        GestionSolicitud gsol=new GestionSolicitud(); 
-        solicitud=gsol.obtenerPorId(id_solicitud);
-        id_tramite = solicitud.getId_tramite();
-        id_solicitante = solicitud.getId_solicitante();
-        ArrayList solic=new ArrayList();
-        solic.add(solicitud);
-            
-        GestionSolicitante gsoli= new GestionSolicitante();
-        solicitante= gsoli.obtenerPorId(id_solicitante);
-        ArrayList sol=new ArrayList();
-        sol.add(solicitante);
-                    
-        GestionTramite gtm=new GestionTramite(); 
-        tramite=gtm.obtenerPorId(id_tramite);
-        Integer id_unidadadministrativa=tramite.getId_unidadadministrativa();
-        ArrayList tram=new ArrayList();
-        tram.add(tramite);
-          
-            
-        GestionAdjunto gad=new GestionAdjunto(); 
-        adjuntos = gad.obtenerPorSeguimiento(id_seguimiento);
-        
-        GsonBuilder builder=new GsonBuilder();
-        Gson gson=builder.create();
-            
-        //response.addHeader("Content-Type", "text/html; charset=utf-8; Access-Control-Allow-Origin http://localhost:4200");
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
-        response.setHeader("Content-Type", "application/json; charset=UTF-8");
-        response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-        response.getWriter().write("{\"data\":"+gson.toJson(adjuntos)+",\"solicitud\":"+gson.toJson(solic)+",\"tramite\":"+gson.toJson(tram)+",\"seguimiento\":"+gson.toJson(seg)+"}");
-            
-        //request.setAttribute("mensaje",mensaje);
-        //request.setAttribute("seguimiento",seguimiento);
-        //request.setAttribute("solicitante",solicitante);
-        //request.setAttribute("solicitud",solicitud);
-        //request.setAttribute("tramite",tramite);
-        //request.setAttribute("adjuntos",adjuntos);
-        //request.setAttribute("pathadjuntos",pathadjuntos);
-        //if (id_grupo==1)
-        //{    
-        //    RequestDispatcher rd=request.getRequestDispatcher("listaradjunto_registrante.jsp");
-        //    rd.forward(request,response);
-        //}else
-        //{
-        //    RequestDispatcher rd=request.getRequestDispatcher("listaradjunto.jsp");
-        //    rd.forward(request,response);
-            
-        //}
-    }
     
     public void eliminar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        Integer id_seguimiento,id_tramite,id_solicitante,id_solicitud;
-        //String mensaje=request.getParameter("mensaje");
-        int id_adjunto=Integer.parseInt(request.getParameter("id_adjunto"));
-        GestionAdjunto modelo=new GestionAdjunto();
-        Adjunto adjunto = modelo.obtenerPorId(id_adjunto);
-        id_seguimiento= adjunto.getId_seguimiento();
-        String midseguimiento=Integer.toString(id_seguimiento);
-        if(modelo.eliminarPorId(id_adjunto))
+        int id=Integer.parseInt(request.getParameter("id"));
+        GestionColonia modelo=new GestionColonia();
+        if(modelo.eliminarPorId(id))
         {    
-            request.setAttribute("mensaje", "Registro eliminado");
+            request.setAttribute("msg", "Registro eliminado");
+        }else{
+            request.setAttribute("msg", "No es posible eliminar. Intente más tarde.");
             
         }
-        else
-        {
-            request.setAttribute("mensaje", "No se pudo eliminar, el adjunto se encuentra en uso");
-        }
-        
-        Usuario usuario;
-        ArrayList adjuntos;
-        Seguimiento seguimiento;
-        Solicitud solicitud;
-        Solicitante solicitante;
-        Tramite tramite;
-        
-        
-        String pathadjuntos="adjuntos/";
-        //recupero el usuario de la sesion 
-        HttpSession objSession = request.getSession(); 
-        usuario = (Usuario)(objSession.getAttribute("usuario")); 
-            
-        Integer id_grupo=usuario.getId_grupo();
-        Integer id_unidadadministrativa=usuario.getId_unidadadministrativa();
-            
-        //obetnes datos del seguimiento por id_seguimiento
-        //String midseguimiento;   
-        //midseguimiento = request.getParameter("id_seguimiento");  
-        id_seguimiento=Integer.parseInt(midseguimiento);
-        
-        
-        GestionSeguimiento gs=new GestionSeguimiento(); 
-        seguimiento = gs.obtenerPorId(id_seguimiento);
-        id_solicitud = seguimiento.getId_solicitud();
-        
-            
-        GestionSolicitud gsol=new GestionSolicitud(); 
-        solicitud=gsol.obtenerPorId(id_solicitud);
-        id_tramite = solicitud.getId_tramite();
-        id_solicitante = solicitud.getId_solicitante();
-            
-        GestionSolicitante gsoli= new GestionSolicitante();
-        solicitante= gsoli.obtenerPorId(id_solicitante);
-                    
-        GestionTramite gtm=new GestionTramite(); 
-        tramite=gtm.obtenerPorId(id_tramite);
-        id_unidadadministrativa=tramite.getId_unidadadministrativa();
-            
-            
-            
-             
-            
-            
-        GestionAdjunto gad=new GestionAdjunto(); 
-        adjuntos = gad.obtenerPorSeguimiento(id_seguimiento);
-        
-        
-        
-        request.setAttribute("seguimiento",seguimiento);
-        request.setAttribute("solicitante",solicitante);
-        request.setAttribute("solicitud",solicitud);
-        request.setAttribute("tramite",tramite);
-        request.setAttribute("adjuntos",adjuntos);
-        request.setAttribute("pathadjuntos",pathadjuntos);
-        
-       
-        RequestDispatcher rd=request.getRequestDispatcher("listaradjunto.jsp");
+        RequestDispatcher rd=request.getRequestDispatcher("controladorcolonia?operacion=listar");
         rd.forward(request,response);
         
+    }
+    
+    public void editar(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        int id=Integer.parseInt(request.getParameter("id"));
+        GestionColonia modelo=new GestionColonia();
+        Colonia colonia=modelo.obtenerPorId(id);
+        GestionDelegacion modelodelegacion= new GestionDelegacion();
+        ArrayList delegaciones = modelodelegacion.obtenerTodos();
+        request.setAttribute("delegaciones", delegaciones);
+        request.setAttribute("colonia", colonia);
+                    
+        RequestDispatcher rd=request.getRequestDispatcher("frm_modificacolonia.jsp");
+        rd.forward(request,response);
+    }
+    
+    
+    public void editarGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        Colonia colonia=new Colonia();
+        Integer id_colonia=Integer.parseInt(request.getParameter("id_colonia"));
+        colonia.setId_colonia(id_colonia);
+        colonia.setDescripcion(request.getParameter("descripcion").toUpperCase());
+        Integer id_delegacion=Integer.parseInt(request.getParameter("id_delegacion"));
+        colonia.setId_delegacion(id_delegacion);
+          
+         
+        GestionColonia modelo=new GestionColonia();
+        if(modelo.actualizarColonia(colonia)){
+            RequestDispatcher rd=request.getRequestDispatcher("controladorcolonia?operacion=listar");
+            request.setAttribute("msg", "Datos guardados");
+            rd.forward(request,response);
+        }
+        else{
+            RequestDispatcher rd=request.getRequestDispatcher("controladorcolonia?operacion=editar");
+            request.setAttribute("msg", "Error al guardar. Intente de nuevo más tarde");
+            rd.forward(request,response);
+        }
     }
     
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        String midseguimiento;   
-        midseguimiento = request.getParameter("id_seguimiento");  
-        Integer id_seguimiento;
-        id_seguimiento=Integer.parseInt(midseguimiento);
-          
-        GestionSeguimiento modelo=new GestionSeguimiento(); 
-        Seguimiento  seguimiento = modelo.obtenerPorId(id_seguimiento);
+        GestionDelegacion modelo= new GestionDelegacion();
+        ArrayList delegaciones = modelo.obtenerTodos();
+        request.setAttribute("delegaciones", delegaciones);
         
-        request.setAttribute("seguimiento",seguimiento);
-        
-        RequestDispatcher rd=request.getRequestDispatcher("frm_adjunto.jsp");
-        rd.forward(request,response);
-    }
-    
-    public void grabar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        HttpSession objSession = request.getSession(); 
-        Usuario usuario = (Usuario)(objSession.getAttribute("usuario")); 
-        String pathadjuntos="adjuntos/";
-            
-        Integer id_grupo=usuario.getId_grupo();
-        Integer id_unidadadministrativa=usuario.getId_unidadadministrativa();
-        Integer id_usuario=usuario.getId_usuario();
-            
-        Part p1 = request.getPart("adjunto");  
-        String nombreadjunto = getFileName(p1);
-        Boolean adjuntosubido=subirAdjunto(p1);
-        
-        // leer el id_seguimiento q es enviado como multi part
-        Part p2  = request.getPart("id_seguimiento");
-        Scanner s2 = new Scanner(p2.getInputStream()); //la clase Scanner es utilizada para leer datos de un dispostivo de entrada o stream
-        String midseguimiento = s2.nextLine();    // lectura del stream como cadena de caracteres
-        int id_seguimiento=Integer.parseInt(midseguimiento); // pareseo el string a integer
-             
-          
-        Adjunto adjunto = new Adjunto();   
-        adjunto.setNombre(nombreadjunto);
-        adjunto.setId_usuario(id_usuario);
-        adjunto.setId_seguimiento(id_seguimiento);
-            
-        GestionAdjunto adj=new GestionAdjunto(); 
-        Boolean resultado=  adj.registroAdjunto(adjunto);
-        String mensaje=null;
-        
-        if(resultado==true )
-        {
-            mensaje="Adjunto grabado exitosamente";
-            
-            GestionSeguimiento modelo=new GestionSeguimiento();
-            Boolean actualizaseguimiento=modelo.actualizarSeguimientoAdjunto(id_seguimiento);
-        }else
-        {
-            mensaje="Problemas al grabar adjunto";
-        }
-            
-        GestionSeguimiento gs=new GestionSeguimiento(); 
-        Seguimiento seguimiento = gs.obtenerPorId(id_seguimiento);
-        int id_solicitud = seguimiento.getId_solicitud();
-        
-            
-        GestionSolicitud gsol=new GestionSolicitud(); 
-        Solicitud solicitud=gsol.obtenerPorId(id_solicitud);
-        int id_tramite = solicitud.getId_tramite();
-        int id_solicitante = solicitud.getId_solicitante();
-            
-        GestionSolicitante gsoli= new GestionSolicitante();
-        Solicitante solicitante= gsoli.obtenerPorId(id_solicitante);
-                    
-        GestionTramite gtm=new GestionTramite(); 
-        Tramite tramite=gtm.obtenerPorId(id_tramite);
-        id_unidadadministrativa=tramite.getId_unidadadministrativa();
-            
-                   
-            
-            
-        GestionAdjunto gad=new GestionAdjunto(); 
-        ArrayList adjuntos = gad.obtenerPorSeguimiento(id_seguimiento);
-            
-            
-        request.setAttribute("mensaje",mensaje);
-        request.setAttribute("seguimiento",seguimiento);
-        request.setAttribute("solicitante",solicitante);
-        request.setAttribute("solicitud",solicitud);
-        request.setAttribute("tramite",tramite);
-        request.setAttribute("adjuntos",adjuntos);
-        request.setAttribute("pathadjuntos",pathadjuntos);
-        if (id_grupo==1)
-        {    
-            RequestDispatcher rd=request.getRequestDispatcher("listaradjunto_registrante.jsp");
+        RequestDispatcher rd=request.getRequestDispatcher("frm_colonia.jsp");
             rd.forward(request,response);
-        }else
-        {
-            RequestDispatcher rd=request.getRequestDispatcher("listaradjunto.jsp");
+    }
+    
+    public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        Colonia colonia=new Colonia();
+        colonia.setDescripcion(request.getParameter("descripcion").toUpperCase());
+        colonia.setId_delegacion(Integer.parseInt(request.getParameter("id_delegacion")));
+           
+        GestionColonia modelo=new GestionColonia();
+        if(modelo.registroColonia(colonia)){
+            RequestDispatcher rd=request.getRequestDispatcher("controladorcolonia?operacion=listar");
+            request.setAttribute("msg", "Datos guardados");
             rd.forward(request,response);
-            
+        }
+        else{
+            RequestDispatcher rd=request.getRequestDispatcher("controladorcolonia?operacion=nuevo");
+            request.setAttribute("msg", "Error al guardar. Intente de nuevo más tarde");
+            rd.forward(request,response);
         }
     }
-    
-    
-    public void grabarfromApp(HttpServletRequest request, HttpServletResponse response) throws Exception{
-
-        Integer id_unidadadministrativa;
-        Integer id_usuario=22;
-                      
-        int id_seguimiento = Integer.parseInt(request.getParameter("id_seguimiento"));  
-        String nombreadjunto= request.getParameter("filename");
-        Adjunto adjunto = new Adjunto();   
-        adjunto.setNombre(nombreadjunto);
-        adjunto.setId_usuario(id_usuario);
-        adjunto.setId_seguimiento(id_seguimiento);
-            
-        GestionAdjunto adj=new GestionAdjunto(); 
-        Boolean res=  adj.registroAdjunto(adjunto);
-        String mensaje=null;
-        
-        ArrayList resultado = new ArrayList();
-        if (res != null){
-                                       
-            resultado.add(res);
-        }
-            
-        
-        if(res==true )
-        {
-            mensaje="Adjunto grabado exitosamente";
-            
-            GestionSeguimiento modelo=new GestionSeguimiento();
-            Boolean actualizaseguimiento=modelo.actualizarSeguimientoAdjunto(id_seguimiento);
-        }else
-        {
-            mensaje="Problemas al grabar adjunto";
-        }
-        
-        GsonBuilder builder=new GsonBuilder();
-        Gson gson=builder.create();
-            
-        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
-        response.setHeader("Content-Type", "application/json; charset=UTF-8");
-        response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Charset");
-        response.getWriter().write("{\"resultado\":"+gson.toJson(resultado)+"}");
-        
-    }
-    
+     
+    /*
     public void imprimir(HttpServletRequest request, HttpServletResponse response) throws Exception
     {
         Usuario usuario;
@@ -554,6 +255,5 @@ public class ControladorAdjunto extends ControladorBase {
             response.getOutputStream().print(stringWriter.toString());
         } 
         
-    }
+    }*/
 }
-*/

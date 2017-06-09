@@ -12,50 +12,50 @@ import javabeans.Delegacion;
 
 /**
  *
- * @author arturo
+ * @Rafael Méndez
  */
 public class GestionColonia {
-    public boolean registroAdjunto(Colonia adj){
+    public boolean registroColonia(Colonia colonia){
         boolean res=false;
         //Seguimiento seguimiento;
         //Solicitud solicitud;
-        Integer id_usuario=adj.getId_usuario();
-        Integer id_seguimiento=adj.getId_seguimiento();
-        String nombre=adj.getNombre();
+        Integer id_delegacion=colonia.getId_delegacion();
+        String descripcion=colonia.getDescripcion();
           
-        Object params[]={nombre,id_seguimiento,id_usuario};
-        res=Conexion.ejecutar("insert into adjunto (nombre, id_seguimiento, id_usuario) values (?,?,?)", params);
+        Object params[]={descripcion,id_delegacion};
+        res=Conexion.ejecutar("insert into colonias (descripcion, id_delegacion) values (?,?)", params);
         
         return res;
     }
     
-    public Colonia obtenerPorId(int id_adjunto){
-        Object params[]={id_adjunto};
-        Colonia ad=null;
-        ResultSet res=Conexion.ejecutarConsulta("select * from adjunto where id_adjunto=?", params);
+    public Colonia obtenerPorId(int id_colonia){
+        Object params[]={id_colonia};
+        Colonia colonia=null;
+        ResultSet res=Conexion.ejecutarConsulta("select * from colonias where id_colonia=?", params);
         try{
             if(res.next()){
-                ad=new Colonia(res.getInt("id_adjunto"), res.getString("nombre"),res.getInt("id_seguimiento"),res.getInt("id_usuario"));
+                colonia=new Colonia(res.getInt("id_colonia"), res.getString("descripcion"),res.getInt("id_delegacion"));
             }
             res.close();
         }catch(Exception e){}
-        return ad;
+        return colonia;
     }
     
     public ArrayList obtenerTodos(){
         ArrayList lista=new ArrayList();
-        ResultSet res=Conexion.ejecutarConsulta("select * from adjunto order by id_adjunto asc", null);
+        ResultSet res=Conexion.ejecutarConsulta("select C.*, D.descripcion as delegacion from colonias C inner join delegaciones D on C.id_delegacion=D.id_delegacion order by C.id_colonia asc", null);
         try{
             while(res.next()){
-                Colonia ad=new Colonia(res.getInt("id_adjunto"), res.getString("nombre"),res.getInt("id_seguimiento"),res.getInt("id_usuario"));
-                lista.add(ad);
+                Colonia colonia=new Colonia(res.getInt("id_colonia"), res.getString("descripcion"),res.getInt("id_delegacion"));
+                colonia.setDelegacion(res.getString("delegacion"));
+                lista.add(colonia);
             }
             res.close();
         }catch(Exception e){}
         return lista;
     }
     
-    
+    /*
     public ArrayList obtenerPorSeguimiento(int id_seguimiento){
         ArrayList ad=new ArrayList();
         Object params[]={id_seguimiento};
@@ -70,44 +70,23 @@ public class GestionColonia {
         }catch(Exception e){}
         return ad;
     }
+    */
     
-    public boolean eliminarPorId(int id_adjunto){
-        GestionColonia modelo= new GestionColonia();
-        Colonia adjunto=modelo.obtenerPorId(id_adjunto);
-        int id_seguimiento=adjunto.getId_seguimiento();
-        
-        Boolean resultado=false;
-        Object params[]={id_adjunto};
-        resultado=Conexion.ejecutar("delete from adjunto where id_adjunto=?", params);
-        if (resultado=true){
-            int cuenta=cuentaAdjuntos(id_seguimiento);
-            if (cuenta==0){
-                GestionSeguimiento gs=new GestionSeguimiento();
-                Seguimiento seguimiento=gs.obtenerPorIdDateTime(id_seguimiento);
-                seguimiento.setAdjunto(false);
-                gs.actualizarSeguimiento(seguimiento);
-            }
-        }
-        return resultado;
+       
+    public boolean actualizarColonia(Colonia colonia){
+        String descripcion=colonia.getDescripcion();
+        Integer mid_delegacion=colonia.getId_delegacion();
+        String id_delegacion=mid_delegacion.toString();
+        Integer mid_colonia=colonia.getId_colonia();
+        String id_colonia= mid_colonia.toString();
+        Object params[]={descripcion, id_delegacion, id_colonia};
+        return Conexion.ejecutar("update colonias set descripcion=?, id_delegacion=? where id_colonia=?", params);
     }
     
-    public int cuentaAdjuntos(int id_seguimiento){
-        int cuenta=0;
-        Object params[]={id_seguimiento};
-        ResultSet res=Conexion.ejecutarConsulta("select count(*) as cuenta from adjunto where id_seguimiento=?", params);
-        try{
-            while(res.next()){
-                
-                cuenta=res.getInt("cuenta");
-                
-            }
-            res.close();
-        }catch(Exception e){}
-        return cuenta;
+    public boolean eliminarPorId(int id_colonia){
+        Object params[]={id_colonia};
+        return Conexion.ejecutar("delete from colonias where id_colonia=?", params);
     }
-    /*
-    public boolean actualizar(Status status){
-        Object params[]={status.getNombre(), status.getId_status()};
-        return Conexion.ejecutar("update status set nombre=? where id_status=?", params);
-    }*/
+    
+   
 }

@@ -12,7 +12,8 @@ public class Colonia {
     private int id_colonia;
     private String descripcion;
     private int id_delegacion;
-    
+    private String delegacion;
+       
     public Colonia(){}
     
     public Colonia(int id_colonia, String descripcion, int id_delegacion){
@@ -44,6 +45,14 @@ public class Colonia {
 
     public void setId_delegacion(int id_delegacion) {
         this.id_delegacion = id_delegacion;
+    }
+    
+    public String getDelegacion() {
+        return delegacion;
+    }
+
+    public void setDelegacion(String delegacion) {
+        this.delegacion = delegacion;
     }
     
 }
