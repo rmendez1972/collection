@@ -45,7 +45,7 @@
     </head>
     <body>
         <div class="panel panel-primary" style="margin-top: 60px">
-            <div class="panel-heading"><h4><span class="fa fa-tag" style="color: #fff"></span> Modificar Clave Diversos</h4></div>
+            <div class="panel-heading"><h4><span class="fa fa-tag" style="color: #fff"></span> Modifica Claves de Movimientos Diversos</h4></div>
                 <div class="panel-body transparent">
                     <form id="form_CD" onsubmit="return registrar()"  class="form-horizontal">
                         <input type="hidden" name="id_clave_div" id="id_clave_div" value="${cd.id_clave_div}" />

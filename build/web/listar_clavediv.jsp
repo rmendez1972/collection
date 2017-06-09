@@ -42,7 +42,7 @@
     </head>
     <body>
         <h3 class="bg-primary encabezado">
-            <span class="fa fa-tag" style="color: #fff"></span> Catálogo de Claves Diversos
+            <span class="fa fa-tag" style="color: #fff"></span> Catálogo de Claves de Movimientos Diversos
         </h3>
       
         <div class="container-fluid navbar-right">

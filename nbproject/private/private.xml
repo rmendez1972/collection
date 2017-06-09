@@ -2,64 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/conf/MANIFEST.MF</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorUsuario.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/index.html</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBanco.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Bonificacion.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_banco.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/index.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_modificasalmin.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_clavemov.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_modificabonificacion.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Delegacion.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Modulo.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Colonia.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_seguimiento.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_bonificacion.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Tramite.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/assets/css/style.css</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionCpp.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_bancos.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionUsuario.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_bonificaciones.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Cpp.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorCpp.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBase.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Clavemov.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_delegaciones.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionBanco.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionBonificacion.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorEmisor.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Usuario.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_modificaclavemov.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorCaja.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_clavemov.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Banco.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_colonias.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionClavemov.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorColonia.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_colonia.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorClavemov.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionColonia.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_modificacolonia.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Caja.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_salmin.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBonificacion.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Solicitud.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionDelegacion.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/.gitignore</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/assets/js/script_cobranza.js</file>
-=======
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/Reportes/ReporteClaveDiversos.jrxml</file>
->>>>>>> e7596330614ad39774ec138a6f2923e9864cfb65
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/index.html</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/listar_clavediv.jsp</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/frm_modificaclavediv.jsp</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/frm_clavediv.jsp</file>
         </group>
->>>>>>> 2a737cbce8f655b4070e941f7a399d8b5efbc532
     </open-files>
 </project-private>
