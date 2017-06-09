@@ -49,7 +49,7 @@ public class ControladorCpp extends ControladorBase
         {    
             request.setAttribute("msg", "Registro eliminado");
         }else{
-            request.setAttribute("msg", "No es posible eliminar. El usuario tiene solicitudes registradas.");
+            request.setAttribute("msg", "No es posible eliminar. Intente más tarde.");
             
         }
         RequestDispatcher rd=request.getRequestDispatcher("controladorcpp?operacion=listar");
