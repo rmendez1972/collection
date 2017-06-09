@@ -21,6 +21,15 @@
                 params.serie=$("#serie").val();
                 params.id_nivel=$("#id_nivel").val();
                 params.id_delegacion=$("#id_delegacion").val();
+                params.password=$("#password").val();
+                
+                /*
+                if(params.password != null){
+                    $.post("controladorusuario?operacion=validarPass", params, function(datos){
+                    $("#show").html(datos);
+                    },"html");
+                    
+                }*/
                 
                 if(params.id_nivel == 0){
                     alert("Seleccione un nivel");
@@ -83,7 +92,7 @@
                                                     
                             <label for="paswword" class="col-xs-12 col-md-2 control-label ">Contraseña:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="password" name="password" class="form-control" id="password" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9\0-9]{5,12})" placeholder="Mín.5 Máx. 12 caracteres"maxlength="12" value="******" />
+                                <input type="password" name="password" class="form-control" id="password" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9\0-9]{5,12})" placeholder="Mín.5 Máx. 12 caracteres"maxlength="12" value="" />
                             </div>
                         </div>
                         

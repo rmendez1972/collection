@@ -83,6 +83,7 @@ public class ControladorUsuario extends ControladorBase {
             usr.setId_del(Integer.parseInt(request.getParameter("id_delegacion")));
             usr.setSerie(request.getParameter("serie").toUpperCase());
             usr.setUsuario(request.getParameter("usuario").toUpperCase());
+            usr.setPassword(request.getParameter("password"));
          
             GestionUsuario modelo=new GestionUsuario();
             if(modelo.actualizarUsuario(usr)){
@@ -139,4 +140,11 @@ public class ControladorUsuario extends ControladorBase {
         Map param = new HashMap();
         generarReporte("ReporteUsuarios.jasper", param, request, response);
     }
+    /*
+    public void validarPass(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        Usuario usr = new Usuario();
+        GestionUsuario modelo = new GestionUsuario();
+        
+        
+    }*/
 }
