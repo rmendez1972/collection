@@ -13,15 +13,15 @@ import java.math.BigDecimal;
  * @author Ismael
  */
 public class Salmindf {
-    private int id_salmindf;
+    private Integer id_salmindf;
     private Date fecha;
     private BigDecimal importe;
     
     //constructor de la clase
-    public Salmindf(){
+    public Salmindf(){super();
     }
     
-    public Salmindf(int id_salmindf, Date fecha, BigDecimal importe)
+    public Salmindf(Integer id_salmindf, Date fecha, BigDecimal importe)
     {
         this.id_salmindf=id_salmindf;
         this.fecha=fecha;
@@ -31,11 +31,11 @@ public class Salmindf {
     
     //get y set de nivel
     
-    public int getId_salmindf() {
+    public Integer getId_salmindf() {
         return id_salmindf;
     }
 
-    public void setId_salmindf(int id_salmindf) {
+    public void setId_salmindf(Integer id_salmindf) {
         this.id_salmindf = id_salmindf;
     }
     

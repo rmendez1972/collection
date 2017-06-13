@@ -112,6 +112,14 @@ body {
 	/*padding-top:0%;*/
 }/*Fin clase encabezado*/
 
+.encabezadofrm{
+	font-family:Conv_roundedelegance;
+	line-height: normal;
+	vertical-align: center;
+        text-align: center;
+        
+}/*Fin clase encabezadofrm*/
+
     /*Clase btn-tabla para utilizarse en los enlaces (iconos) de las tablas*/
     .btn-tabla{ 
         width:22px;

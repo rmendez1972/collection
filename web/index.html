@@ -79,6 +79,7 @@
                 <li class="dropdown-header">Tasas Financieras</li>
                 <li id="cpp"><a href="#" ><span class="fa fa-dollar"></span>CPP</a></li>
                 <li id="salmin"><a href="#" ><span class="fa fa-dollar"></span> Salarios Minimos</a></li>
+                <li id="salmindf"><a href="#" ><span class="fa fa-dollar"></span> Salarios Minimos DF</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Claves de Movimiento</li>
                 <li id="clavemov"><a href="#" ><span class="fa fa-file-text"></span>Claves de Movimiento</a></li>
@@ -174,6 +175,12 @@
                     
                     event.preventDefault();
                     cargar('controladorsalmin?operacion=listar','#show');
+                });
+                
+                $("#salmindf").click(function (event) {
+                    
+                    event.preventDefault();
+                    cargar('controladorsalmindf?operacion=listar','#show');
                 });
                 
                 $("#caja").click(function (event) {

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cpp" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b43ee864-294b-4b35-bf52-65b92962416a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from salmindf;]]>
+	</queryString>
+	<field name="Id_salmindf" class="java.lang.Integer"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="importe" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="144" splitType="Stretch">
+			<image scaleImage="RealHeight" hAlign="Center">
+				<reportElement uuid="1e1ba5e4-889c-48e6-8c9f-df72ea923f9f" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="752" height="98"/>
+				<imageExpression><![CDATA["..\\imagenes\\seduvi.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="0503b35f-acc0-4832-a848-290874a81fd8" x="3" y="121" width="749" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Catálogo de Salarios Mínimos DF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="06d7dbe0-d4e4-45ca-a2f8-c681c6933dc0" x="0" y="98" width="752" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sistema de Cobranza]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="aebb78e7-ae50-41de-93e7-7fbe825ecee0" x="307" y="10" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aebb78e7-ae50-41de-93e7-7fbe825ecee0" x="515" y="10" width="100" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Importe]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="8ff6860c-0934-4b45-aa89-b2ee42399fee" x="11" y="34" width="725" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="aebb78e7-ae50-41de-93e7-7fbe825ecee0" x="104" y="11" width="94" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Id_salmindf]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="6" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="ca05fd41-366b-4b61-b3b9-48cab066e4e0" x="307" y="5" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ca05fd41-366b-4b61-b3b9-48cab066e4e0" x="515" y="5" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["$ "+$F{importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="71a0072f-9595-43a8-90c1-f53c9bdb0660" x="101" y="6" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Id_salmindf}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="a0b5696e-3ba9-4296-a362-e7894bccd469" x="97" y="20" width="108" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="51a3c960-f02c-414d-ae6a-b6067eacb9a4" x="20" y="20" width="74" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Reporte:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="cb62d044-f498-4b8f-904d-a23de4369c1e" x="586" y="20" width="98" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="7d1bab7e-0e0f-4050-b36a-7e5e9e4cac9b" x="684" y="20" width="40" height="20"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

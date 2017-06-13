@@ -31,6 +31,11 @@
             });
         }
         
+        $(document).ready(function(){
+            
+            $('#salmindflist').DataTable();
+        });
+        
         <c:if test="${msg != null}">
             alert('${msg}');
         </c:if>
@@ -53,7 +58,7 @@
         </div>
         
         <div class="table-responsive listado">
-        <table class="table table-condensed table-hover" id="salmindf">
+        <table class="table table-condensed table-hover" id="salmindflist">
             <thead>
                 <tr>
                     <th>Id_SalminDF</th>
@@ -68,7 +73,7 @@
                     <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
                         <td> <c:out value="${smdf.id_salmindf}" /></td>
                         <td> <c:out value="${smdf.fecha}" /></td>
-                        <td><c:out value="${smdf.importe}" /></td>
+                        <td><c:out value="$${smdf.importe}" /></td>
                         <td>
                             <img src="imagenes/editar.png"   class="btn-tabla" title="Editar registro"   onclick="editarSalmindf  (${smdf.id_salmindf});" />
                             <img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar registro" onclick="eliminarSalmindf(${smdf.id_salmindf});"/>

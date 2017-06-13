@@ -3,11 +3,11 @@
  * and open the template in the editor.
  */
 package Modelo;
+
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javabeans.Salmindf;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  *
@@ -15,50 +15,53 @@ import java.util.Date;
  */
 
 public class GestionSalmindf {
-    /*
-    public boolean registroUsuario(Usuario usr){
-        Object params[]={usr.getNombre(), usr.getId_nivel(), usr.getDireccion(), usr.getCargo(), usr.getId_del(), usr.getSerie(), usr.getUsuario(), usr.getPassword()};
-        return Conexion.ejecutar("insert into usuarios (nombre, id_nivel, direccion, cargo, id_del, serie, usuario, password) values (UPPER(?),?,UPPER(?),UPPER(?),?,UPPER(?),UPPER(?),UPPER(?))", params);
+    
+    public boolean registroSalmindf(Salmindf salmindf){
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+        String fecha=sdf.format(salmindf.getFecha());
+        String importe=salmindf.getImporte().toString();
+        Object params[]={fecha, importe};
+        return Conexion.ejecutar("insert into salmindf (fecha, importe) values (?,?)", params);
     }
     
-    public Usuario obtenerPorId(int id_usuario){
-        Usuario usr=null;
-        Object params[]={id_usuario};
-        ResultSet res=Conexion.ejecutarConsulta("select * from usuarios where id_usuario=?", params);
-        try{
-            if(res.next())
-                usr=new Usuario(res.getInt("id_usuario"), res.getString("usuario"),  res.getString("password"), res.getInt("id_nivel"), res.getInt("id_del"), res.getString("serie"),res.getString("nombre"), res.getString("cargo"), res.getString("direccion"));
-            res.close();
-        }catch(Exception e){}
-        return usr;
+    public Salmindf obtenerPorId(int id_salmindf){
+    Salmindf salmindf=null;
+    Object params[]={id_salmindf};
+    ResultSet res=Conexion.ejecutarConsulta("select * from salmindf where id_salmindf=?", params);
+    try{
+        if(res.next())
+        //  salmindf =new Salmindf(res.getDate("fecha"), res.getBigDecimal("importe"), res.getInt("id_salmindf"));
+            salmindf= new Salmindf(res.getInt("id_salmindf"), res.getDate("fecha"), res.getBigDecimal("importe"));
+        res.close();
+    }catch(Exception e){}
+    return salmindf;
     }
-*/
+
     public ArrayList obtenerSalmindf(){        
         ArrayList lista=new ArrayList();
-       
         ResultSet res=Conexion.ejecutarConsulta("select * from salmindf order by id_salmindf asc", null);
         try{
             while(res.next()){
-            
-                //Date fecha = new Date(res.getTimestamp("fecha").getTime());
-                
+            //Date fecha = new Date(res.getTimestamp("fecha").getTime());
                 Salmindf st=new Salmindf(res.getInt("id_salmindf"), res.getTimestamp("fecha"), res.getBigDecimal("importe"));
                 lista.add(st);
-                
-
             }
             res.close();
         }catch(Exception e){}
         return lista;
     }
-
-    
-    /*
-    public boolean actualizarUsuario(Usuario usr){
-        Object params[]={usr.getNombre(), usr.getId_nivel(), usr.getDireccion(), usr.getCargo(), usr.getId_del(), usr.getSerie(), usr.getUsuario(), usr.getId_usuario()};
-        return Conexion.ejecutar("update usuarios set nombre=UPPER(?), id_nivel=?, direccion=UPPER(?), cargo=UPPER(?), id_del=?, serie=UPPER(?), usuario=? where id_usuario=?", params);
+  
+   
+    public boolean actualizarSalmindf(Salmindf salmindf){
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+        String fecha=sdf.format(salmindf.getFecha());
+        String importe=salmindf.getImporte().toString();
+        String id_salmindf= salmindf.getId_salmindf().toString();
+        Object params[]={fecha, importe,id_salmindf};
+        //hjhfdsh
+        return Conexion.ejecutar("update salmindf set fecha=?, importe=? where id_salmindf=?", params);
     }
-    */
+  
     public boolean eliminarPorId(int id_salmindf){
         Object params[]={id_salmindf};
         return Conexion.ejecutar("delete from salmindf where id_salmindf=?", params);
