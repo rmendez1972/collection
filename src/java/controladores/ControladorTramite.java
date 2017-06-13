@@ -6,7 +6,7 @@ package controladores;
 
 import Modelo.GestionRequisito;
 import Modelo.GestionTramite;
-import Modelo.GestionUnidadAdministrativa;
+import Modelo.GestionNiveles;
 import Modelo.GestionDirecciones;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ public class ControladorTramite extends ControladorBase {
     }
     
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        GestionUnidadAdministrativa modua=new GestionUnidadAdministrativa();
+        GestionNiveles modua=new GestionNiveles();
         ArrayList ua=modua.obtenerTodos();
         request.setAttribute("ua", ua);
         /*igh*/
@@ -90,7 +90,7 @@ public class ControladorTramite extends ControladorBase {
            int id=Integer.parseInt(request.getParameter("id"));
            Tramite tramite=modelo.obtenerPorId(id);
            
-           GestionUnidadAdministrativa mod_ua=new GestionUnidadAdministrativa();
+           GestionNiveles mod_ua=new GestionNiveles();
            ArrayList ua=mod_ua.obtenerTodos();
            GestionDirecciones mod_dir=new GestionDirecciones();
            ArrayList dir=mod_dir.obtenerTodos();

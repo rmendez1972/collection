@@ -5,8 +5,8 @@
 package controladores;
 
 import Modelo.GestionDirecciones;
-import Modelo.GestionGrupo;
-import Modelo.GestionUnidadAdministrativa;
+import Modelo.GestionDelegacion;
+import Modelo.GestionNiveles;
 import Modelo.GestionUsuario;
 import java.io.File;
 import java.io.PrintWriter;
@@ -55,18 +55,18 @@ public class ControladorUsuario extends ControladorBase {
             GestionUsuario modelo=new GestionUsuario();
             Usuario usr=modelo.obtenerPorId(id);
             
-            GestionUnidadAdministrativa mod_ua=new GestionUnidadAdministrativa();
-            GestionGrupo mod_grp=new GestionGrupo();
+            GestionNiveles mod_niv=new GestionNiveles();
+            GestionDelegacion mod_del=new GestionDelegacion();
             //GestionDirecciones mod_dir=new GestionDirecciones();
             
-            ArrayList ua=mod_ua.obtenerTodos();
-            ArrayList grupos=mod_grp.obtenerTodos();
+            ArrayList niv=mod_niv.obtenerTodos();
+            ArrayList del=mod_del.obtenerTodos();
             //ArrayList dir=mod_dir.obtenerTodos();
             
             request.setAttribute("usr", usr);
-            request.setAttribute("ua", ua);
+            request.setAttribute("niv", niv);
             //request.setAttribute("dir", dir);
-            request.setAttribute("grupo", grupos);
+            request.setAttribute("del", del);
             
             RequestDispatcher rd=request.getRequestDispatcher("frm_modificausuario.jsp");
             rd.forward(request,response);
@@ -76,22 +76,14 @@ public class ControladorUsuario extends ControladorBase {
     public void editarGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Usuario usr=new Usuario();
             usr.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
-            usr.setNombre(request.getParameter("nombre"));
+            usr.setNombre(request.getParameter("nombre").toUpperCase());
             usr.setId_nivel(Integer.parseInt(request.getParameter("id_nivel")));
-            usr.setDireccion(request.getParameter("direccion"));
-            usr.setCargo(request.getParameter("cargo"));
+            usr.setDireccion(request.getParameter("direccion").toUpperCase());
+            usr.setCargo(request.getParameter("cargo").toUpperCase());
             usr.setId_del(Integer.parseInt(request.getParameter("id_delegacion")));
-            usr.setSerie(request.getParameter("serie"));
-            usr.setUsuario(request.getParameter("usuario"));
-            //usr.setPassword(request.getParameter("password"));
-            /*
-            usr.setNombre(request.getParameter("nombre"));
-            usr.setApellido_paterno(request.getParameter("apellido_paterno"));
-            usr.setApellido_materno(request.getParameter("apellido_materno"));
-            usr.setId_unidadadministrativa(Integer.parseInt(request.getParameter("id_unidadadministrativa")));
-            usr.setId_grupo(Integer.parseInt(request.getParameter("id_grupo")));
-             usr.setId_direccion(Integer.parseInt(request.getParameter("id_direccion"))); 
-            usr.setUsuario(request.getParameter("usuario"));*/
+            usr.setSerie(request.getParameter("serie").toUpperCase());
+            usr.setUsuario(request.getParameter("usuario").toUpperCase());
+            usr.setPassword(request.getParameter("password"));
          
             GestionUsuario modelo=new GestionUsuario();
             if(modelo.actualizarUsuario(usr)){
@@ -107,13 +99,13 @@ public class ControladorUsuario extends ControladorBase {
     }
     
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
-            GestionUnidadAdministrativa mod_ua=new GestionUnidadAdministrativa();
-            GestionGrupo mod_grp=new GestionGrupo();
-            ArrayList ua=mod_ua.obtenerTodos();
-            ArrayList grupos=mod_grp.obtenerTodos();
+            GestionNiveles mod_niv=new GestionNiveles();
+            GestionDelegacion mod_del=new GestionDelegacion();
+            ArrayList niv=mod_niv.obtenerTodos();
+            ArrayList del=mod_del.obtenerTodos();
             
-            request.setAttribute("ua", ua);
-            request.setAttribute("grupo", grupos);
+            request.setAttribute("niv", niv);
+            request.setAttribute("del", del);
             
             RequestDispatcher rd=request.getRequestDispatcher("frm_usuario.jsp");
             rd.forward(request,response);
@@ -121,21 +113,15 @@ public class ControladorUsuario extends ControladorBase {
     
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Usuario usr=new Usuario();
-            usr.setNombre(request.getParameter("nombre"));
+            usr.setNombre(request.getParameter("nombre").toUpperCase());
             usr.setId_nivel(Integer.parseInt(request.getParameter("id_nivel")));
-            usr.setDireccion(request.getParameter("direccion"));
-            usr.setCargo(request.getParameter("cargo"));
+            usr.setDireccion(request.getParameter("direccion").toUpperCase());
+            usr.setCargo(request.getParameter("cargo").toUpperCase());
             usr.setId_del(Integer.parseInt(request.getParameter("id_delegacion")));
-            usr.setSerie(request.getParameter("serie"));
-            usr.setUsuario(request.getParameter("usuario"));
+            usr.setSerie(request.getParameter("serie").toUpperCase());
+            usr.setUsuario(request.getParameter("usuario").toUpperCase());
             usr.setPassword(request.getParameter("password"));
             
-            /*
-            usr.setApellido_paterno(request.getParameter("apellido_paterno"));
-            usr.setApellido_materno(request.getParameter("apellido_materno"));
-            usr.setId_unidadadministrativa(Integer.parseInt(request.getParameter("id_unidadadministrativa")));
-            usr.setId_direccion(Integer.parseInt(request.getParameter("id_direccion")));
-            usr.setId_grupo(Integer.parseInt(request.getParameter("id_grupo"))); */
             
             GestionUsuario modelo=new GestionUsuario();
             if(modelo.registroUsuario(usr)){
@@ -154,4 +140,11 @@ public class ControladorUsuario extends ControladorBase {
         Map param = new HashMap();
         generarReporte("ReporteUsuarios.jasper", param, request, response);
     }
+    /*
+    public void validarPass(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        Usuario usr = new Usuario();
+        GestionUsuario modelo = new GestionUsuario();
+        
+        
+    }*/
 }

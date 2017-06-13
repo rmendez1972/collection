@@ -4,7 +4,7 @@
  */
 package controladores;
 
-import Modelo.GestionAdjunto;
+import Modelo.GestionColonia;
 import control.Tools;
 import Modelo.GestionSeguimiento;
 import Modelo.GestionSexo;
@@ -12,7 +12,7 @@ import Modelo.GestionSolicitante;
 import Modelo.GestionSolicitud;
 import Modelo.GestionStatus;
 import Modelo.GestionTramite;
-import Modelo.GestionUnidadAdministrativa;
+import Modelo.GestionNiveles;
 import Modelo.conectaMysql;
 import Modelo.mail;
 import com.google.gson.Gson;
@@ -193,7 +193,7 @@ public class ControladorSeguimiento extends HttpServlet
             tramite= oper3.obtenerPorId(id_tramite);
             id_unidadadministrativatramite=tramite.getId_unidadadministrativa();
                     
-            GestionUnidadAdministrativa oper4=new GestionUnidadAdministrativa(); 
+            GestionNiveles oper4=new GestionNiveles(); 
             ua = oper4.obtenerTodos(); 
           
             GestionSexo oper5 =new GestionSexo();
@@ -202,7 +202,7 @@ public class ControladorSeguimiento extends HttpServlet
             GestionStatus oper6 =new GestionStatus();
             status= oper6.obtenerTodos();
             
-            GestionUnidadAdministrativa gua=new GestionUnidadAdministrativa(); 
+            GestionNiveles gua=new GestionNiveles(); 
             ua = gua.obtenerTodos();
             uatramite=oper4.obtenerPorId(id_unidadadministrativatramite);
           
@@ -278,7 +278,7 @@ public class ControladorSeguimiento extends HttpServlet
             tm = oper3.obtenerTodos();
             tramite= oper3.obtenerPorId(id_tramite);
                     
-            GestionUnidadAdministrativa oper4=new GestionUnidadAdministrativa(); 
+            GestionNiveles oper4=new GestionNiveles(); 
             ua = oper4.obtenerTodos(); 
           
             GestionSexo oper5 =new GestionSexo();
@@ -551,7 +551,7 @@ public class ControladorSeguimiento extends HttpServlet
             tramite= oper3.obtenerPorId(id_tramite);
             id_unidadadministrativatramite = tramite.getId_unidadadministrativa();
             
-            GestionUnidadAdministrativa oper4=new GestionUnidadAdministrativa(); 
+            GestionNiveles oper4=new GestionNiveles(); 
             ua = oper4.obtenerTodos();
             uatramite=oper4.obtenerPorId(id_unidadadministrativatramite);
           
@@ -823,7 +823,7 @@ public class ControladorSeguimiento extends HttpServlet
           id_unidadadministrativa=tramite.getId_unidadadministrativa();
           nombretramite=tramite.getNombre();
           
-          GestionUnidadAdministrativa gua=new GestionUnidadAdministrativa(); 
+          GestionNiveles gua=new GestionNiveles(); 
           ua=gua.obtenerPorId(id_unidadadministrativa);
           nombreunidadadministrativa=ua.getNombre();
           

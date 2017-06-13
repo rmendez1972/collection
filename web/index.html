@@ -35,6 +35,7 @@
     <!-- Iconos fuentes personalizadas para la aplicación -->
     <link href="assets/css/iconmoon.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
     <!-- Estilos personalizados para la aplicación -->
     <link href="assets/css/style.css" rel="stylesheet">
     
@@ -72,16 +73,28 @@
               <ul class="dropdown-menu">
                 <li id="usuarios"><a href="#" ><span class="fa fa-user"></span> Usuarios</a></li>
                 <li id="niveles"><a href="#" ><span class="fa fa-sort-amount-desc"></span> Niveles</a></li>
+                <li id="delegaciones"><a href="#" ><span class="fa fa-group"></span> Delegaciones</a></li>
                 <li><a href="#">Otra accióin</a></li>
-                <li><a href="#">Cualquier cosa</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Tasas Financieras</li>
                 <li id="cpp"><a href="#" ><span class="fa fa-dollar"></span>CPP</a></li>
                 <li id="salmin"><a href="#" ><span class="fa fa-dollar"></span> Salarios Minimos</a></li>
-                <li><a href="#">link2</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Claves de Movimiento</li>
+                <li id="clavemov"><a href="#" ><span class="fa fa-file-text"></span>Claves de Movimiento</a></li>
+                <li id="clvdiv"><a href="#" ><span class="fa fa-tag"></span> Claves de Movimientos Diversos</a></li>
+                <li role="separator" class="divider"></li>
+                <li id="emisores"><a href="#" ><span class="fa fa-podcast"></span> Emisores</a></li>
+                <li id="caja"><a href="#" ><span class="fa fa-bank"></span> Cajas</a></li>
+                <li role="separator" class="divider"></li>
+                <li id="tipocredito"><a href="#" ><span class="fa fa-credit-card-alt"></span>Tipos de Crédito</a></li>
+                <li id="banco"><a href="#" ><span class="fa fa-bank"></span>Bancos</a></li>
+                <li id="bonificacion"><a href="#" ><span class="fa fa-handshake-o"></span>Bonificaciones</a></li>
+                <li id="colonia"><a href="#" ><span class="fa fa-building"></span>Colonias</a></li>
+
               </ul>
             <li><a href="#cerrar"><span class="fa fa-power-off"></span> Cerrar sesión</a></li>
-            </li>
+            
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -135,6 +148,9 @@
     <!-- Librerias javaScript de la aplicacion tramites -->
     <script type="text/javascript" language="JavaScript" src="assets/js/script_cobranza.js"></script>
     <script src="assets/js/jquery.confirm.js"></script>
+    
+  
+    <script type="text/javascript" charset="utf-8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
     <script> //Script para definir las áreas en donde se cargará el contenido
             $(document).ready(function(){
                 $("#usuarios").click(function (event) {
@@ -149,10 +165,27 @@
                     cargar('controladornivel?operacion=listar','#show');
                 });
                 
+                $("#delegaciones").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladordelegacion?operacion=listar','#show');
+                });
+                
                 $("#salmin").click(function (event) {
                     
                     event.preventDefault();
                     cargar('controladorsalmin?operacion=listar','#show');
+                });
+                
+                $("#caja").click(function (event) {
+                    
+                    event.preventDefault();
+                    cargar('controladorcaja?operacion=listar','#show');
+                });
+                
+                $("#emisores").click(function (event) {
+                    
+                    event.preventDefault();
+                    cargar('controladoremisor?operacion=listar','#show');
                 });
                 
                 $("#consultar").click(function (event) {
@@ -163,6 +196,38 @@
                 $("#cpp").click(function (event) {
                     event.preventDefault();
                     cargar('controladorcpp?operacion=listar','#show');
+                });
+                
+                $("#tipocredito").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladortipocredito?operacion=listar','#show');
+                });
+                
+                $("#banco").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorbanco?operacion=listar','#show');
+                });
+                
+                $("#bonificacion").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorbonificacion?operacion=listar','#show');
+                });
+                
+                $("#colonia").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorcolonia?operacion=listar','#show');
+                });
+                
+
+                $("#clavemov").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorclavemov?operacion=listar','#show');
+                });
+                
+                $("#clvdiv").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorclavediversos?operacion=listar','#show');
+
                 });
                 
                 $("#reportes").click(function (event) {

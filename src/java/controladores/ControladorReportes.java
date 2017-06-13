@@ -5,14 +5,14 @@
 package controladores;
 
 import Modelo.GestionRequisito;
-import Modelo.GestionGrupo;
+import Modelo.GestionDelegacion;
 import Modelo.GestionSeguimiento;
 import Modelo.GestionSexo;
 import Modelo.GestionSolicitante;
 import Modelo.GestionSolicitud;
 import Modelo.GestionStatus;
 import Modelo.GestionTramite;
-import Modelo.GestionUnidadAdministrativa;
+import Modelo.GestionNiveles;
 import Modelo.conectaMysql;
 import Modelo.mail;
 import java.io.File;
@@ -90,7 +90,7 @@ public class ControladorReportes extends HttpServlet
         
         if(operacion.equals("frm_reportesolicitudes"))
         {
-            GestionUnidadAdministrativa oper1=new GestionUnidadAdministrativa();
+            GestionNiveles oper1=new GestionNiveles();
             ArrayList ua=oper1.obtenerTodos();
             
             GestionStatus gstatus = new GestionStatus();
@@ -104,7 +104,7 @@ public class ControladorReportes extends HttpServlet
         
          if(operacion.equals("frm_reporteseguimientos"))
         {
-            GestionUnidadAdministrativa oper1=new GestionUnidadAdministrativa();
+            GestionNiveles oper1=new GestionNiveles();
             ArrayList ua=oper1.obtenerTodos();
             
             GestionStatus gstatus = new GestionStatus();
@@ -123,7 +123,7 @@ public class ControladorReportes extends HttpServlet
          
          if(operacion.equals("frm_reporteadjuntos"))
         {
-            GestionUnidadAdministrativa oper1=new GestionUnidadAdministrativa();
+            GestionNiveles oper1=new GestionNiveles();
             ArrayList ua=oper1.obtenerTodos();
             
             GestionStatus gstatus = new GestionStatus();
@@ -141,10 +141,10 @@ public class ControladorReportes extends HttpServlet
          
         if(operacion.equals("frm_reporteusuarios"))
         {
-            GestionUnidadAdministrativa oper1=new GestionUnidadAdministrativa();
+            GestionNiveles oper1=new GestionNiveles();
             ArrayList ua=oper1.obtenerTodos();
             
-            GestionGrupo gpo=new GestionGrupo();
+            GestionDelegacion gpo=new GestionDelegacion();
             ArrayList gp=gpo.obtenerTodos();
                                    
             request.setAttribute("ua",ua);
@@ -155,7 +155,7 @@ public class ControladorReportes extends HttpServlet
          
         if(operacion.equals("frm_reportetramites"))
         {
-            GestionUnidadAdministrativa oper1=new GestionUnidadAdministrativa();
+            GestionNiveles oper1=new GestionNiveles();
             ArrayList ua=oper1.obtenerTodos();
             
                         

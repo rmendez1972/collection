@@ -15,7 +15,7 @@ public class GestionUsuario {
     
     public boolean registroUsuario(Usuario usr){
         Object params[]={usr.getNombre(), usr.getId_nivel(), usr.getDireccion(), usr.getCargo(), usr.getId_del(), usr.getSerie(), usr.getUsuario(), usr.getPassword()};
-        return Conexion.ejecutar("insert into usuarios (nombre, id_nivel, direccion, cargo, id_del, serie, usuario, password) values (UPPER(?),?,UPPER(?),UPPER(?),?,UPPER(?),UPPER(?),UPPER(?))", params);
+        return Conexion.ejecutar("insert into usuarios (nombre, id_nivel, direccion, cargo, id_del, serie, usuario, password) values (UPPER(?),?,UPPER(?),UPPER(?),?,UPPER(?),UPPER(?), md5(?))", params);
     }
     
     public Usuario obtenerPorId(int id_usuario){
@@ -58,8 +58,8 @@ public class GestionUsuario {
     }
     
     public boolean actualizarUsuario(Usuario usr){
-        Object params[]={usr.getNombre(), usr.getId_nivel(), usr.getDireccion(), usr.getCargo(), usr.getId_del(), usr.getSerie(), usr.getUsuario(), usr.getId_usuario()};
-        return Conexion.ejecutar("update usuarios set nombre=UPPER(?), id_nivel=?, direccion=UPPER(?), cargo=UPPER(?), id_del=?, serie=UPPER(?), usuario=? where id_usuario=?", params);
+        Object params[]={usr.getNombre(), usr.getId_nivel(), usr.getDireccion(), usr.getCargo(), usr.getId_del(), usr.getSerie(), usr.getUsuario(), usr.getPassword(), usr.getId_usuario()};
+        return Conexion.ejecutar("update usuarios set nombre=UPPER(?), id_nivel=?, direccion=UPPER(?), cargo=UPPER(?), id_del=?, serie=UPPER(?), usuario=?, password=md5(?) where id_usuario=?", params);
     }
     /*
     public ArrayList obtenerPermisos(int id_usuario){

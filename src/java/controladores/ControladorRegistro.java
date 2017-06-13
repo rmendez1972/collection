@@ -12,7 +12,7 @@ import Modelo.GestionSolicitante;
 import Modelo.GestionSolicitud;
 import Modelo.GestionStatus;
 import Modelo.GestionTramite;
-import Modelo.GestionUnidadAdministrativa;
+import Modelo.GestionNiveles;
 import Modelo.GestionDirecciones;
 import Modelo.conectaMysql;
 import Modelo.mail;
@@ -95,7 +95,7 @@ public class ControladorRegistro extends HttpServlet
         
          if(operacion.equals("capturar"))
         {
-            GestionUnidadAdministrativa oper1=new GestionUnidadAdministrativa();
+            GestionNiveles oper1=new GestionNiveles();
             ArrayList ua=oper1.obtenerTodos();
             
             request.setAttribute("ua",ua);
@@ -343,7 +343,7 @@ public class ControladorRegistro extends HttpServlet
                 rd.forward(request,response);
             }else
             {
-                GestionUnidadAdministrativa gua=new GestionUnidadAdministrativa(); 
+                GestionNiveles gua=new GestionNiveles(); 
                 unidadadministrativa = gua.obtenerPorId(id_unidadadministrativa);
                 String nombreunidadadministrativa=unidadadministrativa.getNombre();  //nombre de la subsecretaria
                 
@@ -383,7 +383,7 @@ public class ControladorRegistro extends HttpServlet
             Integer id_unidadadministrativa=usuario.getId_unidadadministrativa();
             GestionSolicitud oper2=new GestionSolicitud();
             
-                GestionUnidadAdministrativa gua=new GestionUnidadAdministrativa(); 
+                GestionNiveles gua=new GestionNiveles(); 
                 unidadadministrativa = gua.obtenerPorId(id_unidadadministrativa);
                 String nombreunidadadministrativa=unidadadministrativa.getNombre();
                 
@@ -485,7 +485,7 @@ public class ControladorRegistro extends HttpServlet
                 tm = oper3.obtenerTodos();
                 tramite= oper3.obtenerPorId(id_tramite);
 
-                GestionUnidadAdministrativa oper4=new GestionUnidadAdministrativa(); 
+                GestionNiveles oper4=new GestionNiveles(); 
                 ua = oper4.obtenerTodos(); 
 
                 GestionSexo oper5 =new GestionSexo();
@@ -700,7 +700,7 @@ public class ControladorRegistro extends HttpServlet
             unidadadministrativanombre=t.getUnidadAdministrativa();
             Integer mid_unidadadministrativa=t.getId_unidadadministrativa();
             
-            GestionUnidadAdministrativa gua=new GestionUnidadAdministrativa();
+            GestionNiveles gua=new GestionNiveles();
             UnidadAdministrativa ua = gua.obtenerPorId(mid_unidadadministrativa);
             String emailua=ua.getEmail();
             String nombreua=ua.getNombre();
@@ -785,7 +785,7 @@ public class ControladorRegistro extends HttpServlet
             unidadadministrativanombre=t.getUnidadAdministrativa();
             Integer mid_unidadadministrativa=t.getId_unidadadministrativa();
             
-            GestionUnidadAdministrativa gua=new GestionUnidadAdministrativa();
+            GestionNiveles gua=new GestionNiveles();
             UnidadAdministrativa ua = gua.obtenerPorId(mid_unidadadministrativa);
             String emailua=ua.getEmail();
             String nombreua=ua.getNombre();
