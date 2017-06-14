@@ -80,6 +80,7 @@
                 <li class="dropdown-header">Tasas Financieras</li>
                 <li id="cpp"><a href="#" ><span class="fa fa-dollar"></span>CPP</a></li>
                 <li id="salmin"><a href="#" ><span class="fa fa-dollar"></span> Salarios Minimos</a></li>
+                <li id="salmindf"><a href="#" ><span class="fa fa-dollar"></span> Salarios Minimos DF</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Claves de Movimiento</li>
                 <li id="clavemov"><a href="#" ><span class="fa fa-file-text"></span>Claves de Movimiento</a></li>
@@ -92,6 +93,7 @@
                 <li id="banco"><a href="#" ><span class="fa fa-bank"></span>Bancos</a></li>
                 <li id="bonificacion"><a href="#" ><span class="fa fa-handshake-o"></span>Bonificaciones</a></li>
                 <li id="colonia"><a href="#" ><span class="fa fa-building"></span>Colonias</a></li>
+                <li id="localidades"><a href="#" ><span class="fa fa-map-marker"></span>Localidades</a></li>
 
               </ul>
             <li><a href="#cerrar"><span class="fa fa-power-off"></span> Cerrar sesión</a></li>
@@ -177,6 +179,12 @@
                     cargar('controladorsalmin?operacion=listar','#show');
                 });
                 
+                $("#salmindf").click(function (event) {
+                    
+                    event.preventDefault();
+                    cargar('controladorsalmindf?operacion=listar','#show');
+                });
+                
                 $("#caja").click(function (event) {
                     
                     event.preventDefault();
@@ -231,9 +239,16 @@
 
                 });
                 
+
                 $("#firmantes").click(function (event) {
                     event.preventDefault();
                     cargar('controladorfirmantes?operacion=listar','#show');
+                    
+                });
+
+                $("#localidades").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorlocalidad?operacion=listar','#show');
 
                 });
                 
