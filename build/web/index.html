@@ -92,6 +92,7 @@
                 <li id="banco"><a href="#" ><span class="fa fa-bank"></span>Bancos</a></li>
                 <li id="bonificacion"><a href="#" ><span class="fa fa-handshake-o"></span>Bonificaciones</a></li>
                 <li id="colonia"><a href="#" ><span class="fa fa-building"></span>Colonias</a></li>
+                <li id="localidades"><a href="#" ><span class="fa fa-map-marker"></span>Localidades</a></li>
 
               </ul>
             <li><a href="#cerrar"><span class="fa fa-power-off"></span> Cerrar sesión</a></li>
@@ -234,6 +235,12 @@
                 $("#clvdiv").click(function (event) {
                     event.preventDefault();
                     cargar('controladorclavediversos?operacion=listar','#show');
+
+                });
+                
+                $("#localidades").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorlocalidad?operacion=listar','#show');
 
                 });
                 
