@@ -8,6 +8,8 @@ package Modelo;
  *
  * @author arturo
  */
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.*;
 
 public class Conexion {
@@ -52,6 +54,33 @@ public class Conexion {
             establecerParametros(st,parametros);
             st.execute();
             st.close();
+            parametros=null;
+            return true;
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+    
+    public static boolean ejecutarImagen(String sql, Object parametros[], String ruta){
+        try{
+            conectar();
+            
+           
+            File file = new File(ruta);
+        
+            FileInputStream fis = new FileInputStream(file);
+            
+            PreparedStatement st=conex.prepareStatement(sql);
+            st.setString(1,(String)parametros[0]);
+            st.setString(2,(String)parametros[1]);
+            st.setString(3,(String)parametros[2]);
+            st.setBinaryStream(4, fis, (int)file.length());
+            
+            //establecerParametros(st,parametros);
+            st.execute();
+            st.close();
+            fis.close();
             parametros=null;
             return true;
         }catch(Exception e){

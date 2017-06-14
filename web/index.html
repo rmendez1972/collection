@@ -74,6 +74,7 @@
                 <li id="usuarios"><a href="#" ><span class="fa fa-user"></span> Usuarios</a></li>
                 <li id="niveles"><a href="#" ><span class="fa fa-sort-amount-desc"></span> Niveles</a></li>
                 <li id="delegaciones"><a href="#" ><span class="fa fa-group"></span> Delegaciones</a></li>
+                <li id="firmantes"><a href="#" ><span class="fa fa-pencil-square-o"></span> Firmantes</a></li>
                 <li><a href="#">Otra accióin</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Tasas Financieras</li>
@@ -227,6 +228,12 @@
                 $("#clvdiv").click(function (event) {
                     event.preventDefault();
                     cargar('controladorclavediversos?operacion=listar','#show');
+
+                });
+                
+                $("#firmantes").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorfirmantes?operacion=listar','#show');
 
                 });
                 
