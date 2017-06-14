@@ -5,6 +5,7 @@
  */
 
 package javabeans;
+
 import java.util.Date;
 import java.math.BigDecimal;
 
@@ -18,8 +19,7 @@ public class Salmindf {
     private BigDecimal importe;
     
     //constructor de la clase
-    public Salmindf(){super();
-    }
+    public Salmindf(){super();}
     
     public Salmindf(Integer id_salmindf, Date fecha, BigDecimal importe)
     {

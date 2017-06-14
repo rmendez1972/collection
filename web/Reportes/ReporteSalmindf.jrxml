@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cpp" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b43ee864-294b-4b35-bf52-65b92962416a">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="5"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[select * from salmindf;]]>
@@ -37,14 +37,14 @@
 	<pageHeader>
 		<band height="39" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="aebb78e7-ae50-41de-93e7-7fbe825ecee0" x="307" y="10" width="100" height="20"/>
+				<reportElement uuid="aebb78e7-ae50-41de-93e7-7fbe825ecee0" x="47" y="10" width="100" height="20"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Fecha]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="aebb78e7-ae50-41de-93e7-7fbe825ecee0" x="515" y="10" width="100" height="20"/>
+				<reportElement uuid="aebb78e7-ae50-41de-93e7-7fbe825ecee0" x="255" y="10" width="100" height="20"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
 				</textElement>
@@ -53,13 +53,6 @@
 			<line>
 				<reportElement uuid="8ff6860c-0934-4b45-aa89-b2ee42399fee" x="11" y="34" width="725" height="1"/>
 			</line>
-			<staticText>
-				<reportElement uuid="aebb78e7-ae50-41de-93e7-7fbe825ecee0" x="104" y="11" width="94" height="20"/>
-				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
-				</textElement>
-				<text><![CDATA[Id_salmindf]]></text>
-			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -68,19 +61,14 @@
 	<detail>
 		<band height="29" splitType="Stretch">
 			<textField pattern="dd/MM/yyyy">
-				<reportElement uuid="ca05fd41-366b-4b61-b3b9-48cab066e4e0" x="307" y="5" width="100" height="20"/>
+				<reportElement uuid="ca05fd41-366b-4b61-b3b9-48cab066e4e0" x="47" y="5" width="100" height="20"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="ca05fd41-366b-4b61-b3b9-48cab066e4e0" x="515" y="5" width="100" height="20"/>
+				<reportElement uuid="ca05fd41-366b-4b61-b3b9-48cab066e4e0" x="255" y="5" width="100" height="20"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["$ "+$F{importe}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="71a0072f-9595-43a8-90c1-f53c9bdb0660" x="101" y="6" width="100" height="20"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{Id_salmindf}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
