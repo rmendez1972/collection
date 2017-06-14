@@ -35,7 +35,7 @@
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Catálogo Claves Divesos]]></text>
+				<text><![CDATA[Catálogo de Claves de Movimientos Diversos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="98" width="752" height="20" uuid="06d7dbe0-d4e4-45ca-a2f8-c681c6933dc0"/>
