@@ -39,11 +39,10 @@ public class GestionSalmindf {
 
     public ArrayList obtenerSalmindf(){        
         ArrayList lista=new ArrayList();
-        ResultSet res=Conexion.ejecutarConsulta("select * from salmindf order by id_salmindf asc", null);
+        ResultSet res=Conexion.ejecutarConsulta("select * from salmindf order by fecha asc", null);
         try{
             while(res.next()){
-            //Date fecha = new Date(res.getTimestamp("fecha").getTime());
-                Salmindf st=new Salmindf(res.getInt("id_salmindf"), res.getTimestamp("fecha"), res.getBigDecimal("importe"));
+                Salmindf st=new Salmindf(res.getInt("id_salmindf"), res.getDate("fecha"), res.getBigDecimal("importe"));
                 lista.add(st);
             }
             res.close();

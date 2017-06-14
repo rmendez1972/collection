@@ -4,7 +4,6 @@
  */
 package controladores;
 
-import Modelo.GestionCpp;
 import Modelo.GestionSalmindf;
 import java.io.File;
 import java.io.PrintWriter;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import javabeans.Cpp;
 import javabeans.Salmindf;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletOutputStream;
@@ -30,6 +28,7 @@ import net.sf.jasperreports.engine.JasperRunManager;
  *
  * @author Ismael
  */
+
 @WebServlet(name = "Controladorsalmindf", urlPatterns = {"/controladorsalmindf"})
 public class ControladorSalmindf extends ControladorBase {
 

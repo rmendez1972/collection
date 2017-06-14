@@ -43,12 +43,13 @@
     </head>
     <body>
         <h3 class="bg-primary encabezado">
-            <span class="fa fa-money" style="color: #fff"></span> Catálogo Salarios mínimos DF
+            <span class="fa fa-money" style="color: #fff"></span> 
+            Catálogo Salarios Mínimos DF
         </h3>
       
         <div class="container-fluid navbar-right">
             <div class="btn-catalogo" onclick="cargar('controladorsalmindf?operacion=nuevo','#show')" title="Agregar registro">
-                <img src="imagenes/agregar.png" />
+                <img src="imagenes/agregar.png" alt="Nuevo"/>
             </div>
             <div class="btn-catalogo">    
                 <a href="controladorsalmindf?operacion=reporte" target="_blank" title="Generar reporte">
@@ -61,23 +62,21 @@
         <table class="table table-condensed table-hover" id="salmindflist">
             <thead>
                 <tr>
-                    <th>Id_SalminDF</th>
                     <th>Fecha</th>
-                    <th>Importe</th>
-                    <th >Acciones</th>
+                    <th style="text-align:right">Importe</th>
+                    <th style="text-align:right">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- arrar smdf=Salario mínimo df-->
                 <c:forEach var="smdf" items="${requestScope.salmindf}" varStatus="loop">     
                     <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
-                        <td> <c:out value="${smdf.id_salmindf}" /></td>
-                        <td> <c:out value="${smdf.fecha}" /></td>
-                        <td><c:out value="$${smdf.importe}" /></td>
-                        <td>
+                        <th> <c:out value="${smdf.fecha}" /></th>
+                        <th style="text-align:right"><c:out value="$ ${smdf.importe}" /></th>
+                        <th style="text-align:right">
                             <img src="imagenes/editar.png"   class="btn-tabla" title="Editar registro"   onclick="editarSalmindf  (${smdf.id_salmindf});" />
                             <img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar registro" onclick="eliminarSalmindf(${smdf.id_salmindf});"/>
-                        </td>
+                        </th>
                     </tr>
                 </c:forEach>
             </tbody>
