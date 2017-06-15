@@ -75,6 +75,7 @@
                 <li id="niveles"><a href="#" ><span class="fa fa-sort-amount-desc"></span> Niveles</a></li>
                 <li id="delegaciones"><a href="#" ><span class="fa fa-group"></span> Delegaciones</a></li>
                 <li id="firmantes"><a href="#" ><span class="fa fa-pencil-square-o"></span> Firmantes</a></li>
+                <li id="modrecaudacion"><a href="#" ><span class="fa fa-window-restore"></span> Modulos Recaudación</a></li>
                 <li><a href="#">Otra accióin</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Tasas Financieras</li>
@@ -249,6 +250,12 @@
                 $("#localidades").click(function (event) {
                     event.preventDefault();
                     cargar('controladorlocalidad?operacion=listar','#show');
+
+                });
+                
+                $("#modrecaudacion").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladormodrec?operacion=listar','#show');
 
                 });
                 
