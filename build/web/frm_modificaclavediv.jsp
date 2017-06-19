@@ -64,12 +64,12 @@
                         <div class="form-group">
                             <label for="importe" class="col-xs-12 col-md-2 control-label ">Importe:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="number" step="0.01" name="importe" class="form-control" id="importe" required  placeholder="SÓLO SE ACEPTAN DECIMALES" maxlength="12" value="${cd.importe}"/>
+                                <input type="number" step="0.01" name="importe" class="form-control" id="importe"  placeholder="SÓLO SE ACEPTAN DECIMALES" maxlength="12" value="${cd.importe}"/>
                             </div>
                             
                             <label for="cuenta_cont" class="col-xs-12 col-md-2 control-label ">Cuenta Contabilidad:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="cuenta_cont" class="form-control" id="cuenta_cont" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{1,50})"  maxlength="50" placeholder="Máx. 50 caracteres" style="text-transform:uppercase" value="${cd.cuenta_cont}" />
+                                <input type="text" name="cuenta_cont" class="form-control" id="cuenta_cont" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{1,50})"  maxlength="50" placeholder="Máx. 50 caracteres" style="text-transform:uppercase" value="${cd.cuenta_cont}" />
                             </div>
                         </div>
                         
