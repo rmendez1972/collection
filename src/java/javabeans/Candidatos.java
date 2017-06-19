@@ -13,7 +13,7 @@ import java.util.Date;
  *
  * @author Rafael Mendez
  */
-public class Contratados
+public class Candidatos
 {
     private int id_candidato;
     private int id_catprog;
@@ -56,10 +56,10 @@ public class Contratados
     private Date fecha_ip;
     private String clave_b;
     
-    public Contratados(){ super();}
+    public Candidatos(){ super();}
     //constructor que permite crear un objeto
     
-     public Contratados(int id_candidato,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat, Date fecha_ip){
+     public Candidatos(int id_candidato,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat, Date fecha_ip){
          this.id_candidato=id_candidato;
          this.id_catprog=id_catprog;
          this.numcontrato = numcontrato;
@@ -72,6 +72,9 @@ public class Contratados
          this.mza=mza;
          this.lte=lte;
          this.area=area;
+         this.domicilio=domicilio;
+         this.clave_cat=clave_cat;
+         this.fecha_ip=fecha_ip;
      }
     
     public int getId_candidato() {

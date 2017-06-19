@@ -3,7 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/conf/MANIFEST.MF</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorUsuario.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/index.html</file>
@@ -20,32 +19,31 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Salmindf.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_seguimiento.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_bonificacion.jsp</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionCandidatos.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Tramite.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/assets/css/style.css</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionCpp.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_bancos.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionLocalidad.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/conectaMysql.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_firmantes.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Contratados.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionUsuario.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorLocalidad.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_cpps.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_bonificaciones.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Cpp.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorCpp.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBase.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Clavemov.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_delegaciones.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionBanco.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionBonificacion.java</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_candidatos.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/Conexion.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorEmisor.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionSalmindf.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Usuario.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorFirmantes.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Localidad.java</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Candidatos.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_localidades.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_modificaclavemov.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorCaja.java</file>
@@ -54,6 +52,7 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionClavemov.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorClavemov.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionFirmantes.java</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionColonia.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Caja.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_salmin.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBonificacion.java</file>
@@ -62,13 +61,7 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionDelegacion.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/.gitignore</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/assets/js/script_cobranza.js</file>
-=======
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/Modelo/GestionModRec.java</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/javabeans/ModulosRecaudacion.java</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/index.html</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/Reportes/ReporteModuloRecaudacion.jrxml</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/controladores/ControladorModRec.java</file>
->>>>>>> 4b901fbee564f5ab5f025d5ca8dc70e90f0deb30
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorCandidato.java</file>
         </group>
     </open-files>
 </project-private>
