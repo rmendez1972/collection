@@ -43,7 +43,7 @@
     </head>
     <body>
         <h3 class="bg-primary encabezado">
-            <span class="fa fa-money" style="color: #fff"></span> 
+            <span class="fa fa-dollar" style="color: #fff"></span> 
             Catálogo Salarios Mínimos DF
         </h3>
       
