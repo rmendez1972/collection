@@ -44,7 +44,12 @@
     </head>
     <body>
         <div class="panel panel-primary" style="margin-top: 60px">
-            <div class="panel-heading"><h4><span class="fa fa-address-book-o" style="color: #fff"></span> Modificar Salarios Mínimos DF</h4></div>
+            <div class="panel-heading">
+                <h3 style="font-family:Conv_roundedelegance;margin:0px;padding:0px;text-align: center;">
+                    <span class="fa fa-dollar" style="color: #fff">                        
+                    </span> Modificar Salarios Mínimos DF
+                </h3>
+            </div>
                 <div class="panel-body transparent">
                     <form id="form_salmindf" onsubmit="return registrar()"  class="form-horizontal">
                         <input type="hidden" name="id_salmindf" id="id_salmindf" value="${salmindf.id_salmindf}" />

@@ -68,13 +68,14 @@ public class Conexion {
             
            
             File file = new File(ruta);
-        
+            //creamos un fileinputstream a partir de un archivo del filesystem
             FileInputStream fis = new FileInputStream(file);
             
             PreparedStatement st=conex.prepareStatement(sql);
             st.setString(1,(String)parametros[0]);
             st.setString(2,(String)parametros[1]);
             st.setString(3,(String)parametros[2]);
+            //seteamos el preparedstatement para la posicion 4 de la variable sql, le pasamos el FileInputStream hasta su longitud de bytes en formato int
             st.setBinaryStream(4, fis, (int)file.length());
             
             //establecerParametros(st,parametros);

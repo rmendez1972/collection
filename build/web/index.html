@@ -67,13 +67,18 @@
           <ul class="nav navbar-nav navbar-right">
             <!--<li class="active"><a href="#">Opción1</a></li>-->
             <li><a href="#">Opción1</a></li>
-            <li><a href="#about">Opción2</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-users" style="color: #00A6CA"></span> Beneficiarios<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li id="candidatos"><a href="#" ><span class="fa fa-address-book"></span>Contratados</a></li>
+              </ul>  
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-book" style="color: #00A6CA"></span> Catálogos<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li id="usuarios"><a href="#" ><span class="fa fa-user"></span> Usuarios</a></li>
                 <li id="niveles"><a href="#" ><span class="fa fa-sort-amount-desc"></span> Niveles</a></li>
                 <li id="delegaciones"><a href="#" ><span class="fa fa-group"></span> Delegaciones</a></li>
+                <li id="autoriza"><a href="#" ><span class="fa fa-pencil-square-o "></span> Autoriza</a></li>
                 <li id="firmantes"><a href="#" ><span class="fa fa-pencil-square-o"></span> Firmantes</a></li>
                 <li id="modrecaudacion"><a href="#" ><span class="fa fa-window-restore"></span> Modulos Recaudación</a></li>
                 <li id="programas"><a href="#" ><span class="fa fa-folder"></span> Programas</a></li>
@@ -175,6 +180,11 @@
                     cargar('controladordelegacion?operacion=listar','#show');
                 });
                 
+                $("#autoriza").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorautoriza?operacion=listar','#show');
+                });
+                
                 $("#salmin").click(function (event) {
                     
                     event.preventDefault();
@@ -257,6 +267,11 @@
                 $("#modrecaudacion").click(function (event) {
                     event.preventDefault();
                     cargar('controladormodrec?operacion=listar','#show');
+
+                });
+                $("#candidatos").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorcandidato?operacion=listar','#show');
 
                 });
                 
