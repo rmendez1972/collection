@@ -52,10 +52,12 @@ public class GestionCandidatos
     
     public ArrayList obtenerCandidatos(){
         ArrayList candidatos=new ArrayList();
-        ResultSet res=Conexion.ejecutarConsulta("select * from candidatos  order by fecha cont", null);
+        ResultSet res=Conexion.ejecutarConsulta("select C.*, P.descripcion as desprograma, T.descripcion as descredito from candidatos C inner join cat_prog P on C.id_catprog=P.id_catprog inner join tipo_credito T on C.id_tipocredito=T.id_tipocredito order by C.fecha_cont", null);
         try{
             while(res.next()){
                 Candidatos candidato=new Candidatos(res.getInt("id_candidato"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getString("clave_elect"),res.getString("curp"),res.getString("rfc"),res.getString("nombre"),res.getString("conyuge"),res.getDate("fecha_con"),res.getString("mza"),res.getString("lte"),res.getBigDecimal("area"),res.getString("domicilio"),res.getString("clave_cat"),res.getDate("fecha_ip"));
+                candidato.setCatprog(res.getString("desprograma"));
+                candidato.setTipocredito(res.getString("descredito"));
                 candidatos.add(candidato);
             }
             res.close();

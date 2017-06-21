@@ -5,6 +5,8 @@
 package controladores;
 
 import Modelo.GestionCandidatos;
+import Modelo.GestionProgramas;
+import Modelo.GestionTipocredito;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -56,44 +58,75 @@ public class ControladorCandidato extends ControladorBase
         rd.forward(request,response);
     }
     
-    /*
+    
     public void editar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id=Integer.parseInt(request.getParameter("id"));
-        GestionCpp modelo=new GestionCpp();
-        Cpp cpp=modelo.obtenerPorId(id);
+        GestionCandidatos modelo=new GestionCandidatos();
+        Candidatos candidato=modelo.obtenerPorId(id);
+        
+        GestionProgramas mod_prog=new GestionProgramas();
+        GestionTipocredito mod_tcr=new GestionTipocredito();
+        ArrayList prog=mod_prog.obtenerTodos();
+        ArrayList tipo=mod_tcr.obtenerTodos();
                    
-        request.setAttribute("cpp", cpp);
+        request.setAttribute("candidato", candidato);
+        request.setAttribute("prog", prog);
+        request.setAttribute("tipo", tipo);
                     
-        RequestDispatcher rd=request.getRequestDispatcher("frm_modificacpp.jsp");
+        RequestDispatcher rd=request.getRequestDispatcher("frm_modificacandiato.jsp");
         rd.forward(request,response);
     }
     
     
     public void editarGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        Cpp cpp=new Cpp();
-        Integer id_cpp=Integer.parseInt(request.getParameter("id_cpp"));
-        cpp.setId_cpp(id_cpp);
+        Candidatos candidato=new Candidatos();
+        Integer id_candidato=Integer.parseInt(request.getParameter("id_candidato"));
+        candidato.setId_candidato(id_candidato);
+        Integer id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
+        candidato.setId_catprog(id_catprog);
+        String num_contrato=request.getParameter("numcontrato");
+        candidato.setNumcontrato(num_contrato);
+        String clave_elect=request.getParameter("clave_elect").toUpperCase();
+        candidato.setClave_elect(clave_elect);
+        String curp=request.getParameter("curp").toUpperCase();
+        candidato.setCurp(curp);
+        String rfc=request.getParameter("rfc").toUpperCase();
+        candidato.setRfc(rfc);
+        String nombre=request.getParameter("nombre").toUpperCase();
+        candidato.setNombre(nombre);
+        String conyuge=request.getParameter("conyuge").toUpperCase();
+        candidato.setConyuge(conyuge);
+               
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Date fecha = df.parse(request.getParameter("fecha"));
-        cpp.setFecha(fecha);
-        BigDecimal big = new BigDecimal(request.getParameter("importe"));
-        cpp.setImporte(big);
-          
-         
-        GestionCpp modelo=new GestionCpp();
-        if(modelo.actualizarCpp(cpp)){
-            RequestDispatcher rd=request.getRequestDispatcher("controladorcpp?operacion=listar");
+        Date fecha_con = df.parse(request.getParameter("fecha_con"));
+        candidato.setFecha_con(fecha_con);
+        String mza=request.getParameter("mza").toUpperCase();
+        candidato.setMza(mza);
+        String lte=request.getParameter("lte").toUpperCase();
+        candidato.setLte(lte);
+        BigDecimal area = new BigDecimal(request.getParameter("area"));
+        candidato.setArea(area);
+        String domicilio=request.getParameter("domicilio").toUpperCase();
+        candidato.setDomicilio(domicilio);
+        String clave_cat=request.getParameter("clave_cat").toUpperCase();
+        candidato.setClave_cat(clave_cat);
+        Date fecha_ip = df.parse(request.getParameter("fecha_ip"));
+        candidato.setFecha_ip(fecha_ip);
+        
+        GestionCandidatos modelo=new GestionCandidatos();
+        if(modelo.actualizarCandidatos(candidato)){
+            RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=listar");
             request.setAttribute("msg", "Datos guardados");
             rd.forward(request,response);
         }
         else{
-            RequestDispatcher rd=request.getRequestDispatcher("controladorcpp?operacion=editar");
+            RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=editar");
             request.setAttribute("msg", "Error al guardar. Intente de nuevo más tarde");
             rd.forward(request,response);
         }
     }
     
-    
+    /*
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
             RequestDispatcher rd=request.getRequestDispatcher("frm_cpp.jsp");
             rd.forward(request,response);

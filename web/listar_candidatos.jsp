@@ -13,19 +13,19 @@
         
         <script>
 
-        function editarCpp(id){
+        function editarContratado(id){
             var params=new Object();
             params.id=id;
-            $.post("controladorcpp?operacion=editar", params, function(datos){
+            $.post("controladorcandidato?operacion=editar", params, function(datos){
                 $("#show").html(datos);
             },"html");
         }   
-        function eliminarCpp(id){
+        function eliminarContratado(id){
             
-            confirma("", "Eliminar CPP", "Confirmar eliminación", "eliminar", function(){
+            confirma("", "Eliminar Contratado", "Confirmar eliminación", "eliminar", function(){
                 var params=new Object();
                 params.id=id;
-                $.post("controladorcpp?operacion=eliminar", params, function(datos){
+                $.post("controladorcandidato?operacion=eliminar", params, function(datos){
                     $("#show").html(datos);
                 },"html");
             });
@@ -33,7 +33,7 @@
         
         $(document).ready(function(){
             
-            $('#usuarioslist').DataTable();
+            $('#candidatoslist').DataTable();
         });
         
         
@@ -44,7 +44,7 @@
     </head>
     <body>
         <h3 class="bg-primary encabezado">
-            <span class="fa fa-dollar" style="color: #fff"></span> Catálogo de Beneficiarios Contratados
+            <span class="fa fa-file-text-o" style="color: #fff"></span> Catálogo de Beneficiarios Contratados
         </h3>
       
         <div class="container-fluid navbar-right">
@@ -59,10 +59,11 @@
         </div>
         
         <div class="table-responsive listado">
-        <table class="table table-condensed table-hover" id="usuarioslist">
+        <table class="table table-condensed table-hover" id="candidatoslist">
             <thead>
                 <tr>
                     <th>Programa</th>
+                    <th>Tipo de Crédito</th>
                     <th>Num. Contrato</th>
                     <th>Clave Elector</th>
                     <th>Curp</th>
@@ -82,20 +83,22 @@
             <tbody>
                 <c:forEach var="candidato" items="${requestScope.candidatos}" varStatus="loop"> 
                     <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
-                        <th> <c:out value="$${candidato.numcontrato}" /></th>
-                        <th> <c:out value="$${candidato.clave_elect}" /></th>
-                        <th> <c:out value="$${candidato.curp}" /></th>
-                        <th> <c:out value="$${candidato.rfc}" /></th>
-                        <th> <c:out value="$${candidato.nombre}" /></th>
-                        <th> <c:out value="$${candidato.conyuge}" /></th>
-                        <th> <c:out value="$${candidato.fecha_con}" /></th>
-                        <th> <c:out value="$${candidato.mza}" /></th>
-                        <th> <c:out value="$${candidato.lte}" /></th>
-                        <th> <c:out value="$${candidato.area}" /></th>
-                        <th> <c:out value="$${candidato.domicilio}" /></th>
-                        <th> <c:out value="$${candidato.clave_cat}" /></th>
-                        <th> <c:out value="$${candidato.fecha_ip}" /></th>
-                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar CPP" onclick="editarCpp(${cpp.id_cpp});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar CPP" onclick="eliminarCpp(${cpp.id_cpp});" /></th>
+                        <th> <c:out value="${candidato.catprog}" /></th>
+                        <th> <c:out value="${candidato.tipocredito}" /></th>
+                        <th> <c:out value="${candidato.numcontrato}" /></th>
+                        <th> <c:out value="${candidato.clave_elect}" /></th>
+                        <th> <c:out value="${candidato.curp}" /></th>
+                        <th> <c:out value="${candidato.rfc}" /></th>
+                        <th> <c:out value="${candidato.nombre}" /></th>
+                        <th> <c:out value="${candidato.conyuge}" /></th>
+                        <th> <c:out value="${candidato.fecha_con}" /></th>
+                        <th> <c:out value="${candidato.mza}" /></th>
+                        <th> <c:out value="${candidato.lte}" /></th>
+                        <th> <c:out value="${candidato.area}" /></th>
+                        <th> <c:out value="${candidato.domicilio}" /></th>
+                        <th> <c:out value="${candidato.clave_cat}" /></th>
+                        <th> <c:out value="${candidato.fecha_ip}" /></th>
+                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Contratado" onclick="editarContratado(${candidato.id_candidato});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Contratado" onclick="eliminarContratado(${candidato.id_candidato});" /></th>
                     </tr>
                 </c:forEach>
             </tbody>
