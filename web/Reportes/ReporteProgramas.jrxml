@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d05ee581-dd8c-4409-8cfb-b48461dfda02">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select P.*, TC.descripcion as tipocredito, C.descripcion as colonia, D.descripcion as delegacion, M.descripcion as modulo  from cat_prog P inner join tipo_credito TC on P.id_tipocred = TC.id_tipocredito inner join colonias C on P.id_colonia = C.id_colonia inner join delegaciones D on P.id_delegacion = D.id_delegacion inner join modulos_recaudacion M on P.id_modulo = M.id_modulo]]>
+	</queryString>
+	<field name="id_catprog" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="clave" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sub_ini" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="eng_fon" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="eng_inv" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="interes" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="admon" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="seguro" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="costo_m2" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="por_sub" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="por_admon" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="por_sv" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="por_os" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sal_min" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pago_mes" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="por_eng" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anual" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="plazo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="por_cap" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mecanica" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_del" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_tipocred" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mensual" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sub_bp" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apor_fij" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="por_pm" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="por_pf" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="clave_ant" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_colonia" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dias_gracia" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mora" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="por_ga" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cuenta_cont" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_delegacion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_modulo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipocredito" class="java.lang.String"/>
+	<field name="colonia" class="java.lang.String"/>
+	<field name="delegacion" class="java.lang.String"/>
+	<field name="modulo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="144" splitType="Stretch">
+			<image scaleImage="RealHeight" hAlign="Center">
+				<reportElement stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="968" height="98" uuid="1e1ba5e4-889c-48e6-8c9f-df72ea923f9f"/>
+				<imageExpression><![CDATA["..\\imagenes\\seduvi.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="3" y="121" width="965" height="20" uuid="0503b35f-acc0-4832-a848-290874a81fd8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Catálogo de Programas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="98" width="968" height="20" uuid="06d7dbe0-d4e4-45ca-a2f8-c681c6933dc0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sistema de Cobranza]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="10" width="34" height="20" uuid="aebb78e7-ae50-41de-93e7-7fbe825ecee0"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Clave]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="10" width="118" height="20" uuid="aebb78e7-ae50-41de-93e7-7fbe825ecee0"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="10" width="40" height="20" uuid="aebb78e7-ae50-41de-93e7-7fbe825ecee0"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Sub ini]]></text>
+			</staticText>
+			<line>
+				<reportElement x="3" y="34" width="965" height="1" uuid="8ff6860c-0934-4b45-aa89-b2ee42399fee"/>
+			</line>
+			<staticText>
+				<reportElement x="211" y="10" width="62" height="20" uuid="d5224425-863b-4c92-bb18-6f552e31d406"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Interes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="10" width="62" height="20" uuid="e8c58f8d-2b2a-4c19-bd8a-e0be714f3cc9"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Admon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="10" width="62" height="20" uuid="4f795ae7-8a69-4198-8b8d-48826e3b3066"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Seguro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="422" y="10" width="62" height="20" uuid="0faf3807-fcb1-43ea-a08f-07e747b0e35d"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Costo m2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="492" y="10" width="62" height="20" uuid="07eac9ee-b57c-42dc-a297-088890e1a2f1"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Pago mes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="564" y="10" width="62" height="20" uuid="e1ae1996-4b70-469b-b51d-d263c0bac6f3"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Plazo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="634" y="10" width="62" height="20" uuid="fcb58ccc-676b-4990-992c-a09a4210c945"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Mecanica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="703" y="10" width="62" height="20" uuid="ecc56f9d-afb6-43d9-854a-019a6be554cb"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Delegación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="773" y="10" width="62" height="20" uuid="e15db007-637e-4058-b53f-7aa8564c10e8"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Tipocredito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="843" y="10" width="62" height="20" uuid="c4c0b25b-b5ad-42fc-964a-b84b01f22007"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Clave ant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="908" y="10" width="60" height="20" uuid="ecc7eea4-9d0b-4c5e-ae83-bcddcf4dde2a"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Colonia]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="6" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="47" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="44" height="20" uuid="8b5812e8-e383-4379-be77-c920052f42b6"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clave}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="44" y="10" width="118" height="20" uuid="72e1b2ed-3bc3-4354-b20d-92b41991fc17"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="165" y="10" width="46" height="20" uuid="c53a209b-cefb-443f-98a8-0d316a8d152e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sub_ini}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="216" y="10" width="62" height="20" uuid="e1b2b84c-c904-4883-b017-db2553e48454"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{interes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="10" width="62" height="20" uuid="218bb17c-9156-49f2-a269-90b871f2a95c"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{admon}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="351" y="10" width="62" height="20" uuid="8d12895f-c6a0-45c1-abe0-614c8239f6a3"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{seguro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="10" width="62" height="20" uuid="0e5b5c8a-1354-4156-98ad-9664aa6f2dee"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costo_m2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="492" y="10" width="62" height="20" uuid="3041fb1f-211d-4fdc-9df3-8bbe7192d394"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pago_mes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="564" y="10" width="62" height="20" uuid="87765bad-7d1e-4578-b199-896bfc0b0b09"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{plazo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="634" y="10" width="62" height="20" uuid="219530c9-da4e-4150-ac43-df46e53f0e58"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mecanica}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="701" y="10" width="62" height="20" uuid="87c65d2f-be76-41d8-90b8-a8f631bd79f4"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{delegacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="770" y="10" width="62" height="20" uuid="2389d351-5324-48f0-8ba8-cfcd4130dcc6"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipocredito}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="840" y="10" width="62" height="20" uuid="42f76af4-8c91-4143-92a1-ddf50147c235"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clave_ant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="905" y="10" width="60" height="20" uuid="70856771-cbae-4db4-a60c-f6b5138afda3"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{colonia}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="97" y="20" width="108" height="20" uuid="a0b5696e-3ba9-4296-a362-e7894bccd469"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="20" width="74" height="20" uuid="51a3c960-f02c-414d-ae6a-b6067eacb9a4"/>
+				<textElement>
+					<font fontName="Tahoma" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Reporte:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="766" y="20" width="98" height="20" uuid="cb62d044-f498-4b8f-904d-a23de4369c1e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="896" y="20" width="40" height="20" uuid="7d1bab7e-0e0f-4050-b36a-7e5e9e4cac9b"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

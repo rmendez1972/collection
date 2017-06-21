@@ -3,6 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/javabeans/CatProgramas.java</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/index.html</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/Modelo/GestionProgramas.java</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/frm_programas.jsp</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/controladores/ControladorProgramas.java</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/frm_modificaprogramas.jsp</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/listar_Programas.jsp</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/Reportes/ReporteProgramas.jrxml</file>
+=======
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/conf/MANIFEST.MF</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorUsuario.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/index.html</file>
@@ -59,6 +69,7 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/.gitignore</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/assets/js/script_cobranza.js</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorCandidato.java</file>
+>>>>>>> 40e039aacc25801d12c3f7dc2d5ca345393da1b6
         </group>
     </open-files>
 </project-private>
