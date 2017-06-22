@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import javabeans.BeneficiarioDiv;
 import javabeans.Usuario;
-//import javabeans.CatProgramas;
+import javabeans.CatProgramas;
 
 
 /**
@@ -23,8 +23,7 @@ public class GestionBendiv {
         String curp=bendiv.getCurp();
         String clave_b=bendiv.getClave_b();
         String nombre=bendiv.getNombre();
-        //Integer id_catprog=bendiv.getId_catprog();
-        Integer id_catprog=1;
+        Integer id_catprog=bendiv.getId_catprog();
         Integer id_usuario=bendiv.getId_usuario();
         
         //
@@ -33,7 +32,7 @@ public class GestionBendiv {
         //String cargo=autoriza.getCargo();
           
         Object params[]={clave_elect, curp, clave_b, nombre, id_catprog, id_usuario};
-        res=Conexion.ejecutar("insert into benef_div (clave_elect, curp, clave_b,nombre,id_catprog,id_usuario) values (?,?,?,?,?,?)", params);
+        res=Conexion.ejecutar("insert into benef_div (clave_elect, curp, clave_b, nombre, id_catprog, id_usuario) values (?,?,?,?,?,?)", params);
         
         return res;
     }

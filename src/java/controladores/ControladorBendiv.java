@@ -7,7 +7,7 @@ package controladores;
 
 import Modelo.GestionBendiv;
 import Modelo.GestionUsuario;
-//import Modelo.GestionProgramas;
+import Modelo.GestionProgramas;
 
 import Modelo.conectaMysql;
 import com.google.gson.Gson;
@@ -30,9 +30,10 @@ import java.util.Scanner;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javabeans.BeneficiarioDiv;
 import javabeans.Usuario;
-//import javabeans.CatProg;
+import javabeans.CatProgramas;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.RequestDispatcher;
@@ -76,47 +77,6 @@ public class ControladorBendiv extends ControladorBase {
         return null;
 
     }
-
-    private Boolean subirAdjunto(Part p1)
-    {
-        String filename = getFileName(p1);
-        if (!filename.isEmpty())
-        {    
-            // en caso de querer escupir en un PrintWriter
-            //response.setContentType("text/html;charset=UTF-8");
-            //PrintWriter out = response.getWriter();
-            try {
-                            
-                InputStream is = p1.getInputStream();
-                String ruta="/adjuntos";
-                // ruta relativa a donde subo el archivo adjunto
-                //String outputfile = this.getServletContext().getRealPath("/adjuntos/");  // get path on the server
-                String outputfile = "c:/users/rmendez1972/documents/netbeansprojects/tramites/web/adjuntos";
-                File saveFile = new File(outputfile+"/" + filename);
-                FileOutputStream os = new FileOutputStream (saveFile);
-            
-                // lee bytes del archivo q esta como inputstream
-                int ch = is.read();
-                while (ch != -1)  //-1 significa q se alcalzó el final del stream
-                {
-                    os.write(ch);    //grabo el archivo como un outputstream
-                    ch = is.read(); //lee de nuevo el stream de entrada
-                }
-                os.close();  //dejo de grabar al archivo en disco duro
-                //out.println("<h3>Archivo adjunto subido exitosamente!</h3><a href='controladorseguimiento?operacion=listar&id_solicitud=48' ><img src='imagenes/listar.png' class='btn-tabla'  alt='Listar'  title='listar seguimientos de la solicitud'/></a>");
-            }
-            catch(Exception ex) {
-                //out.println("Exception -->" + ex.getMessage());
-                return false;
-            }
-            finally { 
-                //out.close();
-            }
-            return true;
-        }
-        return false;
-    
-    }        
 
     public void listar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         GestionBendiv modelo=new GestionBendiv();
@@ -171,8 +131,10 @@ public class ControladorBendiv extends ControladorBase {
         bendiv.setCurp(request.getParameter("curp").toUpperCase());
         bendiv.setClave_b(request.getParameter("clave_b").toUpperCase());
         bendiv.setNombre(request.getParameter("nombre").toUpperCase());
-        //Integer id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
-        //bendiv.setId_catprog(id_catprog);
+        
+        Integer id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
+        bendiv.setId_catprog(id_catprog);
+        
         Integer id_usuario=Integer.parseInt(request.getParameter("id_usuario"));
         bendiv.setId_usuario(id_usuario);
         
@@ -190,9 +152,10 @@ public class ControladorBendiv extends ControladorBase {
     }
     
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        GestionBendiv modelo= new GestionBendiv();
-        ArrayList bendivs = modelo.obtenerTodos();
-        request.setAttribute("bendivs", bendivs);
+        //Se obtienen los programas para poblar el select en la vista para añadir un beneficiario div
+        GestionProgramas modelo= new GestionProgramas();
+        ArrayList programas = modelo.obtenerTodos();
+        request.setAttribute("programas", programas);
         
         RequestDispatcher rd=request.getRequestDispatcher("frm_bendiv.jsp");
             rd.forward(request,response);
@@ -201,11 +164,11 @@ public class ControladorBendiv extends ControladorBase {
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         BeneficiarioDiv bendiv=new BeneficiarioDiv();
         
-        bendiv.setNombre(request.getParameter("clave_elect").toUpperCase());
-        bendiv.setNombre(request.getParameter("curp").toUpperCase());
-        bendiv.setNombre(request.getParameter("clave_b").toUpperCase());
+        bendiv.setClave_elect(request.getParameter("clave_elect").toUpperCase());
+        bendiv.setCurp(request.getParameter("curp").toUpperCase());
+        bendiv.setClave_b(request.getParameter("clave_b").toUpperCase());
         bendiv.setNombre(request.getParameter("nombre").toUpperCase());
-        //bendiv.setId_catprog(Integer.parseInt(request.getParameter("id_cat_prog")));
+        bendiv.setId_catprog(Integer.parseInt(request.getParameter("id_catprog")));
         bendiv.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
            
         GestionBendiv modelo=new GestionBendiv();

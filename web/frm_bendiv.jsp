@@ -4,7 +4,7 @@
     Author     : Ismael 
 --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="javabeans.Delegacion"%>
+<%@page import="javabeans.CatProgramas"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,10 +27,7 @@
                     alert("Seleccione un programa");
                     return false;
                 }
-                if(params.id_usuario == 0){
-                    alert("Seleccione un usuario");
-                    return false;
-                }
+
                 //alert ('Aqui estoy a punto de grabar');
                 $.post("controladorbendiv?operacion=nuevoGuardar", params, function(datos){
                     $("#show").html(datos);
@@ -62,43 +59,70 @@
                 </div>
                 
                 <div class="panel-body transparent">
+                    
                     <form id="form_bendiv" onsubmit="return registrar()"  class="form-horizontal">
             
                         <div class="form-group">
-                            <label for="nombre" class="col-xs-12 col-md-2 control-label col-md-offset-3 ">Nombre:</label>
+                            <label for="clave_elect" class="col-xs-12 col-md-2 control-label col-md-offset-3 ">Clave de elector:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="nombre" class="form-control" 
-                                       id="nombre" required autofocus 
+                                <input type="text" name="clave_elect" class="form-control" 
+                                       id="clave_elect" required autofocus 
                                        pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{4,80})" 
-                                       maxlength="80" placeholder="Mín.4 Máx. 80 caracteres" 
+                                       maxlength="30" placeholder="Mín.4 Máx. 30 caracteres" 
                                        style="text-transform:uppercase" />
+                                                                
+                                <input type="hidden" name="id_usuario" class="form-control" 
+                                       id="id_usuario" value="1"/>
                             </div>
 
-                            <label for="cargo" class="col-xs-12 col-md-2 control-label col-md-offset-3 ">
-                                Cargo:
+                            <label for="curp" class="col-xs-12 col-md-2 control-label col-md-offset-3 ">
+                                CURP:
                             </label>
                             
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="cargo" class="form-control" 
-                                       id="cargo" required autofocus 
+                                <input type="text" name="curp" class="form-control" 
+                                       id="curp" required autofocus 
                                        pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{4,80})" 
-                                       maxlength="80" placeholder="Mín.4 Máx. 80 caracteres" 
+                                       maxlength="30" placeholder="Mín.4 Máx. 30 caracteres" 
                                        style="text-transform:uppercase" />
                             </div>
                             
+                            <label for="clave_b" class="col-xs-12 col-md-2 control-label col-md-offset-3 ">
+                                Clave Beneficiario:
+                            </label>
+                            
+                            <div class="col-xs-12 col-md-4">
+                                <input type="text" name="clave_b" class="form-control" 
+                                       id="clave_b"
+                                       pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{4,80})" 
+                                       maxlength="15" placeholder="Mín.4 Máx. 15 caracteres" 
+                                       style="text-transform:uppercase" />
+                            </div>
+                            
+                            <label for="nombre" class="col-xs-12 col-md-2 control-label col-md-offset-3 ">
+                                Nombre Beneficiario:
+                            </label>
+                            
+                            <div class="col-xs-12 col-md-4">
+                                <input type="text" name="nombre" class="form-control" 
+                                       id="nombre"
+                                       pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{4,80})" 
+                                       maxlength="50" placeholder="Mín.4 Máx. 50 caracteres" 
+                                       style="text-transform:uppercase" />
+                            </div>
                             
                         </div>
                                                 
                         <div class="form-group">
-                            <label for="id_delegacion" class="col-xs-12 col-md-2 control-label col-md-offset-3">
-                                Delegación:
+                            <label for="id_catprog" class="col-xs-12 col-md-2 control-label col-md-offset-3">
+                                Programa:
                             </label>
                             
                             <div class="col-xs-12 col-md-4">
-                                <select id="id_delegacion" required class="form-control"> 
-                                    <option value="0">Seleccione una Delegacion...</option>
-                                    <c:forEach  var="delegacion" items="${requestScope.delegaciones}">
-                                        <OPTION VALUE="${delegacion.id_delegacion}">${delegacion.descripcion}</OPTION>
+                                <select id="id_catprog" required class="form-control"> 
+                                    <option value="0">Seleccione unprograma...</option>
+                                    <c:forEach  var="programa" items="${requestScope.programas}">
+                                        <OPTION VALUE="${programa.id_catprog}">${programa.descripcion}</OPTION>
                                     </c:forEach>
                                 </select>
                             </div> 
