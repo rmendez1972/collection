@@ -31,6 +31,14 @@
             });
         }
         
+        function aperturarContratado(id){
+            var params=new Object();
+            params.id=id;
+            $.post("controladorcandidato?operacion=aperturar", params, function(datos){
+                $("#show").html(datos);
+            },"html");
+        }
+        
         $(document).ready(function(){
             
             $('#candidatoslist').DataTable();
@@ -76,7 +84,6 @@
                     <th>Area</th>
                     <th>Domicilio</th>
                     <th>Clave Catastral</th>
-                    <th>Fecha Inicio Pagos</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -97,8 +104,7 @@
                         <th> <c:out value="${candidato.area}" /></th>
                         <th> <c:out value="${candidato.domicilio}" /></th>
                         <th> <c:out value="${candidato.clave_cat}" /></th>
-                        <th> <c:out value="${candidato.fecha_ip}" /></th>
-                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Contratado" onclick="editarContratado(${candidato.id_candidato});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Contratado" onclick="eliminarContratado(${candidato.id_candidato});" /></th>
+                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Candidato" onclick="editarContratado(${candidato.id_candidato});" /><img src="imagenes/acuse.png" class="btn-tabla" title="Apertur Edo. Cta." onclick="aperturarContratado(${candidato.id_candidato});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Candidato" onclick="eliminarContratado(${candidato.id_candidato});" /></th>
                     </tr>
                 </c:forEach>
             </tbody>

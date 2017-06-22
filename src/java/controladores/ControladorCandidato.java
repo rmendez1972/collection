@@ -73,7 +73,7 @@ public class ControladorCandidato extends ControladorBase
         request.setAttribute("prog", prog);
         request.setAttribute("tipo", tipo);
                     
-        RequestDispatcher rd=request.getRequestDispatcher("frm_modificacandiato.jsp");
+        RequestDispatcher rd=request.getRequestDispatcher("frm_modificacandidato.jsp");
         rd.forward(request,response);
     }
     
@@ -110,9 +110,8 @@ public class ControladorCandidato extends ControladorBase
         candidato.setDomicilio(domicilio);
         String clave_cat=request.getParameter("clave_cat").toUpperCase();
         candidato.setClave_cat(clave_cat);
-        Date fecha_ip = df.parse(request.getParameter("fecha_ip"));
-        candidato.setFecha_ip(fecha_ip);
-        
+        Integer id_tipocredito=Integer.parseInt(request.getParameter("id_tipocredito"));
+        candidato.setId_tipocredito(id_tipocredito);        
         GestionCandidatos modelo=new GestionCandidatos();
         if(modelo.actualizarCandidatos(candidato)){
             RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=listar");
@@ -126,34 +125,98 @@ public class ControladorCandidato extends ControladorBase
         }
     }
     
-    /*
-    public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
-            RequestDispatcher rd=request.getRequestDispatcher("frm_cpp.jsp");
-            rd.forward(request,response);
+    public void aperturar(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        int id=Integer.parseInt(request.getParameter("id"));
+        GestionCandidatos modelo=new GestionCandidatos();
+        Candidatos candidato=modelo.obtenerPorId(id);
+                          
+        request.setAttribute("candidato", candidato);
+                            
+        RequestDispatcher rd=request.getRequestDispatcher("frm_modificacandidatoapertura.jsp");
+        rd.forward(request,response);
     }
     
-    public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        Cpp cpp=new Cpp();
-        String mfecha= request.getParameter("fecha");
+    public void aperturarGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        Integer id_candidato=Integer.parseInt(request.getParameter("id_candidato"));
+         
+        GestionCandidatos modelo=new GestionCandidatos();
+        Candidatos candidato=modelo.obtenerPorId(id_candidato);
+        
+        String poliza=request.getParameter("poliza");
+        candidato.setPoliza(poliza);
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Date fecha = df.parse(mfecha);
-        cpp.setFecha(fecha);
-        BigDecimal big = new BigDecimal(request.getParameter("importe"));
-        cpp.setImporte(big);
-           
-        GestionCpp modelo=new GestionCpp();
-        if(modelo.registroCpp(cpp)){
-            RequestDispatcher rd=request.getRequestDispatcher("controladorcpp?operacion=listar");
+        Date fecha_pol = df.parse(request.getParameter("fecha_pol"));
+        candidato.setFecha_pol(fecha_pol);
+        
+        if(modelo.actualizaraperturaCandidatos(candidato)){
+            RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=listar");
             request.setAttribute("msg", "Datos guardados");
             rd.forward(request,response);
         }
         else{
-            RequestDispatcher rd=request.getRequestDispatcher("controladorcpp?operacion=nuevo");
+            RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=editar");
             request.setAttribute("msg", "Error al guardar. Intente de nuevo más tarde");
             rd.forward(request,response);
         }
     }
     
+    public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        GestionProgramas mod_prog=new GestionProgramas();
+        GestionTipocredito mod_tcr=new GestionTipocredito();
+        ArrayList prog=mod_prog.obtenerTodos();
+        ArrayList tipo=mod_tcr.obtenerTodos();
+        
+        request.setAttribute("prog", prog);
+        request.setAttribute("tipo", tipo);
+        RequestDispatcher rd=request.getRequestDispatcher("frm_candidato.jsp");
+        rd.forward(request,response);
+    }
+    
+    public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        Candidatos candidato=new Candidatos();
+        Integer id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
+        candidato.setId_catprog(id_catprog);
+        String num_contrato=request.getParameter("numcontrato");
+        candidato.setNumcontrato(num_contrato);
+        String clave_elect=request.getParameter("clave_elect").toUpperCase();
+        candidato.setClave_elect(clave_elect);
+        String curp=request.getParameter("curp").toUpperCase();
+        candidato.setCurp(curp);
+        String rfc=request.getParameter("rfc").toUpperCase();
+        candidato.setRfc(rfc);
+        String nombre=request.getParameter("nombre").toUpperCase();
+        candidato.setNombre(nombre);
+        String conyuge=request.getParameter("conyuge").toUpperCase();
+        candidato.setConyuge(conyuge);
+               
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha_con = df.parse(request.getParameter("fecha_con"));
+        candidato.setFecha_con(fecha_con);
+        String mza=request.getParameter("mza").toUpperCase();
+        candidato.setMza(mza);
+        String lte=request.getParameter("lte").toUpperCase();
+        candidato.setLte(lte);
+        BigDecimal area = new BigDecimal(request.getParameter("area"));
+        candidato.setArea(area);
+        String domicilio=request.getParameter("domicilio").toUpperCase();
+        candidato.setDomicilio(domicilio);
+        String clave_cat=request.getParameter("clave_cat").toUpperCase();
+        candidato.setClave_cat(clave_cat);
+        Integer id_tipocredito=Integer.parseInt(request.getParameter("id_tipocredito"));
+        candidato.setId_tipocredito(id_tipocredito);   
+        GestionCandidatos modelo=new GestionCandidatos();
+        if(modelo.registroCandidatos(candidato)){
+            RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=listar");
+            request.setAttribute("msg", "Datos guardados");
+            rd.forward(request,response);
+        }
+        else{
+            RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=nuevo");
+            request.setAttribute("msg", "Error al guardar. Intente de nuevo más tarde");
+            rd.forward(request,response);
+        }
+    }
+    /*
     public void reporte(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Map param = new HashMap();
         generarReporte("ReporteCpp.jasper", param, request, response);
