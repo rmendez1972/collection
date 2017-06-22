@@ -163,6 +163,13 @@ public class ControladorProgramas extends ControladorBase{
         Integer id_modulo = Integer.parseInt(request.getParameter("id_modulo"));
         cp.setId_modulo(id_modulo);
         
+        String valcondicion_fija = request.getParameter("condicion_fija");
+        Boolean condicion_fija = Boolean.parseBoolean(valcondicion_fija);
+        cp.setCondicion_fija(condicion_fija);
+        
+        Integer id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
+        cp.setId_usuario(id_usuario);
+        
         GestionProgramas modelo = new GestionProgramas();
         
         if(modelo.registroPrograma(cp)){
@@ -324,6 +331,13 @@ public class ControladorProgramas extends ControladorBase{
         
         Integer id_modulo = Integer.parseInt(request.getParameter("id_modulo"));
         cp.setId_modulo(id_modulo);
+        
+        String valcondicion_fija = request.getParameter("condicion_fija");
+        Boolean condicion_fija = Boolean.parseBoolean(valcondicion_fija);
+        cp.setCondicion_fija(condicion_fija);
+        
+        Integer id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
+        cp.setId_usuario(id_usuario);
         
         GestionProgramas modelo = new GestionProgramas();
         
