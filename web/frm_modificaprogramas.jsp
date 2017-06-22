@@ -49,15 +49,8 @@
                 params.cuenta_cont=$("#cuenta_cont").val();
                 params.id_delegacion=$("#id_delegacion").val();
                 params.id_modulo=$("#id_modulo").val();
-                
-                if(params.status == 0){
-                    alert("Seleccione un status");
-                    return false;
-                }
-                if(params.mora == 0){
-                    alert("Seleccione mora");
-                    return false;
-                }
+                params.condicion_fija=$("#condicion_fija").val();
+                params.id_usuario=$("#id_usuario").val();
  
                                                           
                 $.post("controladorprogramas?operacion=editarGuardar", params, function(datos){
@@ -75,6 +68,8 @@
                 
                 return false;
             }
+            
+            
             
 
         </script>
@@ -203,12 +198,28 @@
                             </div>
                             
                             <label for="status" class="col-xs-12 col-md-2 control-label ">Status:</label>
-                            <div class="col-xs-12 col-md-4">
-                                <select id="status" required class="form-control">
-                                    <option value="0">Seleccione un Status...</option>
-                                    <option value="false">Inactivo</option>
-                                    <option value="true">Activo</option>
-                                </select> 
+                            <div class="col-xs-12 col-md-4" id="divstatus">
+                                <script>
+                                    
+                                    if(${prog.status} == 0){
+                
+                                        var newS = $("<select>");
+                                        newS.append('<option value="false" selected >'+'Inactivo'+'</option>');
+                                        newS.append('<option value="true" >'+'Activo'+'</option>');
+                                        newS.addClass("form-control");
+                                        newS.attr("id", "status");
+                                        $("#divstatus").append(newS);   
+                                    }else{
+                
+                                        var newS = $("<select>");
+                                        newS.append('<option value="false" >'+'Inactivo'+'</option>');
+                                        newS.append('<option value="true" selected >'+'Activo'+'</option>');
+                                        newS.addClass("form-control");
+                                        newS.attr("id", "status");
+                                        $("#divstatus").append(newS);
+                                    }
+                                    
+                                </script>
                             </div>   
                         </div>
                         
@@ -284,12 +295,28 @@
                         
                         <div class="form-group">                        
                             <label for="mora" class="col-xs-12 col-md-2 control-label ">Mora:</label>
-                            <div class="col-xs-12 col-md-4">
-                                <select id="mora" required class="form-control">
-                                    <option value="0">Seleccione mora...</option>
-                                    <option value="false">Inactivo</option>
-                                    <option value="true">Activo</option>
-                                </select> 
+                            <div class="col-xs-12 col-md-4" id="divmora">
+                                <script>
+                                    
+                                    if(${prog.mora} == 0){
+                
+                                        var newM = $("<select>");
+                                        newM.append('<option value="false" selected >'+'Inactivo'+'</option>');
+                                        newM.append('<option value="true" >'+'Activo'+'</option>');
+                                        newM.addClass("form-control");
+                                        newM.attr("id", "mora");
+                                        $("#divmora").append(newM);   
+                                    }else{
+                
+                                        var newM = $("<select>");
+                                        newM.append('<option value="false" >'+'Inactivo'+'</option>');
+                                        newM.append('<option value="true" selected >'+'Activo'+'</option>');
+                                        newM.addClass("form-control");
+                                        newM.attr("id", "mora");
+                                        $("#divmora").append(newM);
+                                    }
+                                    
+                                </script>
                             </div>
                             
                             <label for="por_ga" class="col-xs-12 col-md-2 control-label ">Por ga:</label>
@@ -325,7 +352,34 @@
                                         <OPTION VALUE="${modu.id_modulo}" ${modu.id_modulo == prog.id_modulo? 'selected':''} >${modu.descripcion}</OPTION>
                                     </c:forEach>
                                 </select>
-                            </div> 
+                            </div>
+                            
+                            <label for="condicion_fija" class="col-xs-12 col-md-2 control-label ">Condicion Fija:</label>
+                            <div class="col-xs-12 col-md-4" id="condicion">
+                                <script>
+                                    
+                                    if(${prog.condicion_fija} == 0){
+                
+                                        var newP = $("<select>");
+                                        newP.append('<option value="false" selected >'+'Inactivo'+'</option>');
+                                        newP.append('<option value="true" >'+'Activo'+'</option>');
+                                        newP.addClass("form-control");
+                                        newP.attr("id", "condicion_fija");
+                                        $("#condicion").append(newP);   
+                                    }else{
+                
+                                        var newP = $("<select>");
+                                        newP.append('<option value="false" >'+'Inactivo'+'</option>');
+                                        newP.append('<option value="true" selected >'+'Activo'+'</option>');
+                                        newP.addClass("form-control");
+                                        newP.attr("id", "condicion_fija");
+                                        $("#condicion").append(newP);
+                                    }
+                                    
+                                </script>
+                            </div>
+                            
+                            <input type="hidden" name="id_usuario" id="id_usuario" value="1" />
                         </div>
                         
                          
