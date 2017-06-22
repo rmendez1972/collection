@@ -71,6 +71,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-users" style="color: #00A6CA"></span> Beneficiarios<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li id="candidatos"><a href="#" ><span class="fa fa-address-book"></span>Contratados</a></li>
+                <li id="bendiv"><a href="#" ><span class="fa fa-address-book"></span>Beneficiarios Diversos</a></li>
               </ul>  
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-book" style="color: #00A6CA"></span> Catálogos<span class="caret"></span></a>
@@ -162,6 +163,7 @@
     <script type="text/javascript" charset="utf-8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
     <script> //Script para definir las áreas en donde se cargará el contenido
             $(document).ready(function(){
+                //Menu colgante: Catálogos
                 $("#usuarios").click(function (event) {
                     
                     event.preventDefault();
@@ -277,6 +279,12 @@
                 $("#reportes").click(function (event) {
                     event.preventDefault();
                     cargar('scr_reports.jsp','#contenido');
+                });
+                
+                // Menu colgante: Beneficiarios
+                $("#bendiv").click(function (event) {
+                event.preventDefault();
+                cargar('controladorbendiv?operacion=listar','#show');
                 });
             });
             
