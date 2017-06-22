@@ -95,6 +95,7 @@
                     <th>Cuenta cont</th>
                     <th>Delegacion</th>
                     <th>Modulo</th>
+                    <th>Condicion Fija</th>
                     <th>Acciones</th>
 
                 </tr>
@@ -137,6 +138,7 @@
                         <td> <c:out value="${pr.cuenta_cont}" /></td>
                         <td> <c:out value="${pr.delegacion}" /></td>
                         <td> <c:out value="${pr.modulo}" /></td>
+                        <td> <c:out value="${pr.condicion_fija}" /></td>
                         <td><img src="imagenes/editar.png" class="btn-tabla" title="Editar Registro" onclick="editarProg(${pr.id_catprog});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Registro" onclick="eliminarProg(${pr.id_catprog});" /></td>
                     </tr>
                 </c:forEach>

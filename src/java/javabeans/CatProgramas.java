@@ -49,13 +49,15 @@ public class CatProgramas {
     private String cuenta_cont;
     private Integer id_delegacion;
     private Integer id_modulo;
+    private boolean condicion_fija;
+    private Integer id_usuario;
 
     private String tipocredito;
     private String colonia;
     private String delegacion;
     private String modulo;
-    
-    public CatProgramas(Integer id_catprog, String clave, String descripcion, BigDecimal sub_ini, BigDecimal eng_fon, BigDecimal eng_inv, BigDecimal interes, BigDecimal admon, BigDecimal seguro, BigDecimal costo_m2, BigDecimal por_sub, BigDecimal por_admon, BigDecimal por_sv, BigDecimal por_os, BigDecimal sal_min, BigDecimal pago_mes, BigDecimal por_eng, BigDecimal anual, Integer plazo, BigDecimal por_cap, boolean status, Integer mecanica, Integer id_tipocred, BigDecimal mensual, BigDecimal sub_bp, BigDecimal apor_fij, BigDecimal por_pm, BigDecimal por_pf, String clave_ant, Integer id_colonia, Integer dias_gracia, boolean mora, BigDecimal por_ga, String cuenta_cont, Integer id_delegacion, Integer id_modulo) {
+
+    public CatProgramas(Integer id_catprog, String clave, String descripcion, BigDecimal sub_ini, BigDecimal eng_fon, BigDecimal eng_inv, BigDecimal interes, BigDecimal admon, BigDecimal seguro, BigDecimal costo_m2, BigDecimal por_sub, BigDecimal por_admon, BigDecimal por_sv, BigDecimal por_os, BigDecimal sal_min, BigDecimal pago_mes, BigDecimal por_eng, BigDecimal anual, Integer plazo, BigDecimal por_cap, boolean status, Integer mecanica, Integer id_tipocred, BigDecimal mensual, BigDecimal sub_bp, BigDecimal apor_fij, BigDecimal por_pm, BigDecimal por_pf, String clave_ant, Integer id_colonia, Integer dias_gracia, boolean mora, BigDecimal por_ga, String cuenta_cont, Integer id_delegacion, Integer id_modulo, boolean condicion_fija, Integer id_usuario) {
         this.id_catprog = id_catprog;
         this.clave = clave;
         this.descripcion = descripcion;
@@ -92,8 +94,10 @@ public class CatProgramas {
         this.cuenta_cont = cuenta_cont;
         this.id_delegacion = id_delegacion;
         this.id_modulo = id_modulo;
+        this.condicion_fija = condicion_fija;
+        this.id_usuario = id_usuario;
     }
-    
+  
     
     public CatProgramas(){
         super();
@@ -420,5 +424,23 @@ public class CatProgramas {
     public void setModulo(String modulo) {
         this.modulo = modulo;
     }
+
+    public boolean isCondicion_fija() {
+        return condicion_fija;
+    }
+
+    public void setCondicion_fija(boolean condicion_fija) {
+        this.condicion_fija = condicion_fija;
+    }
+
+    public Integer getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(Integer id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+    
+    
     
 }

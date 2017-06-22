@@ -48,6 +48,22 @@
                 params.cuenta_cont=$("#cuenta_cont").val();
                 params.id_delegacion=$("#id_delegacion").val();
                 params.id_modulo=$("#id_modulo").val();
+                params.condicion_fija=$("#condicion_fija").val();
+                params.id_usuario=$("#id_usuario").val();
+                
+                if(params.status == 0){
+                    alert("Seleccione un status");
+                    return false;
+                }
+                if(params.mora == 0){
+                    alert("Seleccione mora");
+                    return false;
+                }
+                if(params.condicion_fija == 0){
+                    alert("Seleccione una condicion fija");
+                    return false;
+                }
+                
  
                                                           
                 $.post("controladorprogramas?operacion=nuevoGuardar", params, function(datos){
@@ -315,7 +331,19 @@
                                         <OPTION VALUE="${modu.id_modulo}">${modu.descripcion}</OPTION>
                                     </c:forEach>
                                 </select>
-                            </div> 
+                            </div>
+                            
+                            <label for="condicion_fija" class="col-xs-12 col-md-2 control-label ">Condicion Fija:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <select id="condicion_fija" required class="form-control">
+                                    <option value="0">Seleccione una condicion fija...</option>
+                                    <option value="false">Inactivo</option>
+                                    <option value="true">Activo</option>
+                                </select> 
+                            </div>
+                            
+                            <input type="hidden" name="id_usuario" id="id_usuario" value="1" />
+                            
                         </div>
                         
                          

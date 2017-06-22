@@ -20,7 +20,7 @@ public class GestionProgramas {
         ResultSet res = Conexion.ejecutarConsulta("select P.*, TC.descripcion as tipocredito, C.descripcion as colonia, D.descripcion as delegacion, M.descripcion as modulo  from cat_prog P inner join tipo_credito TC on P.id_tipocred = TC.id_tipocredito inner join colonias C on P.id_colonia = C.id_colonia inner join delegaciones D on P.id_delegacion = D.id_delegacion inner join modulos_recaudacion M on P.id_modulo = M.id_modulo", null);
         try{
             while(res.next()){
-                CatProgramas cp=new CatProgramas(res.getInt("id_catprog"), res.getString("clave"), res.getString("descripcion"), res.getBigDecimal("sub_ini"), res.getBigDecimal("eng_fon"), res.getBigDecimal("eng_inv"), res.getBigDecimal("interes"), res.getBigDecimal("admon"), res.getBigDecimal("seguro"), res.getBigDecimal("costo_m2"), res.getBigDecimal("por_sub"), res.getBigDecimal("por_admon"), res.getBigDecimal("por_sv"), res.getBigDecimal("por_os"), res.getBigDecimal("sal_min"), res.getBigDecimal("pago_mes"), res.getBigDecimal("por_eng"), res.getBigDecimal("anual"), res.getInt("plazo"), res.getBigDecimal("por_cap"), res.getBoolean("status"), res.getInt("mecanica"), res.getInt("id_tipocred"), res.getBigDecimal("mensual"), res.getBigDecimal("sub_bp"), res.getBigDecimal("apor_fij"), res.getBigDecimal("por_pm"), res.getBigDecimal("por_pf"), res.getString("clave_ant"), res.getInt("id_colonia"), res.getInt("dias_gracia"), res.getBoolean("mora"), res.getBigDecimal("por_ga"), res.getString("cuenta_cont"), res.getInt("id_delegacion"), res.getInt("id_modulo"));
+                CatProgramas cp=new CatProgramas(res.getInt("id_catprog"), res.getString("clave"), res.getString("descripcion"), res.getBigDecimal("sub_ini"), res.getBigDecimal("eng_fon"), res.getBigDecimal("eng_inv"), res.getBigDecimal("interes"), res.getBigDecimal("admon"), res.getBigDecimal("seguro"), res.getBigDecimal("costo_m2"), res.getBigDecimal("por_sub"), res.getBigDecimal("por_admon"), res.getBigDecimal("por_sv"), res.getBigDecimal("por_os"), res.getBigDecimal("sal_min"), res.getBigDecimal("pago_mes"), res.getBigDecimal("por_eng"), res.getBigDecimal("anual"), res.getInt("plazo"), res.getBigDecimal("por_cap"), res.getBoolean("status"), res.getInt("mecanica"), res.getInt("id_tipocred"), res.getBigDecimal("mensual"), res.getBigDecimal("sub_bp"), res.getBigDecimal("apor_fij"), res.getBigDecimal("por_pm"), res.getBigDecimal("por_pf"), res.getString("clave_ant"), res.getInt("id_colonia"), res.getInt("dias_gracia"), res.getBoolean("mora"), res.getBigDecimal("por_ga"), res.getString("cuenta_cont"), res.getInt("id_delegacion"), res.getInt("id_modulo"), res.getBoolean("condicion_fija"), res.getInt("id_usuario"));
                 cp.setTipocredito(res.getString("tipocredito"));
                 cp.setColonia(res.getString("colonia"));
                 cp.setDelegacion(res.getString("delegacion"));
@@ -78,8 +78,14 @@ public class GestionProgramas {
         String id_delegacion = pro.getId_delegacion().toString();
         String id_modulo = pro.getId_modulo().toString();
         
-        Object params[]={clave, descripcion, sub_ini, eng_fon, eng_inv, interes, admon, seguro, costo_m2, por_sub, por_admon, por_sv, por_os, sal_min, pago_mes, por_eng, anual, plazo, por_cap, status, mecanica, id_tipocred, mensual, sub_bp, apor_fij, por_pm, por_pf, clave_ant, id_colonia, dias_gracia, mora, por_ga, cuenta_cont, id_delegacion, id_modulo};
-        return Conexion.ejecutar("insert into cat_prog (clave, descripcion, sub_ini, eng_fon, eng_inv, interes, admon, seguro, costo_m2, por_sub, por_admon, por_sv, por_os, sal_min, pago_mes, por_eng, anual, plazo, por_cap, status, mecanica, id_tipocred, mensual, sub_bp, apor_fij, por_pm, por_pf, clave_ant, id_colonia, dias_gracia, mora, por_ga, cuenta_cont, id_delegacion, id_modulo) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", params);    
+        Boolean bolcondicion_fija = pro.isCondicion_fija();
+        Integer intcondicion_fija = (bolcondicion_fija) ? 1 : 0;
+        String condicion_fija = intcondicion_fija.toString();
+        
+        String id_usuario = pro.getId_usuario().toString();
+        
+        Object params[]={clave, descripcion, sub_ini, eng_fon, eng_inv, interes, admon, seguro, costo_m2, por_sub, por_admon, por_sv, por_os, sal_min, pago_mes, por_eng, anual, plazo, por_cap, status, mecanica, id_tipocred, mensual, sub_bp, apor_fij, por_pm, por_pf, clave_ant, id_colonia, dias_gracia, mora, por_ga, cuenta_cont, id_delegacion, id_modulo, condicion_fija, id_usuario};
+        return Conexion.ejecutar("insert into cat_prog (clave, descripcion, sub_ini, eng_fon, eng_inv, interes, admon, seguro, costo_m2, por_sub, por_admon, por_sv, por_os, sal_min, pago_mes, por_eng, anual, plazo, por_cap, status, mecanica, id_tipocred, mensual, sub_bp, apor_fij, por_pm, por_pf, clave_ant, id_colonia, dias_gracia, mora, por_ga, cuenta_cont, id_delegacion, id_modulo, condicion_fija, id_usuario) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", params);    
         //Object params[] = {status};
         //return Conexion.ejecutar("insert into cat_prog (status) values (?)", params);
         
@@ -97,7 +103,7 @@ public class GestionProgramas {
         ResultSet res=Conexion.ejecutarConsulta("select * from cat_prog where id_catprog=?", params);
         try{
             if(res.next())
-                cp=new CatProgramas(res.getInt("id_catprog"), res.getString("clave"), res.getString("descripcion"), res.getBigDecimal("sub_ini"), res.getBigDecimal("eng_fon"), res.getBigDecimal("eng_inv"), res.getBigDecimal("interes"), res.getBigDecimal("admon"), res.getBigDecimal("seguro"), res.getBigDecimal("costo_m2"), res.getBigDecimal("por_sub"), res.getBigDecimal("por_admon"), res.getBigDecimal("por_sv"), res.getBigDecimal("por_os"), res.getBigDecimal("sal_min"), res.getBigDecimal("pago_mes"), res.getBigDecimal("por_eng"), res.getBigDecimal("anual"), res.getInt("plazo"), res.getBigDecimal("por_cap"), res.getBoolean("status"), res.getInt("mecanica"), res.getInt("id_tipocred"), res.getBigDecimal("mensual"), res.getBigDecimal("sub_bp"), res.getBigDecimal("apor_fij"), res.getBigDecimal("por_pm"), res.getBigDecimal("por_pf"), res.getString("clave_ant"), res.getInt("id_colonia"), res.getInt("dias_gracia"), res.getBoolean("mora"), res.getBigDecimal("por_ga"), res.getString("cuenta_cont"), res.getInt("id_delegacion"), res.getInt("id_modulo"));
+                cp=new CatProgramas(res.getInt("id_catprog"), res.getString("clave"), res.getString("descripcion"), res.getBigDecimal("sub_ini"), res.getBigDecimal("eng_fon"), res.getBigDecimal("eng_inv"), res.getBigDecimal("interes"), res.getBigDecimal("admon"), res.getBigDecimal("seguro"), res.getBigDecimal("costo_m2"), res.getBigDecimal("por_sub"), res.getBigDecimal("por_admon"), res.getBigDecimal("por_sv"), res.getBigDecimal("por_os"), res.getBigDecimal("sal_min"), res.getBigDecimal("pago_mes"), res.getBigDecimal("por_eng"), res.getBigDecimal("anual"), res.getInt("plazo"), res.getBigDecimal("por_cap"), res.getBoolean("status"), res.getInt("mecanica"), res.getInt("id_tipocred"), res.getBigDecimal("mensual"), res.getBigDecimal("sub_bp"), res.getBigDecimal("apor_fij"), res.getBigDecimal("por_pm"), res.getBigDecimal("por_pf"), res.getString("clave_ant"), res.getInt("id_colonia"), res.getInt("dias_gracia"), res.getBoolean("mora"), res.getBigDecimal("por_ga"), res.getString("cuenta_cont"), res.getInt("id_delegacion"), res.getInt("id_modulo"), res.getBoolean("condicion_fija"), res.getInt("id_usuario"));
             res.close();
         }catch(Exception e){}
         return cp;
@@ -150,8 +156,14 @@ public class GestionProgramas {
         String id_delegacion = pro.getId_delegacion().toString();
         String id_modulo = pro.getId_modulo().toString();
         
-        Object params[]={clave, descripcion, sub_ini, eng_fon, eng_inv, interes, admon, seguro, costo_m2, por_sub, por_admon, por_sv, por_os, sal_min, pago_mes, por_eng, anual, plazo, por_cap, status, mecanica, id_tipocred, mensual, sub_bp, apor_fij, por_pm, por_pf, clave_ant, id_colonia, dias_gracia, mora, por_ga, cuenta_cont, id_delegacion, id_modulo, id_catprog};
-        return Conexion.ejecutar("update cat_prog set clave=?, descripcion=?, sub_ini=?, eng_fon=?, eng_inv=?, interes=?, admon=?, seguro=?, costo_m2=?, por_sub=?, por_admon=?, por_sv=?, por_os=?, sal_min=?, pago_mes=?, por_eng=?, anual=?, plazo=?, por_cap=?, status=?, mecanica=?, id_tipocred=?, mensual=?, sub_bp=?, apor_fij=?, por_pm=?, por_pf=?, clave_ant=?, id_colonia=?, dias_gracia=?, mora=?, por_ga=?, cuenta_cont=?, id_delegacion=?, id_modulo=? where id_catprog=?", params);
+        Boolean bolcondicion_fija = pro.isCondicion_fija();
+        Integer intcondicion_fija = (bolcondicion_fija) ? 1 : 0;
+        String condicion_fija = intcondicion_fija.toString();
+        
+        String id_usuario = pro.getId_usuario().toString();
+        
+        Object params[]={clave, descripcion, sub_ini, eng_fon, eng_inv, interes, admon, seguro, costo_m2, por_sub, por_admon, por_sv, por_os, sal_min, pago_mes, por_eng, anual, plazo, por_cap, status, mecanica, id_tipocred, mensual, sub_bp, apor_fij, por_pm, por_pf, clave_ant, id_colonia, dias_gracia, mora, por_ga, cuenta_cont, id_delegacion, id_modulo, condicion_fija, id_usuario, id_catprog};
+        return Conexion.ejecutar("update cat_prog set clave=?, descripcion=?, sub_ini=?, eng_fon=?, eng_inv=?, interes=?, admon=?, seguro=?, costo_m2=?, por_sub=?, por_admon=?, por_sv=?, por_os=?, sal_min=?, pago_mes=?, por_eng=?, anual=?, plazo=?, por_cap=?, status=?, mecanica=?, id_tipocred=?, mensual=?, sub_bp=?, apor_fij=?, por_pm=?, por_pf=?, clave_ant=?, id_colonia=?, dias_gracia=?, mora=?, por_ga=?, cuenta_cont=?, id_delegacion=?, id_modulo=?, condicion_fija=?, id_usuario=? where id_catprog=?", params);
     
     }
     
