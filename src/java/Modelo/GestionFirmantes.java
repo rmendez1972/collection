@@ -38,7 +38,8 @@ public class GestionFirmantes {
                         img = ImageIO.read(new ByteArrayInputStream(data));
                     }catch(IOException ex){}*/
                     //grabamos en variable tipo string la ruta a la imagen con la firma registro a registro
-                    String ruta = "C:/Users/rmendez1972/Documents/netbeansprojects/cobranza/web/firmantes/"+fir.getFirma();
+                    //String ruta = "C:/Users/USUARIO/Documents/Netbeansprojects/cobranza/web/firmantes/"+fir.getFirma();
+                      String ruta = "C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/firmantes/"+fir.getFirma();
                     //construimos un objeto tipo File con la imagen referenciada por ruta
                     File file = new File(ruta);
                     //construimos un objeto tipo FileInputStream a partir del objeto tipo File
@@ -70,7 +71,7 @@ public class GestionFirmantes {
     
     public boolean registroFirm(Firmantes firm) throws FileNotFoundException{
         
-         String ruta = "C:/Users/rmendez1972/Documents/netbeansprojects/cobranza/web/firmantes/"+firm.getFirma();
+         String ruta = "C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/firmantes/"+firm.getFirma();
 
         Object params[]={firm.getNombre(), firm.getCargo(), firm.getFirma()};
         return Conexion.ejecutarImagen("insert into firmantes(nombre, cargo, firma, imagen) values (UPPER(?), UPPER(?), ?, ?)", params, ruta);

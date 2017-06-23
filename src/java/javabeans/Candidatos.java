@@ -55,11 +55,14 @@ public class Candidatos
     private String domicilio_dsolid;
     private Date fecha_ip;
     private String clave_b;
-    
+    private String catprog;
+    private String tipocredito;
+
+       
     public Candidatos(){ super();}
     //constructor que permite crear un objeto
     
-     public Candidatos(int id_candidato,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat, Date fecha_ip){
+     public Candidatos(int id_candidato,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito){
          this.id_candidato=id_candidato;
          this.id_catprog=id_catprog;
          this.numcontrato = numcontrato;
@@ -74,7 +77,7 @@ public class Candidatos
          this.area=area;
          this.domicilio=domicilio;
          this.clave_cat=clave_cat;
-         this.fecha_ip=fecha_ip;
+         this.id_tipocredito=id_tipocredito;
      }
     
     public int getId_candidato() {
@@ -387,6 +390,22 @@ public class Candidatos
 
     public void setClave_b(String clave_b) {
         this.clave_b = clave_b;
+    }
+    
+    public String getCatprog() {
+        return catprog;
+    }
+
+    public void setCatprog(String catprog) {
+        this.catprog = catprog;
+    }
+
+    public String getTipocredito() {
+        return tipocredito;
+    }
+
+    public void setTipocredito(String tipocredito) {
+        this.tipocredito = tipocredito;
     }
         
     
