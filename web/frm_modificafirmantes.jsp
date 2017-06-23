@@ -67,14 +67,14 @@
                         <div class="form-group">
                             <label for="nombre" class="col-xs-12 col-md-2 control-label col-md-offset-3">Nombre:</label>
                             <div class="col-xs-12 col-md-2">
-                                <input type="text" name="nombre" class="form-control" id="nombre" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9\0-9]{5,50})"  placeholder="Max 50 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${firm.nombre}"/>
+                                <input type="text" name="nombre" class="form-control" id="nombre" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9\0-9]{5,80})" maxlength="80" placeholder="Max 80 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${firm.nombre}"/>
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="cargo" class="col-xs-12 col-md-2 control-label col-md-offset-3">Cargo:</label>
                             <div class="col-xs-12 col-md-2">
-                                <input type="text" name="cargo" class="form-control" id="cargo" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9\0-9]{5,50})"  placeholder="Max 50 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${firm.cargo}" />
+                                <input type="text" name="cargo" class="form-control" id="cargo" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9\0-9]{5,80})" maxlength="80" placeholder="Max 80 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${firm.cargo}" />
                             </div>
                         </div>
                         

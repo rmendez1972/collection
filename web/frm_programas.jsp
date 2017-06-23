@@ -99,7 +99,7 @@
                             
                             <label for="descripcion" class="col-xs-12 col-md-2 control-label ">Descripción:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="descripcion" class="form-control" id="descripcion" required autofocus pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{4,80})" maxlength="80" placeholder="Mín.4 Máx. 80 caracteres" style="text-transform:uppercase" />
+                                <input type="text" name="descripcion" class="form-control" id="descripcion" required autofocus pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{4,80})" maxlength="80" placeholder="Máx. 80 caracteres" style="text-transform:uppercase" />
                             </div>
 
                         </div>

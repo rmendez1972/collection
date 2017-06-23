@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label for="descripcion" class="col-xs-12 col-md-2 control-label col-md-offset-3">Descripción:</label>
                             <div class="col-xs-12 col-md-2">
-                                <input type="text" name="descripcion" class="form-control" id="descripcion" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9\0-9]{5,50})"  placeholder="Max 50 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px"/>
+                                <input type="text" name="descripcion" class="form-control" id="descripcion" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9\0-9]{5,50})" maxlength="50" placeholder="Max 50 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px"/>
                             </div>
                         </div>
 
