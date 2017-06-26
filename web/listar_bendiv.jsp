@@ -44,7 +44,8 @@
     </head>
     <body>
         <h3 class="bg-primary encabezado">
-            <span class="fa fa-pencil-square-o" style="color: #fff; padding: 5px"></span> Beneficiarios diversos
+            <span class="fa fa-id-badge" style="color: #fff; padding: 5px"></span>
+            Beneficiarios diversos
         </h3>
       
         <div class="container-fluid navbar-right">
