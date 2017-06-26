@@ -39,7 +39,11 @@ public class GestionFirmantes {
                     }catch(IOException ex){}*/
                     //grabamos en variable tipo string la ruta a la imagen con la firma registro a registro
                     //String ruta = "C:/Users/USUARIO/Documents/Netbeansprojects/cobranza/web/firmantes/"+fir.getFirma();
+<<<<<<< HEAD
                       String ruta = "C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/firmantes/"+fir.getFirma();
+=======
+                      String ruta = "C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/firmantes/"+fir.getFirma();
+>>>>>>> 29312a21dcf05c78deed015e30bdf23da252b17f
                     //construimos un objeto tipo File con la imagen referenciada por ruta
                     File file = new File(ruta);
                     //construimos un objeto tipo FileInputStream a partir del objeto tipo File
@@ -71,7 +75,11 @@ public class GestionFirmantes {
     
     public boolean registroFirm(Firmantes firm) throws FileNotFoundException{
         
+<<<<<<< HEAD
          String ruta = "C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/firmantes/"+firm.getFirma();
+=======
+         String ruta = "C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/firmantes/"+firm.getFirma();
+>>>>>>> 29312a21dcf05c78deed015e30bdf23da252b17f
 
         Object params[]={firm.getNombre(), firm.getCargo(), firm.getFirma()};
         return Conexion.ejecutarImagen("insert into firmantes(nombre, cargo, firma, imagen) values (UPPER(?), UPPER(?), ?, ?)", params, ruta);
@@ -91,8 +99,11 @@ public class GestionFirmantes {
     }
     
     public boolean actualizar(Firmantes firm){
-        Object params[]={firm.getNombre(), firm.getCargo(), firm.getFirma(), firm.getId_firmante()};
-        return Conexion.ejecutar("update firmantes set nombre=UPPER(?), cargo=UPPER(?), firma=?  where id_firmante=?", params);
+        Object params[]={firm.getNombre(), firm.getCargo(), firm.getFirma(), firm.getId_firmante().toString()};
+        
+        String ruta = "C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/firmantes/"+firm.getFirma();
+        
+        return Conexion.ejecutarImagenUpdate("update firmantes set nombre=UPPER(?), cargo=UPPER(?), firma=?, imagen=?  where id_firmante=?", params,ruta);
     }
     
     public boolean eliminarPorId(int id_firmante){
