@@ -45,7 +45,7 @@
                         <div class="form-group">
                             <label for="Nombre" class="col-xs-12 col-md-2 control-label col-md-offset-3">Nombre:</label>
                             <div class="col-xs-12 col-md-2">
-                                <input type="text" name="descripcion" class="form-control"  id="descripcion" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${niveles.descripcion}" />
+                                <input type="text" name="descripcion" class="form-control"  id="descripcion" pattern="([a-zA-Z ]{5,50})"  placeholder="Max. 50 caracteres"  maxlength="50" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${niveles.descripcion}" />
                             </div>
                             
                         </div>
@@ -53,7 +53,7 @@
                         <div class="form-group">
                             <label for="importe" class="col-xs-12 col-md-2 control-label col-md-offset-3">Privilegios:</label>
                             <div class="col-xs-12 col-md-2">
-                                <input type="text" name="privilegios" class="form-control" id="privilegios" pattern="([a-zA-Z ]{5,50})"  placeholder="Mínimo 5 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${niveles.privilegios}" />
+                                <input type="text" name="privilegios" class="form-control" id="privilegios" pattern="([a-zA-Z ]{5,80})"  placeholder="Max. 80 caracteres"  maxlength="80" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${niveles.privilegios}" />
                             </div>
                         </div>
 

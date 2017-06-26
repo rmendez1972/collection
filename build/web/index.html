@@ -74,8 +74,8 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-users" style="color: #00A6CA"></span> Beneficiarios<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li id="candidatos"><a href="#" ><span class="fa fa-address-book"></span>Contratados</a></li>
-                <li id="bendiv"><a href="#" ><span class="fa fa-address-book"></span> Diversos</a></li>
+                <li id="candidatos"><a href="#" ><span class="fa fa-address-book"></span> Contratados</a></li>
+                <li id="bendiv"><a href="#" ><span class="fa fa-id-badge"></span> Diversos</a></li>
               </ul>  
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-book" style="color: #00A6CA"></span> Catálogos<span class="caret"></span></a>
@@ -89,22 +89,22 @@
                 
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Tasas Financieras</li>
-                <li id="cpp"><a href="#" ><span class="fa fa-dollar"></span>CPP</a></li>
+                <li id="cpp"><a href="#" ><span class="fa fa-dollar"></span> CPP</a></li>
                 <li id="salmin"><a href="#" ><span class="fa fa-dollar"></span> Salarios Minimos</a></li>
                 <li id="salmindf"><a href="#" ><span class="fa fa-dollar"></span> Salarios Minimos DF</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Claves de Movimiento</li>
-                <li id="clavemov"><a href="#" ><span class="fa fa-file-text"></span>Claves de Movimiento</a></li>
+                <li id="clavemov"><a href="#" ><span class="fa fa-file-text"></span> Claves de Movimiento</a></li>
                 <li id="clvdiv"><a href="#" ><span class="fa fa-tag"></span> Claves de Movimientos Diversos</a></li>
                 <li role="separator" class="divider"></li>
                 <li id="emisores"><a href="#" ><span class="fa fa-podcast"></span> Emisores</a></li>
                 <li id="caja"><a href="#" ><span class="fa fa-bank"></span> Cajas</a></li>
                 <li role="separator" class="divider"></li>
-                <li id="tipocredito"><a href="#" ><span class="fa fa-credit-card-alt"></span>Tipos de Crédito</a></li>
+                <li id="tipocredito"><a href="#" ><span class="fa fa-credit-card-alt"></span> Tipos de Crédito</a></li>
                 <li id="banco"><a href="#" ><span class="fa fa-bank"></span>Bancos</a></li>
-                <li id="bonificacion"><a href="#" ><span class="fa fa-handshake-o"></span>Bonificaciones</a></li>
-                <li id="colonia"><a href="#" ><span class="fa fa-building"></span>Colonias</a></li>
-                <li id="localidades"><a href="#" ><span class="fa fa-map-marker"></span>Localidades</a></li>
+                <li id="bonificacion"><a href="#" ><span class="fa fa-handshake-o"></span> Bonificaciones</a></li>
+                <li id="colonia"><a href="#" ><span class="fa fa-building"></span> Colonias</a></li>
+                <li id="localidades"><a href="#" ><span class="fa fa-map-marker"></span> Localidades</a></li>
 
               </ul>
             <li><a href="#cerrar"><span class="fa fa-power-off"></span> Cerrar sesión</a></li>
@@ -165,8 +165,10 @@
     
   
     <script type="text/javascript" charset="utf-8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+    
     <script> //Script para definir las áreas en donde se cargará el contenido
             $(document).ready(function(){
+                
                 //Menu colgante: Catálogos
                 $("#usuarios").click(function (event) {
                     
