@@ -153,7 +153,7 @@ public class ControladorCandidato extends ControladorBase
         
         if(modelo.actualizaraperturaCandidatos(candidato)){
             RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=listar");
-            request.setAttribute("msg", "Datos guardados");
+            request.setAttribute("msg", "Ciudadano Contratado Ingresado al Catálogo de Beneficiarios (CxC)");
             rd.forward(request,response);
         }
         else{

@@ -12,15 +12,16 @@
         <title>JSP Page</title>
         <script>
             function registrar(){
-                var params=new Object();
-                params.id_candidato=$("#id_candidato").val();
-                params.poliza=$("#poliza").val().toUpperCase();
-                params.fecha_pol=$("#fecha_pol").val();
-                                
-                $.post("controladorcandidato?operacion=aperturarGuardar", params, function(datos){
-                    $("#show").html(datos);
-                },"html");
                 
+                confirma("", "Ingresar Candidato", "Confirmar ingreso de Contratado a la CxC", "agregar", function(){
+                    var params=new Object();
+                    params.id_candidato=$("#id_candidato").val();
+                    params.poliza=$("#poliza").val().toUpperCase();
+                    params.fecha_pol=$("#fecha_pol").val();
+                    $.post("controladorcandidato?operacion=aperturarGuardar", params, function(datos){
+                        $("#show").html(datos);
+                    },"html");
+                });
                 return false;
             }
             

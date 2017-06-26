@@ -52,7 +52,7 @@
     </head>
     <body>
         <h3 class="bg-primary encabezado">
-            <span class="fa fa-file-text-o" style="color: #fff"></span> Catálogo de Beneficiarios Contratados
+            <span class="fa fa-file-text-o" style="color: #fff"></span> Catálogo de Ciudadanos Contratados (candidatos a ingresar a la CxC)
         </h3>
       
         <div class="container-fluid navbar-right">

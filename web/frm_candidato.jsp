@@ -90,7 +90,7 @@
                         <div class="form-group">
                             <label for="clave_elect" class="col-xs-12 col-md-2 control-label">Clave Elector:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="clave_elect" class="form-control" id="clave_elect"  placeholder="Máx.18 caracteres" maxlength="18" style="text-transform:uppercase" />
+                                <input type="text" name="clave_elect" class="form-control" id="clave_elect"    placeholder="Máx.18 caracteres" maxlength="18" style="text-transform:uppercase" />
                             </div>
                             
                             <label for="curp" class="col-xs-12 col-md-2 control-label">Curp::</label>
