@@ -66,11 +66,9 @@ public class ControladorFirmantes extends ControladorBase{
                 //String ruta="/firmantes";
                 // ruta relativa a donde subo el archivo adjunto
                 //String outputfile = this.getServletContext().getRealPath("/adjuntos/");  // get path on the server
-<<<<<<< HEAD
+
                 String outputfile = "C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/firmantes";
-=======
-                String outputfile = "C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/firmantes";
->>>>>>> 29312a21dcf05c78deed015e30bdf23da252b17f
+
                 File saveFile = new File(outputfile+"/" + filename);
                 FileOutputStream os = new FileOutputStream (saveFile);
             
