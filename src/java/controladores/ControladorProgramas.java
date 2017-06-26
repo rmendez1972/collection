@@ -11,6 +11,7 @@ import Modelo.GestionModRec;
 import Modelo.GestionModulo;
 import Modelo.GestionProgramas;
 import Modelo.GestionTipocredito;
+import Modelo.GestionUsuario;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,16 +43,19 @@ public class ControladorProgramas extends ControladorBase{
         GestionColonia mod_col = new GestionColonia();
         GestionDelegacion mod_del = new GestionDelegacion();
         GestionModRec mod_modu = new GestionModRec();
+        //GestionUsuario mod_usu = new GestionUsuario();
         
         ArrayList tc = mod_tc.obtenerTodos();
         ArrayList col = mod_col.obtenerTodos();
         ArrayList del = mod_del.obtenerTodos();
         ArrayList modu = mod_modu.obtenerTodos();
+        //ArrayList usu = mod_usu.obtenerUsuarios();
         
         request.setAttribute("tc", tc);
         request.setAttribute("col", col);
         request.setAttribute("del", del);
         request.setAttribute("modu", modu);
+        //request.setAttribute("usu", usu);
         
         RequestDispatcher rd=request.getRequestDispatcher("frm_programas.jsp");
         rd.forward(request,response);
