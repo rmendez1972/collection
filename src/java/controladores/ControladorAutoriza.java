@@ -144,6 +144,7 @@ public class ControladorAutoriza extends ControladorBase {
         int id=Integer.parseInt(request.getParameter("id"));
         GestionAutoriza modelo=new GestionAutoriza();
         Autoriza autoriza=modelo.obtenerPorId(id);
+        
         GestionDelegacion modelodelegacion= new GestionDelegacion();
         ArrayList delegaciones = modelodelegacion.obtenerTodos();
         request.setAttribute("delegaciones", delegaciones);

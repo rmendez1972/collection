@@ -87,7 +87,7 @@ public class GestionBendiv {
         Integer mid_usuario=bendiv.getId_usuario();
         String id_usuario=mid_usuario.toString();
         
-        Object params[]={id_bendiv, clave_elect, curp, clave_b, nombre, id_catprog, id_usuario};
+        Object params[]={clave_elect, curp, clave_b, nombre, id_catprog, id_usuario, id_bendiv};
         return Conexion.ejecutar("update benef_div set clave_elect=?, curp=?, clave_b=?, nombre=?, id_catprog=?, id_usuario=? where id_bendiv=?", params);
         
     }

@@ -6,6 +6,7 @@
 package controladores;
 
 import Modelo.GestionBendiv;
+import Modelo.GestionDelegacion;
 import Modelo.GestionUsuario;
 import Modelo.GestionProgramas;
 
@@ -107,15 +108,15 @@ public class ControladorBendiv extends ControladorBase {
     public void editar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id=Integer.parseInt(request.getParameter("id"));
         GestionBendiv modelo=new GestionBendiv();
-        BeneficiarioDiv bendivs=modelo.obtenerPorId(id);
+        BeneficiarioDiv bendiv=modelo.obtenerPorId(id);
         //GestionDelegacion modelodelegacion= new GestionDelegacion();
-        GestionUsuario modelousuario= new GestionUsuario();
-        ArrayList usuarios = modelousuario.obtenerUsuarios();
-        request.setAttribute("usuarios", usuarios);
-        request.setAttribute("bendivs", bendivs);
-        
-        //ArrayList programas = modeloprogramas.obtenerProgramas();
-        //request.setAttribute("programas", programas);
+        //GestionUsuario modelousuario= new GestionUsuario();
+        GestionProgramas modeloprogramas= new GestionProgramas();
+        ArrayList programas = modeloprogramas.obtenerTodos();
+        //ArrayList usuarios = modelousuario.obtenerUsuarios();
+        //request.setAttribute("usuarios", usuarios);
+        request.setAttribute("bendiv", bendiv);
+        request.setAttribute("programas", programas);
         
         
         RequestDispatcher rd=request.getRequestDispatcher("frm_modificabendiv.jsp");
@@ -140,7 +141,7 @@ public class ControladorBendiv extends ControladorBase {
         
         GestionBendiv modelo=new GestionBendiv();
         if(modelo.actualizarBendiv(bendiv)){
-            RequestDispatcher rd=request.getRequestDispatcher("controladorabendiv?operacion=listar");
+            RequestDispatcher rd=request.getRequestDispatcher("controladorbendiv?operacion=listar");
             request.setAttribute("msg", "Datos guardados");
             rd.forward(request,response);
         }
