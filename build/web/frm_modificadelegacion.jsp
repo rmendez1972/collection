@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label for="Nombre" class="col-xs-12 col-md-2 control-label col-md-offset-3">Nombre:</label>
                             <div class="col-xs-12 col-md-2">
-                                <input type="text" name="descripcion" class="form-control"  id="descripcion" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ#.\0-9]{5,50})"  placeholder="Mínimo 5 caracteres" required style=" text-transform:uppercase; width: 300px; font-size: 25px " value="${del.descripcion}" />
+                                <input type="text" name="descripcion" class="form-control"  id="descripcion" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ#.\0-9]{5,50})"  maxlength="50"  placeholder="Max. 50 caracteres" required style=" text-transform:uppercase; width: 300px; font-size: 25px " value="${del.descripcion}" />
                             </div>
                             
                         </div>
@@ -51,7 +51,7 @@
                         <div class="form-group">
                             <label for="direccion" class="col-xs-12 col-md-2 control-label col-md-offset-3">Dirección:</label>
                             <div class="col-xs-12 col-md-2">
-                                <input type="text" name="direccion" class="form-control" id="direccion" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ#.\0-9]{5,80})"  placeholder="Max.80 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${del.direccion}" />
+                                <input type="text" name="direccion" class="form-control" id="direccion" pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ#.\0-9]{5,80})"  maxlength="80"  placeholder="Max. 80 caracteres" required style="text-transform:uppercase; width: 300px; font-size: 25px" value="${del.direccion}" />
                             </div>
                         </div>
 

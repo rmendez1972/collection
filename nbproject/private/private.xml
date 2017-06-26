@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionBendiv.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/javabeans/Autoriza.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionProgramas.java</file>
@@ -13,6 +14,9 @@
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBendiv.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/javabeans/BeneficiarioDiv.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_modificabendiv.jsp</file>
+=======
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/Modelo/GestionEmisor.java</file>
+>>>>>>> 2d31160747d03c844f497c465a3443565946bffd
         </group>
     </open-files>
 </project-private>

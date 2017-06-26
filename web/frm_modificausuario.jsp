@@ -99,12 +99,12 @@
                         <div class="form-group">
                             <label for="nombrecompleto" class="col-xs-12 col-md-2 control-label">Nombre Completo:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="nombre" class="form-control" id="nombre" required placeholder="Máx.60 caracteres" maxlength="60" style="text-transform:uppercase" value="${usr.nombre}"/>
+                                <input type="text" name="nombre" class="form-control" id="nombre" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{4,80})"  placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${usr.nombre}"/>
                             </div>
                             
                             <label for="direccion" class="col-xs-12 col-md-2 control-label">Direccion::</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="direccion" class="form-control" id="direccion" required placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${usr.direccion}" />
+                                <input type="text" name="direccion" class="form-control" id="direccion" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{4,80})"  placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${usr.direccion}" />
 
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                         <div class="form-group">
                             <label for="cargo" class="col-xs-12 col-md-2 control-label ">Cargo:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="cargo" class="form-control" id="cargo" required  placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${usr.cargo}" />
+                                <input type="text" name="cargo" class="form-control" id="cargo" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{4,80})"  placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${usr.cargo}" />
                             </div>
                             <label for="serie" class="col-xs-12 col-md-2 control-label">Serie:</label>
                             <div class="col-xs-12 col-md-1">
