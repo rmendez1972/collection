@@ -112,6 +112,8 @@ public class ControladorCandidato extends ControladorBase
         candidato.setClave_cat(clave_cat);
         Integer id_tipocredito=Integer.parseInt(request.getParameter("id_tipocredito"));
         candidato.setId_tipocredito(id_tipocredito);        
+        
+        candidato.setId_usuario(1);
         GestionCandidatos modelo=new GestionCandidatos();
         if(modelo.actualizarCandidatos(candidato)){
             RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=listar");
@@ -147,6 +149,7 @@ public class ControladorCandidato extends ControladorBase
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Date fecha_pol = df.parse(request.getParameter("fecha_pol"));
         candidato.setFecha_pol(fecha_pol);
+        candidato.setId_usuario(1);
         
         if(modelo.actualizaraperturaCandidatos(candidato)){
             RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=listar");
@@ -204,6 +207,7 @@ public class ControladorCandidato extends ControladorBase
         candidato.setClave_cat(clave_cat);
         Integer id_tipocredito=Integer.parseInt(request.getParameter("id_tipocredito"));
         candidato.setId_tipocredito(id_tipocredito);   
+        candidato.setId_usuario(1);
         GestionCandidatos modelo=new GestionCandidatos();
         if(modelo.registroCandidatos(candidato)){
             RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=listar");

@@ -33,6 +33,14 @@
                 
                 return false;
             }
+            
+            /*inicializando campo tipo date a la fecha del dia*/
+            document.getElementById('fecha_pol').value=fechaActual();
+            /*inicializando la poliza del dia*/
+            var dateobj= new Date() ;
+            var day = dateobj.getDate() ;
+            document.getElementById('poliza').value='D0'+day;
+            
         </script>
     </head>
     <body>
@@ -143,7 +151,7 @@
                         <div class="form-group">
                             <label for="poliza" class="col-xs-12 col-md-2 control-label">Póliza:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="poliza" class="form-control" id="poliza"  placeholder="Máx.4 caracteres" maxlength="4" style="text-transform:uppercase" />
+                                <input type="text" name="poliza" class="form-control" id="poliza" pattern="(^[D]{1}[0-9]{3}$)" placeholder="Máx.4 caracteres" maxlength="4" style="text-transform:uppercase" />
                             </div>
                             
                             <label for="fecha_pol" class="col-xs-12 col-md-2 control-label">Fecha de Póliza:</label>
