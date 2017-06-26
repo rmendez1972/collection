@@ -90,6 +90,35 @@ public class Conexion {
         }
     }
     
+    public static boolean ejecutarImagenUpdate(String sql, Object parametros[], String ruta){
+        try{
+            conectar();
+            
+           
+            File file = new File(ruta);
+            //creamos un fileinputstream a partir de un archivo del filesystem
+            FileInputStream fis = new FileInputStream(file);
+            
+            PreparedStatement st=conex.prepareStatement(sql);
+            st.setString(1,(String)parametros[0]);
+            st.setString(2,(String)parametros[1]);
+            st.setString(3,(String)parametros[2]);
+            //seteamos el preparedstatement para la posicion 4 de la variable sql, le pasamos el FileInputStream hasta su longitud de bytes en formato int
+            st.setBinaryStream(4, fis, (int)file.length());
+            st.setString(5,(String)parametros[3]);
+            
+            //establecerParametros(st,parametros);
+            st.execute();
+            st.close();
+            fis.close();
+            parametros=null;
+            return true;
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+    
     public static Object ejecutarEscalar(String sql, Object parametros[]){
         try{
             conectar();
