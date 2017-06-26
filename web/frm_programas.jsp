@@ -322,7 +322,7 @@
                             </div> 
                         </div>
                         
-                        <div>
+                        <div class="form-group">
                             <label for="id_modulo" class="col-xs-12 col-md-2 control-label">Modulo:</label>
                             <div class="col-xs-12 col-md-4">
                                 <select id="id_modulo" required class="form-control"> 
