@@ -18,14 +18,17 @@ import java.util.Map;
 import javabeans.Usuario;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import net.sf.jasperreports.engine.JasperRunManager;
 
 /**
  *
  * @author arturo
  */
+@WebServlet(name = "ControladorUsuario", urlPatterns = {"/controladorusuario"})
 public class ControladorUsuario extends ControladorBase {
 
     public void listar(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -109,6 +112,47 @@ public class ControladorUsuario extends ControladorBase {
             
             RequestDispatcher rd=request.getRequestDispatcher("frm_usuario.jsp");
             rd.forward(request,response);
+    }
+    
+    public void nuevoLogin(HttpServletRequest request, HttpServletResponse response) throws Exception{
+                        
+            RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
+            rd.forward(request,response);
+    }
+    
+    public void login(HttpServletRequest request, HttpServletResponse response) throws Exception{
+                        
+            Usuario usuario=new Usuario();
+            usuario.setUsuario(request.getParameter("usuario")); 
+            usuario.setPassword(request.getParameter("password"));
+            
+            // verificando la existencia del usuario en la db
+            GestionUsuario gu=new GestionUsuario(); //instancia del objeto Modelo que gestiona las operaciones
+            usuario = gu.login(usuario);
+           
+            if (usuario!=null)
+            {
+
+                //int id_grupo=usuario.getId_grupo();
+                HttpSession session = request.getSession();
+                session.setAttribute("usuario", usuario);
+                request.setAttribute("usuario", usuario);
+                
+                RequestDispatcher rd=request.getRequestDispatcher("bienvenida.jsp");
+                rd.forward(request,response);
+          
+                
+            }
+            else
+            {
+               String mensaje="Fracaso en Login";
+               request.setAttribute("mensaje",mensaje);
+                //RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
+                //rd.forward(request,response);
+               response.sendRedirect("login.jsp");
+            }    
+                
+        
     }
     
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{

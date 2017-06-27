@@ -48,9 +48,9 @@ import net.sf.jasperreports.engine.util.JRLoader;
  * @author Rafael Mendez
  */
 
-/*
+
 @WebServlet(name = "Controladorlogin", urlPatterns = {"/controladorlogin"})
-public class Controladorlogin extends HttpServlet 
+public class Controladorlogin extends ControladorBase 
 { 
     public Connection cn;
     @Override
@@ -58,14 +58,16 @@ public class Controladorlogin extends HttpServlet
     {
         //almacena la operacion que debe gestionar el controlador
         String operacion=request.getParameter("operacion");
+        //String usuario=request.getParameter("usuario");
+        //String password=request.getParameter("password");
         
-        //el controlador redirecciona al formulario de captura de cpp
+     
         if(operacion.equals("iniciar"))
         {
-            Usuario usuario;
+            Usuario usuario=new Usuario();
+            usuario.setUsuario(request.getParameter("usuario")); 
+            usuario.setPassword(request.getParameter("password"));
             
-            usuario = (Usuario)request.getAttribute("usuario");
-
             // verificando la existencia del usuario en la db
             GestionUsuario gu=new GestionUsuario(); //instancia del objeto Modelo que gestiona las operaciones
             usuario = gu.login(usuario);
@@ -73,12 +75,12 @@ public class Controladorlogin extends HttpServlet
             if (usuario!=null)
             {
 
-                int id_grupo=usuario.getId_grupo();
+                //int id_grupo=usuario.getId_grupo();
                 HttpSession session = request.getSession();
                 session.setAttribute("usuario", usuario);
-                request.setAttribute("id_grupo", id_grupo);
+                //request.setAttribute("id_grupo", id_grupo);
                 
-                RequestDispatcher rd=request.getRequestDispatcher("index.html");
+                RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
                 rd.forward(request,response);
           
                 
@@ -98,4 +100,3 @@ public class Controladorlogin extends HttpServlet
     } 
 }
 
-*/

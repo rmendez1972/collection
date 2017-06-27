@@ -302,7 +302,7 @@ body {
     .dgcAlert .dgcVentana .dgcCerrar {
         height: 25px;width: 25px;float: right; cursor:pointer; 
         /*background: url(http://www.dgcmedia.es/recursosExternos/cerrarAlert.jpg) no-repeat center center;*/
-        background: url(../imagenes/cerrarAlert.jpg) no-repeat center center;
+        background: url(../img/cerrarAlert.jpg) no-repeat center center;
     }
 
     .dgcAlert .dgcVentana .dgcMensaje {
