@@ -29,19 +29,20 @@ public class GestionUsuario {
         }catch(Exception e){}
         return usr;
     }
-    /*
+
     public Usuario login(Usuario usuario){
         Usuario usr=null;
-        Object params[]={usuario.getUsuario(),usuario.getPassword(),usuario.getId_grupo()};
-        ResultSet res=Conexion.ejecutarConsulta("select * from usuarios where usuario=? and password=md5(?)", params);
+        Object params[]={usuario.getUsuario(), usuario.getPassword()};
+        //ResultSet res=Conexion.ejecutarConsulta("select * from usuarios where usuario=? and password=md5(?)", params);
+        ResultSet res=Conexion.ejecutarConsulta("select * from usuarios where usuario=? and password=?", params);
         try{
             if(res.next())
-                usr=new Usuario(res.getInt("id_usuario"), res.getString("usuario"), res.getString("password"), res.getString("nombre"), res.getString("apellido_paterno"), res.getString("apellido_materno"), res.getInt("id_unidadadministrativa"), res.getInt("id_grupo"), res.getInt("id_direccion"));
+                usr=new Usuario(res.getInt("id_usuario"), res.getString("usuario"), res.getString("password"), res.getInt("id_nivel"), res.getInt("id_del"), res.getString("serie"), res.getString("nombre"), res.getString("cargo"), res.getString("direccion"));
             res.close();
         }catch(Exception e){}
         return usr;
     }
-    */
+
     public ArrayList obtenerUsuarios(){
         ArrayList users=new ArrayList();
         ResultSet res=Conexion.ejecutarConsulta("select U.*, N.descripcion as nivel, D.descripcion as delegacion from usuarios U inner join niveles N on U.id_nivel = N.id_nivel inner join delegaciones D on U.id_del = D.id_delegacion order by U.nombre asc", null);

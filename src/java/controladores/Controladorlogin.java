@@ -48,7 +48,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
  * @author Rafael Mendez
  */
 
-/*
+
 @WebServlet(name = "Controladorlogin", urlPatterns = {"/controladorlogin"})
 public class Controladorlogin extends HttpServlet 
 { 
@@ -58,6 +58,7 @@ public class Controladorlogin extends HttpServlet
     {
         //almacena la operacion que debe gestionar el controlador
         String operacion=request.getParameter("operacion");
+        String musuario=request.getParameter("usuario");
         
         //el controlador redirecciona al formulario de captura de cpp
         if(operacion.equals("iniciar"))
@@ -65,7 +66,7 @@ public class Controladorlogin extends HttpServlet
             Usuario usuario;
             
             usuario = (Usuario)request.getAttribute("usuario");
-
+            
             // verificando la existencia del usuario en la db
             GestionUsuario gu=new GestionUsuario(); //instancia del objeto Modelo que gestiona las operaciones
             usuario = gu.login(usuario);
@@ -73,10 +74,10 @@ public class Controladorlogin extends HttpServlet
             if (usuario!=null)
             {
 
-                int id_grupo=usuario.getId_grupo();
+                //int id_grupo=usuario.getId_grupo();
                 HttpSession session = request.getSession();
                 session.setAttribute("usuario", usuario);
-                request.setAttribute("id_grupo", id_grupo);
+                //request.setAttribute("id_grupo", id_grupo);
                 
                 RequestDispatcher rd=request.getRequestDispatcher("index.html");
                 rd.forward(request,response);
@@ -98,4 +99,3 @@ public class Controladorlogin extends HttpServlet
     } 
 }
 
-*/

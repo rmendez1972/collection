@@ -64,6 +64,7 @@
           <img src="assets/img/logo.png"  alt="" class="img-responsive">
         </div> 
         <div id="navbar" class="navbar-collapse collapse navbar-right">
+            <div style="display:none">
           <ul class="nav navbar-nav navbar-right">
             <!--<li class="active"><a href="#">Opción1</a></li>-->
             <li class="dropdown">
@@ -110,6 +111,7 @@
             <li><a href="#cerrar"><span class="fa fa-power-off"></span> Cerrar sesión</a></li>
             
           </ul>
+            </div>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -168,7 +170,8 @@
     
     <script> //Script para definir las áreas en donde se cargará el contenido
             $(document).ready(function(){
-                
+                event.preventDefault();
+                cargar('login.jsp','#show');
                 //Menu colgante: Catálogos
                 $("#usuarios").click(function (event) {
                     

@@ -3,20 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionBendiv.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/index.html</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/javabeans/Autoriza.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionProgramas.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorAutoriza.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_bendiv.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_bendiv.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/login.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionUsuario.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/Controladorlogin.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_candidato.jsp</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_modificaautoriza.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBendiv.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/javabeans/BeneficiarioDiv.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_modificabendiv.jsp</file>
-=======
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/Modelo/GestionEmisor.java</file>
->>>>>>> 2d31160747d03c844f497c465a3443565946bffd
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_autoriza.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/javabeans/Usuario.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_autoriza.jsp</file>
         </group>
     </open-files>
 </project-private>
