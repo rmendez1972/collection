@@ -57,14 +57,13 @@
           </button>
           <!--<a class="navbar-brand" href="#">Project name</a>-->
           <img src="assets/img/header2.png"  alt="" class="img-responsive">
-          
         </div>
 
         <div style="display: inline-block; vertical-align: middle;margin-left: 30px;">  
           <img src="assets/img/logo.png"  alt="" class="img-responsive">
         </div> 
         <div id="navbar" class="navbar-collapse collapse navbar-right">
-            <div style="display:none">
+            <div id="menu" style="display:none">
           <ul class="nav navbar-nav navbar-right">
             <!--<li class="active"><a href="#">Opción1</a></li>-->
             <li class="dropdown">
@@ -115,7 +114,6 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    
     <!-- Main component for a primary marketing message or call to action -->
     <div class="container" style="padding-left:0px;padding-right:0px;">
      
@@ -167,11 +165,26 @@
     
   
     <script type="text/javascript" charset="utf-8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+        <script>
+        //usuario='{request.getAttribute.usuario.id_grupo}';
+        <%usuario="loque seadsfdfd"%>
+        usuario=<%=request.getParameter("usuario")%>;
+        alert(usuario);
+       
+         
+         if (usuario!==null){
+            //alert('usuario autenticado');     
+        //document.getElementById('menu').style.display = 'block';
+         }
+    </script>
+
     
     <script> //Script para definir las áreas en donde se cargará el contenido
             $(document).ready(function(){
+                
                 event.preventDefault();
                 cargar('login.jsp','#show');
+            
                 //Menu colgante: Catálogos
                 $("#usuarios").click(function (event) {
                     

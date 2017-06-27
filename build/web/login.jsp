@@ -1,14 +1,14 @@
 <%-- 
     Document   : login
-    Created on : 26/16/2017, 09:37:19 PM
+    Created on : 26/06/2017, 09:37:19 PM
     Author     : Ismael García Hernández (igh1@hotmail.com)
 --%>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@page import="javabeans.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<a href="../src/java/controladores/controladorlogin.java"></a>
+<a href="../src/java/controladores/controladorusuario.java"></a>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,21 +17,28 @@
       <!--<link rel="stylesheet" type="text/css" href="css/estilos.css"/>!-->
 	<title>Autenticación</title>
         <script>
+            function mostrar(){
+                document.getElementById('menu').style.display = 'block';
+            }
+            
+            function ocultar(){
+                document.getElementById('menu').style.display = 'none';
+            }
             function entrar(){
+                
+            
                 var params=new Object();
                 params.usuario=$("#usuario").val();
                 params.password=$("#password").val();
-                params.nombre=$("#nombre").val();
+                //params.nombre=$("#nombre").val();
                 
-                $.post("controladorlogin?operacion=iniciar", params, function(datos){
+                $.post("controladorusuario?operacion=login", params, function(datos){
                     $("#show").html(datos);
                 },"html");
                 
                 return false;
             }
-          /*inicializando campo tipo date a la fecha del dia*/
-            /*document.getElementById('fecha_con').value=fechaActual();*/
-            
+  
         </script>
     </head>
    
@@ -57,7 +64,6 @@
                                 maxlength="8" placeholder="Mín.4 Máx. 8 caracteres"
                                 style="text-transform:uppercase" 
                                 />
-                            <input type="hidden" name="nombre" id="nombre">
                         </div>
                         
                         <label for="password" class="col-xs-12 col-md-2 control-label col-md-offset-3 ">
@@ -76,6 +82,8 @@
                     
                     <div class="form-group" style="text-align:center">
                         <input type="submit"  value="Aceptar" class="btn btn-primary">
+                        <input type="reset" value="Limpiar"  class="btn btn-warning">
+                        
                     </div>
 			
                 </form>
