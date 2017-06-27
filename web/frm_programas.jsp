@@ -262,7 +262,7 @@
                         <div class="form-group">
                             <label for="por_pf" class="col-xs-12 col-md-2 control-label ">Por pf:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="number" step="0.001" class="form-control" id="por_pf" required  placeholder="Sólo se aceptan tres decimales" maxlength="12"/>
+                                <input type="number" step="0.01" class="form-control" id="por_pf" required  placeholder="Sólo se aceptan tres decimales" maxlength="12"/>
                             </div>
                             
                             <label for="clave_ant" class="col-xs-12 col-md-2 control-label ">Clave_ant:</label>
@@ -322,7 +322,7 @@
                             </div> 
                         </div>
                         
-                        <div>
+                        <div class="form-group">
                             <label for="id_modulo" class="col-xs-12 col-md-2 control-label">Modulo:</label>
                             <div class="col-xs-12 col-md-4">
                                 <select id="id_modulo" required class="form-control"> 

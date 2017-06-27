@@ -17,7 +17,7 @@ public class GestionProgramas {
     
     public ArrayList obtenerTodos(){
         ArrayList lista = new ArrayList();
-        ResultSet res = Conexion.ejecutarConsulta("select P.*, TC.descripcion as tipocredito, C.descripcion as colonia, D.descripcion as delegacion, M.descripcion as modulo  from cat_prog P inner join tipo_credito TC on P.id_tipocred = TC.id_tipocredito inner join colonias C on P.id_colonia = C.id_colonia inner join delegaciones D on P.id_delegacion = D.id_delegacion inner join modulos_recaudacion M on P.id_modulo = M.id_modulo", null);
+        ResultSet res = Conexion.ejecutarConsulta("select P.*, TC.descripcion as tipocredito, C.descripcion as colonia, D.descripcion as delegacion, M.descripcion as modulo, U.usuario as usuario  from cat_prog P inner join tipo_credito TC on P.id_tipocred = TC.id_tipocredito inner join colonias C on P.id_colonia = C.id_colonia inner join delegaciones D on P.id_delegacion = D.id_delegacion inner join modulos_recaudacion M on P.id_modulo = M.id_modulo inner join usuarios U on P.id_usuario = U.id_usuario", null);
         try{
             while(res.next()){
                 CatProgramas cp=new CatProgramas(res.getInt("id_catprog"), res.getString("clave"), res.getString("descripcion"), res.getBigDecimal("sub_ini"), res.getBigDecimal("eng_fon"), res.getBigDecimal("eng_inv"), res.getBigDecimal("interes"), res.getBigDecimal("admon"), res.getBigDecimal("seguro"), res.getBigDecimal("costo_m2"), res.getBigDecimal("por_sub"), res.getBigDecimal("por_admon"), res.getBigDecimal("por_sv"), res.getBigDecimal("por_os"), res.getBigDecimal("sal_min"), res.getBigDecimal("pago_mes"), res.getBigDecimal("por_eng"), res.getBigDecimal("anual"), res.getInt("plazo"), res.getBigDecimal("por_cap"), res.getBoolean("status"), res.getInt("mecanica"), res.getInt("id_tipocred"), res.getBigDecimal("mensual"), res.getBigDecimal("sub_bp"), res.getBigDecimal("apor_fij"), res.getBigDecimal("por_pm"), res.getBigDecimal("por_pf"), res.getString("clave_ant"), res.getInt("id_colonia"), res.getInt("dias_gracia"), res.getBoolean("mora"), res.getBigDecimal("por_ga"), res.getString("cuenta_cont"), res.getInt("id_delegacion"), res.getInt("id_modulo"), res.getBoolean("condicion_fija"), res.getInt("id_usuario"));
@@ -25,6 +25,7 @@ public class GestionProgramas {
                 cp.setColonia(res.getString("colonia"));
                 cp.setDelegacion(res.getString("delegacion"));
                 cp.setModulo(res.getString("modulo"));
+                cp.setUsuario(res.getString("usuario"));
                 lista.add(cp);
             }
             res.close();

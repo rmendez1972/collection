@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[select P.*, TC.descripcion as tipocredito, C.descripcion as colonia, D.descripcion as delegacion, M.descripcion as modulo  from cat_prog P inner join tipo_credito TC on P.id_tipocred = TC.id_tipocredito inner join colonias C on P.id_colonia = C.id_colonia inner join delegaciones D on P.id_delegacion = D.id_delegacion inner join modulos_recaudacion M on P.id_modulo = M.id_modulo]]>
+		<![CDATA[select P.*, TC.descripcion as tipocredito, C.descripcion as colonia, D.descripcion as delegacion, M.descripcion as modulo, U.usuario as usuario  from cat_prog P inner join tipo_credito TC on P.id_tipocred = TC.id_tipocredito inner join colonias C on P.id_colonia = C.id_colonia inner join delegaciones D on P.id_delegacion = D.id_delegacion inner join modulos_recaudacion M on P.id_modulo = M.id_modulo inner join usuarios U on P.id_usuario = U.id_usuario]]>
 	</queryString>
 	<field name="id_catprog" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -117,10 +117,19 @@
 	<field name="id_modulo" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="condicion_fija" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_usuario" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="tipocredito" class="java.lang.String"/>
 	<field name="colonia" class="java.lang.String"/>
 	<field name="delegacion" class="java.lang.String"/>
 	<field name="modulo" class="java.lang.String"/>
+	<field name="usuario" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -163,7 +172,7 @@
 				<text><![CDATA[Descripción]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="165" y="10" width="40" height="20" uuid="aebb78e7-ae50-41de-93e7-7fbe825ecee0"/>
+				<reportElement x="162" y="10" width="40" height="20" uuid="aebb78e7-ae50-41de-93e7-7fbe825ecee0"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
 				</textElement>
@@ -173,81 +182,88 @@
 				<reportElement x="3" y="34" width="965" height="1" uuid="8ff6860c-0934-4b45-aa89-b2ee42399fee"/>
 			</line>
 			<staticText>
-				<reportElement x="211" y="10" width="62" height="20" uuid="d5224425-863b-4c92-bb18-6f552e31d406"/>
+				<reportElement x="204" y="10" width="62" height="20" uuid="d5224425-863b-4c92-bb18-6f552e31d406"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Interes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="283" y="10" width="62" height="20" uuid="e8c58f8d-2b2a-4c19-bd8a-e0be714f3cc9"/>
+				<reportElement x="266" y="10" width="62" height="20" uuid="e8c58f8d-2b2a-4c19-bd8a-e0be714f3cc9"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Admon]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="351" y="10" width="62" height="20" uuid="4f795ae7-8a69-4198-8b8d-48826e3b3066"/>
+				<reportElement x="332" y="10" width="62" height="20" uuid="4f795ae7-8a69-4198-8b8d-48826e3b3066"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Seguro]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="422" y="10" width="62" height="20" uuid="0faf3807-fcb1-43ea-a08f-07e747b0e35d"/>
+				<reportElement x="397" y="10" width="62" height="20" uuid="0faf3807-fcb1-43ea-a08f-07e747b0e35d"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Costo m2]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="492" y="10" width="62" height="20" uuid="07eac9ee-b57c-42dc-a297-088890e1a2f1"/>
+				<reportElement x="462" y="10" width="62" height="20" uuid="07eac9ee-b57c-42dc-a297-088890e1a2f1"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Pago mes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="564" y="10" width="62" height="20" uuid="e1ae1996-4b70-469b-b51d-d263c0bac6f3"/>
+				<reportElement x="526" y="10" width="62" height="20" uuid="e1ae1996-4b70-469b-b51d-d263c0bac6f3"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Plazo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="634" y="10" width="62" height="20" uuid="fcb58ccc-676b-4990-992c-a09a4210c945"/>
+				<reportElement x="590" y="10" width="62" height="20" uuid="fcb58ccc-676b-4990-992c-a09a4210c945"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Mecanica]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="703" y="10" width="62" height="20" uuid="ecc56f9d-afb6-43d9-854a-019a6be554cb"/>
+				<reportElement x="653" y="10" width="62" height="20" uuid="ecc56f9d-afb6-43d9-854a-019a6be554cb"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Delegación]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="773" y="10" width="62" height="20" uuid="e15db007-637e-4058-b53f-7aa8564c10e8"/>
+				<reportElement x="722" y="10" width="62" height="20" uuid="e15db007-637e-4058-b53f-7aa8564c10e8"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Tipocredito]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="843" y="10" width="62" height="20" uuid="c4c0b25b-b5ad-42fc-964a-b84b01f22007"/>
+				<reportElement x="789" y="10" width="62" height="20" uuid="c4c0b25b-b5ad-42fc-964a-b84b01f22007"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Clave ant]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="908" y="10" width="60" height="20" uuid="ecc7eea4-9d0b-4c5e-ae83-bcddcf4dde2a"/>
+				<reportElement x="853" y="10" width="60" height="20" uuid="ecc7eea4-9d0b-4c5e-ae83-bcddcf4dde2a"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Colonia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="913" y="10" width="60" height="20" uuid="aa41117b-eecb-4c8c-9751-aec6555cb4a5"/>
+				<textElement>
+					<font fontName="Tahoma" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Usuario]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
@@ -271,88 +287,95 @@
 				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="165" y="10" width="46" height="20" uuid="c53a209b-cefb-443f-98a8-0d316a8d152e"/>
+				<reportElement x="161" y="10" width="46" height="20" uuid="c53a209b-cefb-443f-98a8-0d316a8d152e"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{sub_ini}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="216" y="10" width="62" height="20" uuid="e1b2b84c-c904-4883-b017-db2553e48454"/>
+				<reportElement x="206" y="10" width="62" height="20" uuid="e1b2b84c-c904-4883-b017-db2553e48454"/>
 				<textElement>
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{interes}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="283" y="10" width="62" height="20" uuid="218bb17c-9156-49f2-a269-90b871f2a95c"/>
+				<reportElement x="269" y="10" width="62" height="20" uuid="218bb17c-9156-49f2-a269-90b871f2a95c"/>
 				<textElement>
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{admon}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="351" y="10" width="62" height="20" uuid="8d12895f-c6a0-45c1-abe0-614c8239f6a3"/>
+				<reportElement x="334" y="10" width="62" height="20" uuid="8d12895f-c6a0-45c1-abe0-614c8239f6a3"/>
 				<textElement>
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{seguro}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="422" y="10" width="62" height="20" uuid="0e5b5c8a-1354-4156-98ad-9664aa6f2dee"/>
+				<reportElement x="399" y="10" width="62" height="20" uuid="0e5b5c8a-1354-4156-98ad-9664aa6f2dee"/>
 				<textElement>
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{costo_m2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="492" y="10" width="62" height="20" uuid="3041fb1f-211d-4fdc-9df3-8bbe7192d394"/>
+				<reportElement x="459" y="10" width="62" height="20" uuid="3041fb1f-211d-4fdc-9df3-8bbe7192d394"/>
 				<textElement>
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pago_mes}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="564" y="10" width="62" height="20" uuid="87765bad-7d1e-4578-b199-896bfc0b0b09"/>
+				<reportElement x="524" y="10" width="62" height="20" uuid="87765bad-7d1e-4578-b199-896bfc0b0b09"/>
 				<textElement>
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{plazo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="634" y="10" width="62" height="20" uuid="219530c9-da4e-4150-ac43-df46e53f0e58"/>
+				<reportElement x="590" y="10" width="62" height="20" uuid="219530c9-da4e-4150-ac43-df46e53f0e58"/>
 				<textElement>
-					<font size="9"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mecanica}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="701" y="10" width="62" height="20" uuid="87c65d2f-be76-41d8-90b8-a8f631bd79f4"/>
+				<reportElement x="653" y="10" width="62" height="20" uuid="87c65d2f-be76-41d8-90b8-a8f631bd79f4"/>
 				<textElement>
 					<font size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{delegacion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="770" y="10" width="62" height="20" uuid="2389d351-5324-48f0-8ba8-cfcd4130dcc6"/>
+				<reportElement x="719" y="10" width="62" height="20" uuid="2389d351-5324-48f0-8ba8-cfcd4130dcc6"/>
 				<textElement>
 					<font size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipocredito}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="840" y="10" width="62" height="20" uuid="42f76af4-8c91-4143-92a1-ddf50147c235"/>
+				<reportElement x="784" y="10" width="62" height="20" uuid="42f76af4-8c91-4143-92a1-ddf50147c235"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{clave_ant}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="905" y="10" width="60" height="20" uuid="70856771-cbae-4db4-a60c-f6b5138afda3"/>
+				<reportElement x="849" y="10" width="60" height="20" uuid="70856771-cbae-4db4-a60c-f6b5138afda3"/>
 				<textElement>
 					<font size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{colonia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="912" y="10" width="55" height="20" uuid="d5fe8654-d28f-4dd0-a25f-216786755541"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuario}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

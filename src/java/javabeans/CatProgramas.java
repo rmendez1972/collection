@@ -56,6 +56,7 @@ public class CatProgramas {
     private String colonia;
     private String delegacion;
     private String modulo;
+    private String usuario;
 
     public CatProgramas(Integer id_catprog, String clave, String descripcion, BigDecimal sub_ini, BigDecimal eng_fon, BigDecimal eng_inv, BigDecimal interes, BigDecimal admon, BigDecimal seguro, BigDecimal costo_m2, BigDecimal por_sub, BigDecimal por_admon, BigDecimal por_sv, BigDecimal por_os, BigDecimal sal_min, BigDecimal pago_mes, BigDecimal por_eng, BigDecimal anual, Integer plazo, BigDecimal por_cap, boolean status, Integer mecanica, Integer id_tipocred, BigDecimal mensual, BigDecimal sub_bp, BigDecimal apor_fij, BigDecimal por_pm, BigDecimal por_pf, String clave_ant, Integer id_colonia, Integer dias_gracia, boolean mora, BigDecimal por_ga, String cuenta_cont, Integer id_delegacion, Integer id_modulo, boolean condicion_fija, Integer id_usuario) {
         this.id_catprog = id_catprog;
@@ -439,6 +440,14 @@ public class CatProgramas {
 
     public void setId_usuario(Integer id_usuario) {
         this.id_usuario = id_usuario;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
     
     
