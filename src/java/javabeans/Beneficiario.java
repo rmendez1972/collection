@@ -13,9 +13,9 @@ import java.util.Date;
  *
  * @author Rafael Mendez
  */
-public class Candidatos
+public class Beneficiario
 {
-    private int id_candidato;
+    private int id_beneficiario;
     private int id_catprog;
     private String numcontrato;
     private String clave_elect;
@@ -62,11 +62,11 @@ public class Candidatos
 
     
        
-    public Candidatos(){ super();}
+    public Beneficiario(){ super();}
     //constructor que permite crear un objeto
     
-     public Candidatos(int id_candidato,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito){
-         this.id_candidato=id_candidato;
+     public Beneficiario(int id_beneficiario,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito){
+         this.id_beneficiario=id_beneficiario;
          this.id_catprog=id_catprog;
          this.numcontrato = numcontrato;
          this.clave_elect=clave_elect;
@@ -83,12 +83,12 @@ public class Candidatos
          this.id_tipocredito=id_tipocredito;
      }
     
-    public int getId_candidato() {
-        return id_candidato;
+    public int getId_beneficiario() {
+        return id_beneficiario;
     }
 
-    public void setId_candidato(Integer id_candidato) {
-        this.id_candidato = id_candidato;
+    public void setId_beneficiario(Integer id_candidato) {
+        this.id_beneficiario = id_beneficiario;
     }
 
     public int getId_catprog() {

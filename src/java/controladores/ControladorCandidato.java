@@ -4,6 +4,7 @@
  */
 package controladores;
 
+import Modelo.GestionBeneficiario;
 import Modelo.GestionCandidatos;
 import Modelo.GestionProgramas;
 import Modelo.GestionTipocredito;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javabeans.Beneficiario;
 import javabeans.Candidatos;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletOutputStream;
@@ -151,7 +153,35 @@ public class ControladorCandidato extends ControladorBase
         candidato.setFecha_pol(fecha_pol);
         candidato.setId_usuario(1);
         
-        if(modelo.actualizaraperturaCandidatos(candidato)){
+        
+        /*seteamos al bean de beneficiario*/
+        Beneficiario beneficiario = new Beneficiario();
+        beneficiario.setId_catprog(candidato.getId_catprog());
+        beneficiario.setNumcontrato(candidato.getNumcontrato());
+        beneficiario.setClave_elect(candidato.getClave_elect());
+        beneficiario.setCurp(candidato.getCurp());
+        beneficiario.setRfc(candidato.getRfc());
+        beneficiario.setNombre(candidato.getNombre());
+        beneficiario.setConyuge(candidato.getConyuge());
+               
+        //DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        //Date fecha_con = df.parse(request.getParameter("fecha_con"));
+        beneficiario.setFecha_con(candidato.getFecha_con());
+        beneficiario.setMza(candidato.getMza());
+        beneficiario.setLte(candidato.getLte());
+        //BigDecimal area = new BigDecimal(request.getParameter("area"));
+        beneficiario.setArea(candidato.getArea());
+        beneficiario.setDomicilio(candidato.getDomicilio());
+        beneficiario.setClave_cat(candidato.getClave_cat());
+        beneficiario.setId_tipocredito(candidato.getId_tipocredito());   
+        beneficiario.setId_usuario(candidato.getId_usuario());
+        beneficiario.setPoliza(candidato.getPoliza());
+        beneficiario.setFecha_pol(candidato.getFecha_pol());
+                                
+        GestionBeneficiario mod_ben = new GestionBeneficiario();
+        
+        if(modelo.actualizaraperturaCandidatos(candidato) && mod_ben.registroBeneficiario(beneficiario)){
+            modelo.eliminarPorId(id_candidato);
             RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=listar");
             request.setAttribute("msg", "Ciudadano Contratado Ingresado al Catálogo de Beneficiarios (CxC)");
             rd.forward(request,response);

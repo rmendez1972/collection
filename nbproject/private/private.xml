@@ -7,7 +7,6 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/login.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/index.html</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_cpp.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_candidatos.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionFirmantes.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_modificacandidatoapertura.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_modificacandidato.jsp</file>
@@ -16,7 +15,9 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_candidato.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorFirmantes.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/Controladorlogin.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Candidatos.java</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Beneficiario.java</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionBeneficiario.java</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_beneficiarios.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_clavediv.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorCandidato.java</file>
         </group>
