@@ -38,6 +38,17 @@
                 
                 return false;
             }
+            
+            <c:if test="${usuario== null}">
+                
+                <c:if test="${msg != null}">
+                    alert('${msg}');
+                </c:if>
+                //alert('Salida exitosa');
+                //alert('Autenticación exitosa'+'${usuario.usuario}');
+                document.getElementById('menu').style.display = 'none';
+
+        </c:if>
   
         </script>
     </head>

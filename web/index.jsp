@@ -90,7 +90,7 @@
                       <li id="delegaciones"><a href="#" ><span class="fa fa-group"></span> Delegaciones</a></li>
                       <li id="autoriza"><a href="#" ><span class="fa fa-pencil-square-o "></span> Autoriza</a></li>
                       <li id="firmantes"><a href="#" ><span class="fa fa-pencil-square-o"></span> Firmantes</a></li>
-                      <li id="modrecaudacion"><a href="#" ><span class="fa fa-window-restore"></span> Modulos RecaudaciÃ³n</a></li>
+                      <li id="modrecaudacion"><a href="#" ><span class="fa fa-window-restore"></span> Modulos Recaudación</a></li>
 
                       <li role="separator" class="divider"></li>
                       <li class="dropdown-header">Tasas Financieras</li>
@@ -105,14 +105,14 @@
                       <li id="emisores"><a href="#" ><span class="fa fa-podcast"></span> Emisores</a></li>
                       <li id="caja"><a href="#" ><span class="fa fa-bank"></span> Cajas</a></li>
                       <li role="separator" class="divider"></li>
-                      <li id="tipocredito"><a href="#" ><span class="fa fa-credit-card-alt"></span> Tipos de CrÃ©dito</a></li>
+                      <li id="tipocredito"><a href="#" ><span class="fa fa-credit-card-alt"></span> Tipos de Crédito</a></li>
                       <li id="banco"><a href="#" ><span class="fa fa-bank"></span>Bancos</a></li>
                       <li id="bonificacion"><a href="#" ><span class="fa fa-handshake-o"></span> Bonificaciones</a></li>
                       <li id="colonia"><a href="#" ><span class="fa fa-building"></span> Colonias</a></li>
                       <li id="localidades"><a href="#" ><span class="fa fa-map-marker"></span> Localidades</a></li>
 
                     </ul>
-                  <li><a href="#cerrar"><span class="fa fa-power-off"></span> Cerrar sesión</a></li>
+                  <li id="logout"><a href="#r"><span class="fa fa-power-off"></span> Cerrar sesión</a></li>
 
                 </ul>
                 
@@ -181,13 +181,19 @@
   
     <script type="text/javascript" charset="utf-8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
            
-    <script> //Script para definir las Ã¡reas en donde se cargarÃ¡ el contenido
+    <script> //Script para definir las área en donde se cargará el contenido
             $(document).ready(function(){
-                
-               
+                //Cuando el doom esté cargado llamar a login
                 cargar('controladorusuario?operacion=nuevoLogin','#show');
+                
+                //Logout
+                $("#logout").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorusuario?operacion=logout','#show');
+                });
+                
             
-                //Menu colgante: CatÃ¡logos
+                //Menu colgante: Catálologos
                 $("#usuarios").click(function (event) {
                     
                     event.preventDefault();

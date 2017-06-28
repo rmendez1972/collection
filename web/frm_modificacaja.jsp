@@ -19,7 +19,7 @@
                 params.folio_final=$("#folio_final").val();
                 params.poliza=$("#poliza").val();
                 params.monto_inicial=$("#monto_inicial").val();
-                params.id_usuario=$("#id_usuario").val();
+                
                 
                 if(params.monto_inicial < 0){
                     alert("Sólo se aceptan números positivos");
@@ -78,16 +78,6 @@
                             <label for="importe" class="col-xs-12 col-md-2 control-label ">Monto Inicial:</label>
                             <div class="col-xs-12 col-md-4">
                                 <input type="number" step="0.01" class="form-control" id="monto_inicial" required  placeholder="SÓLO SE ACEPTAN DECIMALES" maxlength="12" value="${caja.monto_inicial}"/>
-                            </div>
-                            
-                            <label for="fecha" class="col-xs-12 col-md-2 control-label ">Usuario:</label>
-                            <div class="col-xs-12 col-md-4">
-                                <select id="id_usuario" class="form-control" required>
-                                    <option value="">Seleccione uno</option>
-                                    <c:forEach  var="usuario" items="${requestScope.usuario}">
-                                        <OPTION VALUE="${usuario.id_usuario}" ${usuario.id_usuario == caja.id_usuario ? 'selected':''} >${usuario.usuario}</OPTION>
-                                    </c:forEach>
-                                </select>
                             </div>
                         </div>
 

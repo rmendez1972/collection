@@ -84,7 +84,7 @@
                                 <img img src="${requestScope.pathfirmantes}${firm.firma}" width="100px" height="100px"/>
                             </div>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <label for="firma" class="col-xs-12 col-md-2 control-label col-md-offset-3">Actualizar Firma:</label>
                             <div class="col-xs-12 col-md-2">
                                 <input  name="firma" id="firma" type="file">
