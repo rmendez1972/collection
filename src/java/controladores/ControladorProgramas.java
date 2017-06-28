@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javabeans.CatProgramas;
+import javabeans.Usuario;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -172,12 +173,13 @@ public class ControladorProgramas extends ControladorBase{
         Boolean condicion_fija = Boolean.parseBoolean(valcondicion_fija);
         cp.setCondicion_fija(condicion_fija);
         
-        Integer id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
-        cp.setId_usuario(id_usuario);
+        //Integer id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
+        
         
         HttpSession session = request.getSession();
-        session.getAttribute("usuario");
-        
+        Usuario usuario = (Usuario)(session.getAttribute("usuario"));
+        Integer id_usuario = usuario.getId_usuario();
+        cp.setId_usuario(id_usuario);
         
         GestionProgramas modelo = new GestionProgramas();
         
@@ -345,7 +347,11 @@ public class ControladorProgramas extends ControladorBase{
         Boolean condicion_fija = Boolean.parseBoolean(valcondicion_fija);
         cp.setCondicion_fija(condicion_fija);
         
-        Integer id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
+        //Integer id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
+        //cp.setId_usuario(id_usuario);
+        HttpSession session = request.getSession();
+        Usuario usuario = (Usuario)(session.getAttribute("usuario"));
+        Integer id_usuario = usuario.getId_usuario();
         cp.setId_usuario(id_usuario);
         
         GestionProgramas modelo = new GestionProgramas();

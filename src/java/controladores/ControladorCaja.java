@@ -19,6 +19,8 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import javabeans.Usuario;
+import javax.servlet.http.HttpSession;
 /**
  *
  * @author Marlon
@@ -59,7 +61,12 @@ public class ControladorCaja extends ControladorBase{
         //conversion del dato a bigdecimal
         BigDecimal big = new BigDecimal(request.getParameter("monto_inicial"));
         caja.setMonto_inicial(big);
-        caja.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
+        
+        HttpSession session = request.getSession();
+        Usuario usuario = (Usuario)(session.getAttribute("usuario"));
+        Integer id_usuario = usuario.getId_usuario();
+        caja.setId_usuario(id_usuario);
+        //caja.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
         
         GestionCaja modelo = new GestionCaja();
         if(modelo.registroCaja(caja)){
@@ -108,7 +115,12 @@ public class ControladorCaja extends ControladorBase{
         //conversion del dato a bigdecimal
         BigDecimal big = new BigDecimal(request.getParameter("monto_inicial"));
         caja.setMonto_inicial(big);
-        caja.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
+        
+        HttpSession session = request.getSession();
+        Usuario usuario = (Usuario)(session.getAttribute("usuario"));
+        Integer id_usuario = usuario.getId_usuario();
+        caja.setId_usuario(id_usuario);
+        //caja.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
         
         GestionCaja modelo = new GestionCaja();
         if(modelo.actualizarCaja(caja)){

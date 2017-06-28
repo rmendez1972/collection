@@ -50,7 +50,7 @@
                 params.id_delegacion=$("#id_delegacion").val();
                 params.id_modulo=$("#id_modulo").val();
                 params.condicion_fija=$("#condicion_fija").val();
-                params.id_usuario=$("#id_usuario").val();
+                
  
                                                           
                 $.post("controladorprogramas?operacion=editarGuardar", params, function(datos){
@@ -379,7 +379,7 @@
                                 </script>
                             </div>
                             
-                            <input type="hidden" name="id_usuario" id="id_usuario" value="1" />
+                            
                         </div>
                         
                          
