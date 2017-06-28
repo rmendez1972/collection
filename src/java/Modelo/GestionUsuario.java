@@ -32,14 +32,14 @@ public class GestionUsuario {
 
     public Usuario login(Usuario usuario){
         Usuario usr=null;
-        Object params[]={usuario.getUsuario(), usuario.getPassword()};
+        Object params[]={usuario.getUsuario().toUpperCase(), usuario.getPassword().toUpperCase()};
         //ResultSet res=Conexion.ejecutarConsulta("select * from usuarios where usuario=? and password=md5(?)", params);
-        ResultSet res=Conexion.ejecutarConsulta("select * from usuarios where usuario=? and password=md5(?)", params);
+        ResultSet res=Conexion.ejecutarConsulta("select * from usuarios where usuario=(?) and password=md5(?)", params);
        
         try{
             if(res.next())
-                //usr=new Usuario(res.getInt("id_usuario"), res.getString("usuario"), res.getString("password"), res.getInt("id_nivel"), res.getInt("id_del"), res.getString("serie"), res.getString("nombre"), res.getString("cargo"), res.getString("direccion"));
-                usr=new Usuario(res.getString("usuario"), res.getString("password"));
+                usr=new Usuario(res.getInt("id_usuario"), res.getString("usuario"), res.getString("password"), res.getInt("id_nivel"), res.getInt("id_del"), res.getString("serie"), res.getString("nombre"), res.getString("cargo"), res.getString("direccion"));
+                //usr=new Usuario(res.getString("usuario"), res.getString("password"));
             res.close();
         }catch(Exception e){}
         return usr;

@@ -118,7 +118,7 @@
                 
              <div style="text-align:right;font-size:10px;">
                 <p id="datosUsuario">
-                    <span class="fa fa-user" style="color: #000; padding: 5px"></span>
+                    <span class="fa fa-user" style="color: #000; padding: 5px; font-size:14px"></span>
                 </p>
             </div>
             </div>
