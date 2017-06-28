@@ -5,10 +5,13 @@
         <group>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_cajas.jsp</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/bienvenida.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorAutoriza.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/login.jsp</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionUsuario.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/index.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_autoriza.jsp</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorUsuario.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_autoriza.jsp</file>
         </group>
     </open-files>
 </project-private>
