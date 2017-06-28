@@ -21,6 +21,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -173,6 +174,10 @@ public class ControladorProgramas extends ControladorBase{
         
         Integer id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
         cp.setId_usuario(id_usuario);
+        
+        HttpSession session = request.getSession();
+        session.getAttribute("usuario");
+        
         
         GestionProgramas modelo = new GestionProgramas();
         
