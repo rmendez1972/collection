@@ -21,7 +21,8 @@
             //alert('Autenticación exitosa'+'${usuario.usuario}');
             document.getElementById('menu').style.display = 'block';
             $("#datosUsuario").append('${usuario.usuario}');
-            //cargar('bienvenida.jsp','#show');
+            //$("#datosUsuario").append('${usuario.id_usuario}');
+
         </c:if>
     </script>
 </html>
