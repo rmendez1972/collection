@@ -3,27 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorAutoriza.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/bienvenida.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/login.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_modificaautoriza.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/index.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorUsuario.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/javabeans/Autoriza.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_cajas.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionUsuario.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_dir.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_candidato.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_autoriza.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/javabeans/Usuario.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_autoriza.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_bancos.jsp</file>
-=======
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/Modelo/GestionUsuario.java</file>
             <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/frm_caja.jsp</file>
             <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/frm_modificacaja.jsp</file>
             <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/listar_Programas.jsp</file>
->>>>>>> f3910b96e5c3fe5bf3bae7e6c1df5e74cd5a84c1
         </group>
     </open-files>
 </project-private>
