@@ -145,14 +145,29 @@ public class ControladorUsuario extends ControladorBase {
             }
             else
             {
-               String mensaje="Fracaso en Login";
-               request.setAttribute("mensaje",mensaje);
+
+               request.setAttribute("msg", "¡Usuario o Password incorrecto, intente de nuevo!");
                 //RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
                 //rd.forward(request,response);
-               response.sendRedirect("login.jsp");
+               
+               RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
+               rd.forward(request,response);
+               //response.sendRedirect("login.jsp");
             }    
                 
         
+    }
+    
+    public void logout(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        
+        HttpSession session = request.getSession();
+        
+        session.setAttribute("usuario", null);
+        request.setAttribute("usuario", null);
+        request.setAttribute("msg", "Se cerró la sesión correctamente!");
+        
+        RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
+        rd.forward(request,response);
     }
     
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
