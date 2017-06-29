@@ -1,6 +1,6 @@
 <%-- 
     Document   : listar_beneficiarios
-    Created on : 26/06/2017, 01:16:34 PM
+    Created on : 28/06/2017, 01:16:34 PM
     Author     : Rafael Méndez
 --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -13,16 +13,16 @@
         
         <script>
 
-        function editarContratado(id){
+        function editarBeneficiario(id){
             var params=new Object();
             params.id=id;
             $.post("controladorbeneficiario?operacion=editar", params, function(datos){
                 $("#show").html(datos);
             },"html");
         }   
-        function eliminarContratado(id){
+        function eliminarBeneficiario(id){
             
-            confirma("", "Eliminar Contratado", "Confirmar eliminación", "eliminar", function(){
+            confirma("", "Eliminar Beneficiario", "Confirmar eliminación", "eliminar", function(){
                 var params=new Object();
                 params.id=id;
                 $.post("controladorbeneficiario?operacion=eliminar", params, function(datos){
@@ -31,7 +31,7 @@
             });
         }
         
-        function aperturarContratado(id){
+        function aperturarBeneficiario(id){
             var params=new Object();
             params.id=id;
             $.post("controladorbeneficiario?operacion=aperturar", params, function(datos){
@@ -56,9 +56,6 @@
         </h3>
       
         <div class="container-fluid navbar-right">
-            <div class="btn-catalogo"  onclick="cargar('controladorbeneficiario?operacion=nuevo','#show')">
-                <img src="imagenes/agregar.png" alt="Nuevo" />
-            </div>
             <div class="btn-catalogo">    
                 <a href="controladorbeneficiario?operacion=reporte" target="_blank" >
                     <img src="imagenes/reportesb.png" alt="Imprimir"/>
@@ -106,7 +103,7 @@
                         <th> <c:out value="${beneficiario.domicilio}" /></th>
                         <th> <c:out value="${beneficiario.clave_cat}" /></th>
                         <th> <c:out value="${beneficiario.usuario}" /></th>
-                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Beneficiario" onclick="editarBeneficiario(${beneficiario.id_beneficiario});" /><img src="imagenes/acuse.png" class="btn-tabla" title="Apertura Edo. Cuenta" onclick="aperturarBeneficiario(${beneficiario.id_beneficiario});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Candidato" onclick="eliminarContratado(${beneficiario.id_beneficiario});" /></th>
+                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Beneficiario" onclick="editarBeneficiario(${beneficiario.id_benef});" /><img src="imagenes/acuse.png" class="btn-tabla" title="Apertura Edo. de Cuenta" onclick="aperturarBeneficiario(${beneficiario.id_benef});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Beneficiario" onclick="eliminarBeneficiario(${beneficiario.id_benef});" /></th>
                     </tr>
                 </c:forEach>
             </tbody>

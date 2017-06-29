@@ -106,7 +106,7 @@
                         <th> <c:out value="${candidato.domicilio}" /></th>
                         <th> <c:out value="${candidato.clave_cat}" /></th>
                         <th> <c:out value="${candidato.usuario}" /></th>
-                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Candidato" onclick="editarContratado(${candidato.id_candidato});" /><img src="imagenes/acuse.png" class="btn-tabla" title="Apertur Edo. Cta." onclick="aperturarContratado(${candidato.id_candidato});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Candidato" onclick="eliminarContratado(${candidato.id_candidato});" /></th>
+                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Candidato" onclick="editarContratado(${candidato.id_candidato});" /><img src="imagenes/acuse.png" class="btn-tabla" title="Ingresar a CxC" onclick="aperturarContratado(${candidato.id_candidato});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Candidato" onclick="eliminarContratado(${candidato.id_candidato});" /></th>
                     </tr>
                 </c:forEach>
             </tbody>
