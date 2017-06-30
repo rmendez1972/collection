@@ -59,7 +59,7 @@
     <body>
         
         <div class="panel panel-primary" style="margin-top: 60px">
-            <div class="panel-heading"><h4><span class="fa fa-file-text-o" style="color: #fff"></span> Modificar Candidato (ciudadano contratado)</h4></div>
+            <div class="panel-heading"><h4><span class="fa fa-users" style="color: #fff"></span> Modificar Candidato (ciudadano contratado)</h4></div>
                 <div class="panel-body transparent">
                     <form id="form_CA" onsubmit="return registrar()"  class="form-horizontal">
                         <input type="hidden" name="id_candidato" id="id_candidato" value="${candidato.id_candidato}" />

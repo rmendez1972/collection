@@ -31,13 +31,7 @@
             });
         }
         
-        function aperturarBeneficiario(id){
-            var params=new Object();
-            params.id=id;
-            $.post("controladorbeneficiario?operacion=aperturar", params, function(datos){
-                $("#show").html(datos);
-            },"html");
-        }
+        
         
         $(document).ready(function(){
             
@@ -103,7 +97,7 @@
                         <th> <c:out value="${beneficiario.domicilio}" /></th>
                         <th> <c:out value="${beneficiario.clave_cat}" /></th>
                         <th> <c:out value="${beneficiario.usuario}" /></th>
-                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Beneficiario" onclick="editarBeneficiario(${beneficiario.id_benef});" /><img src="imagenes/acuse.png" class="btn-tabla" title="Apertura Edo. de Cuenta" onclick="aperturarBeneficiario(${beneficiario.id_benef});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Beneficiario" onclick="eliminarBeneficiario(${beneficiario.id_benef});" /></th>
+                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Beneficiario" onclick="editarBeneficiario(${beneficiario.id_beneficiario});" /><img src="imagenes/acuse.png" class="btn-tabla" title="Apertura Edo. de Cuenta" onclick="aperturarBeneficiario(${beneficiario.id_beneficiario});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Beneficiario" onclick="eliminarBeneficiario(${beneficiario.id_beneficiario});" /></th>
                     </tr>
                 </c:forEach>
             </tbody>

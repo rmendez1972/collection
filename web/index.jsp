@@ -79,7 +79,7 @@
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-users" style="color: #00A6CA"></span> Beneficiarios<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li id="candidatos"><a href="#" ><span class="fa fa-address-book"></span> Contratados</a></li>
+                      <li id="candidatos"><a href="#" ><span class="fa fa-users"></span> Contratados</a></li>
                       <li id="beneficiarios"><a href="#" ><span class="fa fa-address-book"></span> Beneficiarios</a></li>
                       <li id="bendiv"><a href="#" ><span class="fa fa-id-badge"></span> Diversos</a></li>
                     </ul>  
