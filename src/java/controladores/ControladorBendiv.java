@@ -170,7 +170,13 @@ public class ControladorBendiv extends ControladorBase {
         bendiv.setClave_b(request.getParameter("clave_b").toUpperCase());
         bendiv.setNombre(request.getParameter("nombre").toUpperCase());
         bendiv.setId_catprog(Integer.parseInt(request.getParameter("id_catprog")));
-        bendiv.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
+        //bendiv.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
+        
+        HttpSession session = request.getSession();
+        Usuario usuario = (Usuario)(session.getAttribute("usuario"));
+        Integer id_usuario = usuario.getId_usuario();
+        bendiv.setId_usuario(id_usuario);
+        
            
         GestionBendiv modelo=new GestionBendiv();
         if(modelo.registroBendiv(bendiv)){
