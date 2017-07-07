@@ -21,6 +21,8 @@ import java.util.HashMap;
 import java.util.Map;
 import javabeans.Beneficiario;
 import javabeans.Candidatos;
+import javabeans.CatProgramas;
+import javabeans.ParametrosApertura;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -128,20 +130,50 @@ public class ControladorBeneficiario extends ControladorBase
             rd.forward(request,response);
         }
     }
-    
+    */
     public void aperturar(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String sql=null;
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         int id=Integer.parseInt(request.getParameter("id"));
-        GestionCandidatos modelo=new GestionCandidatos();
-        Candidatos candidato=modelo.obtenerPorId(id);
-                          
-        request.setAttribute("candidato", candidato);
-                            
-        RequestDispatcher rd=request.getRequestDispatcher("frm_modificacandidatoapertura.jsp");
+        int id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
+        GestionProgramas modelo_gp=new GestionProgramas();
+        CatProgramas programa=modelo_gp.obtenerPorId(id_catprog);
+        GestionBeneficiario mod_gb = new GestionBeneficiario();
+        Beneficiario benef=mod_gb.obtenerPorId(id);
+        int mecanica=programa.getMecanica();
+        boolean condicionfija =programa.isCondicion_fija();
+        ParametrosApertura par_aper=new ParametrosApertura();
+        switch (mecanica){
+            case 29:
+                sql= "{call sp_apertura29(?,?,?,?,?,?)}";
+                // defino variables para setear el javabean
+                Date fecha_pol = benef.getFecha_pol();
+                String poliza= benef.getPoliza();
+                BigDecimal imp_capital = benef.getCapital();
+                BigDecimal imp_enganche =benef.getEnganche();
+                String clave_b=benef.getClave_b();
+                
+                par_aper.setId_beneficiario(id);
+                par_aper.setPoliza(poliza);
+                par_aper.setFecha_pol(fecha_pol);
+                par_aper.setImp_capital(imp_capital);
+                par_aper.setImp_enganche(imp_enganche);
+                par_aper.setClave_b(clave_b);
+                break;
+        }
+                
+        GestionBeneficiario modelo=new GestionBeneficiario();
+        boolean resultado=modelo.aperturarPorId(mecanica,id,sql, par_aper);
+        if (resultado)
+        {
+            request.setAttribute("msg", "Procedimiento almacenado ejecutado exitosamente");
+        }                    
+        RequestDispatcher rd=request.getRequestDispatcher("listar_beneficiarios.jsp");
         rd.forward(request,response);
     }
     
     
-    
+    /*
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
         GestionProgramas mod_prog=new GestionProgramas();
         GestionTipocredito mod_tcr=new GestionTipocredito();

@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javabeans.Beneficiario;
+import javabeans.ParametrosApertura;
 /**
  *
  * @author Ing. Rafael Méndez
@@ -45,13 +46,27 @@ public class GestionBeneficiario
     public Beneficiario obtenerPorId(int id_beneficiario){
         Beneficiario beneficiario=null;
         Object params[]={id_beneficiario};
-        ResultSet res=Conexion.ejecutarConsulta("select * from beneficiario where id_beneficiario=?", params);
+        ResultSet res=Conexion.ejecutarConsulta("select * from benef where id_benef=?", params);
         try{
             if(res.next())
-                beneficiario=new Beneficiario(res.getInt("id_beneficiario"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getString("clave_elect"),res.getString("curp"),res.getString("rfc"),res.getString("nombre"),res.getString("conyuge"),res.getDate("fecha_cont"),res.getString("mza"),res.getString("lte"),res.getBigDecimal("area"),res.getString("domicilio"),res.getString("clave_cat"),res.getInt("id_tipocredito"));
+                beneficiario=new Beneficiario(res.getInt("id_benef"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getString("clave_elect"),res.getString("curp"),res.getString("rfc"),res.getString("nombre"),res.getString("conyuge"),res.getDate("fecha_cont"),res.getString("mza"),res.getString("lte"),res.getBigDecimal("area"),res.getString("domicilio"),res.getString("clave_cat"),res.getInt("id_tipocredito"),res.getDate("fecha_pol"),res.getString("poliza"), res.getString("clave_b"), res.getBigDecimal("capital"),res.getBigDecimal("enganche"));
             res.close();
         }catch(Exception e){}
         return beneficiario;
+    }
+    
+    public boolean aperturarPorId(int mecanica,int id_beneficiario,String sql, ParametrosApertura par_aper){
+        boolean resultado=false;
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+        switch (mecanica){
+            case 29:
+                
+                Object params[]={par_aper.getId_beneficiario(),par_aper.getImp_capital(),par_aper.getImp_enganche(),par_aper.getPoliza(),sdf.format(par_aper.getFecha_pol()),par_aper.getClave_b()};
+                resultado=Conexion.llamar(sql, params);
+                break;
+        }
+        
+        return resultado;
     }
     
     public ArrayList obtenerBeneficiarios(){
@@ -59,7 +74,7 @@ public class GestionBeneficiario
         ResultSet res=Conexion.ejecutarConsulta("select B.*, P.descripcion as desprograma, T.descripcion as descredito, U.usuario as usuario from benef B inner join cat_prog P on B.id_catprog=P.id_catprog inner join tipo_credito T on B.id_tipocredito=T.id_tipocredito inner join usuarios U on B.id_usuario=U.id_usuario order by B.fecha_cont", null);
         try{
             while(res.next()){
-                Beneficiario beneficiario=new Beneficiario(res.getInt("id_benef"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getString("clave_elect"),res.getString("curp"),res.getString("rfc"),res.getString("nombre"),res.getString("conyuge"),res.getDate("fecha_cont"),res.getString("mza"),res.getString("lte"),res.getBigDecimal("area"),res.getString("domicilio"),res.getString("clave_cat"),res.getInt("id_tipocredito"));
+                Beneficiario beneficiario=new Beneficiario(res.getInt("id_benef"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getString("clave_elect"),res.getString("curp"),res.getString("rfc"),res.getString("nombre"),res.getString("conyuge"),res.getDate("fecha_cont"),res.getString("mza"),res.getString("lte"),res.getBigDecimal("area"),res.getString("domicilio"),res.getString("clave_cat"),res.getInt("id_tipocredito"),res.getDate("fecha_pol"));
                 beneficiario.setCatprog(res.getString("desprograma"));
                 beneficiario.setTipocredito(res.getString("descredito"));
                 beneficiario.setUsuario(res.getString("usuario"));

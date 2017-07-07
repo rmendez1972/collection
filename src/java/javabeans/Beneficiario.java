@@ -65,7 +65,7 @@ public class Beneficiario
     public Beneficiario(){ super();}
     //constructor que permite crear un objeto
     
-     public Beneficiario(int id_beneficiario,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito){
+     public Beneficiario(int id_beneficiario,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito, Date fecha_pol){
          this.id_beneficiario=id_beneficiario;
          this.id_catprog=id_catprog;
          this.numcontrato = numcontrato;
@@ -81,6 +81,30 @@ public class Beneficiario
          this.domicilio=domicilio;
          this.clave_cat=clave_cat;
          this.id_tipocredito=id_tipocredito;
+         this.fecha_pol=fecha_pol;
+     }
+     
+     public Beneficiario(int id_beneficiario,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito, Date fecha_pol, String poliza, String clave_b, BigDecimal capital, BigDecimal enganche ){
+         this.id_beneficiario=id_beneficiario;
+         this.id_catprog=id_catprog;
+         this.numcontrato = numcontrato;
+         this.clave_elect=clave_elect;
+         this.curp=curp;
+         this.rfc=rfc;
+         this.nombre=nombre;
+         this.conyuge=conyuge;
+         this.fecha_con=fecha_con;
+         this.mza=mza;
+         this.lte=lte;
+         this.area=area;
+         this.domicilio=domicilio;
+         this.clave_cat=clave_cat;
+         this.id_tipocredito=id_tipocredito;
+         this.fecha_pol=fecha_pol;
+         this.poliza=poliza;
+         this.clave_b=clave_b;
+         this.capital=capital;
+         this.enganche=enganche;
      }
     
     public int getId_beneficiario() {
