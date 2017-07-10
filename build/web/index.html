@@ -292,17 +292,9 @@
                     cargar('controladormodrec?operacion=listar','#show');
 
                 });
-                $("#candidatos").click(function (event) {
-                    event.preventDefault();
-                    cargar('controladorcandidato?operacion=listar','#show');
-
-                });
                 
-                $("#programas").click(function (event) {
-                    event.preventDefault();
-                    cargar('controladorprogramas?operacion=listar','#show');
-
-                });
+                
+                
                 
                 $("#reportes").click(function (event) {
                     event.preventDefault();
@@ -310,9 +302,22 @@
                 });
                 
                 // Menu colgante: Beneficiarios
+                $("#candidatos").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorcandidato?operacion=listar','#show');
+
+                });
+                
                 $("#bendiv").click(function (event) {
                 event.preventDefault();
                 cargar('controladorbendiv?operacion=listar','#show');
+                });
+                
+                // Menu colgante: Programas
+                $("#programas").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladorprogramas?operacion=listar','#show');
+
                 });
             });
             

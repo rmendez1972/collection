@@ -59,7 +59,7 @@
     <body>
         
         <div class="panel panel-primary" style="margin-top: 60px">
-            <div class="panel-heading"><h4><span class="fa fa-file-text-o" style="color: #fff"></span> Modificar Candidato (ciudadano contratado)</h4></div>
+            <div class="panel-heading"><h4><span class="fa fa-users" style="color: #fff"></span> Modificar Candidato (ciudadano contratado)</h4></div>
                 <div class="panel-body transparent">
                     <form id="form_CA" onsubmit="return registrar()"  class="form-horizontal">
                         <input type="hidden" name="id_candidato" id="id_candidato" value="${candidato.id_candidato}" />
@@ -77,19 +77,19 @@
                                                     
                             <label for="numcontrato" class="col-xs-12 col-md-2 control-label ">Num. Contrato:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="numcontrato" class="form-control" id="numcontrato" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9\0-9]{5})" placeholder="5 caracteres" maxlength="5" value="${candidato.numcontrato}" />
+                                <input type="text" name="numcontrato" class="form-control" id="numcontrato" required pattern="(^[0-9]{5}$)" placeholder="5 caracteres" maxlength="5" value="${candidato.numcontrato}" />
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="clave_elect" class="col-xs-12 col-md-2 control-label">Clave Elector:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="clave_elect" class="form-control" id="clave_elect"  placeholder="Máx.18 caracteres" maxlength="18" style="text-transform:uppercase" value="${candidato.clave_elect}"/>
+                                <input type="text" name="clave_elect"   class="form-control" id="clave_elect"  placeholder="Máx.18 caracteres" maxlength="18" style="text-transform:uppercase" value="${candidato.clave_elect}"/>
                             </div>
                             
                             <label for="curp" class="col-xs-12 col-md-2 control-label">Curp::</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="curp" class="form-control" id="curp"  placeholder="Máx.24 caracteres" maxlength="24" style="text-transform:uppercase" value="${candidato.curp}" />
+                                <input type="text" name="curp" class="form-control" id="curp" pattern="(^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$)" placeholder="Máx.24 caracteres" maxlength="24" style="text-transform:uppercase" value="${candidato.curp}" />
 
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                         <div class="form-group">
                             <label for="rfc" class="col-xs-12 col-md-2 control-label">RFC:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="rfc" class="form-control" id="rfc"  placeholder="Máx.13 caracteres" maxlength="13" style="text-transform:uppercase" value="${candidato.rfc}"/>
+                                <input type="text" name="rfc" class="form-control" id="rfc"  pattern="(^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$)"  placeholder="Máx.13 caracteres" maxlength="13" style="text-transform:uppercase" value="${candidato.rfc}"/>
                             </div>
                             
                             <label for="nombre" class="col-xs-12 col-md-2 control-label">Nombre::</label>
@@ -123,12 +123,12 @@
                         <div class="form-group">
                             <label for="mza" class="col-xs-12 col-md-2 control-label">Manzana:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="mza" class="form-control" id="mza"  placeholder="Máx. 3 caracteres" maxlength="13" style="text-transform:uppercase" value="${candidato.mza}"/>
+                                <input type="text" name="mza" class="form-control" id="mza" pattern="(^[0-9]{3}$)" placeholder="Máx. 3 caracteres" maxlength="13" style="text-transform:uppercase" value="${candidato.mza}"/>
                             </div>
                             
                             <label for="lte" class="col-xs-12 col-md-2 control-label">Lote:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="lte" class="form-control" id="lte"  placeholder="Máx. 6 caracteres" maxlength="6" style="text-transform:uppercase" value="${candidato.lte}" />
+                                <input type="text" name="lte" class="form-control" id="lte" pattern="(^[0-9a-zA-Z]{6}$)"  placeholder="Máx. 6 caracteres" maxlength="6" style="text-transform:uppercase" value="${candidato.lte}" />
 
                             </div>
                         </div>

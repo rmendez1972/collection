@@ -10,11 +10,15 @@ package Modelo;
  */
 import java.io.File;
 import java.io.FileInputStream;
+import java.math.BigDecimal;
 import java.sql.*;
+import java.sql.CallableStatement;
+import java.text.SimpleDateFormat;
 
 public class Conexion {
     public static Connection conex=null;
-    
+
+      
     private Conexion(){
         
     }
@@ -54,6 +58,23 @@ public class Conexion {
             establecerParametros(st,parametros);
             st.execute();
             st.close();
+            parametros=null;
+            return true;
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+    
+    public static boolean llamar(String sql, Object parametros[]){
+        try{
+            conectar();
+            CallableStatement cStmt = conex.prepareCall(sql);
+            /*seteo los comodines del call al  store procedure*/
+            establecerParametrosLlamar(cStmt,parametros);
+            
+            Integer hadResults = cStmt.executeUpdate();
+            cStmt.close();
             parametros=null;
             return true;
         }catch(Exception e){
@@ -191,5 +212,34 @@ public class Conexion {
         catch(Exception e){
             System.out.println(e);
         }
+    }
+    
+        
+    private static void establecerParametrosLlamar(CallableStatement cStmt, Object parametros[]) {
+       try{
+            int i;
+            SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+            if(parametros!=null){
+                for(i=0;i<parametros.length;i++){
+                   
+                    if ((Object) parametros[i] instanceof Integer){
+                        
+                        cStmt.setInt(i+1, (Integer)((Object)parametros[i]));
+                    }
+                    
+                    if ((Object) parametros[i] instanceof BigDecimal){
+                        cStmt.setBigDecimal(i+1, new BigDecimal(parametros[i].toString()));
+                    }
+                    
+                    if ((Object) parametros[i] instanceof String){
+                        cStmt.setString(i+1,((Object)parametros[i]).toString());
+                    }
+                                                         
+                }
+            }
+        }
+        catch(Exception e){
+            System.out.println(e);
+        } 
     }
 }

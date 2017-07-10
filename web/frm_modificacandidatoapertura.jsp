@@ -12,15 +12,16 @@
         <title>JSP Page</title>
         <script>
             function registrar(){
-                var params=new Object();
-                params.id_candidato=$("#id_candidato").val();
-                params.poliza=$("#poliza").val().toUpperCase();
-                params.fecha_pol=$("#fecha_pol").val();
-                                
-                $.post("controladorcandidato?operacion=aperturarGuardar", params, function(datos){
-                    $("#show").html(datos);
-                },"html");
                 
+                confirma("", "Ingresar Candidato", "Confirmar ingreso de Contratado a la CxC", "agregar", function(){
+                    var params=new Object();
+                    params.id_candidato=$("#id_candidato").val();
+                    params.poliza=$("#poliza").val().toUpperCase();
+                    params.fecha_pol=$("#fecha_pol").val();
+                    $.post("controladorcandidato?operacion=aperturarGuardar", params, function(datos){
+                        $("#show").html(datos);
+                    },"html");
+                });
                 return false;
             }
             
@@ -33,12 +34,20 @@
                 
                 return false;
             }
+            
+            /*inicializando campo tipo date a la fecha del dia*/
+            document.getElementById('fecha_pol').value=fechaActual();
+            /*inicializando la poliza del dia*/
+            var dateobj= new Date() ;
+            var day = dateobj.getDate() ;
+            document.getElementById('poliza').value='D0'+day;
+            
         </script>
     </head>
     <body>
         
         <div class="panel panel-primary" style="margin-top: 60px">
-            <div class="panel-heading"><h4><span class="fa fa-file-text-o" style="color: #fff"></span> Registro de Candidato en Catálogo de Beneficiarios (ciudadano contratado ingresa a la cuenta por cobrar)</h4></div>
+            <div class="panel-heading"><h4><span class="fa fa-users" style="color: #fff"></span> Registro de Candidato en Catálogo de Beneficiarios (ciudadano contratado ingresa a la cuenta por cobrar)</h4></div>
                 <div class="panel-body transparent">
                     <form id="form_CA" onsubmit="return registrar()"  class="form-horizontal">
                         <input type="hidden" name="id_candidato" id="id_candidato" value="${candidato.id_candidato}" />
@@ -143,7 +152,7 @@
                         <div class="form-group">
                             <label for="poliza" class="col-xs-12 col-md-2 control-label">Póliza:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="poliza" class="form-control" id="poliza"  placeholder="Máx.4 caracteres" maxlength="4" style="text-transform:uppercase" />
+                                <input type="text" name="poliza" class="form-control" id="poliza" pattern="(^[D]{1}[0-9]{3}$)" placeholder="Máx.4 caracteres" maxlength="4" style="text-transform:uppercase" />
                             </div>
                             
                             <label for="fecha_pol" class="col-xs-12 col-md-2 control-label">Fecha de Póliza:</label>

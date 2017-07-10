@@ -52,7 +52,7 @@
     </head>
     <body>
         <h3 class="bg-primary encabezado">
-            <span class="fa fa-file-text-o" style="color: #fff"></span> Catálogo de Beneficiarios Contratados
+            <span class="fa fa-users" style="color: #fff"></span> Catálogo de Ciudadanos Contratados (candidatos a ingresar a la CxC)
         </h3>
       
         <div class="container-fluid navbar-right">
@@ -84,6 +84,7 @@
                     <th>Area</th>
                     <th>Domicilio</th>
                     <th>Clave Catastral</th>
+                    <th>Usuario</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -104,7 +105,8 @@
                         <th> <c:out value="${candidato.area}" /></th>
                         <th> <c:out value="${candidato.domicilio}" /></th>
                         <th> <c:out value="${candidato.clave_cat}" /></th>
-                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Candidato" onclick="editarContratado(${candidato.id_candidato});" /><img src="imagenes/acuse.png" class="btn-tabla" title="Apertur Edo. Cta." onclick="aperturarContratado(${candidato.id_candidato});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Candidato" onclick="eliminarContratado(${candidato.id_candidato});" /></th>
+                        <th> <c:out value="${candidato.usuario}" /></th>
+                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Candidato" onclick="editarContratado(${candidato.id_candidato});" /><img src="imagenes/acuse.png" class="btn-tabla" title="Ingresar a CxC" onclick="aperturarContratado(${candidato.id_candidato});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Candidato" onclick="eliminarContratado(${candidato.id_candidato});" /></th>
                     </tr>
                 </c:forEach>
             </tbody>

@@ -54,10 +54,13 @@ public class Candidatos
     private String dsolid;
     private String domicilio_dsolid;
     private Date fecha_ip;
+    private int id_usuario;
     private String clave_b;
     private String catprog;
     private String tipocredito;
+    private String usuario;
 
+    
        
     public Candidatos(){ super();}
     //constructor que permite crear un objeto
@@ -407,7 +410,22 @@ public class Candidatos
     public void setTipocredito(String tipocredito) {
         this.tipocredito = tipocredito;
     }
-        
     
     
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+     
 }
