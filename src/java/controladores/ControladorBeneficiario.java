@@ -150,6 +150,7 @@ public class ControladorBeneficiario extends ControladorBase
         Integer id_usuario=usuario.getId_usuario();
         ParametrosApertura par_aper=new ParametrosApertura();
         
+<<<<<<< HEAD
         if (benef.getAperturado()==false || benef.getAperturado()==null){
             switch (mecanica){
                 case 29:
@@ -204,6 +205,79 @@ public class ControladorBeneficiario extends ControladorBase
                 request.setAttribute("msg", "Estado de cuenta aperturado exitosamente para el Beneficiario "+benef.getNombre());
             }
         }else
+=======
+        // defino variables para setear el javabean        
+        Date fecha_pol = benef.getFecha_pol();
+        String poliza= benef.getPoliza();
+        BigDecimal imp_capital = benef.getCapital();
+        BigDecimal imp_enganche =benef.getEnganche();
+        String clave_b=benef.getClave_b();
+        
+        switch (mecanica){
+            case 29:
+                sql= "{call sp_apertura29(?,?,?,?,?,?,?)}";
+                par_aper.setId_beneficiario(id);
+                par_aper.setPoliza(poliza);
+                par_aper.setFecha_pol(fecha_pol);
+                par_aper.setImp_capital(imp_capital);
+                par_aper.setImp_enganche(imp_enganche);
+                par_aper.setClave_b(clave_b);
+                par_aper.setId_usuario(id_usuario);
+                break;
+            
+            case 10:
+                sql= "{call sp_apertura10(?,?,?,?,?,?,?,?,?,?,?,?)}";
+                // defino variables para setear el javabean
+                BigDecimal por_interes=programa.getInteres();
+                BigDecimal por_admon=programa.getPor_admon();
+                BigDecimal por_svida=programa.getPor_sv();
+                BigDecimal imp_pagos=benef.getPagant();
+                BigDecimal imp_sui=benef.getSub_inic();
+                     
+                par_aper.setId_beneficiario(id);
+                par_aper.setPoliza(poliza);
+                par_aper.setFecha_pol(fecha_pol);
+                par_aper.setImp_capital(imp_capital);
+                par_aper.setImp_enganche(imp_enganche);
+                par_aper.setClave_b(clave_b);                
+                par_aper.setIntereses(por_interes);
+                par_aper.setGastos_admon(por_admon);
+                par_aper.setSeguro_vida(por_svida);
+                par_aper.setPagos_anticipados(imp_pagos);
+                par_aper.setSub_inic(imp_sui);
+                par_aper.setId_usuario(id_usuario);
+                break;
+                
+            case 20:
+                sql= "{call sp_apertura20(?,?,?,?,?,?,?)}";
+                /*
+                BigDecimal area = benef.getArea();
+                BigDecimal costom2 = programa.getCosto_m2();
+                BigDecimal por_eng = programa.getPor_eng();
+                BigDecimal pag_ant = benef.getPagant();
+                //multiplicacion del area x costom2
+                BigDecimal c1 = area.multiply(costom2);
+                BigDecimal c1_c2 = c1.subtract(por_eng);*/
+                BigDecimal capital = benef.getCapital();
+                BigDecimal enganche = benef.getEnganche();
+                String claveb = benef.getClave_b();
+                Date fecha = benef.getFecha_pol();
+                String poliza20 = benef.getPoliza();
+                
+                par_aper.setId_beneficiario(id);
+                par_aper.setPoliza(poliza20);
+                par_aper.setClave_b(claveb);
+                par_aper.setFecha_pol(fecha);
+                par_aper.setImp_capital(capital);
+                par_aper.setImp_enganche(enganche);
+                par_aper.setId_usuario(id_usuario);
+                break; 
+        }
+                
+        GestionBeneficiario modelo=new GestionBeneficiario();
+        boolean resultado=modelo.aperturarPorId(mecanica,id,sql, par_aper);
+        if (resultado)
+>>>>>>> 655dc03ca045ce13b85990f2a7fae229f8e86820
         {
             request.setAttribute("msg", "El estado de cuenta ya ha sido aperturado anteriormente para el Beneficiario "+benef.getNombre());
         }    

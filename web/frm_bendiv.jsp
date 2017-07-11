@@ -20,7 +20,7 @@
                 params.clave_b=$("#clave_b").val();
                 params.nombre=$("#nombre").val();
                 params.id_catprog=$("#id_catprog").val();
-                params.id_usuario=$("#id_usuario").val();
+                //params.id_usuario=$("#id_usuario").val();
                               
                 
                 if(params.id_catprog == 0){
@@ -75,8 +75,8 @@
                                        maxlength="18" placeholder="Mín.4 Máx. 18 caracteres" 
                                        style="text-transform:uppercase" />
                                                                 
-                                <input type="hidden" name="id_usuario" class="form-control" 
-                                       id="id_usuario" value="1"/>
+                                <!--<input type="hidden" name="id_usuario" class="form-control" 
+                                       id="id_usuario" value="1"/>-->
                             </div>
 
                             <label for="curp" class="col-xs-12 col-md-2 control-label col-md-offset-3 ">

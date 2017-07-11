@@ -21,7 +21,14 @@ public class ParametrosApertura
     private BigDecimal imp_capital;
     private BigDecimal imp_enganche;
     private String clave_b;
+
+    private BigDecimal intereses;
+    private BigDecimal gastos_admon;
+    private BigDecimal seguro_vida;
+    private BigDecimal pagos_anticipados;
+    private BigDecimal sub_inic;
     private int id_usuario;
+
 
     
     public ParametrosApertura(){ super();}
@@ -37,6 +44,23 @@ public class ParametrosApertura
         this.id_usuario=id_usuario;
     }
     
+    //Constructor mecanicas: 10
+    public ParametrosApertura(int id_beneficiario, String poliza, Date fecha_pol, BigDecimal imp_capital, BigDecimal imp_enganche, String clave_b, 
+            BigDecimal intereses, BigDecimal gastos_admon, BigDecimal seguro_vida, BigDecimal pagos_anticipados, BigDecimal sub_inic) {
+        this.id_beneficiario = id_beneficiario;
+        this.poliza = poliza;
+        this.fecha_pol = fecha_pol;
+        this.imp_capital = imp_capital;
+        this.imp_enganche = imp_enganche;
+        this.clave_b= clave_b;
+        this.intereses = intereses;
+        this.gastos_admon = gastos_admon;
+        this.seguro_vida = seguro_vida;
+        this.pagos_anticipados = pagos_anticipados;
+        this.sub_inic = sub_inic;
+        
+        
+    }
 
     public int getId_beneficiario() {
         return id_beneficiario;
@@ -85,6 +109,45 @@ public class ParametrosApertura
     public void setClave_b(String clave_b) {
         this.clave_b = clave_b;
     }
+
+    public BigDecimal getIntereses() {
+        return intereses;
+    }
+
+    public void setIntereses(BigDecimal intereses) {
+        this.intereses = intereses;
+    }
+
+    public BigDecimal getGastos_admon() {
+        return gastos_admon;
+    }
+
+    public void setGastos_admon(BigDecimal gastos_admon) {
+        this.gastos_admon = gastos_admon;
+    }
+
+    public BigDecimal getSeguro_vida() {
+        return seguro_vida;
+    }
+
+    public void setSeguro_vida(BigDecimal seguro_vida) {
+        this.seguro_vida = seguro_vida;
+    }
+
+    public BigDecimal getPagos_anticipados() {
+        return pagos_anticipados;
+    }
+
+    public void setPagos_anticipados(BigDecimal pagos_anticipados) {
+        this.pagos_anticipados = pagos_anticipados;
+    }        
+    public BigDecimal getSub_inic() {
+        return sub_inic;
+    }
+
+    public void setSub_inic(BigDecimal sub_inic) {
+        this.sub_inic = sub_inic;
+    }
     
     public int getId_usuario() {
         return id_usuario;
@@ -93,4 +156,5 @@ public class ParametrosApertura
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
+
 }
