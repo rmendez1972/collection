@@ -50,7 +50,11 @@ public class GestionBeneficiario
         ResultSet res=Conexion.ejecutarConsulta("select * from benef where id_benef=?", params);
         try{
             if(res.next())
-                beneficiario=new Beneficiario(res.getInt("id_benef"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getString("clave_elect"),res.getString("curp"),res.getString("rfc"),res.getString("nombre"),res.getString("conyuge"),res.getDate("fecha_cont"),res.getString("mza"),res.getString("lte"),res.getBigDecimal("area"),res.getString("domicilio"),res.getString("clave_cat"),res.getInt("id_tipocredito"),res.getDate("fecha_pol"),res.getString("poliza"), res.getString("clave_b"), res.getBigDecimal("capital"),res.getBigDecimal("enganche"), res.getBigDecimal("pagant"),res.getBigDecimal("sub_inic"));
+
+                //beneficiario=new Beneficiario(res.getInt("id_benef"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getString("clave_elect"),res.getString("curp"),res.getString("rfc"),res.getString("nombre"),res.getString("conyuge"),res.getDate("fecha_cont"),res.getString("mza"),res.getString("lte"),res.getBigDecimal("area"),res.getString("domicilio"),res.getString("clave_cat"),res.getInt("id_tipocredito"),res.getDate("fecha_pol"),res.getString("poliza"), res.getString("clave_b"), res.getBigDecimal("capital"),res.getBigDecimal("enganche"), res.getBoolean("aperturado"));
+
+                beneficiario=new Beneficiario(res.getInt("id_benef"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getString("clave_elect"),res.getString("curp"),res.getString("rfc"),res.getString("nombre"),res.getString("conyuge"),res.getDate("fecha_cont"),res.getString("mza"),res.getString("lte"),res.getBigDecimal("area"),res.getString("domicilio"),res.getString("clave_cat"),res.getInt("id_tipocredito"),res.getDate("fecha_pol"),res.getString("poliza"), res.getString("clave_b"), res.getBigDecimal("capital"),res.getBigDecimal("enganche"), res.getBigDecimal("pagant"),res.getBigDecimal("sub_inic"), res.getBoolean("aperturado"));
+
             res.close();
         }catch(Exception e){}
         return beneficiario;
@@ -120,7 +124,16 @@ public class GestionBeneficiario
         Integer id_beneficiario=beneficiario.getId_beneficiario();
         Integer id_usuario=beneficiario.getId_usuario();
         Object params[]={id_catprog,numcontrato,clave_elect,curp,rfc,nombre,conyuge,fecha_con,mza,lte,area,domicilio,clave_cat,id_tipocredito,id_usuario,id_beneficiario};
-        return Conexion.ejecutar("update beneficiario set id_catprog=?, numcontrato=?, clave_elect=?, curp=?, rfc=?, nombre=?, conyuge=?, fecha_cont=?, mza=?, lte=?, area=?, domicilio=?, clave_cat=?, id_tipocredito=?, id_usuario=? where id_beneficiario=?", params);
+        return Conexion.ejecutar("update benef set id_catprog=?, numcontrato=?, clave_elect=?, curp=?, rfc=?, nombre=?, conyuge=?, fecha_cont=?, mza=?, lte=?, area=?, domicilio=?, clave_cat=?, id_tipocredito=?, id_usuario=? where id_benef=?", params);
+    }
+    
+    public boolean actualizarBeneficiarioAperturado(Beneficiario beneficiario){
+        Boolean bolaperturado=beneficiario.getAperturado();
+        Integer intaperturado = (bolaperturado) ? 1 : 0;
+        String aperturado = intaperturado.toString();
+        Integer id_beneficiario=beneficiario.getId_beneficiario();
+        Object params[]={aperturado,id_beneficiario};
+        return Conexion.ejecutar("update benef set aperturado=? where id_benef=?", params);
     }
     
     
