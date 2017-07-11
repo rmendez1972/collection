@@ -1,3 +1,4 @@
+DROP PROCEDURE IF EXISTS sp_apertura10;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_apertura10`(IN `id_benef` INT, IN `imp_cap` DECIMAL, IN `imp_eng` DECIMAL, IN `poliza` VARCHAR(4), IN `fecha_pol` VARCHAR(11), IN `clave_b` VARCHAR(12), IN `imp_interes` DECIMAL, IN `imp_admon` DECIMAL, IN `imp_svida` DECIMAL, IN `imp_pagos` DECIMAL, IN `imp_sui` DECIMAL)
 BEGIN

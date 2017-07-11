@@ -38,9 +38,10 @@ public class GestionBeneficiario
         Integer id_usuario=beneficiario.getId_usuario();
         String poliza=beneficiario.getPoliza();
         String fecha_pol=sdf.format(beneficiario.getFecha_pol());
+        String clave_b=beneficiario.getClave_b();
         
-        Object params[]={id_catprog, numcontrato,clave_elect,curp,rfc,nombre,conyuge,fecha_con,mza,lte,area,domicilio,clave_cat,id_tipocredito,id_usuario,poliza,fecha_pol};
-        return Conexion.ejecutar("insert into benef (id_catprog, numcontrato,clave_elect,curp,rfc,nombre,conyuge,fecha_cont,mza,lte,area,domicilio,clave_cat,id_tipocredito,id_usuario,poliza,fecha_pol) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", params);
+        Object params[]={id_catprog, numcontrato,clave_elect,curp,rfc,nombre,conyuge,fecha_con,mza,lte,area,domicilio,clave_cat,id_tipocredito,id_usuario,poliza,fecha_pol,clave_b};
+        return Conexion.ejecutar("insert into benef (id_catprog, numcontrato,clave_elect,curp,rfc,nombre,conyuge,fecha_cont,mza,lte,area,domicilio,clave_cat,id_tipocredito,id_usuario,poliza,fecha_pol,clave_b) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", params);
     }
     
     public Beneficiario obtenerPorId(int id_beneficiario){
@@ -61,9 +62,10 @@ public class GestionBeneficiario
         switch (mecanica){
             case 29:
                 
-                Object params[]={par_aper.getId_beneficiario(),par_aper.getImp_capital(),par_aper.getImp_enganche(),par_aper.getPoliza(),sdf.format(par_aper.getFecha_pol()),par_aper.getClave_b()};
+                Object params[]={par_aper.getId_beneficiario(),par_aper.getImp_capital(),par_aper.getImp_enganche(),par_aper.getPoliza(),sdf.format(par_aper.getFecha_pol()),par_aper.getClave_b(),par_aper.getId_beneficiario()};
                 resultado=Conexion.llamar(sql, params);
                 break;
+<<<<<<< HEAD
                 
             case 10:
                 
@@ -71,6 +73,13 @@ public class GestionBeneficiario
                 par_aper.getIntereses(), par_aper.getGastos_admon(), par_aper.getSeguro_vida(), par_aper.getPagos_anticipados(), par_aper.getSub_inic()};
                 resultado=Conexion.llamar(sql, params10);
                 break;    
+=======
+            
+            case 20:
+                Object params20[]={par_aper.getId_beneficiario(),par_aper.getImp_capital(),par_aper.getImp_enganche(),par_aper.getPoliza(),sdf.format(par_aper.getFecha_pol()),par_aper.getClave_b()};
+                resultado=Conexion.llamar(sql, params20);
+                break;
+>>>>>>> a9b6fe0ca053d109037077e85e280c3f1bc3a0e1
         }
         
         return resultado;
@@ -81,7 +90,7 @@ public class GestionBeneficiario
         ResultSet res=Conexion.ejecutarConsulta("select B.*, P.descripcion as desprograma, T.descripcion as descredito, U.usuario as usuario from benef B inner join cat_prog P on B.id_catprog=P.id_catprog inner join tipo_credito T on B.id_tipocredito=T.id_tipocredito inner join usuarios U on B.id_usuario=U.id_usuario order by B.fecha_cont", null);
         try{
             while(res.next()){
-                Beneficiario beneficiario=new Beneficiario(res.getInt("id_benef"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getString("clave_elect"),res.getString("curp"),res.getString("rfc"),res.getString("nombre"),res.getString("conyuge"),res.getDate("fecha_cont"),res.getString("mza"),res.getString("lte"),res.getBigDecimal("area"),res.getString("domicilio"),res.getString("clave_cat"),res.getInt("id_tipocredito"),res.getDate("fecha_pol"));
+                Beneficiario beneficiario=new Beneficiario(res.getInt("id_benef"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getString("clave_elect"),res.getString("curp"),res.getString("rfc"),res.getString("nombre"),res.getString("conyuge"),res.getDate("fecha_cont"),res.getString("mza"),res.getString("lte"),res.getBigDecimal("area"),res.getString("domicilio"),res.getString("clave_cat"),res.getInt("id_tipocredito"),res.getDate("fecha_pol"),res.getString("clave_b"));
                 beneficiario.setCatprog(res.getString("desprograma"));
                 beneficiario.setTipocredito(res.getString("descredito"));
                 beneficiario.setUsuario(res.getString("usuario"));

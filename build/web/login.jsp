@@ -76,7 +76,9 @@
                                 style="text-transform:uppercase" 
                                 />
                         </div>
-                        
+                    </div>   
+                    
+                    <div class="form-group">
                         <label for="password" class="col-xs-12 col-md-2 control-label col-md-offset-3 ">
                                 Password:
                         </label>                        

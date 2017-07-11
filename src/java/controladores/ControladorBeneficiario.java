@@ -23,11 +23,13 @@ import javabeans.Beneficiario;
 import javabeans.Candidatos;
 import javabeans.CatProgramas;
 import javabeans.ParametrosApertura;
+import javabeans.Usuario;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import net.sf.jasperreports.engine.JasperRunManager;
 
 
@@ -142,6 +144,10 @@ public class ControladorBeneficiario extends ControladorBase
         Beneficiario benef=mod_gb.obtenerPorId(id);
         int mecanica=programa.getMecanica();
         boolean condicionfija =programa.isCondicion_fija();
+        HttpSession objSession = request.getSession(); 
+        Usuario usuario = (Usuario)(objSession.getAttribute("usuario")); 
+            
+        Integer id_usuario=usuario.getId_usuario();
         ParametrosApertura par_aper=new ParametrosApertura();
         
         Date fecha_pol = benef.getFecha_pol();
@@ -152,7 +158,7 @@ public class ControladorBeneficiario extends ControladorBase
         
         switch (mecanica){
             case 29:
-                sql= "{call sp_apertura29(?,?,?,?,?,?)}";
+                sql= "{call sp_apertura29(?,?,?,?,?,?,?)}";
                 // defino variables para setear el javabean
                 //Date fecha_pol = benef.getFecha_pol();
                 //String poliza= benef.getPoliza();
@@ -166,7 +172,9 @@ public class ControladorBeneficiario extends ControladorBase
                 par_aper.setImp_capital(imp_capital);
                 par_aper.setImp_enganche(imp_enganche);
                 par_aper.setClave_b(clave_b);
+                par_aper.setId_usuario(id_usuario);
                 break;
+<<<<<<< HEAD
             
             case 10:
                 sql= "{call sp_apertura10(?,?,?,?,?,?,?,?,?,?,?)}";
@@ -190,6 +198,32 @@ public class ControladorBeneficiario extends ControladorBase
                 par_aper.setPagos_anticipados(imp_pagos);
                 par_aper.setSub_inic(imp_sui);
                 break;
+=======
+                
+            case 20:
+                sql= "{call sp_apertura20(?,?,?,?,?,?)}";
+                /*
+                BigDecimal area = benef.getArea();
+                BigDecimal costom2 = programa.getCosto_m2();
+                BigDecimal por_eng = programa.getPor_eng();
+                BigDecimal pag_ant = benef.getPagant();
+                //multiplicacion del area x costom2
+                BigDecimal c1 = area.multiply(costom2);
+                BigDecimal c1_c2 = c1.subtract(por_eng);*/
+                BigDecimal capital = benef.getCapital();
+                BigDecimal enganche = benef.getEnganche();
+                String claveb = benef.getClave_b();
+                Date fecha = benef.getFecha_pol();
+                String poliza20 = benef.getPoliza();
+                
+                par_aper.setId_beneficiario(id);
+                par_aper.setPoliza(poliza20);
+                par_aper.setClave_b(claveb);
+                par_aper.setFecha_pol(fecha);
+                par_aper.setImp_capital(capital);
+                par_aper.setImp_enganche(enganche);
+                break; 
+>>>>>>> a9b6fe0ca053d109037077e85e280c3f1bc3a0e1
         }
                 
         GestionBeneficiario modelo=new GestionBeneficiario();
@@ -198,7 +232,7 @@ public class ControladorBeneficiario extends ControladorBase
         {
             request.setAttribute("msg", "Procedimiento almacenado ejecutado exitosamente");
         }                    
-        RequestDispatcher rd=request.getRequestDispatcher("listar_beneficiarios.jsp");
+        RequestDispatcher rd=request.getRequestDispatcher("controladorbeneficiario?operacion=listar");
         rd.forward(request,response);
     }
     

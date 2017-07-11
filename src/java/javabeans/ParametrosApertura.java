@@ -21,24 +21,28 @@ public class ParametrosApertura
     private BigDecimal imp_capital;
     private BigDecimal imp_enganche;
     private String clave_b;
+<<<<<<< HEAD
     private BigDecimal intereses;
     private BigDecimal gastos_admon;
     private BigDecimal seguro_vida;
     private BigDecimal pagos_anticipados;
     private BigDecimal sub_inic;
+=======
+    private int id_usuario;
+>>>>>>> a9b6fe0ca053d109037077e85e280c3f1bc3a0e1
 
-   
     
     public ParametrosApertura(){ super();}
     //constructor que permite crear un objeto
 
-    public ParametrosApertura(int id_beneficiario, String poliza, Date fecha_pol, BigDecimal imp_capital, BigDecimal imp_enganche, String clave_b) {
+    public ParametrosApertura(int id_beneficiario, String poliza, Date fecha_pol, BigDecimal imp_capital, BigDecimal imp_enganche, String clave_b, int id_usuario) {
         this.id_beneficiario = id_beneficiario;
         this.poliza = poliza;
         this.fecha_pol = fecha_pol;
         this.imp_capital = imp_capital;
         this.imp_enganche = imp_enganche;
         this.clave_b= clave_b;
+        this.id_usuario=id_usuario;
     }
     
     //Constructor mecanicas: 10
@@ -106,6 +110,7 @@ public class ParametrosApertura
     public void setClave_b(String clave_b) {
         this.clave_b = clave_b;
     }
+<<<<<<< HEAD
 
     public BigDecimal getIntereses() {
         return intereses;
@@ -148,4 +153,14 @@ public class ParametrosApertura
     
     
      
+=======
+    
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+>>>>>>> a9b6fe0ca053d109037077e85e280c3f1bc3a0e1
 }
