@@ -160,6 +160,30 @@ public class ControladorBeneficiario extends ControladorBase
                 par_aper.setImp_enganche(imp_enganche);
                 par_aper.setClave_b(clave_b);
                 break;
+                
+            case 20:
+                sql= "{call sp_apertura20(?,?,?,?,?,?)}";
+                /*
+                BigDecimal area = benef.getArea();
+                BigDecimal costom2 = programa.getCosto_m2();
+                BigDecimal por_eng = programa.getPor_eng();
+                BigDecimal pag_ant = benef.getPagant();
+                //multiplicacion del area x costom2
+                BigDecimal c1 = area.multiply(costom2);
+                BigDecimal c1_c2 = c1.subtract(por_eng);*/
+                BigDecimal capital = benef.getCapital();
+                BigDecimal enganche = benef.getEnganche();
+                String claveb = benef.getClave_b();
+                Date fecha = benef.getFecha_pol();
+                String poliza20 = benef.getPoliza();
+                
+                par_aper.setId_beneficiario(id);
+                par_aper.setPoliza(poliza20);
+                par_aper.setClave_b(claveb);
+                par_aper.setFecha_pol(fecha);
+                par_aper.setImp_capital(capital);
+                par_aper.setImp_enganche(enganche);
+                break; 
         }
                 
         GestionBeneficiario modelo=new GestionBeneficiario();

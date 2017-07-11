@@ -64,6 +64,11 @@ public class GestionBeneficiario
                 Object params[]={par_aper.getId_beneficiario(),par_aper.getImp_capital(),par_aper.getImp_enganche(),par_aper.getPoliza(),sdf.format(par_aper.getFecha_pol()),par_aper.getClave_b()};
                 resultado=Conexion.llamar(sql, params);
                 break;
+            
+            case 20:
+                Object params20[]={par_aper.getId_beneficiario(),par_aper.getImp_capital(),par_aper.getImp_enganche(),par_aper.getPoliza(),sdf.format(par_aper.getFecha_pol()),par_aper.getClave_b()};
+                resultado=Conexion.llamar(sql, params20);
+                break;
         }
         
         return resultado;
