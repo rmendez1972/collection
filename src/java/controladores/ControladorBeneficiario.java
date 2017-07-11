@@ -193,7 +193,7 @@ public class ControladorBeneficiario extends ControladorBase
                 break;
                 
             case 20:
-                sql= "{call sp_apertura20(?,?,?,?,?,?)}";
+                sql= "{call sp_apertura20(?,?,?,?,?,?,?)}";
                 /*
                 BigDecimal area = benef.getArea();
                 BigDecimal costom2 = programa.getCosto_m2();
@@ -214,6 +214,7 @@ public class ControladorBeneficiario extends ControladorBase
                 par_aper.setFecha_pol(fecha);
                 par_aper.setImp_capital(capital);
                 par_aper.setImp_enganche(enganche);
+                par_aper.setId_usuario(id_usuario);
                 break; 
         }
                 
