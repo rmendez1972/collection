@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javabeans.Beneficiario;
 import javabeans.Candidatos;
+import javabeans.CatProgramas;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -116,6 +117,11 @@ public class ControladorCandidato extends ControladorBase
         candidato.setId_tipocredito(id_tipocredito);        
         
         candidato.setId_usuario(1);
+        GestionProgramas mod_gp= new GestionProgramas();
+        CatProgramas programa=mod_gp.obtenerPorId(id_catprog);
+        String clave_b=programa.getClave()+'-'+num_contrato;
+        candidato.setClave_b(clave_b);
+        
         GestionCandidatos modelo=new GestionCandidatos();
         if(modelo.actualizarCandidatos(candidato)){
             RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=listar");
@@ -177,6 +183,7 @@ public class ControladorCandidato extends ControladorBase
         beneficiario.setId_usuario(candidato.getId_usuario());
         beneficiario.setPoliza(candidato.getPoliza());
         beneficiario.setFecha_pol(candidato.getFecha_pol());
+        beneficiario.setClave_b(candidato.getClave_b());
                                 
         GestionBeneficiario mod_ben = new GestionBeneficiario();
         
@@ -238,6 +245,10 @@ public class ControladorCandidato extends ControladorBase
         Integer id_tipocredito=Integer.parseInt(request.getParameter("id_tipocredito"));
         candidato.setId_tipocredito(id_tipocredito);   
         candidato.setId_usuario(1);
+        GestionProgramas mod_gp= new GestionProgramas();
+        CatProgramas programa=mod_gp.obtenerPorId(id_catprog);
+        String clave_b=programa.getClave()+'-'+num_contrato;
+        candidato.setClave_b(clave_b);
         GestionCandidatos modelo=new GestionCandidatos();
         if(modelo.registroCandidatos(candidato)){
             RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=listar");

@@ -73,6 +73,7 @@
                     <th>Programa</th>
                     <th>Tipo de Crédito</th>
                     <th>Num. Contrato</th>
+                    <th>Clave SEDUVI</th>
                     <th>Clave Elector</th>
                     <th>Curp</th>
                     <th>RFC</th>
@@ -94,6 +95,7 @@
                         <th> <c:out value="${candidato.catprog}" /></th>
                         <th> <c:out value="${candidato.tipocredito}" /></th>
                         <th> <c:out value="${candidato.numcontrato}" /></th>
+                        <th> <c:out value="${candidato.clave_b}" /></th>
                         <th> <c:out value="${candidato.clave_elect}" /></th>
                         <th> <c:out value="${candidato.curp}" /></th>
                         <th> <c:out value="${candidato.rfc}" /></th>

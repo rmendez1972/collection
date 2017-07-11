@@ -74,6 +74,7 @@
                     <th>Programa</th>
                     <th>Tipo de Crédito</th>
                     <th>Num. Contrato</th>
+                    <th>Clave SEDUVI</th>
                     <th>Clave Elector</th>
                     <th>Curp</th>
                     <th>RFC</th>
@@ -95,6 +96,7 @@
                         <th> <c:out value="${beneficiario.catprog}" /></th>
                         <th> <c:out value="${beneficiario.tipocredito}" /></th>
                         <th> <c:out value="${beneficiario.numcontrato}" /></th>
+                        <th> <c:out value="${beneficiario.clave_b}" /></th>
                         <th> <c:out value="${beneficiario.clave_elect}" /></th>
                         <th> <c:out value="${beneficiario.curp}" /></th>
                         <th> <c:out value="${beneficiario.rfc}" /></th>
