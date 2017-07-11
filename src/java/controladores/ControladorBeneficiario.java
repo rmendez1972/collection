@@ -23,11 +23,13 @@ import javabeans.Beneficiario;
 import javabeans.Candidatos;
 import javabeans.CatProgramas;
 import javabeans.ParametrosApertura;
+import javabeans.Usuario;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import net.sf.jasperreports.engine.JasperRunManager;
 
 
@@ -142,10 +144,14 @@ public class ControladorBeneficiario extends ControladorBase
         Beneficiario benef=mod_gb.obtenerPorId(id);
         int mecanica=programa.getMecanica();
         boolean condicionfija =programa.isCondicion_fija();
+        HttpSession objSession = request.getSession(); 
+        Usuario usuario = (Usuario)(objSession.getAttribute("usuario")); 
+            
+        Integer id_usuario=usuario.getId_usuario();
         ParametrosApertura par_aper=new ParametrosApertura();
         switch (mecanica){
             case 29:
-                sql= "{call sp_apertura29(?,?,?,?,?,?)}";
+                sql= "{call sp_apertura29(?,?,?,?,?,?,?)}";
                 // defino variables para setear el javabean
                 Date fecha_pol = benef.getFecha_pol();
                 String poliza= benef.getPoliza();
@@ -159,6 +165,7 @@ public class ControladorBeneficiario extends ControladorBase
                 par_aper.setImp_capital(imp_capital);
                 par_aper.setImp_enganche(imp_enganche);
                 par_aper.setClave_b(clave_b);
+                par_aper.setId_usuario(id_usuario);
                 break;
         }
                 
@@ -168,7 +175,7 @@ public class ControladorBeneficiario extends ControladorBase
         {
             request.setAttribute("msg", "Procedimiento almacenado ejecutado exitosamente");
         }                    
-        RequestDispatcher rd=request.getRequestDispatcher("listar_beneficiarios.jsp");
+        RequestDispatcher rd=request.getRequestDispatcher("controladorbeneficiario?operacion=listar");
         rd.forward(request,response);
     }
     

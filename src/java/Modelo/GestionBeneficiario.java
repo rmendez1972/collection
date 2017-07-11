@@ -62,7 +62,7 @@ public class GestionBeneficiario
         switch (mecanica){
             case 29:
                 
-                Object params[]={par_aper.getId_beneficiario(),par_aper.getImp_capital(),par_aper.getImp_enganche(),par_aper.getPoliza(),sdf.format(par_aper.getFecha_pol()),par_aper.getClave_b()};
+                Object params[]={par_aper.getId_beneficiario(),par_aper.getImp_capital(),par_aper.getImp_enganche(),par_aper.getPoliza(),sdf.format(par_aper.getFecha_pol()),par_aper.getClave_b(),par_aper.getId_beneficiario()};
                 resultado=Conexion.llamar(sql, params);
                 break;
         }

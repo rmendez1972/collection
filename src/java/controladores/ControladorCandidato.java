@@ -22,11 +22,13 @@ import java.util.Map;
 import javabeans.Beneficiario;
 import javabeans.Candidatos;
 import javabeans.CatProgramas;
+import javabeans.Usuario;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import net.sf.jasperreports.engine.JasperRunManager;
 
 
@@ -116,7 +118,11 @@ public class ControladorCandidato extends ControladorBase
         Integer id_tipocredito=Integer.parseInt(request.getParameter("id_tipocredito"));
         candidato.setId_tipocredito(id_tipocredito);        
         
-        candidato.setId_usuario(1);
+        HttpSession objSession = request.getSession(); 
+        Usuario usuario = (Usuario)(objSession.getAttribute("usuario")); 
+            
+        Integer id_usuario=usuario.getId_usuario();
+        candidato.setId_usuario(id_usuario);
         GestionProgramas mod_gp= new GestionProgramas();
         CatProgramas programa=mod_gp.obtenerPorId(id_catprog);
         String clave_b=programa.getClave()+'-'+num_contrato;
@@ -157,7 +163,11 @@ public class ControladorCandidato extends ControladorBase
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Date fecha_pol = df.parse(request.getParameter("fecha_pol"));
         candidato.setFecha_pol(fecha_pol);
-        candidato.setId_usuario(1);
+        HttpSession objSession = request.getSession(); 
+        Usuario usuario = (Usuario)(objSession.getAttribute("usuario")); 
+            
+        Integer id_usuario=usuario.getId_usuario();
+        candidato.setId_usuario(id_usuario);
         
         
         /*seteamos al bean de beneficiario*/
@@ -243,8 +253,12 @@ public class ControladorCandidato extends ControladorBase
         String clave_cat=request.getParameter("clave_cat").toUpperCase();
         candidato.setClave_cat(clave_cat);
         Integer id_tipocredito=Integer.parseInt(request.getParameter("id_tipocredito"));
-        candidato.setId_tipocredito(id_tipocredito);   
-        candidato.setId_usuario(1);
+        candidato.setId_tipocredito(id_tipocredito);
+        HttpSession objSession = request.getSession(); 
+        Usuario usuario = (Usuario)(objSession.getAttribute("usuario")); 
+            
+        Integer id_usuario=usuario.getId_usuario();
+        candidato.setId_usuario(id_usuario);
         GestionProgramas mod_gp= new GestionProgramas();
         CatProgramas programa=mod_gp.obtenerPorId(id_catprog);
         String clave_b=programa.getClave()+'-'+num_contrato;

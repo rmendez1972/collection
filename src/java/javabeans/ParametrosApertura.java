@@ -21,19 +21,20 @@ public class ParametrosApertura
     private BigDecimal imp_capital;
     private BigDecimal imp_enganche;
     private String clave_b;
+    private int id_usuario;
 
-   
     
     public ParametrosApertura(){ super();}
     //constructor que permite crear un objeto
 
-    public ParametrosApertura(int id_beneficiario, String poliza, Date fecha_pol, BigDecimal imp_capital, BigDecimal imp_enganche, String clave_b) {
+    public ParametrosApertura(int id_beneficiario, String poliza, Date fecha_pol, BigDecimal imp_capital, BigDecimal imp_enganche, String clave_b, int id_usuario) {
         this.id_beneficiario = id_beneficiario;
         this.poliza = poliza;
         this.fecha_pol = fecha_pol;
         this.imp_capital = imp_capital;
         this.imp_enganche = imp_enganche;
         this.clave_b= clave_b;
+        this.id_usuario=id_usuario;
     }
     
 
@@ -84,5 +85,12 @@ public class ParametrosApertura
     public void setClave_b(String clave_b) {
         this.clave_b = clave_b;
     }
-     
+    
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
+    }
 }
