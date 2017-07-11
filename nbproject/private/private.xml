@@ -3,7 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionBeneficiario.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/bienvenida.jsp</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorAutoriza.java</file>
@@ -22,13 +21,6 @@
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_autoriza.jsp</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBendiv.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/javabeans/ParametrosApertura.java</file>
-=======
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/controladores/ControladorBeneficiario.java</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/javabeans/Beneficiario.java</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/javabeans/ParametrosApertura.java</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/controladores/ControladorUsuario.java</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/Modelo/GestionBeneficiario.java</file>
->>>>>>> 81aac7a4c218467388f5ca56d3ed9372475b4028
         </group>
     </open-files>
 </project-private>
