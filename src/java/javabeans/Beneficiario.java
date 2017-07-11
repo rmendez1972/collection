@@ -59,8 +59,9 @@ public class Beneficiario
     private String catprog;
     private String tipocredito;
     private String usuario;
+    private Boolean aperturado;
 
-    
+      
        
     public Beneficiario(){ super();}
     //constructor que permite crear un objeto
@@ -106,7 +107,31 @@ public class Beneficiario
          this.clave_b=clave_b;
          this.capital=capital;
          this.enganche=enganche;
-     }
+    }
+    public Beneficiario(int id_beneficiario,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito, Date fecha_pol, String poliza, String clave_b, BigDecimal capital, BigDecimal enganche, Boolean aperturado){
+         this.id_beneficiario=id_beneficiario;
+         this.id_catprog=id_catprog;
+         this.numcontrato = numcontrato;
+         this.clave_elect=clave_elect;
+         this.curp=curp;
+         this.rfc=rfc;
+         this.nombre=nombre;
+         this.conyuge=conyuge;
+         this.fecha_con=fecha_con;
+         this.mza=mza;
+         this.lte=lte;
+         this.area=area;
+         this.domicilio=domicilio;
+         this.clave_cat=clave_cat;
+         this.id_tipocredito=id_tipocredito;
+         this.fecha_pol=fecha_pol;
+         this.poliza=poliza;
+         this.clave_b=clave_b;
+         this.capital=capital;
+         this.enganche=enganche;
+         this.aperturado=aperturado;
+     } 
+     
     
     public int getId_beneficiario() {
         return id_beneficiario;
@@ -451,6 +476,14 @@ public class Beneficiario
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+    }
+    
+    public Boolean getAperturado() {
+        return aperturado;
+    }
+
+    public void setAperturado(Boolean aperturado) {
+        this.aperturado = aperturado;
     }
      
 }
