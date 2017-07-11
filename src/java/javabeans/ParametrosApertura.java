@@ -21,15 +21,14 @@ public class ParametrosApertura
     private BigDecimal imp_capital;
     private BigDecimal imp_enganche;
     private String clave_b;
-<<<<<<< HEAD
+
     private BigDecimal intereses;
     private BigDecimal gastos_admon;
     private BigDecimal seguro_vida;
     private BigDecimal pagos_anticipados;
     private BigDecimal sub_inic;
-=======
     private int id_usuario;
->>>>>>> a9b6fe0ca053d109037077e85e280c3f1bc3a0e1
+
 
     
     public ParametrosApertura(){ super();}
@@ -110,7 +109,6 @@ public class ParametrosApertura
     public void setClave_b(String clave_b) {
         this.clave_b = clave_b;
     }
-<<<<<<< HEAD
 
     public BigDecimal getIntereses() {
         return intereses;
@@ -151,10 +149,6 @@ public class ParametrosApertura
         this.sub_inic = sub_inic;
     }
     
-    
-     
-=======
-    
     public int getId_usuario() {
         return id_usuario;
     }
@@ -162,5 +156,5 @@ public class ParametrosApertura
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
->>>>>>> a9b6fe0ca053d109037077e85e280c3f1bc3a0e1
+
 }
