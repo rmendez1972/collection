@@ -174,13 +174,14 @@ public class ControladorBeneficiario extends ControladorBase
                     break;
 
                 case 20:
-                    sql= "{call sp_apertura20(?,?,?,?,?,?)}";
+                    sql= "{call sp_apertura20(?,?,?,?,?,?,?)}";
                     par_aper.setId_beneficiario(id);
                     par_aper.setPoliza(poliza);
                     par_aper.setClave_b(clave_b);
                     par_aper.setFecha_pol(fecha_pol);
                     par_aper.setImp_capital(imp_capital);
                     par_aper.setImp_enganche(imp_enganche);
+                    par_aper.setId_usuario(id_usuario);
                     break;
                 
                 case 10:
