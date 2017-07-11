@@ -21,6 +21,11 @@ public class ParametrosApertura
     private BigDecimal imp_capital;
     private BigDecimal imp_enganche;
     private String clave_b;
+    private BigDecimal intereses;
+    private BigDecimal gastos_admon;
+    private BigDecimal seguro_vida;
+    private BigDecimal pagos_anticipados;
+    private BigDecimal sub_inic;
 
    
     
@@ -36,6 +41,22 @@ public class ParametrosApertura
         this.clave_b= clave_b;
     }
     
+    //Constructor mecanicas: 10
+    public ParametrosApertura(int id_beneficiario, String poliza, Date fecha_pol, BigDecimal imp_capital, BigDecimal imp_enganche, String clave_b, 
+            BigDecimal intereses, BigDecimal gastos_admon, BigDecimal seguro_vida, BigDecimal pagos_anticipados, BigDecimal sub_inic) {
+        this.id_beneficiario = id_beneficiario;
+        this.poliza = poliza;
+        this.fecha_pol = fecha_pol;
+        this.imp_capital = imp_capital;
+        this.imp_enganche = imp_enganche;
+        this.clave_b= clave_b;
+        this.intereses = intereses;
+        this.gastos_admon = gastos_admon;
+        this.seguro_vida = seguro_vida;
+        this.pagos_anticipados = pagos_anticipados;
+        
+        
+    }
 
     public int getId_beneficiario() {
         return id_beneficiario;
