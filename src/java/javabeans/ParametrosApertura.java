@@ -54,6 +54,7 @@ public class ParametrosApertura
         this.gastos_admon = gastos_admon;
         this.seguro_vida = seguro_vida;
         this.pagos_anticipados = pagos_anticipados;
+        this.sub_inic = sub_inic;
         
         
     }
@@ -105,5 +106,46 @@ public class ParametrosApertura
     public void setClave_b(String clave_b) {
         this.clave_b = clave_b;
     }
+
+    public BigDecimal getIntereses() {
+        return intereses;
+    }
+
+    public void setIntereses(BigDecimal intereses) {
+        this.intereses = intereses;
+    }
+
+    public BigDecimal getGastos_admon() {
+        return gastos_admon;
+    }
+
+    public void setGastos_admon(BigDecimal gastos_admon) {
+        this.gastos_admon = gastos_admon;
+    }
+
+    public BigDecimal getSeguro_vida() {
+        return seguro_vida;
+    }
+
+    public void setSeguro_vida(BigDecimal seguro_vida) {
+        this.seguro_vida = seguro_vida;
+    }
+
+    public BigDecimal getPagos_anticipados() {
+        return pagos_anticipados;
+    }
+
+    public void setPagos_anticipados(BigDecimal pagos_anticipados) {
+        this.pagos_anticipados = pagos_anticipados;
+    }        
+    public BigDecimal getSub_inic() {
+        return sub_inic;
+    }
+
+    public void setSub_inic(BigDecimal sub_inic) {
+        this.sub_inic = sub_inic;
+    }
+    
+    
      
 }

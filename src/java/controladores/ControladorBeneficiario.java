@@ -143,15 +143,22 @@ public class ControladorBeneficiario extends ControladorBase
         int mecanica=programa.getMecanica();
         boolean condicionfija =programa.isCondicion_fija();
         ParametrosApertura par_aper=new ParametrosApertura();
+        
+        Date fecha_pol = benef.getFecha_pol();
+        String poliza= benef.getPoliza();
+        BigDecimal imp_capital = benef.getCapital();
+        BigDecimal imp_enganche =benef.getEnganche();
+        String clave_b=benef.getClave_b();
+        
         switch (mecanica){
             case 29:
                 sql= "{call sp_apertura29(?,?,?,?,?,?)}";
                 // defino variables para setear el javabean
-                Date fecha_pol = benef.getFecha_pol();
-                String poliza= benef.getPoliza();
-                BigDecimal imp_capital = benef.getCapital();
-                BigDecimal imp_enganche =benef.getEnganche();
-                String clave_b=benef.getClave_b();
+                //Date fecha_pol = benef.getFecha_pol();
+                //String poliza= benef.getPoliza();
+                //BigDecimal imp_capital = benef.getCapital();
+                //BigDecimal imp_enganche =benef.getEnganche();
+                //String clave_b=benef.getClave_b();
                 
                 par_aper.setId_beneficiario(id);
                 par_aper.setPoliza(poliza);
@@ -159,6 +166,29 @@ public class ControladorBeneficiario extends ControladorBase
                 par_aper.setImp_capital(imp_capital);
                 par_aper.setImp_enganche(imp_enganche);
                 par_aper.setClave_b(clave_b);
+                break;
+            
+            case 10:
+                sql= "{call sp_apertura10(?,?,?,?,?,?,?,?,?,?,?)}";
+                // defino variables para setear el javabean
+                BigDecimal por_interes=programa.getInteres();
+                BigDecimal por_admon=programa.getPor_admon();
+                BigDecimal por_svida=programa.getPor_sv();
+                BigDecimal imp_pagos=benef.getPagant();
+                BigDecimal imp_sui=benef.getSub_inic();
+                     
+                par_aper.setId_beneficiario(id);
+                par_aper.setPoliza(poliza);
+                par_aper.setFecha_pol(fecha_pol);
+                par_aper.setImp_capital(imp_capital);
+                par_aper.setImp_enganche(imp_enganche);
+                par_aper.setClave_b(clave_b);
+                
+                par_aper.setIntereses(por_interes);
+                par_aper.setGastos_admon(por_admon);
+                par_aper.setSeguro_vida(por_svida);
+                par_aper.setPagos_anticipados(imp_pagos);
+                par_aper.setSub_inic(imp_sui);
                 break;
         }
                 
