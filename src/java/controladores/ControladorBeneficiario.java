@@ -158,6 +158,10 @@ public class ControladorBeneficiario extends ControladorBase
             BigDecimal imp_capital = benef.getCapital();
             BigDecimal imp_enganche =benef.getEnganche();
             String clave_b=benef.getClave_b();
+            BigDecimal imp_admon=benef.getAdmon();
+            BigDecimal imp_svida=benef.getSeguro();
+            BigDecimal imp_pagos=benef.getPagant();
+            BigDecimal imp_sui=benef.getSub_inic();
             
             switch (mecanica){
                 case 29:
@@ -188,11 +192,7 @@ public class ControladorBeneficiario extends ControladorBase
                     sql= "{call sp_apertura10(?,?,?,?,?,?,?,?,?,?,?,?)}";
                     // defino variables para setear el javabean
                     BigDecimal imp_interes=benef.getInteres();
-                    BigDecimal imp_admon=benef.getAdmon();
-                    BigDecimal imp_svida=benef.getSeguro();
-                    BigDecimal imp_pagos=benef.getPagant();
-                    BigDecimal imp_sui=benef.getSub_inic();
-
+                    
                     par_aper.setId_beneficiario(id);
                     par_aper.setPoliza(poliza);
                     par_aper.setFecha_pol(fecha_pol);
@@ -206,6 +206,19 @@ public class ControladorBeneficiario extends ControladorBase
                     par_aper.setSub_inic(imp_sui);
                     par_aper.setId_usuario(id_usuario);
                     break;
+                case 36:
+                    sql= "{call sp_apertura36(?,?,?,?,?,?,?,?,?)}";
+
+                    par_aper.setId_beneficiario(id);
+                    par_aper.setPoliza(poliza);
+                    par_aper.setFecha_pol(fecha_pol);
+                    par_aper.setImp_capital(imp_capital);
+                    par_aper.setImp_enganche(imp_enganche);
+                    par_aper.setClave_b(clave_b);                
+                    par_aper.setPagos_anticipados(imp_pagos);
+                    par_aper.setSub_inic(imp_sui);
+                    par_aper.setId_usuario(id_usuario);
+                    break;                    
             }
 
             GestionBeneficiario modelo=new GestionBeneficiario();
