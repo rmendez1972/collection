@@ -28,6 +28,7 @@ public class ParametrosApertura
     private BigDecimal pagos_anticipados;
     private BigDecimal sub_inic;
     private int id_usuario;
+    private BigDecimal comision;
 
 
     
@@ -156,5 +157,15 @@ public class ParametrosApertura
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
+
+    public BigDecimal getComision() {
+        return comision;
+    }
+
+    public void setComision(BigDecimal comision) {
+        this.comision = comision;
+    }
+    
+    
 
 }

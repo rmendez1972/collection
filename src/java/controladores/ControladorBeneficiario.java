@@ -188,11 +188,35 @@ public class ControladorBeneficiario extends ControladorBase
                     par_aper.setId_usuario(id_usuario);
                     break;
                 
+                case 38:
+                    sql= "{call sp_apertura38(?,?,?,?,?,?,?,?,?,?,?)}";
+                    BigDecimal imp_comision = benef.getComision();
+                    
+                    par_aper.setId_beneficiario(id);
+                    par_aper.setClave_b(clave_b);
+                    par_aper.setFecha_pol(fecha_pol);
+                    par_aper.setPoliza(poliza);
+                    par_aper.setImp_capital(imp_capital);
+                    par_aper.setImp_enganche(imp_enganche);
+                    par_aper.setPagos_anticipados(imp_pagos);
+                    par_aper.setSub_inic(imp_sui);
+                    par_aper.setGastos_admon(imp_admon);
+                    par_aper.setComision(imp_comision);
+                    par_aper.setId_usuario(id_usuario);
+                    
+                    
+                    break;
+                
                 case 10:
                     sql= "{call sp_apertura10(?,?,?,?,?,?,?,?,?,?,?,?)}";
                     // defino variables para setear el javabean
                     BigDecimal imp_interes=benef.getInteres();
+<<<<<<< HEAD
                     
+=======
+                   
+
+>>>>>>> b4d09d90ea4304d630d51be53a0bc27940199eaf
                     par_aper.setId_beneficiario(id);
                     par_aper.setPoliza(poliza);
                     par_aper.setFecha_pol(fecha_pol);
