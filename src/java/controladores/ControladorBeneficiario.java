@@ -187,9 +187,9 @@ public class ControladorBeneficiario extends ControladorBase
                 case 10:
                     sql= "{call sp_apertura10(?,?,?,?,?,?,?,?,?,?,?,?)}";
                     // defino variables para setear el javabean
-                    BigDecimal por_interes=programa.getInteres();
-                    BigDecimal por_admon=programa.getPor_admon();
-                    BigDecimal por_svida=programa.getPor_sv();
+                    BigDecimal imp_interes=benef.getInteres();
+                    BigDecimal imp_admon=benef.getAdmon();
+                    BigDecimal imp_svida=benef.getSeguro();
                     BigDecimal imp_pagos=benef.getPagant();
                     BigDecimal imp_sui=benef.getSub_inic();
 
@@ -199,9 +199,9 @@ public class ControladorBeneficiario extends ControladorBase
                     par_aper.setImp_capital(imp_capital);
                     par_aper.setImp_enganche(imp_enganche);
                     par_aper.setClave_b(clave_b);                
-                    par_aper.setIntereses(por_interes);
-                    par_aper.setGastos_admon(por_admon);
-                    par_aper.setSeguro_vida(por_svida);
+                    par_aper.setIntereses(imp_interes);
+                    par_aper.setGastos_admon(imp_admon);
+                    par_aper.setSeguro_vida(imp_svida);
                     par_aper.setPagos_anticipados(imp_pagos);
                     par_aper.setSub_inic(imp_sui);
                     par_aper.setId_usuario(id_usuario);

@@ -60,8 +60,6 @@ public class Beneficiario
     private String tipocredito;
     private String usuario;
     private Boolean aperturado;
-
-      
        
     public Beneficiario(){ super();}
     //constructor que permite crear un objeto
@@ -109,7 +107,7 @@ public class Beneficiario
          this.enganche=enganche;
 
     }
-    public Beneficiario(int id_beneficiario,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito, Date fecha_pol, String poliza, String clave_b, BigDecimal capital, BigDecimal enganche, BigDecimal pagant,BigDecimal sub_inic, Boolean aperturado){
+    public Beneficiario(int id_beneficiario,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito, Date fecha_pol, String poliza, String clave_b, BigDecimal capital, BigDecimal enganche, BigDecimal pagant, BigDecimal sub_inic, BigDecimal admon, BigDecimal interes, BigDecimal seguro, Boolean aperturado){
          this.id_beneficiario=id_beneficiario;
          this.id_catprog=id_catprog;
          this.numcontrato = numcontrato;
@@ -132,6 +130,9 @@ public class Beneficiario
          this.enganche=enganche;
          this.pagant=pagant;
          this.sub_inic=sub_inic;
+         this.admon=admon;
+         this.interes=interes;
+         this.seguro=seguro;
          this.aperturado=aperturado;
      }
 
@@ -482,6 +483,16 @@ public class Beneficiario
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
+
+    public BigDecimal getAdmon() {
+        return admon;
+    }
+
+    public void setAdmon(BigDecimal admon) {
+        this.admon = admon;
+    }
+    private BigDecimal admon;
+
     
     public Boolean getAperturado() {
         return aperturado;
