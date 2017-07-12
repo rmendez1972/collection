@@ -211,12 +211,7 @@ public class ControladorBeneficiario extends ControladorBase
                     sql= "{call sp_apertura10(?,?,?,?,?,?,?,?,?,?,?,?)}";
                     // defino variables para setear el javabean
                     BigDecimal imp_interes=benef.getInteres();
-<<<<<<< HEAD
-                    
-=======
-                   
 
->>>>>>> b4d09d90ea4304d630d51be53a0bc27940199eaf
                     par_aper.setId_beneficiario(id);
                     par_aper.setPoliza(poliza);
                     par_aper.setFecha_pol(fecha_pol);
