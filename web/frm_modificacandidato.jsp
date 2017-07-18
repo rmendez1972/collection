@@ -129,7 +129,7 @@
                             
                             <label for="lte" class="col-xs-12 col-md-2 control-label">Lote:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="lte" class="form-control" id="lte" pattern="(^[0-9a-zA-Z]{6}$)"  placeholder="Máx. 6 caracteres" maxlength="6" style="text-transform:uppercase" value="${candidato.lte}" />
+                                <input type="text" name="lte" class="form-control" id="lte" pattern="(^[0-9a-zA-Z]{3,6}$)"  placeholder="Máx. 6 caracteres" maxlength="6" style="text-transform:uppercase" value="${candidato.lte}" />
 
                             </div>
                         </div>
