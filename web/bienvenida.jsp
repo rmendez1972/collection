@@ -20,8 +20,9 @@
             alert('Autenticación exitosa');
             //alert('Autenticación exitosa'+'${usuario.usuario}');
             document.getElementById('menu').style.display = 'block';
-            $("#datosUsuario").append('${usuario.usuario}');
-            //$("#datosUsuario").append('${usuario.id_usuario}');
+            $("#datosUsuario").html('');
+            $("#datosUsuario").append('<span class="fa fa-user" style="color: #000; padding: 5px; font-size:14px"></span>'+'${usuario.usuario}');
+            
         </c:if>
     </script>
 </html>

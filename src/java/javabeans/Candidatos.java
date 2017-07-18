@@ -65,7 +65,7 @@ public class Candidatos
     public Candidatos(){ super();}
     //constructor que permite crear un objeto
     
-     public Candidatos(int id_candidato,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito, String clave_b){
+     public Candidatos(int id_candidato,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito, String clave_b, Date fecha_ip){
          this.id_candidato=id_candidato;
          this.id_catprog=id_catprog;
          this.numcontrato = numcontrato;
@@ -82,6 +82,7 @@ public class Candidatos
          this.clave_cat=clave_cat;
          this.id_tipocredito=id_tipocredito;
          this.clave_b=clave_b;
+         this.fecha_ip=fecha_ip;
      }
     
     public int getId_candidato() {

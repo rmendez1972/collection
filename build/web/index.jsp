@@ -14,7 +14,7 @@
     <meta name="author" content="">
     <link rel="icon" href="assets/img/favicon.ico">
 
-    <title>Sistema de Cobrtanza</title>
+    <title>Sistema de Cobranza</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -118,9 +118,7 @@
                 </ul>
                 
              <div style="text-align:right;font-size:10px;">
-                <p id="datosUsuario">
-                    <span class="fa fa-user" style="color: #000; padding: 5px; font-size:14px"></span>
-                </p>
+                <p id="datosUsuario"></p>
             </div>
             </div>
         
