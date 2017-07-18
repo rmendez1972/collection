@@ -283,7 +283,20 @@ public class ControladorBeneficiario extends ControladorBase
                     par_aper.setPagos_anticipados(imp_pagos);
                     par_aper.setSub_inic(imp_sui);
                     par_aper.setId_usuario(id_usuario);
-                    break;                    
+                    break;
+                case 26:
+                    sql= "{call sp_apertura26(?,?,?,?,?,?,?,?,?)}";
+
+                    par_aper.setId_beneficiario(id);
+                    par_aper.setPoliza(poliza);
+                    par_aper.setFecha_pol(fecha_pol);
+                    par_aper.setImp_capital(imp_capital);
+                    par_aper.setImp_enganche(imp_enganche);
+                    par_aper.setClave_b(clave_b);                
+                    par_aper.setPagos_anticipados(imp_pagos);
+                    par_aper.setSub_inic(imp_sui);
+                    par_aper.setId_usuario(id_usuario);
+                    break;    
             }
 
             GestionBeneficiario modelo=new GestionBeneficiario();

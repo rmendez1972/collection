@@ -148,9 +148,16 @@ public class ControladorCandidato extends ControladorBase
         int id=Integer.parseInt(request.getParameter("id"));
         GestionCandidatos modelo=new GestionCandidatos();
         Candidatos candidato=modelo.obtenerPorId(id);
-                          
+        
+        GestionProgramas mod_prog=new GestionProgramas();
+        GestionTipocredito mod_tcr=new GestionTipocredito();
+        ArrayList prog=mod_prog.obtenerTodos();
+        ArrayList tipo=mod_tcr.obtenerTodos();
+                   
         request.setAttribute("candidato", candidato);
-                            
+        request.setAttribute("prog", prog);
+        request.setAttribute("tipo", tipo);
+                                   
         RequestDispatcher rd=request.getRequestDispatcher("frm_modificacandidatoapertura.jsp");
         rd.forward(request,response);
     }
