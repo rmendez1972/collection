@@ -3,26 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionCandidatos.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBase.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/login.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/index.html</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_cpp.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_candidatos.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionFirmantes.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_modificacandidatoapertura.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/index.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Usuario.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_firmantes.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_candidato.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorFirmantes.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/Controladorlogin.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Beneficiario.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_modificabeneficiario.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBeneficiario.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionBeneficiario.java</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_beneficiarios.jsp</file>
-            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_clavediv.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionBeneficiario.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionCandidatos.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBeneficiario.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBase.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_cajas.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorCandidato.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/bienvenida.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/login.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionUsuario.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/javabeans/Beneficiario.java</file>
         </group>
     </open-files>
 </project-private>
