@@ -30,6 +30,7 @@
                 params.domicilio=$("#domicilio").val();
                 params.clave_cat=$("#clave_cat").val();
                 params.id_tipocredito=$("#id_tipocredito").val();
+                params.fecha_ip=$("#fecha_ip").val();
                 
                 if(params.id_catprog == 0){
                     alert("Seleccione un programa");
@@ -167,6 +168,15 @@
                                 </select>
                             </div>
                             
+                        </div>
+                        
+                        <div class="form-group">
+                                                       
+                            <label for="fecha_con" class="col-xs-12 col-md-2 control-label">Fecha Inicio de Pago:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="date" id="fecha_ip" class="form-control" required   />
+
+                            </div>
                         </div>
 
                         <div class="form-group" style="text-align:center">

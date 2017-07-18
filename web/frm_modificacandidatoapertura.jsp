@@ -148,7 +148,17 @@
                                     </c:forEach>
                                 </select>
                             </div>
-                        </div>    
+                        </div> 
+                            
+                        <div class="form-group">
+                               
+                            <label for="fecha_con" class="col-xs-12 col-md-2 control-label">Fecha Inicio de Pago:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="date" id="fecha_ip" class="form-control" disabled="true" required  value="${candidato.fecha_ip}" />
+
+                            </div>
+                        </div>
+                            
                         <div class="form-group">
                             <label for="poliza" class="col-xs-12 col-md-2 control-label">Póliza:</label>
                             <div class="col-xs-12 col-md-4">

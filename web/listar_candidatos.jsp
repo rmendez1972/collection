@@ -85,6 +85,7 @@
                     <th>Area</th>
                     <th>Domicilio</th>
                     <th>Clave Catastral</th>
+                    <th>Fecha Inicio Pagos</th>
                     <th>Usuario</th>
                     <th>Acciones</th>
                 </tr>
@@ -107,6 +108,7 @@
                         <th> <c:out value="${candidato.area}" /></th>
                         <th> <c:out value="${candidato.domicilio}" /></th>
                         <th> <c:out value="${candidato.clave_cat}" /></th>
+                        <th> <c:out value="${candidato.fecha_ip}" /></th>
                         <th> <c:out value="${candidato.usuario}" /></th>
                         <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Candidato" onclick="editarContratado(${candidato.id_candidato});" /><img src="imagenes/acuse.png" class="btn-tabla" title="Ingresar a CxC" onclick="aperturarContratado(${candidato.id_candidato});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Candidato" onclick="eliminarContratado(${candidato.id_candidato});" /></th>
                     </tr>

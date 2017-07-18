@@ -127,6 +127,9 @@ public class ControladorCandidato extends ControladorBase
         CatProgramas programa=mod_gp.obtenerPorId(id_catprog);
         String clave_b=programa.getClave()+'-'+num_contrato;
         candidato.setClave_b(clave_b);
+        Date fecha_ip = df.parse(request.getParameter("fecha_ip"));
+        candidato.setFecha_ip(fecha_ip);
+        
         
         GestionCandidatos modelo=new GestionCandidatos();
         if(modelo.actualizarCandidatos(candidato)){
@@ -194,6 +197,7 @@ public class ControladorCandidato extends ControladorBase
         beneficiario.setPoliza(candidato.getPoliza());
         beneficiario.setFecha_pol(candidato.getFecha_pol());
         beneficiario.setClave_b(candidato.getClave_b());
+        beneficiario.setFecha_ip(candidato.getFecha_ip());
                                 
         GestionBeneficiario mod_ben = new GestionBeneficiario();
         
@@ -263,6 +267,8 @@ public class ControladorCandidato extends ControladorBase
         CatProgramas programa=mod_gp.obtenerPorId(id_catprog);
         String clave_b=programa.getClave()+'-'+num_contrato;
         candidato.setClave_b(clave_b);
+        Date fecha_ip = df.parse(request.getParameter("fecha_ip"));
+        candidato.setFecha_ip(fecha_ip);
         GestionCandidatos modelo=new GestionCandidatos();
         if(modelo.registroCandidatos(candidato)){
             RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=listar");
