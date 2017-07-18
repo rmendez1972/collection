@@ -61,8 +61,6 @@ public class Beneficiario
     private String usuario;
     private Boolean aperturado;
     private BigDecimal comision;
-
-    
        
     public Beneficiario(){ super();}
     //constructor que permite crear un objeto
@@ -111,7 +109,9 @@ public class Beneficiario
          this.enganche=enganche;
 
     }
+
     public Beneficiario(int id_beneficiario,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito, Date fecha_pol, String poliza, String clave_b, BigDecimal capital, BigDecimal enganche, BigDecimal pagant, BigDecimal sub_inic, BigDecimal admon, BigDecimal interes, BigDecimal seguro, BigDecimal comision, Boolean aperturado, Date fecha_ip){
+
          this.id_beneficiario=id_beneficiario;
          this.id_catprog=id_catprog;
          this.numcontrato = numcontrato;
@@ -507,7 +507,6 @@ public class Beneficiario
     public void setAperturado(Boolean aperturado) {
         this.aperturado = aperturado;
     }
-    
     public BigDecimal getComision() {
         return comision;
     }
