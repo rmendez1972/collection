@@ -117,7 +117,7 @@
                         <div class="form-group">
                             <label for="conyuge" class="col-xs-12 col-md-2 control-label">Conyuge:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="conyuge" class="form-control" id="conyuge"  placeholder="Máx.50 caracteres" maxlength="3" style="text-transform:uppercase" />
+                                <input type="text" name="conyuge" class="form-control" id="conyuge"  placeholder="Máx.50 caracteres" maxlength="60" style="text-transform:uppercase" />
                             </div>
                             
                             <label for="fecha_con" class="col-xs-12 col-md-2 control-label">Fecha de Contrato:</label>
@@ -135,7 +135,7 @@
                             
                             <label for="lte" class="col-xs-12 col-md-2 control-label">Lote:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="lte" class="form-control" id="lte" pattern="(^[0-9a-zA-Z]{6}$)"  placeholder="Máx. 6 caracteres" maxlength="6" style="text-transform:uppercase"  />
+                                <input type="text" name="lte" class="form-control" id="lte" pattern="(^[0-9a-zA-Z]{3,6}$)"  placeholder="Máx. 6 caracteres" maxlength="6" style="text-transform:uppercase"  />
 
                             </div>
                         </div>
