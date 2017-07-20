@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
     <!-- Estilos personalizados para la aplicaciÃ³n -->
     <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/select2.min.css">
     
     
     
@@ -72,10 +73,16 @@
                 <ul class="nav navbar-nav navbar-right">
                   <!--<li class="active"><a href="#">OpciÃ³n1</a></li>-->
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-folder" style="color: #00A6CA"></span> Programas de Crédito<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-folder" style="color: #00A6CA"></span> Programas<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li id="programas"><a href="#" ><span class="fa fa-folder"></span> Condiciones Financieras</a></li>
                     </ul>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-wrench" style="color: #00A6CA"></span> Mantenimiento<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li id="mov_edoscta"><a href="#" ><span class="fa fa-money"></span> Estados de Cuenta Programas</a></li>
+                      <li id="mov_diversos"><a href="#" ><span class="fa fa-folder"></span>Estados de Cuenta Diversos</a></li>
+                    </ul>  
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-users" style="color: #00A6CA"></span> Beneficiarios<span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -176,6 +183,8 @@
     <!-- Librerias javaScript de la aplicacion tramites -->
     <script type="text/javascript" language="JavaScript" src="assets/js/script_cobranza.js"></script>
     <script src="assets/js/jquery.confirm.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script src="assets/js/select2.full.min.js"></script>
     
   
     <script type="text/javascript" charset="utf-8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
@@ -329,6 +338,15 @@
                 event.preventDefault();
                 cargar('controladorbendiv?operacion=listar','#show');
                 });
+                
+                // Menu colgante: Mantenimiento
+                
+                $("#mov_edoscta").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladormov_edocta?operacion=listar','#show');
+
+                });
+                
             });
             
             
