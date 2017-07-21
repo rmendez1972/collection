@@ -42,12 +42,12 @@ public class Mov_edocta
     private int id_caja;
     private String nombrebenef;
     private String nombreusuario;
-
-    
+    private Boolean bonific;
+  
    
     public Mov_edocta(){ super();}
     
-    public Mov_edocta(int id_movedoscta, int id_benef, BigDecimal capital, BigDecimal interes, BigDecimal admon, BigDecimal seguro, String clave_mov, String poliza, Date fecha_mov, int recibo, BigDecimal o_seguro, BigDecimal moratorios, String status, Date fecha_pol, int id_usuario, String prepago, int id_bonific, BigDecimal comisiones, String serie, Boolean puntual, String clave_b, BigDecimal tit, int id_catprog, String numcontrato, int id_caja) {
+    public Mov_edocta(int id_movedoscta, int id_benef, BigDecimal capital, BigDecimal interes, BigDecimal admon, BigDecimal seguro, String clave_mov, String poliza, Date fecha_mov, int recibo, BigDecimal o_seguro, BigDecimal moratorios, String status, Date fecha_pol, int id_usuario, String prepago, int id_bonific, BigDecimal comisiones, String serie, Boolean puntual, String clave_b, BigDecimal tit, int id_catprog, String numcontrato, int id_caja, Boolean bonific) {
         this.id_movedoscta = id_movedoscta;
         this.id_benef = id_benef;
         this.capital = capital;
@@ -73,6 +73,7 @@ public class Mov_edocta
         this.id_catprog = id_catprog;
         this.numcontrato = numcontrato;
         this.id_caja = id_caja;
+        this.bonific=bonific;
         
     }
     
@@ -91,6 +92,23 @@ public class Mov_edocta
         this.moratorios = moratorios;
         this.status = status;
         this.fecha_pol = fecha_pol;
+        
+    }
+    
+    public Mov_edocta(int id_movedoscta, int id_benef, String clave_b, String clave_mov, Date fecha_mov, String poliza, Date fecha_pol, BigDecimal capital, BigDecimal admon, BigDecimal seguro, BigDecimal o_seguro, BigDecimal comisiones, BigDecimal tit) {
+        this.id_movedoscta = id_movedoscta;
+        this.id_benef = id_benef;
+        this.clave_b =clave_b;
+        this.clave_mov=clave_mov;
+        this.fecha_mov=fecha_mov;
+        this.poliza=poliza;
+        this.fecha_pol=fecha_pol;
+        this.capital = capital;
+        this.admon = admon;
+        this.seguro = seguro;
+        this.o_seguro = o_seguro;
+        this.comisiones = comisiones;
+        this.tit = tit;
         
     }
 
@@ -308,6 +326,14 @@ public class Mov_edocta
 
     public void setNombreusuario(String nombreusuario) {
         this.nombreusuario = nombreusuario;
+    }
+    
+    public Boolean getBonific() {
+        return bonific;
+    }
+
+    public void setBonific(Boolean bonific) {
+        this.bonific = bonific;
     }
      
 }

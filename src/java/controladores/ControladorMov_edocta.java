@@ -52,21 +52,22 @@ public class ControladorMov_edocta extends ControladorBase
         rd.forward(request,response);
     }
     
-    /*
+    
     public void eliminar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id=Integer.parseInt(request.getParameter("id"));
-        GestionBeneficiario modelo=new GestionBeneficiario();
+        GestionMov_edocta modelo=new GestionMov_edocta();
+        
         if(modelo.eliminarPorId(id))
         {    
             request.setAttribute("msg", "Registro eliminado");
         }else{
-            request.setAttribute("msg", "No es posible eliminar. Este Beneficiario ya cuenta con Movimientos en Edo. de Cuenta.");
+            request.setAttribute("msg", "No es posible eliminar. Este Movimiento cuenta con binificación.");
             
         }
-        RequestDispatcher rd=request.getRequestDispatcher("controladorbeneficiario?operacion=listar");
+        RequestDispatcher rd=request.getRequestDispatcher("controladormov_edocta?operacion=listar");
         rd.forward(request,response);
     }
-    */
+    
     
     public void editar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id=Integer.parseInt(request.getParameter("id"));
@@ -83,84 +84,58 @@ public class ControladorMov_edocta extends ControladorBase
         rd.forward(request,response);
     }
     
-    /*
+    
     public void editarGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        Beneficiario benef=new Beneficiario();
-        Integer id_beneficiario=Integer.parseInt(request.getParameter("id_beneficiario"));
-        benef.setId_beneficiario(id_beneficiario);
-        Integer id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
-        benef.setId_catprog(id_catprog);
-        String num_contrato=request.getParameter("numcontrato");
-        benef.setNumcontrato(num_contrato);
-        String clave_elect=request.getParameter("clave_elect").toUpperCase();
-        benef.setClave_elect(clave_elect);
-        String curp=request.getParameter("curp").toUpperCase();
-        benef.setCurp(curp);
-        String rfc=request.getParameter("rfc").toUpperCase();
-        benef.setRfc(rfc);
-        String nombre=request.getParameter("nombre").toUpperCase();
-        benef.setNombre(nombre);
-        String conyuge=request.getParameter("conyuge").toUpperCase();
-        benef.setConyuge(conyuge);
-               
+        Mov_edocta movimiento=new Mov_edocta();
+        Integer id_movedoscta=Integer.parseInt(request.getParameter("id_movedoscta"));
+        movimiento.setId_movedoscta(id_movedoscta);
+        Integer id_benef=Integer.parseInt(request.getParameter("id_benef"));
+        movimiento.setId_benef(id_benef);
+        String clave_b=request.getParameter("clave_b").toUpperCase();
+        movimiento.setClave_b(clave_b);
+        String clave_mov=request.getParameter("clave_mov").toUpperCase();
+        movimiento.setClave_mov(clave_mov);
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Date fecha_con = df.parse(request.getParameter("fecha_con"));
-        benef.setFecha_con(fecha_con);
-        String mza=request.getParameter("mza").toUpperCase();
-        benef.setMza(mza);
-        String lte=request.getParameter("lte").toUpperCase();
-        benef.setLte(lte);
-        BigDecimal area = new BigDecimal(request.getParameter("area"));
-        benef.setArea(area);
-        String domicilio=request.getParameter("domicilio").toUpperCase();
-        benef.setDomicilio(domicilio);
-        String clave_cat=request.getParameter("clave_cat").toUpperCase();
-        benef.setClave_cat(clave_cat);
-        Integer id_tipocredito=Integer.parseInt(request.getParameter("id_tipocredito"));
-        benef.setId_tipocredito(id_tipocredito);        
+        Date fecha_mov = df.parse(request.getParameter("fecha_mov"));
+        movimiento.setFecha_mov(fecha_mov);
+        String poliza=request.getParameter("poliza").toUpperCase();
+        movimiento.setPoliza(poliza);
+        Date fecha_pol = df.parse(request.getParameter("fecha_pol"));
+        movimiento.setFecha_pol(fecha_pol);
+        BigDecimal capital = new BigDecimal(request.getParameter("capital"));
+        movimiento.setCapital(capital);
+        BigDecimal admon = new BigDecimal(request.getParameter("admon"));
+        movimiento.setAdmon(admon);
+        BigDecimal seguro = new BigDecimal(request.getParameter("seguro"));
+        movimiento.setSeguro(seguro);
+        BigDecimal o_seguro = new BigDecimal(request.getParameter("o_seguro"));
+        movimiento.setO_seguro(o_seguro);
+        BigDecimal comisiones = new BigDecimal(request.getParameter("comisiones"));
+        movimiento.setComisiones(comisiones);
+        BigDecimal tit = new BigDecimal(request.getParameter("tit"));
+        movimiento.setTit(tit);
+        BigDecimal interes = new BigDecimal(request.getParameter("interes"));
+        movimiento.setInteres(interes);
         
         HttpSession objSession = request.getSession(); 
         Usuario usuario = (Usuario)(objSession.getAttribute("usuario")); 
-            
         Integer id_usuario=usuario.getId_usuario();
-        benef.setId_usuario(id_usuario);
-        GestionProgramas mod_gp= new GestionProgramas();
-        CatProgramas programa=mod_gp.obtenerPorId(id_catprog);
-        String clave_b=programa.getClave()+'-'+num_contrato;
-        benef.setClave_b(clave_b);
-        Date fecha_ip = df.parse(request.getParameter("fecha_ip"));
-        benef.setFecha_ip(fecha_ip);
-        BigDecimal capital = new BigDecimal(request.getParameter("capital"));
-        benef.setCapital(capital);
-        BigDecimal sub_inic = new BigDecimal(request.getParameter("sub_inic"));
-        benef.setSub_inic(sub_inic);
-        BigDecimal enganche = new BigDecimal(request.getParameter("enganche"));
-        benef.setEnganche(enganche);
-        BigDecimal pagant = new BigDecimal(request.getParameter("pagant"));
-        benef.setPagant(pagant);
-        BigDecimal admon = new BigDecimal(request.getParameter("admon"));
-        benef.setAdmon(admon);
-        BigDecimal comision = new BigDecimal(request.getParameter("comision"));
-        benef.setComision(comision);
-        BigDecimal interes = new BigDecimal(request.getParameter("interes"));
-        benef.setInteres(interes);
-        BigDecimal seguro = new BigDecimal(request.getParameter("seguro"));
-        benef.setSeguro(seguro);
+        movimiento.setId_usuario(id_usuario);
         
-        GestionBeneficiario modelo=new GestionBeneficiario();
-        if(modelo.actualizarBeneficiario(benef)){
-            RequestDispatcher rd=request.getRequestDispatcher("controladorbeneficiario?operacion=listar");
+        GestionMov_edocta modelo=new GestionMov_edocta();
+        if(modelo.actualizarMov_edocta(movimiento)){
+            RequestDispatcher rd=request.getRequestDispatcher("controladormov_edocta?operacion=listar");
             request.setAttribute("msg", "Datos guardados");
             rd.forward(request,response);
         }
         else{
-            RequestDispatcher rd=request.getRequestDispatcher("controladorbeneficiario?operacion=editar");
+            RequestDispatcher rd=request.getRequestDispatcher("controladormov_edocta?operacion=editar");
             request.setAttribute("msg", "Error al guardar. Intente de nuevo más tarde");
             rd.forward(request,response);
         }
     }
     
-    
+    /*
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
         GestionProgramas mod_prog=new GestionProgramas();
         GestionTipocredito mod_tcr=new GestionTipocredito();
