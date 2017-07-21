@@ -21,41 +21,37 @@
             })
             
             function registrar(){
+                
                 var params=new Object();
                 params.id_movedoscta=$("#id_movedoscta").val();
+                
                 params.id_benef=$("#id_benef").val();
                 params.clave_b=$("#clave_b").val();
                 params.clave_mov=$("#clave_mov").val();
                 params.fecha_mov=$("#fecha_mov").val();
+                params.poliza=$("#poliza").val();
+                params.fecha_pol=$("#fecha_pol").val();
                 params.capital=$("#capital").val();
                 params.admon=$("#admon").val();
-                params.conyuge=$("#conyuge").val();
-                params.fecha_con=$("#fecha_con").val();
-                params.mza=$("#mza").val();
-                params.lte=$("#lte").val();
-                params.area=$("#area").val();
-                params.domicilio=$("#domicilio").val();
-                params.clave_cat=$("#clave_cat").val();
-                params.id_tipocredito=$("#id_tipocredito").val();
-                params.fecha_ip=$("#fecha_ip").val();
-                if(params.id_catprog == 0){
-                    alert("Seleccione un programa");
-                    return false;
-                }
+                params.seguro=$("#seguro").val();
+                params.o_seguro=$("#o_seguro").val();
+                params.comisiones=$("#comisiones").val();
+                params.tit=$("#tit").val();
+                params.interes=$("#interes").val();
                 
-                if(params.id_tipocredito == 0){
-                    alert("Seleccione un tipo de crédito");
+                
+                if(params.id_benef == 0){
+                    alert("Seleccione un beneficiario");
                     return false;
                 }
                                 
-                $.post("controladorcandidato?operacion=editarGuardar", params, function(datos){
+                $.post("controladormov_edocta?operacion=editarGuardar", params, function(datos){
                     $("#show").html(datos);
                 },"html");
                 
                 return false;
             }
-            
-                        
+                                    
             function listar(){
                                
                 $.post("controladormov_edocta?operacion=listar", function(datos){
@@ -151,6 +147,15 @@
                             <div class="col-xs-12 col-md-4">
                                 <input type="number" step="0.01" id="tit" class="form-control" required  placeholder="Solo se aceptan dos decimales" maxlength="12" value="${movimiento.tit}" />
                             </div>
+                        </div>
+                            
+                        <div class="form-group">
+                            <label for="interes" class="col-xs-12 col-md-2 control-label">Interes:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="number" step="0.01" id="interes" class="form-control" required  placeholder="Solo se aceptan dos decimales" maxlength="12" value="${movimiento.interes}" />
+                            </div>
+                            
+                            
                         </div>
                         
                         <div class="form-group" style="text-align:center">
