@@ -70,12 +70,14 @@
                     <th>Póliza</th>
                     <th>Fecha Póliza</th>
                     <th>Capital</th>
+                    <th>Interes</th>
                     <th>Admon</th>
                     <th>Seguro</th>
                     <th>Otros Seguros</th>
                     <th>Comisión</th>
                     <th>Titulación</th>
-                    <th>Usuario</th>
+                    <th>Bonific</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -89,13 +91,22 @@
                         <th> <c:out value="${mov.poliza}" /></th>
                         <th> <c:out value="${mov.fecha_pol}" /></th>
                         <th> <c:out value="${mov.capital}" /></th>                        
+                        <th> <c:out value="${mov.interes}" /></th>                        
                         <th> <c:out value="${mov.admon}" /></th>
                         <th> <c:out value="${mov.seguro}" /></th>
                         <th> <c:out value="${mov.o_seguro}" /></th>
                         <th> <c:out value="${mov.comisiones}" /></th>                        
                         <th> <c:out value="${mov.tit}" /></th>
-                        <th> <c:out value="${mov.nombreusuario}" /></th>
-                        
+                        <c:choose>
+                            <c:when test="${mov.bonific==true}">
+                                <th><img src="assets/img/ok.png"    title="movimiento con bonificación"/></th>
+                            </c:when>
+                                    
+                            <c:when test="${mov.bonific==false}">
+                                <th><img src="assets/img/mal.png"   title="movimiento sin bonificación"/></td>
+                            </c:when>
+                        </c:choose>
+                                                
                     </tr>
                 </c:forEach>
             </tbody>
