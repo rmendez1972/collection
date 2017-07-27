@@ -71,24 +71,27 @@ public class GestionBeneficiario
                 resultado=Conexion.llamar(sql, params);
                 break;
                 
-            case 10:
+            case 10: //igh
                 
                 Object params10[]={par_aper.getId_beneficiario(),par_aper.getImp_capital(),par_aper.getImp_enganche(),par_aper.getPoliza(),sdf.format(par_aper.getFecha_pol()),par_aper.getClave_b(),
-                par_aper.getIntereses(), par_aper.getGastos_admon(), par_aper.getSeguro_vida(), par_aper.getPagos_anticipados(), par_aper.getSub_inic(), par_aper.getId_usuario()};
+                par_aper.getIntereses(), par_aper.getGastos_admon(), par_aper.getSeguro_vida(), par_aper.getPagos_anticipados(), par_aper.getSub_inic(), par_aper.getId_usuario(),
+                par_aper.getId_catprog(), par_aper.getNumcontrato()};
                 resultado=Conexion.llamar(sql, params10);
                 break;
             
-            case 36:
+            case 36: //igh
                 
                 Object params36[]={par_aper.getId_beneficiario(),par_aper.getImp_capital(),par_aper.getImp_enganche(),par_aper.getPoliza(),sdf.format(par_aper.getFecha_pol()),par_aper.getClave_b(),
-                par_aper.getPagos_anticipados(), par_aper.getSub_inic(), par_aper.getId_usuario()};
+                par_aper.getPagos_anticipados(), par_aper.getSub_inic(), par_aper.getId_usuario(),
+                par_aper.getId_catprog(), par_aper.getNumcontrato()};
                 resultado=Conexion.llamar(sql, params36);
                 break;     
             
-            case 26:
+            case 26: //igh
                 
                 Object params26[]={par_aper.getId_beneficiario(),par_aper.getImp_capital(),par_aper.getImp_enganche(),par_aper.getPoliza(),sdf.format(par_aper.getFecha_pol()),par_aper.getClave_b(),
-                par_aper.getPagos_anticipados(), par_aper.getSub_inic(), par_aper.getId_usuario()};
+                par_aper.getPagos_anticipados(), par_aper.getSub_inic(), par_aper.getId_usuario(),
+                par_aper.getId_catprog(), par_aper.getNumcontrato()};
                 resultado=Conexion.llamar(sql, params26);
                 break;    
                 
