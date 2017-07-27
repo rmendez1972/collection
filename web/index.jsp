@@ -151,11 +151,11 @@
             <div class="col-lg-8 col-md-8 col-sm-12">
 
 		<div class="col-lg-4-fondo">
-                    Secretaría de Desarrollo Urbano y vivienda</br>
+                    Secretaría de Desarrollo Territorial Urbano Sustentable</br>
                     Gobierno del Estado de Quintana Roo.</br>
                     Administración 2016-2022.</br>
-                    Av. Álvaro Obregón #474 Col. Centro C.P.77000</br>
-                    <a href="http://seduvi.qroo.gob.mx" target="_blank" style="text-decoration:none;color:#384452">http://seduvi.qroo.gob.mx</a>
+                    <span style="font-size:12px">Av. Álvaro Obregón #474 Col.Centro, C.P.77000 Chetumal, Quintana Roo, México.</span></br>
+                    <a href="http://qroo.gob.mx/sedetus" target="_blank" style="text-decoration:none;color:#384452">http://seduvi.qroo.gob.mx</a>
 		</div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
@@ -344,6 +344,12 @@
                 $("#mov_edoscta").click(function (event) {
                     event.preventDefault();
                     cargar('controladormov_edocta?operacion=listar','#show');
+
+                });
+                
+                $("#mov_diversos").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladormov_diversos?operacion=listar','#show');
 
                 });
                 
