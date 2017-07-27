@@ -197,6 +197,9 @@ public class ControladorBeneficiario extends ControladorBase
             BigDecimal imp_pagos=benef.getPagant();
             BigDecimal imp_sui=benef.getSub_inic();
             
+            String numcontrato = benef.getNumcontrato();
+            Integer id_catprograma = benef.getId_catprog();
+                    
             switch (mecanica){
                 case 29:
                     sql= "{call sp_apertura29(?,?,?,?,?,?,?)}";
@@ -212,7 +215,7 @@ public class ControladorBeneficiario extends ControladorBase
                     break;
 
                 case 20:
-                    sql= "{call sp_apertura20(?,?,?,?,?,?,?)}";
+                    sql= "{call sp_apertura20(?,?,?,?,?,?,?,?,?)}";
                     par_aper.setId_beneficiario(id);
                     par_aper.setPoliza(poliza);
                     par_aper.setClave_b(clave_b);
@@ -220,10 +223,12 @@ public class ControladorBeneficiario extends ControladorBase
                     par_aper.setImp_capital(imp_capital);
                     par_aper.setImp_enganche(imp_enganche);
                     par_aper.setId_usuario(id_usuario);
+                    par_aper.setId_catprog(id_catprograma);
+                    par_aper.setNumcontrato(numcontrato);
                     break;
                 
                 case 38:
-                    sql= "{call sp_apertura38(?,?,?,?,?,?,?,?,?,?,?)}";
+                    sql= "{call sp_apertura38(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
                     BigDecimal imp_comision = benef.getComision();
                     
                     par_aper.setId_beneficiario(id);
@@ -237,10 +242,12 @@ public class ControladorBeneficiario extends ControladorBase
                     par_aper.setGastos_admon(imp_admon);
                     par_aper.setComision(imp_comision);
                     par_aper.setId_usuario(id_usuario);
+                    par_aper.setId_catprog(id_catprograma);
+                    par_aper.setNumcontrato(numcontrato);
                     break;
                     
                 case 8:
-                    sql= "{call sp_apertura8(?,?,?,?,?,?,?,?,?)}";
+                    sql= "{call sp_apertura8(?,?,?,?,?,?,?,?,?,?,?)}";
                     
                     par_aper.setId_beneficiario(id);
                     par_aper.setClave_b(clave_b);
@@ -251,6 +258,8 @@ public class ControladorBeneficiario extends ControladorBase
                     par_aper.setPagos_anticipados(imp_pagos);
                     par_aper.setSub_inic(imp_sui);
                     par_aper.setId_usuario(id_usuario);
+                    par_aper.setId_catprog(id_catprograma);
+                    par_aper.setNumcontrato(numcontrato);
                     break;
                 
                 case 10:

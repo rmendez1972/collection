@@ -30,6 +30,13 @@
                 },"html");
             });
         }
+        function editarBonificacion(id){
+            var params=new Object();
+            params.id=id;
+            $.post("controladormovbonific?operacion=listarbonific", params, function(datos){
+                $("#show").html(datos);
+            },"html");
+        }
                 
         $(document).ready(function(){
             

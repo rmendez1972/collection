@@ -166,6 +166,19 @@ public class GestionMov_edocta
             
     }
     
+    public boolean cambiarBonificTrue(int id_movedoscta){
+        Object params[]={id_movedoscta};
+        return Conexion.ejecutar("update mov_edoscta set bonific='1' where id_movedoscta=?", params);
+    
+    }
+    
+    public boolean cambiarBonificFalse(int id_movedoscta){
+        Object params[]={id_movedoscta};
+        return Conexion.ejecutar("update mov_edoscta set bonific='0' where id_movedoscta=?", params);
+    
+    }
+    
+    
 }
 
 

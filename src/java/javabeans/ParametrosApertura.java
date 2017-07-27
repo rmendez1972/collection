@@ -29,6 +29,9 @@ public class ParametrosApertura
     private BigDecimal sub_inic;
     private int id_usuario;
     private BigDecimal comision;
+    
+    private int id_catprog;
+    private String numcontrato;
 
 
     
@@ -47,7 +50,7 @@ public class ParametrosApertura
     
     //Constructor mecanicas: 10
     public ParametrosApertura(int id_beneficiario, String poliza, Date fecha_pol, BigDecimal imp_capital, BigDecimal imp_enganche, String clave_b, 
-            BigDecimal intereses, BigDecimal gastos_admon, BigDecimal seguro_vida, BigDecimal pagos_anticipados, BigDecimal sub_inic) {
+            BigDecimal intereses, BigDecimal gastos_admon, BigDecimal seguro_vida, BigDecimal pagos_anticipados, BigDecimal sub_inic, int id_catprog, String numcontrato) {
         this.id_beneficiario = id_beneficiario;
         this.poliza = poliza;
         this.fecha_pol = fecha_pol;
@@ -59,6 +62,9 @@ public class ParametrosApertura
         this.seguro_vida = seguro_vida;
         this.pagos_anticipados = pagos_anticipados;
         this.sub_inic = sub_inic;
+        
+        this.id_catprog = id_catprog;
+        this.numcontrato = numcontrato;
         
         
     }
@@ -164,6 +170,22 @@ public class ParametrosApertura
 
     public void setComision(BigDecimal comision) {
         this.comision = comision;
+    }
+
+    public int getId_catprog() {
+        return id_catprog;
+    }
+
+    public void setId_catprog(int id_catprog) {
+        this.id_catprog = id_catprog;
+    }
+
+    public String getNumcontrato() {
+        return numcontrato;
+    }
+
+    public void setNumcontrato(String numcontrato) {
+        this.numcontrato = numcontrato;
     }
     
     

@@ -5,6 +5,8 @@
 package controladores;
 
 import Modelo.GestionBeneficiario;
+import Modelo.GestionBonificacion;
+import Modelo.GestionMovBonific;
 import Modelo.GestionMov_edocta;
 
 import Modelo.GestionProgramas;
@@ -26,6 +28,7 @@ import javabeans.CatProgramas;
 import javabeans.Mov_edocta;
 import javabeans.ParametrosApertura;
 import javabeans.Usuario;
+import javabeans.Bonificacion;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
