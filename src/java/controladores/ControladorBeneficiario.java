@@ -199,8 +199,6 @@ public class ControladorBeneficiario extends ControladorBase
             int id_catprograma=benef.getId_catprog();
             String numcontrato = benef.getNumcontrato();
             
-            String numcontrato = benef.getNumcontrato();
-            Integer id_catprograma = benef.getId_catprog();
                     
             switch (mecanica){
                 case 29:

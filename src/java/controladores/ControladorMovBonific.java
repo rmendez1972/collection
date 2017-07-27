@@ -7,6 +7,7 @@ package controladores;
 
 import Modelo.GestionBonificacion;
 import Modelo.GestionMovBonific;
+import Modelo.GestionMov_diversos;
 import Modelo.GestionMov_edocta;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -53,9 +54,13 @@ public class ControladorMovBonific extends ControladorBase{
         GestionMovBonific mod_movBonific = new GestionMovBonific();
         MovBonific idmovbon = mod_movBonific.obtenerPorIdEdit(id);
         
+        GestionMov_diversos mod_movdiversos = new GestionMov_diversos();
+        ArrayList mov_div = mod_movdiversos.obtenerMovimientos();
+        
         if(idmovbon==null){
             request.setAttribute("edocta", edocta);
             request.setAttribute("bonificacion", bonificacion);
+            request.setAttribute("movdiv", mov_div);
         
             RequestDispatcher rd=request.getRequestDispatcher("frm_mov_bonific.jsp");
             rd.forward(request,response);
@@ -147,9 +152,13 @@ public class ControladorMovBonific extends ControladorBase{
         GestionMovBonific mod_movbonific = new GestionMovBonific();
         MovBonific bon = mod_movbonific.obtenerPorIdEdit(id);
         
+        GestionMov_diversos mod_movdiversos = new GestionMov_diversos();
+        ArrayList mov_div = mod_movdiversos.obtenerMovimientos();
+        
         request.setAttribute("bon", bon);
         request.setAttribute("edocta", edocta);
         request.setAttribute("bonificacion", bonificacion);
+        request.setAttribute("movdiv", mov_div);
         
         
         RequestDispatcher rd=request.getRequestDispatcher("frm_modifica_movbonific.jsp");

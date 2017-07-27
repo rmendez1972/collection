@@ -128,14 +128,12 @@
                         <div class="form-group">
                             <label for="id_movdiversos" class="col-xs-12 col-md-2 control-label">Movimientos Diversos:</label>
                             <div class="col-xs-12 col-md-4">
-                                <!--
                                 <select id="id_movdiversos" class="form-control">
                                     <option value="0">SELECCIONE UNA</option>
-                                        <c:forEach  var="mov" items="${requestScope.movimientos}">
-                                            <OPTION VALUE="${mov}">${mov}</OPTION>
+                                        <c:forEach  var="mov" items="${requestScope.movdiv}">
+                                            <OPTION VALUE="${mov.id_movdiversos}" ${mov.id_movdiversos == bon.id_movdiversos ? 'selected':''} >${mov.descripcion}</OPTION>
                                         </c:forEach>
-                                </select> -->
-                                <input type="text" name="id_movdiversos" id="id_movdiversos" value="3" value="${bon.id_movdiversos}" />
+                                </select>
                             </div>
                             
                            <label for="numcontrato" class="col-xs-12 col-md-2 control-label">Número de Contrato:</label>
