@@ -26,7 +26,6 @@
                 params.clave_b=$("#clave_b").val();
                 params.recibo=$("#recibo").val();
                 params.serie=$("#serie").val();
-                params.id_movdiversos=$("#id_movdiversos").val();
                 params.numcontrato=$("#numcontrato").val();
                 params.id_catprog=$("#id_catprog").val();
                 
@@ -39,9 +38,10 @@
             }
         
             
-             function listar(){
-                               
-                $.post("controladormov_edocta?operacion=listar", function(datos){
+             function listar(id){
+                var params=new Object();
+                params.id=id;              
+                $.post("controladormovbonific?operacion=listarbonific", params, function(datos){
                     $("#show").html(datos);
                 },"html");
                 
@@ -108,7 +108,7 @@
                             
                             <label for="clave_b" class="col-xs-12 col-md-2 control-label">Clave b:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="clave_b" class="form-control" id="clave_b" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{4,12})"  placeholder="Máx.12 caracteres" maxlength="12" style="text-transform:uppercase" value="${bon.clave_b}" />
+                                <input type="text" name="clave_b" class="form-control" id="clave_b" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{4,12})"  placeholder="Máx.12 caracteres" maxlength="12" style="text-transform:uppercase" value="${bon.clave_b}" readonly />
                             </div>
                         </div>
                                 
@@ -125,20 +125,10 @@
                         </div>
                         
                
-                        <div class="form-group">
-                            <label for="id_movdiversos" class="col-xs-12 col-md-2 control-label">Movimientos Diversos:</label>
-                            <div class="col-xs-12 col-md-4">
-                                <select id="id_movdiversos" class="form-control">
-                                    <option value="0">SELECCIONE UNA</option>
-                                        <c:forEach  var="mov" items="${requestScope.movdiv}">
-                                            <OPTION VALUE="${mov.id_movdiversos}" ${mov.id_movdiversos == bon.id_movdiversos ? 'selected':''} >${mov.descripcion}</OPTION>
-                                        </c:forEach>
-                                </select>
-                            </div>
-                            
+                        <div class="form-group">                      
                            <label for="numcontrato" class="col-xs-12 col-md-2 control-label">Número de Contrato:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="numcontrato" class="form-control" id="numcontrato" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{3,5})"  placeholder="Máx.5 caracteres" maxlength="5" style="text-transform:uppercase" value="${bon.numcontrato}" />
+                                <input type="text" name="numcontrato" class="form-control" id="numcontrato" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{3,5})"  placeholder="Máx.5 caracteres" maxlength="5" style="text-transform:uppercase" value="${bon.numcontrato}" readonly />
                             </div>  
                         </div>
                                 
@@ -155,7 +145,7 @@
 
                         <div class="form-group" style="text-align:center">
                             <input type="submit" value="Aceptar" class="btn btn-primary" />
-                            <input type="reset" value="Cancelar" onclick="return listar()" class="btn btn-default" />
+                            <input type="reset" value="Cancelar" onclick="return listar(${bon.id_movedoscta})" class="btn btn-default" />
                         </div>
 
 
