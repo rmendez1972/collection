@@ -64,7 +64,7 @@ public class ControladorMov_edocta extends ControladorBase
         {    
             request.setAttribute("msg", "Registro eliminado");
         }else{
-            request.setAttribute("msg", "No es posible eliminar. Este Movimiento cuenta con binificación.");
+            request.setAttribute("msg", "No es posible eliminar. Este Movimiento cuenta con bonificación.");
             
         }
         RequestDispatcher rd=request.getRequestDispatcher("controladormov_edocta?operacion=listar");

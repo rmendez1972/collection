@@ -62,7 +62,7 @@
             <span class="icon-bar"></span>
           </button>
           <!--<a class="navbar-brand" href="#">Project name</a>-->
-          <img src="assets/img/header2.png"  alt="" class="img-responsive">
+          <img src="assets/img/SEDETUS.png"  alt="" class="img-responsive">
         </div>
 
         <div style="display: inline-block; vertical-align: middle;margin-left: 30px;">  
