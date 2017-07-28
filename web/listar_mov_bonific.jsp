@@ -83,7 +83,6 @@
                     <th>Clave B</th>
                     <th>Recibo</th>
                     <th>Serie</th>
-                    <th>Mov Diversos</th>
                     <th>Numero Contrato</th>
                     <th>Programa</th>
                     
@@ -106,7 +105,6 @@
                         <th> <c:out value="${mov.clave_b}" /></th>
                         <th> <c:out value="${mov.recibo}" /></th>
                         <th> <c:out value="${mov.serie}" /></th>
-                        <th> <c:out value="${mov.movdiversos}" /></th>
                         <th> <c:out value="${mov.numcontrato}" /></th>
                         <th> <c:out value="${mov.catprograma}" /></th>
                     </tr>

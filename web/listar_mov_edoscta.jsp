@@ -90,7 +90,7 @@
             <tbody>
                 <c:forEach var="mov" items="${requestScope.movimientos}" varStatus="loop"> 
                     <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
-                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Movimiento" onclick="editarMovimiento(${mov.id_movedoscta});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Movimiento" onclick="eliminarMovimiento(${mov.id_movedoscta});" /><img src="imagenes/reporte_solicitudes.png" class="btn-tabla" title="Editar Bonificacion" onclick="editarBonificacion(${mov.id_movedoscta});" /></th>
+                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Movimiento" onclick="editarMovimiento(${mov.id_movedoscta});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Movimiento" onclick="eliminarMovimiento(${mov.id_movedoscta});" /><img src="imagenes/reporte_solicitudes.png" class="btn-tabla" title="Agregar Bonificacion" onclick="editarBonificacion(${mov.id_movedoscta});" /></th>
                         <th> <c:out value="${mov.nombrebenef}" /></th>
                         <th> <c:out value="${mov.clave_b}" /></th>
                         <th> <c:out value="${mov.clave_mov}" /></th>
