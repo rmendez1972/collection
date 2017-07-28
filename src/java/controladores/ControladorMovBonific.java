@@ -29,7 +29,14 @@ import javax.servlet.http.HttpSession;
 public class ControladorMovBonific extends ControladorBase{
     
     public void listarbonific(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        int id=Integer.parseInt(request.getParameter("id"));
+        int id;
+        
+        if(request.getAttribute("id")!=null){
+            id = Integer.parseInt((String)request.getAttribute("id"));
+            
+        }else{
+            id=Integer.parseInt(request.getParameter("id"));
+        }
         
         GestionMovBonific modelo = new GestionMovBonific();
         ArrayList movbonific = modelo.obtenerPorId(id);
@@ -54,19 +61,16 @@ public class ControladorMovBonific extends ControladorBase{
         GestionMovBonific mod_movBonific = new GestionMovBonific();
         MovBonific idmovbon = mod_movBonific.obtenerPorIdEdit(id);
         
-        GestionMov_diversos mod_movdiversos = new GestionMov_diversos();
-        ArrayList mov_div = mod_movdiversos.obtenerMovimientos();
-        
         if(idmovbon==null){
             request.setAttribute("edocta", edocta);
             request.setAttribute("bonificacion", bonificacion);
-            request.setAttribute("movdiv", mov_div);
+            //request.setAttribute("movdiv", mov_div);
         
             RequestDispatcher rd=request.getRequestDispatcher("frm_mov_bonific.jsp");
             rd.forward(request,response);
         }else{
             
-            request.setAttribute("msg", "No se puede agregar porque ya existe una bonificación en ese estado de cuenta");
+            request.setAttribute("msg", "No se puede agregar porque ya existe una bonificación para este movimiento del estado de cuenta");
             RequestDispatcher rd=request.getRequestDispatcher("controladormov_edocta?operacion=listar");
             rd.forward(request,response);
         }
@@ -112,10 +116,7 @@ public class ControladorMovBonific extends ControladorBase{
         Integer recibo = Integer.parseInt(request.getParameter("recibo"));
         bon.setRecibo(recibo);
         
-        bon.setSerie(request.getParameter("serie"));
-        
-        Integer id_movdiversos = Integer.parseInt(request.getParameter("id_movdiversos"));
-        bon.setId_movdiversos(id_movdiversos);
+        bon.setSerie(request.getParameter("serie").toUpperCase());
         
         bon.setNumcontrato(request.getParameter("numcontrato"));
         
@@ -128,9 +129,11 @@ public class ControladorMovBonific extends ControladorBase{
             GestionMov_edocta mod_edocta = new GestionMov_edocta();
             mod_edocta.cambiarBonificTrue(id_movedoscta);
             
-            RequestDispatcher rd=request.getRequestDispatcher("controladormov_edocta?operacion=listar");
+            String mid_movedoscta = id_movedoscta.toString();
+            
+            RequestDispatcher rd=request.getRequestDispatcher("controladormovbonific?operacion=listarbonific");
             request.setAttribute("msg", "Datos guardados");
-            //request.setAttribute("id", id_movedoscta);
+            request.setAttribute("id", mid_movedoscta);
             rd.forward(request,response);
             }
         else{
@@ -208,10 +211,7 @@ public class ControladorMovBonific extends ControladorBase{
         Integer recibo = Integer.parseInt(request.getParameter("recibo"));
         bon.setRecibo(recibo);
         
-        bon.setSerie(request.getParameter("serie"));
-        
-        Integer id_movdiversos = Integer.parseInt(request.getParameter("id_movdiversos"));
-        bon.setId_movdiversos(id_movdiversos);
+        bon.setSerie(request.getParameter("serie").toUpperCase());
         
         bon.setNumcontrato(request.getParameter("numcontrato"));
         
@@ -224,8 +224,11 @@ public class ControladorMovBonific extends ControladorBase{
             /*GestionMov_edocta mod_edocta = new GestionMov_edocta();
             mod_edocta.cambiarBonific(id_movedoscta);*/
             
-            RequestDispatcher rd=request.getRequestDispatcher("controladormov_edocta?operacion=listar");
+            String mid_movedoscta = id_movedoscta.toString();
+            
+            RequestDispatcher rd=request.getRequestDispatcher("controladormovbonific?operacion=listarbonific");
             request.setAttribute("msg", "Datos guardados");
+            request.setAttribute("id", mid_movedoscta);
             rd.forward(request,response);
             }
         else{
@@ -239,20 +242,23 @@ public class ControladorMovBonific extends ControladorBase{
     public void eliminar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id=Integer.parseInt(request.getParameter("id"));
         
-        int id_movedoscta=Integer.parseInt(request.getParameter("id_movedoscta"));
+        Integer id_movedoscta=Integer.parseInt(request.getParameter("id_movedoscta"));
+        
+        
         
         GestionMovBonific modelo = new GestionMovBonific();
         
         if(modelo.eliminarPorId(id)){
                 GestionMov_edocta mod_edocta = new GestionMov_edocta();
                 mod_edocta.cambiarBonificFalse(id_movedoscta);
-                request.setAttribute("msg", "Registro eliminado");
-                
+                request.setAttribute("msg", "Registro eliminado");     
         }
         else{
                 request.setAttribute("msg", "No es posible eliminar. El usuario tiene solicitudes registradas.");
         }
-        RequestDispatcher rd=request.getRequestDispatcher("controladormov_edocta?operacion=listar");
+        String mid_movedoscta = id_movedoscta.toString();        
+        request.setAttribute("id", mid_movedoscta);
+        RequestDispatcher rd=request.getRequestDispatcher("controladormovbonific?operacion=listarbonific");
         rd.forward(request,response);
     }
     
