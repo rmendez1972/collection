@@ -5,13 +5,16 @@
  */
 package controladores;
 
+import Modelo.GestionAutoriza;
 import Modelo.GestionBonificacion;
 import Modelo.GestionMovBonific;
 import Modelo.GestionMov_diversos;
 import Modelo.GestionMov_edocta;
+import Modelo.GestionProgramas;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import javabeans.Bonificacion;
+import javabeans.CatProgramas;
 import javabeans.MovBonific;
 import javabeans.Mov_edocta;
 import javabeans.Usuario;
@@ -54,16 +57,25 @@ public class ControladorMovBonific extends ControladorBase{
         
         GestionMov_edocta mod_edocta = new GestionMov_edocta();
         Mov_edocta edocta = mod_edocta.obtenerPorId(id);
-        
+        //buscando el catalogo de bonificaciones
         GestionBonificacion mod_bonificacion = new GestionBonificacion();
         ArrayList bonificacion = mod_bonificacion.obtenerTodos();
         //buscamos en el modelo si existe el movedocta en la tabla bonific
         GestionMovBonific mod_movBonific = new GestionMovBonific();
         MovBonific idmovbon = mod_movBonific.obtenerPorIdEdit(id);
+        //buscando el catalogo de programmas
+        GestionProgramas mod_programas = new GestionProgramas();
+        ArrayList catprogramas = mod_programas.obtenerTodos();
+        //buscando el catalogo de autoriza
+        GestionAutoriza mod_autoriza = new GestionAutoriza();
+        ArrayList autoriza = mod_autoriza.obtenerTodos();
+        
         
         if(idmovbon==null){
             request.setAttribute("edocta", edocta);
             request.setAttribute("bonificacion", bonificacion);
+            request.setAttribute("cp", catprogramas);
+            request.setAttribute("aut", autoriza);
             //request.setAttribute("movdiv", mov_div);
         
             RequestDispatcher rd=request.getRequestDispatcher("frm_mov_bonific.jsp");
@@ -123,6 +135,9 @@ public class ControladorMovBonific extends ControladorBase{
         Integer id_catprog = Integer.parseInt(request.getParameter("id_catprog"));
         bon.setId_catprog(id_catprog);
         
+        Integer id_autoriza = Integer.parseInt(request.getParameter("id_autoriza"));
+        bon.setId_autoriza(id_autoriza);
+        
         GestionMovBonific modelo = new GestionMovBonific();
         
         if(modelo.registroMovBonific(bon)){
@@ -155,13 +170,20 @@ public class ControladorMovBonific extends ControladorBase{
         GestionMovBonific mod_movbonific = new GestionMovBonific();
         MovBonific bon = mod_movbonific.obtenerPorIdEdit(id);
         
-        GestionMov_diversos mod_movdiversos = new GestionMov_diversos();
-        ArrayList mov_div = mod_movdiversos.obtenerMovimientos();
+        //buscando el catalogo de programmas
+        GestionProgramas mod_programas = new GestionProgramas();
+        ArrayList catprogramas = mod_programas.obtenerTodos();
+        //buscando el catalogo de autoriza
+        GestionAutoriza mod_autoriza = new GestionAutoriza();
+        ArrayList autoriza = mod_autoriza.obtenerTodos();
+        
         
         request.setAttribute("bon", bon);
         request.setAttribute("edocta", edocta);
         request.setAttribute("bonificacion", bonificacion);
-        request.setAttribute("movdiv", mov_div);
+        request.setAttribute("cp", catprogramas);
+        request.setAttribute("aut", autoriza);
+        
         
         
         RequestDispatcher rd=request.getRequestDispatcher("frm_modifica_movbonific.jsp");
@@ -218,6 +240,9 @@ public class ControladorMovBonific extends ControladorBase{
         Integer id_catprog = Integer.parseInt(request.getParameter("id_catprog"));
         bon.setId_catprog(id_catprog);
         
+        Integer id_autoriza = Integer.parseInt(request.getParameter("id_autoriza"));
+        bon.setId_autoriza(id_autoriza);
+        
         GestionMovBonific modelo = new GestionMovBonific();
         
         if(modelo.actualizarMovBonific(bon)){
@@ -254,7 +279,7 @@ public class ControladorMovBonific extends ControladorBase{
                 request.setAttribute("msg", "Registro eliminado");     
         }
         else{
-                request.setAttribute("msg", "No es posible eliminar. El usuario tiene solicitudes registradas.");
+                request.setAttribute("msg", "No es posible eliminar. Intentelo mas tarde.");
         }
         String mid_movedoscta = id_movedoscta.toString();        
         request.setAttribute("id", mid_movedoscta);

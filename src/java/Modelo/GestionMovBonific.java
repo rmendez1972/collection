@@ -20,7 +20,7 @@ public class GestionMovBonific {
         ArrayList bon=new ArrayList();
         
         Object params[]={id_movbonific};
-        ResultSet res=Conexion.ejecutarConsulta("Select BO.*, BE.nombre as nombrebenef, CB.clave_bonific as clavebonific, U.nombre as usuario, CP.descripcion as catprograma from bonific BO inner join benef BE on BO.id_benef=BE.id_benef inner join cat_bonific CB on BO.id_catbonific=CB.id_bonific inner join usuarios U on BO.id_usuario=U.id_usuario inner join cat_prog CP on BO.id_catprog=CP.id_catprog where BO.id_movedoscta=?", params);
+        ResultSet res=Conexion.ejecutarConsulta("Select BO.*, BE.nombre as nombrebenef, CB.clave_bonific as clavebonific, U.nombre as usuario, CP.descripcion as catprograma, A.nombre as nombreautoriza from bonific BO inner join benef BE on BO.id_benef=BE.id_benef inner join cat_bonific CB on BO.id_catbonific=CB.id_bonific inner join usuarios U on BO.id_usuario=U.id_usuario inner join cat_prog CP on BO.id_catprog=CP.id_catprog inner join autoriza A on BO.id_autoriza=A.id_autoriza where BO.id_movedoscta=?", params);
         try{
             while(res.next()){
                 MovBonific bonific=new MovBonific(res.getInt("id_bonificacion"),res.getInt("id_movedoscta"),res.getInt("id_benef"),res.getBigDecimal("imp_cap"),res.getBigDecimal("imp_int"),res.getBigDecimal("imp_adm"),res.getBigDecimal("imp_seg"),res.getBigDecimal("imp_osg"),res.getInt("id_catbonific"),res.getString("estatus"),res.getInt("id_usuario"),res.getInt("id_autoriza"),res.getString("clave_b"),res.getInt("recibo"),res.getString("serie"),res.getInt("id_movdiversos"),res.getString("numcontrato"),res.getInt("id_catprog"));            
@@ -28,6 +28,7 @@ public class GestionMovBonific {
                 bonific.setClavebonific(res.getString("clavebonific"));
                 bonific.setUsuario(res.getString("usuario"));
                 bonific.setCatprograma(res.getString("catprograma"));
+                bonific.setNombreautoriza(res.getString("nombreautoriza"));
                 bon.add(bonific);
             }
             res.close();
@@ -53,9 +54,10 @@ public class GestionMovBonific {
         String serie = mov.getSerie();
         String numcontrato = mov.getNumcontrato();
         String id_catprog = mov.getId_catprog().toString();
+        String id_autoriza = mov.getId_autoriza().toString();
         
-        Object params[]={id_movedoscta, id_benef, imp_cap, imp_int, imp_adm, imp_seg, imp_osg, id_catbonific, estatus, id_usuario, clave_b, recibo, serie, numcontrato, id_catprog};
-        return Conexion.ejecutar("insert into bonific (id_movedoscta, id_benef, imp_cap, imp_int, imp_adm, imp_seg, imp_osg, id_catbonific, estatus, id_usuario, clave_b, recibo, serie, numcontrato, id_catprog) values (?,?,?,?,?,?,?,?,UPPER(?),?,?,?,UPPER(?),?,?)", params);
+        Object params[]={id_movedoscta, id_benef, imp_cap, imp_int, imp_adm, imp_seg, imp_osg, id_catbonific, estatus, id_usuario, clave_b, recibo, serie, numcontrato, id_catprog, id_autoriza};
+        return Conexion.ejecutar("insert into bonific (id_movedoscta, id_benef, imp_cap, imp_int, imp_adm, imp_seg, imp_osg, id_catbonific, estatus, id_usuario, clave_b, recibo, serie, numcontrato, id_catprog, id_autoriza) values (?,?,?,?,?,?,?,?,UPPER(?),?,?,?,UPPER(?),?,?,?)", params);
         
     }
     
@@ -89,9 +91,10 @@ public class GestionMovBonific {
         String serie = mov.getSerie();
         String numcontrato = mov.getNumcontrato();
         String id_catprog = mov.getId_catprog().toString();
+        String id_autoriza = mov.getId_autoriza().toString();
         
-        Object params[]={id_movedoscta, id_benef, imp_cap, imp_int, imp_adm, imp_seg, imp_osg, id_catbonific, estatus, id_usuario, clave_b, recibo, serie, numcontrato, id_catprog, id_bonificacion};
-        return Conexion.ejecutar("update bonific set id_movedoscta=?, id_benef=?, imp_cap=?, imp_int=?, imp_adm=?, imp_seg=?, imp_osg=?, id_catbonific=?, estatus=UPPER(?), id_usuario=?, clave_b=?, recibo=?, serie=UPPER(?), numcontrato=?, id_catprog=? where id_bonificacion=? ", params);
+        Object params[]={id_movedoscta, id_benef, imp_cap, imp_int, imp_adm, imp_seg, imp_osg, id_catbonific, estatus, id_usuario, clave_b, recibo, serie, numcontrato, id_catprog, id_autoriza, id_bonificacion};
+        return Conexion.ejecutar("update bonific set id_movedoscta=?, id_benef=?, imp_cap=?, imp_int=?, imp_adm=?, imp_seg=?, imp_osg=?, id_catbonific=?, estatus=UPPER(?), id_usuario=?, clave_b=?, recibo=?, serie=UPPER(?), numcontrato=?, id_catprog=?, id_autoriza=? where id_bonificacion=? ", params);
     }
     
     public boolean eliminarPorId(int id){

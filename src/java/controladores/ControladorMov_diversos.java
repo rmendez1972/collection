@@ -8,6 +8,7 @@ package controladores;
 import Modelo.GestionBendiv;
 import Modelo.GestionMov_diversos;
 import Modelo.GestionClaveDiversos;
+import Modelo.GestionEmisor;
 
 import Modelo.GestionProgramas;
 import Modelo.GestionTipocredito;
@@ -73,19 +74,34 @@ public class ControladorMov_diversos extends ControladorBase
     
     
     public void editar(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        
+        //Obteniendo el registro del movimiento diverso a editar
         int id=Integer.parseInt(request.getParameter("id"));
-        GestionMov_diversos modelo=new GestionMov_diversos();
+        GestionMov_diversos modelo=new GestionMov_diversos();        
         MovDiversos movimiento=modelo.obtenerPorId(id);
-        int id_bendiv=movimiento.getId_bendiv();
+        
+        //int id_bendiv=movimiento.getId_bendiv();
+        //Obteniendo el catalogo de beneficiarios diversos
         GestionBendiv modelo_benDiv= new GestionBendiv();
         ArrayList beneficiarios=modelo_benDiv.obtenerTodos();
+        
         //Obteniendo el catalogo de movimientos diversos
         GestionClaveDiversos modelo_claveDiv= new GestionClaveDiversos();
         ArrayList clavediv=modelo_claveDiv.obtenerTodos();
         
+        //Obteniendo el catalogo de programas
+        GestionProgramas modelo_programas= new GestionProgramas();
+        ArrayList programas=modelo_programas.obtenerTodos();
+        
+        //Obteniendo el catalogo de emisores
+        GestionEmisor modelo_emisores= new GestionEmisor();
+        ArrayList emisores=modelo_emisores.obtenerTodos();
+        
         request.setAttribute("movimiento", movimiento);
         request.setAttribute("beneficiarios", beneficiarios);
         request.setAttribute("clavediv", clavediv);
+        request.setAttribute("programas", programas);
+        request.setAttribute("emisores", emisores);
                     
         RequestDispatcher rd=request.getRequestDispatcher("frm_modificamov_diversos.jsp");
         rd.forward(request,response);

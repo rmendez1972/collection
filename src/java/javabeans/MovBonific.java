@@ -37,6 +37,9 @@ public class MovBonific {
     private String usuario;
     private String movdiversos;
     private String catprograma;
+    private String nombreautoriza;
+    private String autoriza;
+    
     
     public MovBonific(){ super();}
 
@@ -246,6 +249,24 @@ public class MovBonific {
     public void setCatprograma(String catprograma) {
         this.catprograma = catprograma;
     }
+
+    public String getNombreautoriza() {
+        return nombreautoriza;
+    }
+
+    public void setNombreautoriza(String nombreautoriza) {
+        this.nombreautoriza = nombreautoriza;
+    }
+
+    public String getAutoriza() {
+        return autoriza;
+    }
+
+    public void setAutoriza(String autoriza) {
+        this.autoriza = autoriza;
+    }
+    
+    
     
     
     
