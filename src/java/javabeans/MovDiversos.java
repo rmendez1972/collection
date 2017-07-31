@@ -44,7 +44,9 @@ public class MovDiversos
     private int id_caja;
     
     private String nombrebenef; 
-    private String nombreusuario; 
+    private String nombreusuario;
+    
+    private String nombreprograma;
 
   
    
@@ -378,5 +380,14 @@ public class MovDiversos
         this.bonific = bonific;
     }
 
-         
+    public String getNombreprograma() {
+        return nombreprograma;
+    }
+
+    public void setNombreprograma(String nombreprograma) {
+        this.nombreprograma = nombreprograma;
+    }
+
+
+    
 }
