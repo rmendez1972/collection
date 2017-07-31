@@ -75,7 +75,6 @@
                     <th>Clave Movimiento</th>
                     <th>Fecha Movimiento</th>
                     <th>Póliza</th>
-                    <th>Fecha Póliza</th>
                     <th>Capital</th>
                     <th>Interes</th>
                     <th>Admon</th>
@@ -96,7 +95,6 @@
                         <th> <c:out value="${mov.clave_mov}" /></th>
                         <th> <c:out value="${mov.fecha_mov}" /></th>
                         <th> <c:out value="${mov.poliza}" /></th>
-                        <th> <c:out value="${mov.fecha_pol}" /></th>
                         <th> <c:out value="${mov.capital}" /></th>                        
                         <th> <c:out value="${mov.interes}" /></th>                        
                         <th> <c:out value="${mov.admon}" /></th>

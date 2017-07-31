@@ -155,7 +155,7 @@
                     Gobierno del Estado de Quintana Roo.</br>
                     Administración 2016-2022.</br>
                     <span style="font-size:12px">Av. Álvaro Obregón #474 Col.Centro, C.P.77000 Chetumal, Quintana Roo, México.</span></br>
-                    <a href="http://qroo.gob.mx/sedetus" target="_blank" style="text-decoration:none;color:#384452">http://seduvi.qroo.gob.mx</a>
+                    <a href="http://qroo.gob.mx/sedetus" target="_blank" style="text-decoration:none;color:#384452">http://qroo.gob.mx/sedetus</a>
 		</div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">

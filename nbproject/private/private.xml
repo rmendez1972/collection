@@ -3,7 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBase.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionModulo.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/index.html</file>
@@ -35,16 +34,6 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/db/sp_apertura36.sql</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Beneficiario.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorCandidato.java</file>
-=======
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/controladores/ControladorMovBonific.java</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/frm_modifica_movbonific.jsp</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/listar_mov_bonific.jsp</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/listar_mov_edoscta.jsp</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/index.jsp</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/Modelo/GestionMovBonific.java</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/frm_mov_bonific.jsp</file>
->>>>>>> 44b06f84661e6bb463876d0910151aae16f1a24c
         </group>
     </open-files>
 </project-private>
