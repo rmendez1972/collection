@@ -52,8 +52,6 @@
                 params.bonific=$("#bonific").val();
                 params.id_caja=$("#id_caja").val();
                 
-                alert('Entrando a grabar');
-                
                 if(params.id_bendiv == 0){
                     alert("Seleccione un beneficiario");
                     return false;
@@ -101,7 +99,7 @@
                             </select>
                         </div>
 
-                        <label for="clave_b" class="col-xs-12 col-md-2 control-label ">Clave SEDUVI:</label>
+                        <label for="clave_b" class="col-xs-12 col-md-2 control-label ">Clave SEDETUS:</label>
                         <div class="col-xs-12 col-md-4">
                             <input type="text" name="clave_b" class="form-control" id="clave_b" required  placeholder="6 caracteres" maxlength="12" value="${movimiento.clave_b}" readonly/>
                         </div>
@@ -152,7 +150,7 @@
 
                     <div class="form-group">
                         <label for="cargo" class="col-xs-12 col-md-2 control-label">
-                            cargo:
+                            cargo $:
                         </label>
                         <div class="col-xs-12 col-md-4">
                             <input type="number" step="0.01" id="cargo" 
@@ -162,7 +160,7 @@
                         </div>
 
                         <label for="abono" class="col-xs-12 col-md-2 control-label">
-                            Abono:
+                            Abono $:
                         </label>
                         <div class="col-xs-12 col-md-4">
                             <input type="number" step="0.01" id="abono" 
@@ -173,7 +171,7 @@
 
                     <div class="form-group">
                         <label for="seguro" class="col-xs-12 col-md-2 control-label">
-                            Seguro:
+                            Seguro $:
                         </label>
                         <div class="col-xs-12 col-md-4">
                             <input type="number" step="0.01" 
@@ -183,7 +181,7 @@
                         </div>
 
                         <label for="otros" class="col-xs-12 col-md-2 control-label">
-                            Otros:
+                            Otros $:
                         </label>
                         <div class="col-xs-12 col-md-4">
                             <input type="number" step="0.01" 
@@ -195,7 +193,7 @@
 
                     <div class="form-group">
                         <label for="moratorios" class="col-xs-12 col-md-2 control-label">
-                            Moratorios:
+                            Moratorios $:
                         </label>
                         <div class="col-xs-12 col-md-4">
                             <input type="number" step="0.01" 
@@ -205,7 +203,7 @@
                         </div>
 
                         <label for="bonificacion" class="col-xs-12 col-md-2 control-label">
-                            Bonificacion:
+                            Bonificacion $:
                         </label>
                         <div class="col-xs-12 col-md-4">
                             <input type="number" step="0.01" 
@@ -217,7 +215,7 @@
 
                     <div class="form-group">
                         <label for="interes" class="col-xs-12 col-md-2 control-label">
-                            Interes:
+                            Interes $:
                         </label>
                         <div class="col-xs-12 col-md-4">
                             <input type="number" step="0.01" 
@@ -229,47 +227,40 @@
                         <label for="estatus" class="col-xs-12 col-md-2 control-label">
                             Estatus:
                         </label>
+                        
                         <div class="col-xs-12 col-md-4">
-                            <input type="text" name="estatus"   class="form-control" 
-                                id="estatus"  placeholder="Máx. 1 caracteres" 
-                                maxlength="1" style="text-transform:uppercase" value="${movimiento.estatus}"/>
+                            <select id="estatus" required class="wrap form-control"> 
+                                <option value="B" ${movimiento.estatus == 'B' ? 'selected':''}>BAJA</OPTION>
+                                <option value="A" ${movimiento.estatus == 'A' ? 'selected':''}>ACTIVO</OPTION>
+                                
+                            </select>   
                         </div>
+                        
                    </div>
                         
                     <div class="form-group">
                         <label for="aplicado" class="col-xs-12 col-md-2 control-label">
                             Aplicado:
                         </label>
-                        <div class="col-xs-12 col-md-4" id="divaplicado">
-                            <script>
-                                if(${movimiento.aplicado} == 0){
-                                    var newS = $("<select>");
-                                    newS.append('<option value="false" selected >'+'Inactivo'+'</option>');
-                                    newS.append('<option value="true" >'+'Activo'+'</option>');
-                                    newS.addClass("form-control");
-                                    newS.attr("id", "aplicado");
-                                    $("#divaplicado").append(newS);   
-                                }else{
-                                    var newS = $("<select>");
-                                    newS.append('<option value="false" >'+'Inactivo'+'</option>');
-                                    newS.append('<option value="true" selected >'+'Activo'+'</option>');
-                                    newS.addClass("form-control");
-                                    newS.attr("id", "aplicado");
-                                    $("#divaplicado").append(newS);
-                                }
-                                    
-                            </script>
-                    
+                        
+                        <div class="col-xs-12 col-md-4">
+                            <select id="aplicado" required class="wrap form-control"> 
+                                <option value="false" ${movimiento.aplicado == "false" ? 'selected':''}>INACTIVO</OPTION>
+                                <option value="true"  ${movimiento.aplicado == "true" ? 'selected':''}>ACTIVO</OPTION>
+                                
+                            </select>   
                         </div>
                         
                         <label for="descripcion" class="col-xs-12 col-md-2 control-label">
                             Descripcion:
                         </label>
+                                
                         <div class="col-xs-12 col-md-4">
                             <input type="text" name="descripcion"   class="form-control" 
                                 id="descripcion"  placeholder="Máx. 120 caracteres" maxlength="120" 
                                 style="text-transform:uppercase" value="${movimiento.descripcion}"/>
                         </div>
+                        
                    </div>
                         
                     <div class="form-group">
@@ -326,7 +317,7 @@
                         <div class="col-xs-12 col-md-4">
                             <input type="text" class="form-control" required
                                 id="numcontrato"   placeholder="Máx. 5 caracteres" 
-                                maxlength="5" value="${movimiento.numcontrato}" />
+                                maxlength="5" value="${movimiento.numcontrato}" readonly/>
                         </div>
                         
                         <label for="id_catprog" class="col-xs-12 col-md-2 control-label">
@@ -337,7 +328,7 @@
                                 <option value="0">SELECCIONE UNO</option>
                                 <c:forEach  var="prog" items="${requestScope.programas}">
                                     
-                                    <OPTION value="${prog.id_catprog}" ${prog.id_catprog == movimiento.id_catprog ? 'selected':''}>${prog.descripcion}</OPTION>
+                                    <OPTION value="${prog.id_catprog}" ${prog.id_catprog == movimiento.id_catprog ? 'selected':''}>[${prog.clave}]${prog.descripcion}</OPTION>
                                 </c:forEach>
                             </select> 
                                     
@@ -348,6 +339,16 @@
                         <label for="bonific" class="col-xs-12 col-md-2 control-label">
                             Bonificado:
                         </label>
+                        
+                        <div class="col-xs-12 col-md-4">
+                            <select id="bonific" required class="wrap form-control"> 
+                                <option value="false" ${movimiento.bonific == "false" ? 'selected':''}>INACTIVO</OPTION>
+                                <option value="true"  ${movimiento.bonific == "true" ? 'selected':''}>ACTIVO</OPTION>
+                                
+                            </select>   
+                        </div>
+                        
+                        <!--
                         <div class="col-xs-12 col-md-4" id="divbonific">
                             <script>
                                if(${movimiento.bonific} == 0){                
@@ -368,7 +369,7 @@
 
                             </script>    
                                                        
-                        </div>
+                        </div>-->
                                     
                         <label for="recibo" class="col-xs-12 col-md-2 control-label">
                                     Núm. recibo:

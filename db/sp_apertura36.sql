@@ -1,3 +1,4 @@
+/*igh*/
 DROP PROCEDURE IF EXISTS sp_apertura36;
 DELIMITER $$
 CREATE PROCEDURE sp_apertura36(
@@ -14,16 +15,16 @@ CREATE PROCEDURE sp_apertura36(
     IN `numcontrato` VARCHAR(5)
     )
 BEGIN
-    insert into mov_edoscta (id_benef,clave_mov,capital, poliza,fecha_pol, clave_b, id_usuario, id_catprog, numcontrato) 
+    insert into mov_edoscta (id_benef,clave_mov,capital, poliza,fecha_mov, clave_b, id_usuario, id_catprog, numcontrato) 
     values (id_benef,'CAP',imp_cap,poliza,fecha_pol, clave_b, id_usuario, id_catprog, numcontrato);
     
-    insert into mov_edoscta (id_benef,clave_mov,capital, poliza,fecha_pol, clave_b, id_usuario, id_catprog, numcontrato) 
+    insert into mov_edoscta (id_benef,clave_mov,capital, poliza,fecha_mov, clave_b, id_usuario, id_catprog, numcontrato) 
     values (id_benef,'ENG',imp_eng*-1,poliza,fecha_pol, clave_b, id_usuario, id_catprog, numcontrato);
 
-    insert into mov_edoscta (id_benef,clave_mov,capital, poliza,fecha_pol, clave_b, id_usuario, id_catprog, numcontrato) 
+    insert into mov_edoscta (id_benef,clave_mov,capital, poliza,fecha_mov, clave_b, id_usuario, id_catprog, numcontrato) 
     values (id_benef,'PAG',imp_pagos*-1,poliza,fecha_pol, clave_b, id_usuario, id_catprog, numcontrato);
 
-    insert into mov_edoscta (id_benef,clave_mov,capital, poliza,fecha_pol, clave_b, id_usuario, id_catprog, numcontrato) 
+    insert into mov_edoscta (id_benef,clave_mov,capital, poliza,fecha_mov, clave_b, id_usuario, id_catprog, numcontrato) 
     values (id_benef,'SUI',imp_sui*-1,poliza,fecha_pol, clave_b, id_usuario, id_catprog, numcontrato);
 END $$
 DELIMITER ;
