@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import javabeans.Bonificacion;
 import javabeans.CatProgramas;
 import javabeans.MovBonific;
+import javabeans.MovDiversos;
 import javabeans.Mov_edocta;
 import javabeans.Usuario;
 import javax.servlet.RequestDispatcher;
@@ -34,22 +35,38 @@ public class ControladorMovBonific extends ControladorBase{
     public void listarbonific(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id;
         
-        if(request.getAttribute("id")!=null){
+        if(request.getParameter("id") != null || request.getAttribute("id") != null){
+            if(request.getAttribute("id")!=null){
             id = Integer.parseInt((String)request.getAttribute("id"));
-            
-        }else{
-            id=Integer.parseInt(request.getParameter("id"));
-        }
-        
-        GestionMovBonific modelo = new GestionMovBonific();
-        ArrayList movbonific = modelo.obtenerPorId(id);
 
-        request.setAttribute("movbonific", movbonific);
-        
-        request.setAttribute("id", id);
+            }else{
+                id=Integer.parseInt(request.getParameter("id"));
+            }
+
+            GestionMovBonific modelo = new GestionMovBonific();
+            ArrayList movbonific = modelo.obtenerPorId(id);
+
+            request.setAttribute("movbonific", movbonific);
+
+            request.setAttribute("id", id);
             
-        RequestDispatcher rd=request.getRequestDispatcher("listar_mov_bonific.jsp");
-        rd.forward(request,response);        
+        }else if(request.getParameter("iddiv") != null || request.getAttribute("iddiv") != null){
+            
+            id = Integer.parseInt(request.getParameter("iddiv"));
+            
+            GestionMovBonific modelo = new GestionMovBonific();
+            ArrayList movbonific = modelo.obtenerPorId(id);
+            
+            request.setAttribute("movbonific", movbonific);
+        
+            request.setAttribute("id", id);
+            
+        }
+         RequestDispatcher rd=request.getRequestDispatcher("listar_mov_bonific.jsp");
+         rd.forward(request,response);
+              
+        
+                
     }
     
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -285,6 +302,28 @@ public class ControladorMovBonific extends ControladorBase{
         request.setAttribute("id", mid_movedoscta);
         RequestDispatcher rd=request.getRequestDispatcher("controladormovbonific?operacion=listarbonific");
         rd.forward(request,response);
+    }
+    
+    
+    public void listarBonificDiv(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        int id;
+        
+        if(request.getAttribute("id")!=null){
+            id = Integer.parseInt((String)request.getAttribute("id"));
+            
+        }else{
+            id=Integer.parseInt(request.getParameter("id"));
+        }
+        
+        GestionMovBonific modelo = new GestionMovBonific();
+        ArrayList movbonific = modelo.obtenerPorIdDiv(id);
+
+        request.setAttribute("movbonific", movbonific);
+        
+        request.setAttribute("id", id);
+            
+        RequestDispatcher rd=request.getRequestDispatcher("listar_mov_bonific.jsp");
+        rd.forward(request,response);        
     }
     
 }

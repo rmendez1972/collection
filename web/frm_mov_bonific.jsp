@@ -39,6 +39,11 @@
                     return false;
                 }
                 
+                if(params.estatus == 0){
+                    alert("Seleccione un estatus");
+                    return false;
+                }
+                
                 
                 $.post("controladormovbonific?operacion=nuevoGuardar", params, function(datos){
                     $("#show").html(datos);
@@ -72,31 +77,31 @@
                         <div class="form-group">
                             <label for="imp_cap" class="col-xs-12 col-md-2 control-label">imp capital:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="number" step="0.001" class="form-control" id="imp_cap" required  placeholder="Sólo se aceptan tres decimales" maxlength="12"/>
+                                <input type="number" step="0.001" class="form-control" id="imp_cap" required  placeholder="Sólo se aceptan tres decimales" maxlength="12" value="0.000" />
                             </div>
                                 
                             <label for="imp_int" class="col-xs-12 col-md-2 control-label">imp int:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="number" step="0.001" class="form-control" id="imp_int" required  placeholder="Sólo se aceptan tres decimales" maxlength="12"/>
+                                <input type="number" step="0.001" class="form-control" id="imp_int" required  placeholder="Sólo se aceptan tres decimales" maxlength="12" value="0.000"/>
                             </div>
                         </div>
                                 
                         <div class="form-group">
                             <label for="imp_adm" class="col-xs-12 col-md-2 control-label">imp adm:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="number" step="0.001" class="form-control" id="imp_adm" required  placeholder="Sólo se aceptan tres decimales" maxlength="12"/>
+                                <input type="number" step="0.001" class="form-control" id="imp_adm" required  placeholder="Sólo se aceptan tres decimales" maxlength="12" value="0.000"/>
                             </div>
                                 
                             <label for="imp_seg" class="col-xs-12 col-md-2 control-label">imp seg:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="number" step="0.001" class="form-control" id="imp_seg" required  placeholder="Sólo se aceptan tres decimales" maxlength="12"/>
+                                <input type="number" step="0.001" class="form-control" id="imp_seg" required  placeholder="Sólo se aceptan tres decimales" maxlength="12" value="0.000"/>
                             </div>
                         </div>
                                 
                         <div class="form-group">
                             <label for="imp_osg" class="col-xs-12 col-md-2 control-label">imp osg:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="number" step="0.001" class="form-control" id="imp_osg" required  placeholder="Sólo se aceptan tres decimales" maxlength="12"/>
+                                <input type="number" step="0.001" class="form-control" id="imp_osg" required  placeholder="Sólo se aceptan tres decimales" maxlength="12" value="0.000"/>
                             </div>
                                 
                             <label for="id_catbonific" class="col-xs-12 col-md-2 control-label">Bonificacion:</label>
@@ -113,7 +118,11 @@
                          <div class="form-group">
                             <label for="estatus" class="col-xs-12 col-md-2 control-label">Estatus:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="text" name="estatus" class="form-control" id="estatus" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{1,1})"  placeholder="Máx.1 caracteres" maxlength="1" style="text-transform:uppercase" />
+                                <select id="estatus" required class="form-control">
+                                    <option value="0" selected>SELECCIONE UNA</option>
+                                    <OPTION VALUE="A">Aceptado</OPTION>
+                                    <OPTION VALUE="B">Cancelado</OPTION>
+                                </select>
                             </div>
                             
                             <label for="clave_b" class="col-xs-12 col-md-2 control-label">Clave b:</label>
@@ -125,7 +134,7 @@
                         <div class="form-group">
                             <label for="recibo" class="col-xs-12 col-md-2 control-label">Recibo:</label>
                             <div class="col-xs-12 col-md-4">
-                                <input type="number" step="1" class="form-control" id="recibo" required  placeholder="Sólo se aceptan enteros" maxlength="12"/>
+                                <input type="number" step="1" class="form-control" id="recibo" required  placeholder="Sólo se aceptan enteros" maxlength="12" value="0"/>
                             </div>
                             
                            <label for="serie" class="col-xs-12 col-md-2 control-label">Serie:</label>

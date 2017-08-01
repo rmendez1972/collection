@@ -103,8 +103,31 @@
                                 
                          <div class="form-group">
                             <label for="estatus" class="col-xs-12 col-md-2 control-label">Estatus:</label>
-                            <div class="col-xs-12 col-md-4">
-                                <input type="text" name="estatus" class="form-control" id="estatus" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{1,1})"  placeholder="Máx.1 caracteres" maxlength="1" style="text-transform:uppercase" value="${bon.estatus}" />
+                            <div class="col-xs-12 col-md-4" id="divstatus">
+                                <script>
+                                    var estatus = new String;
+                                    estatus = ${bon.estatus};
+                                    var A = "A";
+                                    var B = "B";
+                                    if(${bon.estatus} == A){
+                
+                                        var newS = $("<select>");
+                                        newS.append('<option value="A" selected >'+'Aceptado'+'</option>');
+                                        newS.append('<option value="B" >'+'Cancelado'+'</option>');
+                                        newS.addClass("form-control");
+                                        newS.attr("id", "estatus");
+                                        $("#divstatus").append(newS);   
+                                    }else{
+                
+                                        var newS = $("<select>");
+                                        newS.append('<option value="A" >'+'Aceptado'+'</option>');
+                                        newS.append('<option value="B" selected >'+'Cancelado'+'</option>');
+                                        newS.addClass("form-control");
+                                        newS.attr("id", "estatus");
+                                        $("#divstatus").append(newS);
+                                    }
+                                    
+                                </script> 
                             </div>
                             
                             <label for="clave_b" class="col-xs-12 col-md-2 control-label">Clave b:</label>
