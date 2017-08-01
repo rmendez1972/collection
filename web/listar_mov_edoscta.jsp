@@ -71,11 +71,11 @@
                 <tr>
                     <th>Acciones</th>
                     <th>Nombre Beneficiario</th>
+                    <th>Estatus</th>
                     <th>Clave SEDUVI</th>
                     <th>Clave Movimiento</th>
                     <th>Fecha Movimiento</th>
                     <th>Póliza</th>
-                    <th>Fecha Póliza</th>
                     <th>Capital</th>
                     <th>Interes</th>
                     <th>Admon</th>
@@ -85,18 +85,30 @@
                     <th>Titulación</th>
                     <th>Bonific</th>
                     
+                    
+                    
+                    
                 </tr>
             </thead>
             <tbody>
+                
+                
                 <c:forEach var="mov" items="${requestScope.movimientos}" varStatus="loop"> 
-                    <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
+                    <c:set var="estatus" value="${mov.status}"/>
+                    
+                    
                         <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Movimiento" onclick="editarMovimiento(${mov.id_movedoscta});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Movimiento" onclick="eliminarMovimiento(${mov.id_movedoscta});" /><img src="imagenes/reporte_solicitudes.png" class="btn-tabla" title="Agregar Bonificacion" onclick="editarBonificacion(${mov.id_movedoscta});" /></th>
                         <th> <c:out value="${mov.nombrebenef}" /></th>
+                        <c:if test="${estatus=='B'}">
+                            <th><span class="label label-warning label-as-badge"><c:out value="${estatus}" /></span></th>
+                        </c:if>
+                        <c:if test="${estatus!='B'}">
+                            <th><span class="label label-info label-as-badge"><c:out value="${estatus}" /></span></th>
+                        </c:if>
                         <th> <c:out value="${mov.clave_b}" /></th>
                         <th> <c:out value="${mov.clave_mov}" /></th>
                         <th> <c:out value="${mov.fecha_mov}" /></th>
                         <th> <c:out value="${mov.poliza}" /></th>
-                        <th> <c:out value="${mov.fecha_pol}" /></th>
                         <th> <c:out value="${mov.capital}" /></th>                        
                         <th> <c:out value="${mov.interes}" /></th>                        
                         <th> <c:out value="${mov.admon}" /></th>
@@ -113,6 +125,8 @@
                                 <th><img src="assets/img/mal.png"   title="movimiento sin bonificación"/></td>
                             </c:when>
                         </c:choose>
+                                    
+                        
                                                 
                     </tr>
                 </c:forEach>

@@ -128,7 +128,7 @@ public class GestionMov_edocta
         SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
         String fecha_mov=sdf.format(movimiento.getFecha_mov());
         String poliza=movimiento.getPoliza();
-        String fecha_pol=sdf.format(movimiento.getFecha_pol());
+        
         String capital=movimiento.getCapital().toString();
         String admon=movimiento.getAdmon().toString();
         String seguro=movimiento.getSeguro().toString();
@@ -136,10 +136,13 @@ public class GestionMov_edocta
         String comisiones=movimiento.getComisiones().toString();
         String tit=movimiento.getTit().toString();
         String interes=movimiento.getInteres().toString();
+        String moratorios=movimiento.getMoratorios().toString();
+        Integer recibo=movimiento.getRecibo();
+        String status=movimiento.getStatus();
         Integer id_usuario=movimiento.getId_usuario();
         
-        Object params[]={id_benef,clave_b,clave_mov,fecha_mov,poliza,fecha_pol,capital,admon,seguro,o_seguro,comisiones,tit,interes,id_usuario,id_movedoscta};
-        return Conexion.ejecutar("update mov_edoscta set id_benef=?, clave_b=?, clave_mov=?, fecha_mov=?, poliza=?, fecha_pol=?, capital=?, admon=?, seguro=?, o_seg=?, comisiones=?, tit=?, interes=?, id_usuario=? where id_movedoscta=?", params);
+        Object params[]={id_benef,clave_b,clave_mov,fecha_mov,poliza,capital,admon,seguro,o_seguro,comisiones,tit,interes,moratorios,recibo,status,id_usuario,id_movedoscta};
+        return Conexion.ejecutar("update mov_edoscta set id_benef=?, clave_b=?, clave_mov=?, fecha_mov=?, poliza=?, capital=?, admon=?, seguro=?, o_seg=?, comisiones=?, tit=?, interes=?, moratorios=?, recibo=?, estatus=?, id_usuario=? where id_movedoscta=?", params);
     }
     
     /*
