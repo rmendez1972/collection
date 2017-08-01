@@ -6,6 +6,7 @@ package controladores;
 
 import Modelo.GestionBeneficiario;
 import Modelo.GestionBonificacion;
+import Modelo.GestionClavemov;
 import Modelo.GestionMovBonific;
 import Modelo.GestionMov_edocta;
 
@@ -64,7 +65,7 @@ public class ControladorMov_edocta extends ControladorBase
         {    
             request.setAttribute("msg", "Registro eliminado");
         }else{
-            request.setAttribute("msg", "No es posible eliminar. Este Movimiento cuenta con binificación.");
+            request.setAttribute("msg", "No es posible eliminar. Este Movimiento cuenta con bonificación.");
             
         }
         RequestDispatcher rd=request.getRequestDispatcher("controladormov_edocta?operacion=listar");
@@ -79,9 +80,12 @@ public class ControladorMov_edocta extends ControladorBase
         int id_benef=movimiento.getId_benef();
         GestionBeneficiario modelo_ben= new GestionBeneficiario();
         ArrayList beneficiarios=modelo_ben.obtenerBeneficiarios();
+        GestionClavemov modelo_clavemov= new GestionClavemov();
+        ArrayList clavemovs=modelo_clavemov.obtenerTodos();
         
         request.setAttribute("movimiento", movimiento);
         request.setAttribute("beneficiarios", beneficiarios);
+        request.setAttribute("clavemovs", clavemovs);
                     
         RequestDispatcher rd=request.getRequestDispatcher("frm_modificamov_edocta.jsp");
         rd.forward(request,response);
@@ -103,8 +107,7 @@ public class ControladorMov_edocta extends ControladorBase
         movimiento.setFecha_mov(fecha_mov);
         String poliza=request.getParameter("poliza").toUpperCase();
         movimiento.setPoliza(poliza);
-        Date fecha_pol = df.parse(request.getParameter("fecha_pol"));
-        movimiento.setFecha_pol(fecha_pol);
+        
         BigDecimal capital = new BigDecimal(request.getParameter("capital"));
         movimiento.setCapital(capital);
         BigDecimal admon = new BigDecimal(request.getParameter("admon"));
@@ -119,6 +122,12 @@ public class ControladorMov_edocta extends ControladorBase
         movimiento.setTit(tit);
         BigDecimal interes = new BigDecimal(request.getParameter("interes"));
         movimiento.setInteres(interes);
+        BigDecimal moratorios = new BigDecimal(request.getParameter("moratorios"));
+        movimiento.setMoratorios(moratorios);
+        Integer recibo=Integer.parseInt(request.getParameter("recibo"));
+        movimiento.setRecibo(recibo);
+        String status=request.getParameter("estatus").toUpperCase();
+        movimiento.setStatus(status);
         
         HttpSession objSession = request.getSession(); 
         Usuario usuario = (Usuario)(objSession.getAttribute("usuario")); 

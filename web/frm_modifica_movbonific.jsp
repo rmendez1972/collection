@@ -28,6 +28,7 @@
                 params.serie=$("#serie").val();
                 params.numcontrato=$("#numcontrato").val();
                 params.id_catprog=$("#id_catprog").val();
+                params.id_autoriza=$("#id_autoriza").val();
                 
                 
                 $.post("controladormovbonific?operacion=editarGuardar", params, function(datos){
@@ -129,19 +130,33 @@
                            <label for="numcontrato" class="col-xs-12 col-md-2 control-label">Número de Contrato:</label>
                             <div class="col-xs-12 col-md-4">
                                 <input type="text" name="numcontrato" class="form-control" id="numcontrato" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{3,5})"  placeholder="Máx.5 caracteres" maxlength="5" style="text-transform:uppercase" value="${bon.numcontrato}" readonly />
-                            </div>  
+                            </div>
+                            
+                            <label for="id_catprog" class="col-xs-12 col-md-2 control-label">Programa:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <select id="id_catprog" required class="form-control" disabled>
+                                    <option value="0">SELECCIONE UNA</option>
+                                        <c:forEach  var="cp" items="${requestScope.cp}">
+                                            <OPTION VALUE="${cp.id_catprog}" ${cp.id_catprog == bon.id_catprog ? 'selected':''} >${cp.descripcion}</OPTION>
+                                        </c:forEach>
+                                </select>
+                            </div>
+                            
                         </div>
                                 
-                        <!--<div class="form-group">
-                            <label for="id_catprog" class="col-xs-12 col-md-2 control-label">id_catprog:</label>
+                        <div class="form-group">
+                            <label for="id_autoriza" class="col-xs-12 col-md-2 control-label">Autoriza:</label>
                             <div class="col-xs-12 col-md-4">
-                                
-
+                                <select id="id_autoriza" required class="form-control">
+                                    <option value="0">SELECCIONE UNA</option>
+                                        <c:forEach  var="aut" items="${requestScope.aut}">
+                                            <OPTION VALUE="${aut.id_autoriza}" ${aut.id_autoriza == bon.id_autoriza ? 'selected':''} >${aut.nombre}</OPTION>
+                                        </c:forEach>
+                                </select>
                             </div>
                    
-                        </div>-->
+                        </div>
                             
-                        <input type="hidden" name="id_catprog" class="form-control" id="id_catprog" placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${bon.id_catprog}" />
 
                         <div class="form-group" style="text-align:center">
                             <input type="submit" value="Aceptar" class="btn btn-primary" />

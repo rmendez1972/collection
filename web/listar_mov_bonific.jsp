@@ -85,6 +85,7 @@
                     <th>Serie</th>
                     <th>Numero Contrato</th>
                     <th>Programa</th>
+                    <th>Autoriza</th>
                     
                     
                 </tr>
@@ -107,6 +108,7 @@
                         <th> <c:out value="${mov.serie}" /></th>
                         <th> <c:out value="${mov.numcontrato}" /></th>
                         <th> <c:out value="${mov.catprograma}" /></th>
+                        <th> <c:out value="${mov.nombreautoriza}" /></th>
                     </tr>
                 </c:forEach>
             </tbody>
