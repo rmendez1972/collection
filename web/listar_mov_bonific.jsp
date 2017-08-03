@@ -12,14 +12,14 @@
         <title>JSP Page</title>
                 <script>
 
-        function editarMovimiento(id){
+        function editarBonificEdocta(id){
             var params=new Object();
             params.id=id;
             $.post("controladormovbonific?operacion=editar", params, function(datos){
                 $("#show").html(datos);
             },"html");
         }   
-        function eliminarMovimiento(id,id_movedoscta){
+        function eliminarBonificEdocta(id,id_movedoscta){
             
             confirma("", "Eliminar Movimiento", "Confirmar eliminación", "eliminar", function(){
                 var params=new Object();
@@ -31,13 +31,45 @@
             });
         }
         
-        function nuevaBonificacion(id){
+        function nuevaBonificEdocta(id){
             var params=new Object();
             params.id=id;
             $.post("controladormovbonific?operacion=nuevo", params, function(datos){
                 $("#show").html(datos);
             },"html");
-        } 
+        }
+        
+        
+        function nuevaBonificDiv(iddiv){
+            var params=new Object();
+            params.iddiv=iddiv;
+            $.post("controladormovbonific?operacion=nuevo", params, function(datos){
+                $("#show").html(datos);
+            },"html");
+        }
+        
+        function editarBonificDiv(iddiv){
+            var params=new Object();
+            params.iddiv=iddiv;
+            $.post("controladormovbonific?operacion=editar", params, function(datos){
+                $("#show").html(datos);
+            },"html");
+        }
+        
+        function eliminarBonificDiv(iddiv,id_movdiversos){
+            
+            confirma("", "Eliminar Movimiento", "Confirmar eliminación", "eliminar", function(){
+                var params=new Object();
+                params.iddiv=iddiv;
+                params.id_movdiversos=id_movdiversos;
+                $.post("controladormovbonific?operacion=eliminar", params, function(datos){
+                    $("#show").html(datos);
+                },"html");
+            });
+        }
+        
+        
+        
                 
         $(document).ready(function(){
             
@@ -54,11 +86,25 @@
         <h3 class="bg-primary encabezado">
             <span class="fa fa-money" style="color: #fff; padding: 5px;"></span> Mantenimiento de Movimientos de bonificación
         </h3>
-      
-        <div class="container-fluid navbar-right">
-            <div class="btn-catalogo"  onclick="nuevaBonificacion(${requestScope.id});">
-                <img src="imagenes/agregar.png" alt="Nuevo" />
-            </div>
+        
+         
+         <div class="container-fluid navbar-right">
+         
+            <c:set var="id_movedoscta" value="${requestScope.id}"/>
+            <c:set var="id_movdiversos" value="${requestScope.iddiv}"/>
+            <c:if test="${id_movedoscta!=null}">
+               <div class="btn-catalogo"  onclick="nuevaBonificEdocta(${requestScope.id});">
+                   <img src="imagenes/agregar.png" alt="Nuevo" />
+               </div>
+            </c:if>
+            <c:if test="${id_movdiversos!=null}">
+               <div class="btn-catalogo"  onclick="nuevaBonificDiv(${requestScope.iddiv});">
+                   <img src="imagenes/agregar.png" alt="Nuevo" />
+               </div>
+            </c:if>
+         
+            
+            
             <div class="btn-catalogo">    
                 <a href="controladorcandidato?operacion=reporte" target="_blank" >
                     <img src="imagenes/reportesb.png" alt="Imprimir"/>
@@ -93,7 +139,20 @@
             <tbody>
                 <c:forEach var="mov" items="${requestScope.movbonific}" varStatus="loop"> 
                     <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
-                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Movimiento" onclick="editarMovimiento(${mov.id_movedoscta});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Movimiento" onclick="eliminarMovimiento(${mov.id_bonificacion},${mov.id_movedoscta});" /></th>
+                         <c:set var="id_movedoscta" value="${mov.id_movedoscta}"/>
+                         <c:set var="id_movdiversos" value="${mov.id_movdiversos}"/>
+                         
+                        <c:if test="${id_movedoscta!=0}">
+                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Movimiento" onclick="editarBonificEdocta(${mov.id_movedoscta});" />
+                            <img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Movimiento" onclick="eliminarBonificEdocta(${mov.id_bonificacion},${mov.id_movedoscta});" />
+                        </th>
+                        </c:if>
+                        <c:if test="${id_movdiversos!=0}">
+                        <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Movimiento" onclick="editarBonificDiv(${mov.id_movdiversos});" />
+                            <img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Movimiento" onclick="eliminarBonificDiv(${mov.id_bonificacion},${mov.id_movdiversos});" />
+                        </th>
+                        </c:if>
+          
                         <th> <c:out value="${mov.nombrebenef}" /></th>
                         <th> <c:out value="${mov.imp_cap}" /></th>
                         <th> <c:out value="${mov.imp_int}" /></th>
