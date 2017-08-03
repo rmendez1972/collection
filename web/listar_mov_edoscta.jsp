@@ -93,15 +93,10 @@
             <tbody>
                 
                 
-<<<<<<< HEAD
+
                 <c:forEach var="mov" items="${requestScope.movimientos}" varStatus="loop">
                     <tr>
                     <c:set var="estatus" value="${mov.status}"/>
-=======
-                <c:forEach var="mov" items="${requestScope.movimientos}" varStatus="loop"> 
-                    
->>>>>>> 8b50b27b4cfddbf5bd4556f184224c653d5944d3
-                    
                     
                         <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Movimiento" onclick="editarMovimiento(${mov.id_movedoscta});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Movimiento" onclick="eliminarMovimiento(${mov.id_movedoscta});" /><img src="imagenes/reporte_solicitudes.png" class="btn-tabla" title="Agregar Bonificacion" onclick="editarBonificacion(${mov.id_movedoscta});" /></th>
                         <th> <c:out value="${mov.nombrebenef}" /></th>
