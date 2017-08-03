@@ -93,7 +93,8 @@
             <tbody>
                 
                 
-                <c:forEach var="mov" items="${requestScope.movimientos}" varStatus="loop"> 
+                <c:forEach var="mov" items="${requestScope.movimientos}" varStatus="loop">
+                    <tr>
                     <c:set var="estatus" value="${mov.status}"/>
                     
                     

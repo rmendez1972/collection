@@ -29,6 +29,7 @@
                 params.numcontrato=$("#numcontrato").val();
                 params.id_catprog=$("#id_catprog").val();
                 params.id_autoriza=$("#id_autoriza").val();
+                params.id_movdiversos=$("#id_movdiversos").val();
                 
                 
                 $.post("controladormovbonific?operacion=editarGuardar", params, function(datos){
@@ -49,6 +50,16 @@
                 return false;
             }
             
+            function listardiv(iddiv){
+                var params=new Object();
+                params.iddiv=iddiv;              
+                $.post("controladormovbonific?operacion=listarbonific", params, function(datos){
+                    $("#show").html(datos);
+                },"html");
+                
+                return false;
+            }
+            
         </script>
     </head>
     <body>
@@ -56,8 +67,18 @@
             <div class="panel-heading"><h4><span class="fa fa-dollar" style="color: #fff"></span> Editar Bonificaciones.</h4></div>
                 <div class="panel-body transparent">
                     <form id="form_UA" onsubmit="return registrar()"  class="form-horizontal">
+                        
+                        <c:set var="id_movedoscta" value="${requestScope.id}"/>
+                        <c:set var="id_movdiversos" value="${requestScope.iddiv}"/>
+                        
+                        <c:if test="${id_movedoscta!=null}">
+                            <input type="hidden" name="id_movedoscta" class="form-control" id="id_movedoscta"   placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${bon.id_movedoscta}" />    
+                        </c:if>
+                        <c:if test="${id_movdiversos!=null}">
+                            <input type="hidden" name="id_movdiversos" class="form-control" id="id_movdiversos"   placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${bon.id_movdiversos}" />    
+                        </c:if>
+                        
                         <input type="hidden" name="id_bonificacion" id="id_bonificacion" value="${bon.id_bonificacion}" />
-                        <input type="hidden" name="id_movedoscta" class="form-control" id="id_movedoscta"   placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${bon.id_movedoscta}" />
                         <input type="hidden" name="id_benef" class="form-control" id="id_benef"  placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${bon.id_benef}" />
                                
                         <div class="form-group">
@@ -183,7 +204,13 @@
 
                         <div class="form-group" style="text-align:center">
                             <input type="submit" value="Aceptar" class="btn btn-primary" />
-                            <input type="reset" value="Cancelar" onclick="return listar(${bon.id_movedoscta})" class="btn btn-default" />
+                            <c:if test="${id_movedoscta!=null}">
+                                 <input type="reset" value="Cancelar" onclick="return listar(${bon.id_movedoscta})" class="btn btn-default" />
+                            </c:if>
+                            
+                            <c:if test="${id_movdiversos!=null}">
+                                <input type="reset" value="Cancelar" onclick="return listardiv(${bon.id_movdiversos})" class="btn btn-default" />
+                            </c:if>
                         </div>
 
 
