@@ -62,53 +62,62 @@
         <div class="table-responsive listado">
         <table class="table table-condensed table-hover" id="diversoslist">
             <thead>
-                <tr>
+                <tr style="font-size: 12px;font-stretch: condensed;">
                     <th>Acciones</th>
-                    <th>Nombre Beneficiario</th>
-                    <th>Clave SEDUVI</th>
-                    <th>Clave Movimiento</th>
-                    <th>Fecha Movimiento</th>
+                    <th>Beneficiario</th>
+                    <th>Estatus</th>
+                    <th>Clave</th>
+                    <th>Mov.</th>
+                    <th>Fecha</th>
                     <th>Póliza</th>
-                    <th>Fecha Póliza</th>
+                    <!--<th>Fecha Póliza</th>-->
                     <th>Cargo</th>
                     <th>Abono</th>
-                    <th>Moratorios</th>
+                    <th>Mora.</th>
                     <th>otros</th>
                     <th>Interés</th>
                     <th>Seguro</th>
-                    <th>Descripcion</th>
+                    <th>Descripción</th>
                     <th>Bonific</th>
                     
                 </tr>
             </thead>
             <tbody>
                 <c:forEach var="mov" items="${requestScope.movimientos}" varStatus="loop"> 
-                    <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
+                    <c:set var="estatus" value="${mov.estatus}"/>
+                    
+                    <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}" style="font-size: 12px;font-stretch: condensed;color:#000;">
                         <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Movimiento" 
                                  onclick="editarMovimiento(${mov.id_movdiversos});" />
                             <img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Movimiento" 
                                  onclick="eliminarMovimiento(${mov.id_movdiversos});" />
                         </th>
-                        <th> <c:out value="${mov.nombrebenef}" /></th>
-                        <th> <c:out value="${mov.clave_b}" /></th>
-                        <th> <c:out value="${mov.clave_div}" /></th>
-                        <th> <c:out value="${mov.fecha_div}" /></th>
-                        <th> <c:out value="${mov.poliza}" /></th>
-                        <th> <c:out value="${mov.fecha_pol}" /></th>
-                        <th> <c:out value="${mov.cargo}" /></th>                        
-                        <th> <c:out value="${mov.abono}" /></th>                        
-                        <th> <c:out value="${mov.moratorios}" /></th>
-                        <th> <c:out value="${mov.otros}" /></th>
-                        <th> <c:out value="${mov.interes}" /></th>
-                        <th> <c:out value="${mov.seguro}" /></th>                        
-                        <th> <c:out value="${mov.descripcion}" /></th>
+                        <th style="font-weight: normal"> <c:out value="${mov.nombrebenef}" /></th>
+                        <c:if test="${estatus=='B'}">
+                            <th style="text-align: center"><span class="label label-warning label-as-badge" title="movimiento dado de baja"><c:out value="${estatus}" /></span></th>
+                        </c:if>
+                        <c:if test="${estatus!='B'}">
+                            <th style="text-align: center"><span class="label label-info label-as-badge"><c:out value="${estatus}" /></span></th>
+                        </c:if>
+                        <th style="font-weight: normal"> <c:out value="${mov.clave_b}" /></th>
+                        <th style="font-weight: normal"> <c:out value="${mov.clave_div}" /></th>
+                        <th style="font-weight: normal"> <c:out value="${mov.fecha_div}" /></th>
+                        <th style="font-weight: normal"> <c:out value="${mov.poliza}" /></th>
+                        <!--<th> <c:out value="${mov.fecha_pol}" /></th>-->
+                        <th style="text-align: right;font-weight: normal"> <c:out value="${mov.cargo}" /></th>                        
+                        <th style="text-align: right;font-weight: normal"> <c:out value="${mov.abono}" /></th>                        
+                        <th style="text-align: right;font-weight: normal"> <c:out value="${mov.moratorios}" /></th>
+                        <th style="text-align: right;font-weight: normal"> <c:out value="${mov.otros}" /></th>
+                        <th style="text-align: right;font-weight: normal"> <c:out value="${mov.interes}" /></th>
+                        <th style="text-align: right; font-weight: normal"> <c:out value="${mov.seguro}" /></th>                        
+                        <th  style="text-align: left;font-weight: normal"> <c:out value="${mov.descripcion}" /></th>
                         <c:choose>
                             <c:when test="${mov.bonific==true}">
-                                <th><img src="assets/img/ok.png"    title="movimiento con bonificación"/></th>
+                                <th style="text-align: center"><span class="fa fa-check" title="movimiento con bonificación"></span></th>
                             </c:when>
                                     
                             <c:when test="${mov.bonific==false}">
-                                <th><img src="assets/img/mal.png"   title="movimiento sin bonificación"/></td>
+                                <th style="text-align: center"><span class="fa fa-close" title="movimiento sin bonificación"></span></th>
                             </c:when>
                         </c:choose>
                                                 

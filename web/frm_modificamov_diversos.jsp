@@ -89,7 +89,7 @@
                     <input type="hidden" name="id_usuario" id="id_usuario" value="${movimiento.id_usuario}" />
 
                     <div class="form-group">
-                        <label for="id_bendiv" class="col-xs-12 col-md-2 control-label  ">Beneficiario:</label>
+                        <label for="id_bendiv" class="col-xs-12 col-md-2 control-label" >Beneficiario:</label>
                         <div class="col-xs-12 col-md-4">
                             <select id="id_bendiv" required class="select2  wrap form-control" disabled> 
                                 <option value="0" >SELECCIONE UNO</option>
@@ -302,7 +302,7 @@
                         </div>
 
                         <label for="fecha_apli" class="col-xs-12 col-md-2 control-label">
-                            Fecha apli.:
+                            Fecha aplicación:
                         </label>
                         <div class="col-xs-12 col-md-4">
                             <input type="date" class="form-control" required  
