@@ -52,7 +52,7 @@ public class GestionMov_diversos
         MovDiversos movimiento=null;
         Object params[]={id_movdiversos};
         //ResultSet res=Conexion.ejecutarConsulta("select * from mov_diversos where id_movdiversos=?", params);
-        ResultSet res=Conexion.ejecutarConsulta("select M.*, B.nombre as nombrebenef, U.usuario as usuario from mov_diversos M inner join Benef_div B on M.id_bendiv=B.id_bendiv inner join Usuarios U on M.id_usuario=U.id_usuario  order by M.clave_b,M.id_movdiversos", null);
+        ResultSet res=Conexion.ejecutarConsulta("select M.*, B.nombre as nombrebenef, U.usuario as usuario from mov_diversos M inner join Benef_div B on M.id_bendiv=B.id_bendiv inner join Usuarios U on M.id_usuario=U.id_usuario where id_movdiversos=? order by M.clave_b,M.id_movdiversos", params);
         try{
             if(res.next())
                 //movimiento=new MovDiversos(res.getInt("id_movedoscta"),res.getInt("id_benef"),res.getBigDecimal("capital"),res.getBigDecimal("interes"),res.getBigDecimal("admon"),res.getBigDecimal("seguro"),res.getString("clave_mov"),res.getString("poliza"),res.getDate("fecha_mov"),res.getInt("recibo"),res.getBigDecimal("o_seg"),res.getBigDecimal("moratorios"), res.getString("estatus"),res.getDate("fecha_pol"),res.getInt("id_usuario"),res.getString("prepago"),res.getInt("id_bonific"),res.getBigDecimal("comisiones"),res.getString("serie"),res.getBoolean("puntual"),res.getString("clave_b"),res.getBigDecimal("tit"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getInt("id_caja"),res.getBoolean("bonific"));
@@ -217,6 +217,20 @@ public class GestionMov_diversos
         }
             
     }
+    
+    public boolean cambiarBonificTrue(int id_movdiversos){
+        Object params[]={id_movdiversos};
+        return Conexion.ejecutar("update mov_diversos set bonific='1' where id_movdiversos=?", params);
+    
+    }
+    
+    public boolean cambiarBonificFalse(int id_movdiversos){
+        Object params[]={id_movdiversos};
+        return Conexion.ejecutar("update mov_diversos set bonific='0' where id_movdiversos=?", params);
+    
+    }
+    
+    
     
 }
 

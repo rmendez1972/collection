@@ -29,6 +29,7 @@
                 params.numcontrato=$("#numcontrato").val();
                 params.id_catprog=$("#id_catprog").val();
                 params.id_autoriza=$("#id_autoriza").val();
+                params.id_movdiversos=$("#id_movdiversos").val();
                 
                 
                 $.post("controladormovbonific?operacion=editarGuardar", params, function(datos){
@@ -49,6 +50,16 @@
                 return false;
             }
             
+            function listardiv(iddiv){
+                var params=new Object();
+                params.iddiv=iddiv;              
+                $.post("controladormovbonific?operacion=listarbonific", params, function(datos){
+                    $("#show").html(datos);
+                },"html");
+                
+                return false;
+            }
+            
         </script>
     </head>
     <body>
@@ -56,8 +67,18 @@
             <div class="panel-heading"><h4><span class="fa fa-dollar" style="color: #fff"></span> Editar Bonificaciones.</h4></div>
                 <div class="panel-body transparent">
                     <form id="form_UA" onsubmit="return registrar()"  class="form-horizontal">
+                        
+                        <c:set var="id_movedoscta" value="${requestScope.id}"/>
+                        <c:set var="id_movdiversos" value="${requestScope.iddiv}"/>
+                        
+                        <c:if test="${id_movedoscta!=null}">
+                            <input type="hidden" name="id_movedoscta" class="form-control" id="id_movedoscta"   placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${bon.id_movedoscta}" />    
+                        </c:if>
+                        <c:if test="${id_movdiversos!=null}">
+                            <input type="hidden" name="id_movdiversos" class="form-control" id="id_movdiversos"   placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${bon.id_movdiversos}" />    
+                        </c:if>
+                        
                         <input type="hidden" name="id_bonificacion" id="id_bonificacion" value="${bon.id_bonificacion}" />
-                        <input type="hidden" name="id_movedoscta" class="form-control" id="id_movedoscta"   placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${bon.id_movedoscta}" />
                         <input type="hidden" name="id_benef" class="form-control" id="id_benef"  placeholder="Máx.80 caracteres" maxlength="80" style="text-transform:uppercase" value="${bon.id_benef}" />
                                
                         <div class="form-group">
@@ -103,8 +124,31 @@
                                 
                          <div class="form-group">
                             <label for="estatus" class="col-xs-12 col-md-2 control-label">Estatus:</label>
-                            <div class="col-xs-12 col-md-4">
-                                <input type="text" name="estatus" class="form-control" id="estatus" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{1,1})"  placeholder="Máx.1 caracteres" maxlength="1" style="text-transform:uppercase" value="${bon.estatus}" />
+                            <div class="col-xs-12 col-md-4" id="divstatus">
+                                <script>
+                                    var estatus = new String;
+                                    estatus = ${bon.estatus};
+                                    var A = "A";
+                                    var B = "B";
+                                    if(${bon.estatus} == A){
+                
+                                        var newS = $("<select>");
+                                        newS.append('<option value="A" selected >'+'Aceptado'+'</option>');
+                                        newS.append('<option value="B" >'+'Cancelado'+'</option>');
+                                        newS.addClass("form-control");
+                                        newS.attr("id", "estatus");
+                                        $("#divstatus").append(newS);   
+                                    }else{
+                
+                                        var newS = $("<select>");
+                                        newS.append('<option value="A" >'+'Aceptado'+'</option>');
+                                        newS.append('<option value="B" selected >'+'Cancelado'+'</option>');
+                                        newS.addClass("form-control");
+                                        newS.attr("id", "estatus");
+                                        $("#divstatus").append(newS);
+                                    }
+                                    
+                                </script> 
                             </div>
                             
                             <label for="clave_b" class="col-xs-12 col-md-2 control-label">Clave b:</label>
@@ -160,7 +204,13 @@
 
                         <div class="form-group" style="text-align:center">
                             <input type="submit" value="Aceptar" class="btn btn-primary" />
-                            <input type="reset" value="Cancelar" onclick="return listar(${bon.id_movedoscta})" class="btn btn-default" />
+                            <c:if test="${id_movedoscta!=null}">
+                                 <input type="reset" value="Cancelar" onclick="return listar(${bon.id_movedoscta})" class="btn btn-default" />
+                            </c:if>
+                            
+                            <c:if test="${id_movdiversos!=null}">
+                                <input type="reset" value="Cancelar" onclick="return listardiv(${bon.id_movdiversos})" class="btn btn-default" />
+                            </c:if>
                         </div>
 
 

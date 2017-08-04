@@ -30,6 +30,14 @@
                 },"html");
             });
         }
+        
+        function editarBonificacion(iddiv){
+            var params=new Object();
+            params.iddiv=iddiv;
+            $.post("controladormovbonific?operacion=listarbonific", params, function(datos){
+                $("#show").html(datos);
+            },"html");
+        }
                 
         $(document).ready(function(){
             
@@ -91,6 +99,8 @@
                                  onclick="editarMovimiento(${mov.id_movdiversos});" />
                             <img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Movimiento" 
                                  onclick="eliminarMovimiento(${mov.id_movdiversos});" />
+                            <img src="imagenes/reporte_solicitudes.png" class="btn-tabla" title="Agregar Bonificacion" 
+                                 onclick="editarBonificacion(${mov.id_movdiversos});" />
                         </th>
                         <th style="font-weight: normal"> <c:out value="${mov.nombrebenef}" /></th>
                         <c:if test="${estatus=='B'}">
