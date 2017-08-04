@@ -159,12 +159,23 @@
                             <div class="form-group">
                                 <label for="recibo" class="col-xs-12 col-md-2 control-label">Recibo:</label>
                                 <div class="col-xs-12 col-md-4">
-                                    <input type="number" step="1" class="form-control" id="recibo" required  placeholder="Sólo se aceptan enteros" maxlength="12" value="0"/>
+                                    <c:if test="${id_movedoscta!=null}">
+                                        <input type="number" step="1" class="form-control" id="recibo" required  placeholder="Sólo se aceptan enteros" maxlength="12" value="${edocta.recibo}"/>
+                                    </c:if>
+                                    <c:if test="${id_movdiversos!=null}">
+                                        <input type="number" step="1" class="form-control" id="recibo" required  placeholder="Sólo se aceptan enteros" maxlength="12" value="${movdiv.recibo}"/>
+                                    </c:if>
                                 </div>
 
                                <label for="serie" class="col-xs-12 col-md-2 control-label">Serie:</label>
                                 <div class="col-xs-12 col-md-4">
-                                    <input type="text" name="serie" class="form-control" id="serie" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{1,1})"  placeholder="Máx.1 caracteres" maxlength="1" style="text-transform:uppercase" />
+                                    <c:if test="${id_movedoscta!=null}">
+                                        <input type="text" name="serie" class="form-control" id="serie" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{1,1})"  placeholder="Máx.1 caracteres" maxlength="1" style="text-transform:uppercase" value="${edocta.serie}" />
+                                    </c:if>
+                                    <c:if test="${id_movdiversos!=null}">
+                                        <input type="text" name="serie" class="form-control" id="serie" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{1,1})"  placeholder="Máx.1 caracteres" maxlength="1" style="text-transform:uppercase" value="${movdiv.serie}" />
+                                    </c:if>
+                                        
                                 </div>  
                             </div>
 

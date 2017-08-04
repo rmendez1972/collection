@@ -13,6 +13,9 @@ import Modelo.GestionMov_edocta;
 import Modelo.GestionProgramas;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import javabeans.Bonificacion;
 import javabeans.CatProgramas;
 import javabeans.MovBonific;
@@ -45,10 +48,17 @@ public class ControladorMovBonific extends ControladorBase{
 
             GestionMovBonific modelo = new GestionMovBonific();
             ArrayList movbonific = modelo.obtenerPorId(id);
+            //iterador para iterar sobre el arreglo de movbonific para sacar el valor de id_bonificacion
+            Iterator<MovBonific> it = movbonific.iterator();
+            MovBonific bonific = new MovBonific();
+            while(it.hasNext()){
+                bonific = it.next();
+            }       
+            Integer id_bonificacion = bonific.getId_bonificacion();
 
             request.setAttribute("movbonific", movbonific);
-
             request.setAttribute("id", id);
+            request.setAttribute("id_bonificacion", id_bonificacion);
             
         }else if(request.getParameter("iddiv") != null || request.getAttribute("iddiv") != null){
             
@@ -57,13 +67,20 @@ public class ControladorMovBonific extends ControladorBase{
             }else{
                id = Integer.parseInt(request.getParameter("iddiv")); 
             }
-               
+            
             GestionMovBonific modelo = new GestionMovBonific();
             ArrayList movbonific = modelo.obtenerPorIdDiv(id);
+            //iterador para iterar sobre el arreglo de movbonific para sacar el valor de id_bonificacion
+            Iterator<MovBonific> it = movbonific.iterator();
+            MovBonific bonific = new MovBonific();
+            while(it.hasNext()){
+                bonific = it.next();
+            }       
+            Integer id_bonificacion = bonific.getId_bonificacion();
             
             request.setAttribute("movbonific", movbonific);
-        
             request.setAttribute("iddiv", id);
+            request.setAttribute("id_bonificacion", id_bonificacion);
             
         }
          RequestDispatcher rd=request.getRequestDispatcher("listar_mov_bonific.jsp");
@@ -545,6 +562,22 @@ public class ControladorMovBonific extends ControladorBase{
             rd.forward(request,response); 
         }
         
+    }
+    
+    public void reporte(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        Map param = new HashMap();
+        Integer id_bonificacion=Integer.parseInt(request.getParameter("id_bonificacion"));
+        param.put("sql", "where BO.id_bonificacion='"+id_bonificacion+"'");
+        generarReporte("ReporteMovBonificaciones.jasper", param, request, response);
+    
+    }
+    
+    public void reportediv(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        Map param = new HashMap();
+        Integer id_bonificacion=Integer.parseInt(request.getParameter("id_bonificacion"));
+        param.put("sql", "where BO.id_bonificacion='"+id_bonificacion+"'");
+        generarReporte("ReporteMovBonificacionesDiv.jasper", param, request, response);
+    
     }
     
 }
