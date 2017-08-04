@@ -40,6 +40,7 @@
                 params.interes=$("#interes").val();
                 params.moratorios=$("#moratorios").val();
                 params.recibo=$("#recibo").val();
+                params.serie=$("#serie").val();
                 params.estatus=$("#estatus").val();
                 //var x=$("#estatus").val();
                 //alert('estatus '+x);
@@ -182,6 +183,11 @@
                                     <OPTION VALUE="B" ${movimiento.status == 'B' ? 'selected':''}>Baja</OPTION>
                                     
                                 </select>
+                            </div>
+                                    
+                            <label for="serie" class="col-xs-12 col-md-2 control-label">Serie:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="text" name="serie"   class="form-control" id="serie"  placeholder="Máx. 6 digitos"  pattern="(^[A-Z]{1}$)"  value="${movimiento.serie}"/>
                             </div>
                         </div>
                         

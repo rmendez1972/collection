@@ -138,6 +138,8 @@ public class ControladorMov_edocta extends ControladorBase
         movimiento.setRecibo(recibo);
         String status=request.getParameter("estatus").toUpperCase();
         movimiento.setStatus(status);
+        String serie=request.getParameter("serie").toUpperCase();
+        movimiento.setSerie(serie);
         
         HttpSession objSession = request.getSession(); 
         Usuario usuario = (Usuario)(objSession.getAttribute("usuario")); 

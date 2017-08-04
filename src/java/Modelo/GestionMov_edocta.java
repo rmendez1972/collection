@@ -156,10 +156,11 @@ public class GestionMov_edocta
         String moratorios=movimiento.getMoratorios().toString();
         Integer recibo=movimiento.getRecibo();
         String status=movimiento.getStatus();
+        String serie=movimiento.getSerie();
         Integer id_usuario=movimiento.getId_usuario();
         
-        Object params[]={id_benef,clave_b,clave_mov,fecha_mov,poliza,capital,admon,seguro,o_seguro,comisiones,tit,interes,moratorios,recibo,status,id_usuario,id_movedoscta};
-        return Conexion.ejecutar("update mov_edoscta set id_benef=?, clave_b=?, clave_mov=?, fecha_mov=?, poliza=?, capital=?, admon=?, seguro=?, o_seg=?, comisiones=?, tit=?, interes=?, moratorios=?, recibo=?, estatus=?, id_usuario=? where id_movedoscta=?", params);
+        Object params[]={id_benef,clave_b,clave_mov,fecha_mov,poliza,capital,admon,seguro,o_seguro,comisiones,tit,interes,moratorios,recibo,status,serie,id_usuario,id_movedoscta};
+        return Conexion.ejecutar("update mov_edoscta set id_benef=?, clave_b=?, clave_mov=?, fecha_mov=?, poliza=?, capital=?, admon=?, seguro=?, o_seg=?, comisiones=?, tit=?, interes=?, moratorios=?, recibo=?, estatus=?, serie=?, id_usuario=? where id_movedoscta=?", params);
     }
     
     /*
