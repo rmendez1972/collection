@@ -56,6 +56,16 @@ public class ControladorMov_edocta extends ControladorBase
         rd.forward(request,response);
     }
     
+    public void listarPorBenefId(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        int id=Integer.parseInt(request.getParameter("id"));
+        GestionMov_edocta modelo=new GestionMov_edocta();
+        ArrayList movimientos=modelo.obtenerMovimientosPorBenefId(id);
+        request.setAttribute("movimientos", movimientos);
+            
+        RequestDispatcher rd=request.getRequestDispatcher("listar_mov_edoscta.jsp");
+        rd.forward(request,response);
+    }
+    
     
     public void eliminar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id=Integer.parseInt(request.getParameter("id"));
@@ -147,19 +157,25 @@ public class ControladorMov_edocta extends ControladorBase
         }
     }
     
-    /*
+    
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        GestionProgramas mod_prog=new GestionProgramas();
-        GestionTipocredito mod_tcr=new GestionTipocredito();
-        ArrayList prog=mod_prog.obtenerTodos();
-        ArrayList tipo=mod_tcr.obtenerTodos();
+        GestionMov_edocta modelo=new GestionMov_edocta();
+        GestionBeneficiario modelo_ben= new GestionBeneficiario();
+        ArrayList beneficiarios=modelo_ben.obtenerBeneficiarios();
+        GestionClavemov modelo_clavemov= new GestionClavemov();
+        ArrayList clavemovs=modelo_clavemov.obtenerTodos();
+        GestionProgramas modelo_prog= new GestionProgramas();
+        ArrayList progs=modelo_prog.obtenerTodos();
+                
+        request.setAttribute("beneficiarios", beneficiarios);
+        request.setAttribute("clavemovs", clavemovs);
+        request.setAttribute("progs", progs);
         
-        request.setAttribute("prog", prog);
-        request.setAttribute("tipo", tipo);
-        RequestDispatcher rd=request.getRequestDispatcher("frm_candidato.jsp");
+        
+        RequestDispatcher rd=request.getRequestDispatcher("frm_mov_edocta.jsp");
         rd.forward(request,response);
     }
-    
+    /*
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Candidatos candidato=new Candidatos();
         Integer id_catprog=Integer.parseInt(request.getParameter("id_catprog"));

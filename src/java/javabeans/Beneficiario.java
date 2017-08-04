@@ -65,7 +65,7 @@ public class Beneficiario
     public Beneficiario(){ super();}
     //constructor que permite crear un objeto
     
-     public Beneficiario(int id_beneficiario,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito, Date fecha_pol, String clave_b, Date fecha_ip){
+     public Beneficiario(int id_beneficiario,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito, Date fecha_pol, String clave_b, Date fecha_ip, Boolean aperturado){
          this.id_beneficiario=id_beneficiario;
          this.id_catprog=id_catprog;
          this.numcontrato = numcontrato;
@@ -84,6 +84,7 @@ public class Beneficiario
          this.fecha_pol=fecha_pol;
          this.clave_b=clave_b;
          this.fecha_ip=fecha_ip;
+         this.aperturado=aperturado;
      }
      
      public Beneficiario(int id_beneficiario,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito, Date fecha_pol, String poliza, String clave_b, BigDecimal capital, BigDecimal enganche, BigDecimal pagant, BigDecimal sub_inic ){
