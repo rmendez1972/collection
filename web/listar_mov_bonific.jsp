@@ -69,6 +69,13 @@
         }
         
         
+        function reporte(id_bonificacion){
+            var params=new Object();
+            params.id_bonificacion=id_bonificacion;
+            $.post("controladormovbonific?operacion=reporte", params, function(datos){
+                $("#show").html(datos);
+            },"html");
+        }
         
                 
         $(document).ready(function(){
@@ -102,14 +109,22 @@
                    <img src="imagenes/agregar.png" alt="Nuevo" />
                </div>
             </c:if>
-         
             
+            <c:if test="${id_movedoscta!=null}">
+                <div class="btn-catalogo">
+                    <a href="controladormovbonific?operacion=reporte&id_bonificacion=${requestScope.id_bonificacion}" target="_blank">
+                        <img src="imagenes/reportesb.png" alt="Imprimir"/>
+                    </a>
+                </div>
+            </c:if>
+            <c:if test="${id_movdiversos!=null}">
+                <div class="btn-catalogo">
+                    <a href="controladormovbonific?operacion=reportediv&id_bonificacion=${requestScope.id_bonificacion}" target="_blank">
+                        <img src="imagenes/reportesb.png" alt="Imprimir"/>
+                    </a>
+                </div>
+            </c:if>
             
-            <div class="btn-catalogo">    
-                <a href="controladorcandidato?operacion=reporte" target="_blank" >
-                    <img src="imagenes/reportesb.png" alt="Imprimir"/>
-                </a>
-            </div>
         </div>
         
         <div class="table-responsive listado">
