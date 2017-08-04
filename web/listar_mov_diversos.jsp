@@ -109,8 +109,8 @@
                         <th style="text-align: right;font-weight: normal"> <c:out value="${mov.moratorios}" /></th>
                         <th style="text-align: right;font-weight: normal"> <c:out value="${mov.otros}" /></th>
                         <th style="text-align: right;font-weight: normal"> <c:out value="${mov.interes}" /></th>
-                        <th style="text-align: right; font-weight: normal"> <c:out value="${mov.seguro}" /></th>                        
-                        <th  style="text-align: left;font-weight: normal"> <c:out value="${mov.descripcion}" /></th>
+                        <th style="text-align: right;font-weight: normal"> <c:out value="${mov.seguro}" /></th>                        
+                        <th style="text-align: left; font-weight: normal"> <c:out value="${mov.descripcion}" /></th>
                         <c:choose>
                             <c:when test="${mov.bonific==true}">
                                 <th style="text-align: center"><span class="fa fa-check" title="movimiento con bonificación"></span></th>
