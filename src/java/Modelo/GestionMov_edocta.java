@@ -119,6 +119,23 @@ public class GestionMov_edocta
         return movimientos;
     }
     
+    public ArrayList obtenerMovimientosPorBenefId(int id){
+        Object params[]={id};
+        ArrayList movimientos=new ArrayList();
+        ResultSet res=Conexion.ejecutarConsulta("select M.*, B.nombre as nombrebenef, U.usuario as usuario from mov_edoscta M inner join Benef B on M.id_benef=B.id_benef inner join Usuarios U on M.id_usuario=U.id_usuario where M.id_benef=? order by M.clave_b,M.id_movedoscta", params);
+        try{
+            while(res.next()){
+                Mov_edocta movimiento=new Mov_edocta(res.getInt("id_movedoscta"),res.getInt("id_benef"),res.getBigDecimal("capital"),res.getBigDecimal("interes"),res.getBigDecimal("admon"),res.getBigDecimal("seguro"),res.getString("clave_mov"),res.getString("poliza"),res.getDate("fecha_mov"),res.getInt("recibo"),res.getBigDecimal("o_seg"),res.getBigDecimal("moratorios"), res.getString("estatus"),res.getDate("fecha_pol"),res.getInt("id_usuario"),res.getString("prepago"),res.getInt("id_bonific"),res.getBigDecimal("comisiones"),res.getString("serie"),res.getBoolean("puntual"),res.getString("clave_b"),res.getBigDecimal("tit"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getInt("id_caja"),res.getBoolean("bonific"));
+                movimiento.setNombrebenef(res.getString("nombrebenef"));
+                movimiento.setNombreusuario(res.getString("usuario"));
+                
+                movimientos.add(movimiento);
+            }
+            res.close();
+        }catch(Exception e){}
+        return movimientos;
+    }
+    
     
     public boolean actualizarMov_edocta(Mov_edocta movimiento){
         Integer id_movedoscta=movimiento.getId_movedoscta();
@@ -139,10 +156,11 @@ public class GestionMov_edocta
         String moratorios=movimiento.getMoratorios().toString();
         Integer recibo=movimiento.getRecibo();
         String status=movimiento.getStatus();
+        String serie=movimiento.getSerie();
         Integer id_usuario=movimiento.getId_usuario();
         
-        Object params[]={id_benef,clave_b,clave_mov,fecha_mov,poliza,capital,admon,seguro,o_seguro,comisiones,tit,interes,moratorios,recibo,status,id_usuario,id_movedoscta};
-        return Conexion.ejecutar("update mov_edoscta set id_benef=?, clave_b=?, clave_mov=?, fecha_mov=?, poliza=?, capital=?, admon=?, seguro=?, o_seg=?, comisiones=?, tit=?, interes=?, moratorios=?, recibo=?, estatus=?, id_usuario=? where id_movedoscta=?", params);
+        Object params[]={id_benef,clave_b,clave_mov,fecha_mov,poliza,capital,admon,seguro,o_seguro,comisiones,tit,interes,moratorios,recibo,status,serie,id_usuario,id_movedoscta};
+        return Conexion.ejecutar("update mov_edoscta set id_benef=?, clave_b=?, clave_mov=?, fecha_mov=?, poliza=?, capital=?, admon=?, seguro=?, o_seg=?, comisiones=?, tit=?, interes=?, moratorios=?, recibo=?, estatus=?, serie=?, id_usuario=? where id_movedoscta=?", params);
     }
     
     /*
