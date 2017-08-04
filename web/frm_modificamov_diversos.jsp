@@ -87,9 +87,44 @@
                     <input type="hidden" name="id_movdiversos" id="id_movdiversos" value="${movimiento.id_movdiversos}" />
                     <input type="hidden" name="id_caja" id="id_caja" value="${movimiento.id_caja}" />
                     <input type="hidden" name="id_usuario" id="id_usuario" value="${movimiento.id_usuario}" />
+                    <input type="hidden" name="fecha_pol" id="fecha_pol" class="form-control" value="${movimiento.fecha_pol}" />
 
                     <div class="form-group">
-                        <label for="id_bendiv" class="col-xs-12 col-md-2 control-label" >Beneficiario:</label>
+                        <label for="clave_b" class="col-xs-12 col-md-2 control-label ">
+                            Clave SEDETUS:
+                        </label>
+                        <div class="col-xs-12 col-md-4">
+                            <input type="text" name="clave_b" class="form-control" id="clave_b" required  placeholder="6 caracteres" maxlength="12" value="${movimiento.clave_b}" readonly/>
+                        </div>
+                        
+                        <label for="id_catprog" class="col-xs-12 col-md-2 control-label">
+                            Programa:
+                        </label>
+                        <div class="col-xs-12 col-md-4">
+                            <select id="id_catprog" required class="select2  wrap form-control" disabled> 
+                                <option value="0">SELECCIONE UNO</option>
+                                <c:forEach  var="prog" items="${requestScope.programas}">
+                                    
+                                    <OPTION value="${prog.id_catprog}" ${prog.id_catprog == movimiento.id_catprog ? 'selected':''}>[${prog.clave}]${prog.descripcion}</OPTION>
+                                </c:forEach>
+                            </select> 
+                        </div>
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <label for="numcontrato" class="col-xs-12 col-md-2 control-label">
+                            Número contrato:
+                        </label>
+                        <div class="col-xs-12 col-md-4">
+                            <input type="text" class="form-control" required
+                                id="numcontrato"   placeholder="Máx. 5 caracteres" 
+                                maxlength="5" value="${movimiento.numcontrato}" readonly/>
+                        </div>
+                        
+                        <label for="id_bendiv" class="col-xs-12 col-md-2 control-label" >
+                            Beneficiario:
+                        </label>
                         <div class="col-xs-12 col-md-4">
                             <select id="id_bendiv" required class="select2  wrap form-control" disabled> 
                                 <option value="0" >SELECCIONE UNO</option>
@@ -97,19 +132,13 @@
                                     <OPTION VALUE="${bendiv.id_bendiv}" ${bendiv.id_bendiv == movimiento.id_bendiv ? 'selected':''}>${bendiv.nombre}</OPTION>
                                 </c:forEach>
                             </select>
-                        </div>
-
-                        <label for="clave_b" class="col-xs-12 col-md-2 control-label ">Clave SEDETUS:</label>
-                        <div class="col-xs-12 col-md-4">
-                            <input type="text" name="clave_b" class="form-control" id="clave_b" required  placeholder="6 caracteres" maxlength="12" value="${movimiento.clave_b}" readonly/>
-                        </div>
+                        </div>   
                     </div>
-
+                        
                     <div class="form-group">
                         <label for="clave_div" class="col-xs-12 col-md-2 control-label">
                             Clave Movimiento:
                         </label>
-                        
                         <div class="col-xs-12 col-md-4">
                             <select id="clave_div" required class="select2  wrap form-control"> 
                                 <option value="0">SELECCIONE UNO</option>
@@ -120,6 +149,18 @@
                             </select>
                         </div>
                         
+                        <label for="descripcion" class="col-xs-12 col-md-2 control-label">
+                            Descripcion:
+                        </label>
+                                
+                        <div class="col-xs-12 col-md-4">
+                            <input type="text" name="descripcion"   class="form-control" 
+                                id="descripcion"  placeholder="Máx. 120 caracteres" maxlength="120" 
+                                style="text-transform:uppercase" value="${movimiento.descripcion}"/>
+                        </div>
+                    </div>
+                        
+                    <div class="form-group">
                         <label for="fecha_div" class="col-xs-12 col-md-2 control-label">
                             Fecha de Movimiento:
                         </label>
@@ -127,9 +168,7 @@
                             <input type="date" id="fecha_div" class="form-control" 
                                 required  value="${movimiento.fecha_div}" />
                         </div>
-                    </div>
 
-                    <div class="form-group">
                         <label for="poliza" class="col-xs-12 col-md-2 control-label">
                             Poliza:
                         </label>
@@ -139,16 +178,89 @@
                                 style="text-transform:uppercase" value="${movimiento.poliza}"/>
                         </div>
 
-                        <label for="fecha_pol" class="col-xs-12 col-md-2 control-label">
-                            Fecha de Poliza:
+                    </div>
+                        
+                        
+                        
+                    <div class="form-group">
+                        <label for="recibo" class="col-xs-12 col-md-2 control-label">
+                            Núm. recibo:
                         </label>
                         <div class="col-xs-12 col-md-4">
-                            <input type="date" id="fecha_pol" class="form-control" 
-                                required  value="${movimiento.fecha_pol}" />
+                            <input  type="number" name="recibo"class="form-control" required  
+                                id="recibo" placeholder="Sólo acepta números" value="${movimiento.recibo}" />
+                        </div>
+                        
+                        <label for="serie" class="col-xs-12 col-md-2 control-label">
+                            Serie:
+                        </label>
+                        <div class="col-xs-12 col-md-4">
+                            <input type="text" required class="form-control" 
+                                id="serie" placeholder="Solo se aceptan 1 caracter" 
+                                maxlength="1" value="${movimiento.serie}" />
                         </div>
                     </div>
-
+                        
+                    <div class="form-group">    
+                        <label for="id_emisor" class="col-xs-12 col-md-2 control-label">
+                            Emisor:
+                        </label>
+                        <div class="col-xs-12 col-md-4">
+                            <select id="id_emisor" required class="select2  wrap form-control"> 
+                                <option value="0">SELECCIONE UNO</option>
+                                <c:forEach  var="emisor" items="${requestScope.emisores}">
+                                    
+                                    <OPTION value="${emisor.id_emisor}" ${emisor.id_emisor == movimiento.id_emisor ? 'selected':''}>${emisor.descripcion}</OPTION>
+                                </c:forEach>
+                            </select> 
+                        </div>
+                        
+                        <label for="fecha_apli" class="col-xs-12 col-md-2 control-label">
+                            Fecha aplicado:
+                        </label>
+                        <div class="col-xs-12 col-md-4">
+                            <input type="date" class="form-control" required  
+                                id="fecha_apli" value="${movimiento.fecha_apli}"/>
+                        </div>
+                    </div>
+                    
                     <div class="form-group">
+                        <label for="poliza_apli" class="col-xs-12 col-md-2 control-label">
+                            Poliza aplicado:
+                        </label>
+                        <div class="col-xs-12 col-md-4">
+                            <input type="text" name="poliza_apli" class="form-control" 
+                                id="poliza_apli" placeholder="Máx. 6 caracteres" 
+                                maxlength="6" style="text-transform:uppercase" 
+                                value="${movimiento.poliza_apli}"/>
+                        </div>
+                        
+                        <label for="aplicado" class="col-xs-12 col-md-2 control-label">
+                            Aplicado:
+                        </label>
+                        
+                        <div class="col-xs-12 col-md-4">
+                            <select id="aplicado" required class="wrap form-control"> 
+                                <option value="false" ${movimiento.aplicado == "false" ? 'selected':''}>INACTIVO</OPTION>
+                                <option value="true"  ${movimiento.aplicado == "true" ? 'selected':''}>ACTIVO</OPTION>
+                                
+                            </select>   
+                        </div>
+                    </div>
+                                
+                    <div class="form-group">
+                        <label for="estatus" class="col-xs-12 col-md-2 control-label">
+                            Estatus:
+                        </label>
+                        
+                        <div class="col-xs-12 col-md-4">
+                            <select id="estatus" required class="wrap form-control"> 
+                                <option value="B" ${movimiento.estatus == 'B' ? 'selected':''}>BAJA</OPTION>
+                                <option value="A" ${movimiento.estatus == 'A' ? 'selected':''}>ACTIVO</OPTION>
+                                
+                            </select>   
+                        </div>
+                            
                         <label for="cargo" class="col-xs-12 col-md-2 control-label">
                             cargo $:
                         </label>
@@ -158,7 +270,9 @@
                                 placeholder="Solo se aceptan dos decimales" 
                                 maxlength="12" value="${movimiento.cargo}"/>
                         </div>
+                    </div>            
 
+                    <div class="form-group">
                         <label for="abono" class="col-xs-12 col-md-2 control-label">
                             Abono $:
                         </label>
@@ -167,9 +281,7 @@
                                 class="form-control" required  placeholder="Solo se aceptan dos decimales"
                                 maxlength="12" value="${movimiento.abono}" />
                         </div>
-                    </div>
-
-                    <div class="form-group">
+                        
                         <label for="seguro" class="col-xs-12 col-md-2 control-label">
                             Seguro $:
                         </label>
@@ -179,6 +291,10 @@
                                 placeholder="Solo se aceptan dos decimales" 
                                 maxlength="12" value="${movimiento.seguro}" />
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        
 
                         <label for="otros" class="col-xs-12 col-md-2 control-label">
                             Otros $:
@@ -188,6 +304,16 @@
                                 id="otros" class="form-control" required  
                                 placeholder="Solo se aceptan dos decimales" 
                                 maxlength="12" value="${movimiento.otros}" />
+                        </div>
+                        
+                        <label for="interes" class="col-xs-12 col-md-2 control-label">
+                            Interes $:
+                        </label>
+                        <div class="col-xs-12 col-md-4">
+                            <input type="number" step="0.01" 
+                                id="interes" class="form-control" required  
+                                placeholder="Solo se aceptan dos decimales" 
+                                maxlength="12" value="${movimiento.interes}" />
                         </div>
                     </div>
 
@@ -212,129 +338,7 @@
                                 maxlength="12" value="${movimiento.bonificacion}" />
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="interes" class="col-xs-12 col-md-2 control-label">
-                            Interes $:
-                        </label>
-                        <div class="col-xs-12 col-md-4">
-                            <input type="number" step="0.01" 
-                                id="interes" class="form-control" required  
-                                placeholder="Solo se aceptan dos decimales" 
-                                maxlength="12" value="${movimiento.interes}" />
-                        </div>
                         
-                        <label for="estatus" class="col-xs-12 col-md-2 control-label">
-                            Estatus:
-                        </label>
-                        
-                        <div class="col-xs-12 col-md-4">
-                            <select id="estatus" required class="wrap form-control"> 
-                                <option value="B" ${movimiento.estatus == 'B' ? 'selected':''}>BAJA</OPTION>
-                                <option value="A" ${movimiento.estatus == 'A' ? 'selected':''}>ACTIVO</OPTION>
-                                
-                            </select>   
-                        </div>
-                        
-                   </div>
-                        
-                    <div class="form-group">
-                        <label for="aplicado" class="col-xs-12 col-md-2 control-label">
-                            Aplicado:
-                        </label>
-                        
-                        <div class="col-xs-12 col-md-4">
-                            <select id="aplicado" required class="wrap form-control"> 
-                                <option value="false" ${movimiento.aplicado == "false" ? 'selected':''}>INACTIVO</OPTION>
-                                <option value="true"  ${movimiento.aplicado == "true" ? 'selected':''}>ACTIVO</OPTION>
-                                
-                            </select>   
-                        </div>
-                        
-                        <label for="descripcion" class="col-xs-12 col-md-2 control-label">
-                            Descripcion:
-                        </label>
-                                
-                        <div class="col-xs-12 col-md-4">
-                            <input type="text" name="descripcion"   class="form-control" 
-                                id="descripcion"  placeholder="Máx. 120 caracteres" maxlength="120" 
-                                style="text-transform:uppercase" value="${movimiento.descripcion}"/>
-                        </div>
-                        
-                   </div>
-                        
-                    <div class="form-group">
-                        <label for="serie" class="col-xs-12 col-md-2 control-label">
-                            Serie:
-                        </label>
-                        <div class="col-xs-12 col-md-4">
-                            <input type="text" required class="form-control" 
-                                id="serie" placeholder="Solo se aceptan 1 caracter" 
-                                maxlength="1" value="${movimiento.serie}" />
-                        </div>
-                        
-                        <label for="id_emisor" class="col-xs-12 col-md-2 control-label">
-                            Emisor:
-                        </label>
-                        <div class="col-xs-12 col-md-4">
-                            
-                            <select id="id_emisor" required class="select2  wrap form-control"> 
-                                <option value="0">SELECCIONE UNO</option>
-                                <c:forEach  var="emisor" items="${requestScope.emisores}">
-                                    
-                                    <OPTION value="${emisor.id_emisor}" ${emisor.id_emisor == movimiento.id_emisor ? 'selected':''}>${emisor.descripcion}</OPTION>
-                                </c:forEach>
-                            </select> 
-                            
-                    
-                        </div>
-                   </div>
-                        
-                    <div class="form-group">
-                        <label for="poliza_apli" class="col-xs-12 col-md-2 control-label">
-                            Poliza apli:
-                        </label>
-                        <div class="col-xs-12 col-md-4">
-                            <input type="text" name="poliza_apli" class="form-control" 
-                                id="poliza_apli" placeholder="Máx. 6 caracteres" 
-                                maxlength="6" style="text-transform:uppercase" 
-                                value="${movimiento.poliza_apli}"/>
-                        </div>
-
-                        <label for="fecha_apli" class="col-xs-12 col-md-2 control-label">
-                            Fecha aplicación:
-                        </label>
-                        <div class="col-xs-12 col-md-4">
-                            <input type="date" class="form-control" required  
-                                id="fecha_apli" value="${movimiento.fecha_apli}"/>
-                        </div>
-                    </div>
-                            
-                    <div class="form-group">
-                        <label for="numcontrato" class="col-xs-12 col-md-2 control-label">
-                            Número contrato:
-                        </label>
-                        <div class="col-xs-12 col-md-4">
-                            <input type="text" class="form-control" required
-                                id="numcontrato"   placeholder="Máx. 5 caracteres" 
-                                maxlength="5" value="${movimiento.numcontrato}" readonly/>
-                        </div>
-                        
-                        <label for="id_catprog" class="col-xs-12 col-md-2 control-label">
-                            Programa:
-                        </label>
-                        <div class="col-xs-12 col-md-4">
-                            <select id="id_catprog" required class="select2  wrap form-control" disabled> 
-                                <option value="0">SELECCIONE UNO</option>
-                                <c:forEach  var="prog" items="${requestScope.programas}">
-                                    
-                                    <OPTION value="${prog.id_catprog}" ${prog.id_catprog == movimiento.id_catprog ? 'selected':''}>[${prog.clave}]${prog.descripcion}</OPTION>
-                                </c:forEach>
-                            </select> 
-                                    
-                        </div>    
-                   </div>        
-                    
                     <div class="form-group">
                         <label for="bonific" class="col-xs-12 col-md-2 control-label">
                             Bonificado:
@@ -347,39 +351,9 @@
                                 
                             </select>   
                         </div>
-                        
-                        <!--
-                        <div class="col-xs-12 col-md-4" id="divbonific">
-                            <script>
-                               if(${movimiento.bonific} == 0){                
-                                   var newS = $("<select>");
-                                   newS.append('<option value="false" selected >'+'Inactivo'+'</option>');
-                                   newS.append('<option value="true" >'+'Activo'+'</option>');
-                                   newS.addClass("form-control");
-                                   newS.attr("id", "bonific");
-                                   $("#divbonific").append(newS);   
-                               }else{                
-                                   var newS = $("<select>");
-                                   newS.append('<option value="false" >'+'Inactivo'+'</option>');
-                                   newS.append('<option value="true" selected >'+'Activo'+'</option>');
-                                   newS.addClass("form-control");
-                                   newS.attr("id", "bonific");
-                                   $("#divbonific").append(newS);
-                               }
-
-                            </script>    
-                                                       
-                        </div>-->
                                     
-                        <label for="recibo" class="col-xs-12 col-md-2 control-label">
-                                    Núm. recibo:
-                        </label>
-                        <div class="col-xs-12 col-md-4">
-                            <input  type="number" name="recibo"class="form-control" required  
-                                id="recibo" placeholder="Sólo acepta números" value="${movimiento.recibo}" />
-                        </div>
-                                    
-                    </div> 
+                    </div>
+                                
                     <div class="form-group" style="text-align:center">
                         <input type="submit" value="Aceptar" class="btn btn-primary" />
                         <input type="reset" value="Cancelar" onclick="return listar()" class="btn btn-default" />

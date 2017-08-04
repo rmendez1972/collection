@@ -55,7 +55,15 @@ public class ControladorMov_diversos extends ControladorBase
         RequestDispatcher rd=request.getRequestDispatcher("listar_mov_diversos.jsp");
         rd.forward(request,response);
     }
-    
+    /*
+    public void listarMovBendivId(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        GestionMov_diversos modelo=new GestionMov_diversos();
+        ArrayList movimientos=modelo.obtenerMovimientosporID();
+        request.setAttribute("movimientos", movimientos);
+            
+        RequestDispatcher rd=request.getRequestDispatcher("listar_mov_diversos_id.jsp");
+        rd.forward(request,response);
+    }*/
     
     public void eliminar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id=Integer.parseInt(request.getParameter("id"));

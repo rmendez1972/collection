@@ -18,12 +18,14 @@ public class BeneficiarioDiv {
     private int id_usuario;
     //
     private String catprog;
-    private String usuario; 
+    private String usuario;
+    private boolean aperturado;
+    private String numcontrato;
        
     public BeneficiarioDiv(){}
     
     public BeneficiarioDiv(int id_bendiv, String clave_elect, String curp, String clave_b, 
-            String nombre, int id_catprog, int id_usuario){
+            String nombre, int id_catprog, int id_usuario, boolean aperturado, String numcontrato){
         
         this.id_bendiv=id_bendiv;
         this.clave_elect=clave_elect;
@@ -32,6 +34,8 @@ public class BeneficiarioDiv {
         this.nombre=nombre;
         this.id_catprog=id_catprog;
         this.id_usuario=id_usuario;
+        this.aperturado=aperturado;
+        this.numcontrato=numcontrato;
     }
 
     public int getId_bendiv() {
@@ -105,5 +109,22 @@ public class BeneficiarioDiv {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
+
+    public boolean isAperturado() {
+        return aperturado;
+    }
+
+    public void setAperturado(boolean aperturado) {
+        this.aperturado = aperturado;
+    }
+
+    public String getNumcontrato() {
+        return numcontrato;
+    }
+
+    public void setNumcontrato(String numcontrato) {
+        this.numcontrato = numcontrato;
+    }
+    
     
 }
