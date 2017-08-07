@@ -567,7 +567,21 @@ public class ControladorMovBonific extends ControladorBase{
     public void reporte(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Map param = new HashMap();
         Integer id_bonificacion=Integer.parseInt(request.getParameter("id_bonificacion"));
+        
+        //obtener el nombre del beneficiario
+        GestionMovBonific modelo = new GestionMovBonific();
+        ArrayList bonificacion = modelo.obtenerPorIdReporte(id_bonificacion);
+        
+        //iterador para iterar sobre el arreglo de movbonific para sacar el valor de id_bonificacion
+        Iterator<MovBonific> it = bonificacion.iterator();
+        MovBonific bonific = new MovBonific();
+            while(it.hasNext()){
+                bonific = it.next();
+            }       
+        String beneficiario = bonific.getNombrebenef();
+      
         param.put("sql", "where BO.id_bonificacion='"+id_bonificacion+"'");
+        param.put("titulo", "Reporte de Bonificación para: "+beneficiario);
         generarReporte("ReporteMovBonificaciones.jasper", param, request, response);
     
     }
@@ -575,7 +589,21 @@ public class ControladorMovBonific extends ControladorBase{
     public void reportediv(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Map param = new HashMap();
         Integer id_bonificacion=Integer.parseInt(request.getParameter("id_bonificacion"));
+        
+        //obtener el nombre del beneficiario
+        GestionMovBonific modelo = new GestionMovBonific();
+        ArrayList bonificacion = modelo.obtenerPorIdDivReporte(id_bonificacion);
+        
+        //iterador para iterar sobre el arreglo de movbonific para sacar el valor de id_bonificacion
+        Iterator<MovBonific> it = bonificacion.iterator();
+        MovBonific bonific = new MovBonific();
+            while(it.hasNext()){
+                bonific = it.next();
+            }       
+        String beneficiario = bonific.getNombrebenef();
+        
         param.put("sql", "where BO.id_bonificacion='"+id_bonificacion+"'");
+        param.put("titulo", "Reporte de Bonificación para: "+beneficiario);
         generarReporte("ReporteMovBonificacionesDiv.jasper", param, request, response);
     
     }
