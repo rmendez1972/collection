@@ -26,12 +26,16 @@ public class GestionBendiv {
         Integer id_catprog=bendiv.getId_catprog();
         Integer id_usuario=bendiv.getId_usuario();
         
+        Boolean bolaperturado=bendiv.isAperturado();
+        Integer intaperturado =(bolaperturado) ?1 :0;
+        String aperturado =intaperturado.toString();
+        
         //
         //Integer id_delegacion=autoriza.getId_delegacion();
         //String nombre=autoriza.getNombre();
         //String cargo=autoriza.getCargo();
           
-        Object params[]={clave_elect, curp, clave_b, nombre, id_catprog, id_usuario};
+        Object params[]={clave_elect, curp, clave_b, nombre, id_catprog, id_usuario,aperturado};
         res=Conexion.ejecutar("insert into benef_div (clave_elect, curp, clave_b, nombre, id_catprog, id_usuario) values (?,?,?,?,?,?)", params);
         
         return res;
@@ -43,7 +47,10 @@ public class GestionBendiv {
         ResultSet res=Conexion.ejecutarConsulta("select * from benef_div where id_bendiv=?", params);
         try{
             if(res.next()){
-                bendiv=new BeneficiarioDiv(res.getInt("id_bendiv"), res.getString("clave_elect"), res.getString("curp"), res.getString("clave_b"), res.getString("nombre"), res.getInt("id_catprog"),res.getInt("id_usuario"));
+                bendiv=new BeneficiarioDiv(res.getInt("id_bendiv"), res.getString("clave_elect"), 
+                        res.getString("curp"), res.getString("clave_b"), res.getString("nombre"), 
+                        res.getInt("id_catprog"),res.getInt("id_usuario"),res.getBoolean("aperturado"), 
+                        res.getString("numcontrato"));
             }
             res.close();
         }catch(Exception e){}
@@ -61,7 +68,11 @@ public class GestionBendiv {
         
         try{
             while(res.next()){
-                BeneficiarioDiv bendiv=new BeneficiarioDiv(res.getInt("id_bendiv"), res.getString("clave_elect"), res.getString("curp"), res.getString("clave_b"), res.getString("nombre"), res.getInt("id_catprog"),res.getInt("id_usuario"));
+                BeneficiarioDiv bendiv=new BeneficiarioDiv(res.getInt("id_bendiv"), 
+                        res.getString("clave_elect"), res.getString("curp"), res.getString("clave_b"), 
+                        res.getString("nombre"), res.getInt("id_catprog"),res.getInt("id_usuario"),
+                        res.getBoolean("aperturado"), res.getString("numcontrato"));
+                
                 bendiv.setCatprog(res.getString("catprog"));
                 bendiv.setUsuario(res.getString("usuario"));
                 lista.add(bendiv);

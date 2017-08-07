@@ -61,7 +61,7 @@
         <div class="table-responsive listado">
         <table class="table table-condensed table-hover" id="bonificacionlist">
             <thead>
-                <tr>
+                <tr style="font-size: 12px;font-stretch: condensed;">
                     <th>Clave de Bonificación</th>
                     <th>Descripcion</th>
                     <th>Acciones</th>
@@ -69,7 +69,7 @@
             </thead>
             <tbody>
                 <c:forEach var="bonificacion" items="${requestScope.bonificaciones}" varStatus="loop"> 
-                    <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
+                    <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}" style="font-size: 12px;font-stretch: condensed;">
                         <th> <c:out value="${bonificacion.clave_bonific}" /></th>
                         <th> <c:out value="${bonificacion.descripcion}" /></th>
                         <th><img src="imagenes/editar.png" class="btn-tabla" title="Editar Bonificacion" onclick="editarBonificacion(${bonificacion.id_bonific});" /><img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Bonificacion" onclick="eliminarBonificacion(${bonificacion.id_bonific});" /></th>

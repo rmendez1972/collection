@@ -19,7 +19,20 @@
             $.post("controladorbendiv?operacion=editar", params, function(datos){
                 $("#show").html(datos);
             },"html");
-        }   
+        }
+        
+        function listarMovBendiv(id){
+            alert('Listar movimientos...En construcción')
+            
+            /*confirma("", "Eliminar beneficiario diverso", "Confirmar eliminación", "eliminar", function(){
+                var params=new Object();
+                params.id=id;
+                $.post("controladorbendiv?operacion=eliminar", params, function(datos){
+                    $("#show").html(datos);
+                },"html");
+            });*/
+        }
+        
         function eliminarBendiv(id){
             
             confirma("", "Eliminar beneficiario diverso", "Confirmar eliminación", "eliminar", function(){
@@ -62,28 +75,44 @@
         <div class="table-responsive listado">
         <table class="table table-condensed table-hover" id="bendivlist">
             <thead>
-                <tr>
+                <tr style="font-size: 12px;font-stretch: condensed;">
                     <th>Clave benef.</th>
                     <th>Programa</th>
                     <th>Nombre</th>
                     <th>Clave de elector</th>
                     <th>CURP</th>
                     <th>Usuario</th>
+                    <th>Aperturado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach var="bendiv" items="${requestScope.bendivs}" varStatus="loop"> 
-                    <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}">
-                        <th> <c:out value="${bendiv.clave_b}" /></th>
-                        <th> <c:out value="${bendiv.catprog}" /></th>
-                        <th> <c:out value="${bendiv.nombre}" /></th>
-                        <th> <c:out value="${bendiv.clave_elect}" /></th>
-                        <th> <c:out value="${bendiv.curp}" /></th>
-                        <th> <c:out value="${bendiv.usuario}" /></th>
+                    <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}" style="font-size: 14px;font-stretch: condensed;color:#000;">
+                        <th style="font-weight: normal"> <c:out value="${bendiv.clave_b}" /></th>
+                        <th style="font-weight: normal"> <c:out value="${bendiv.catprog}" /></th>
+                        <th style="font-weight: normal"> <c:out value="${bendiv.nombre}" /></th>
+                        <th style="font-weight: normal"> <c:out value="${bendiv.clave_elect}" /></th>
+                        <th style="font-weight: normal"> <c:out value="${bendiv.curp}" /></th>
+                        <th style="font-weight: normal"> <c:out value="${bendiv.usuario}" /></th>
+                        <c:choose>
+                            <c:when test="${bendiv.aperturado==true}">
+                                <th style="text-align: center">
+                                    <span class="fa fa-check" title="movimiento con bonificación"></span></th>
+                            </c:when>
+                                    
+                            <c:when test="${bendiv.aperturado==false}">
+                                <th style="text-align: center"><span class="fa fa-close" title="movimiento sin bonificación"></span></th>
+                            </c:when>
+                        </c:choose>
                         <th>
-                            <img src="imagenes/editar.png" class="btn-tabla" title="Editar Registro"     onclick="editarBendiv(${bendiv.id_bendiv});" />
-                            <img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Registro" onclick="eliminarBendiv(${bendiv.id_bendiv});" />
+                            <img src="imagenes/editar.png" 
+                                 class="btn-tabla" title="Editar Registro"     
+                                 onclick="editarBendiv(${bendiv.id_bendiv});"/>
+                            <img src="imagenes/listar.png" class="btn-tabla" title="Lista los registro de este beneficiaro" 
+                                 onclick="listarMovBendiv(${bendiv.id_bendiv});"/>
+                            <img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Registro" 
+                                 onclick="eliminarBendiv(${bendiv.id_bendiv});"/>
                         </th>
                     </tr>
                 </c:forEach>
