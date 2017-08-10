@@ -62,7 +62,7 @@ public class ControladorMov_diversos extends ControladorBase
         ArrayList movimientos=modelo.obtenerMovimientosporID(id);
         request.setAttribute("movimientos", movimientos);
             
-        RequestDispatcher rd=request.getRequestDispatcher("listar_mov_diversos_id.jsp");
+        RequestDispatcher rd=request.getRequestDispatcher("listar_mov_diversos.jsp");
         rd.forward(request,response);
     }
     
