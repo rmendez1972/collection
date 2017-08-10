@@ -6,6 +6,9 @@
 	<parameter name="sql" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="titulo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[Select BO.*, BE.nombre as nombrebenef, CB.clave_bonific as clavebonific, U.nombre as usuario, CP.descripcion as catprograma, A.nombre as nombreautoriza from bonific BO inner join benef BE on BO.id_benef=BE.id_benef inner join cat_bonific CB on BO.id_catbonific=CB.id_bonific inner join usuarios U on BO.id_usuario=U.id_usuario inner join cat_prog CP on BO.id_catprog=CP.id_catprog inner join autoriza A on BO.id_autoriza=A.id_autoriza $P!{sql}]]>
 	</queryString>
@@ -80,19 +83,19 @@
 				<imageExpression><![CDATA["..\\imagenes\\seduvi.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="3" y="121" width="749" height="20" uuid="0503b35f-acc0-4832-a848-290874a81fd8"/>
-				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="12" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Catálogo de Movimientos Bonificaciones]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="0" y="98" width="752" height="20" uuid="06d7dbe0-d4e4-45ca-a2f8-c681c6933dc0"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Sistema de Cobranza]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="3" y="122" width="749" height="20" uuid="488a9936-9e8f-4b33-b6c7-b764e2b0db22"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{titulo}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
