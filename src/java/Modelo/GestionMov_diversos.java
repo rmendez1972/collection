@@ -153,6 +153,40 @@ public class GestionMov_diversos
         return movimientos;
     }
     
+    public ArrayList obtenerMovimientosporID(int id_bendiv){
+        //MovDiversos movimiento=null;
+        Object params[]={id_bendiv};
+        ArrayList movimientos=new ArrayList();
+        //ResultSet res=Conexion.ejecutarConsulta("select M.*, B.nombre as nombrebenef, U.usuario as usuario from mov_edoscta M inner join Benef B on M.id_benef=B.id_benef inner join Usuarios U on M.id_usuario=U.id_usuario  order by M.clave_b,M.id_movedoscta", null);
+        ResultSet res=Conexion.ejecutarConsulta("select M.*, B.nombre as nombrebenef, U.usuario as usuario from mov_diversos M inner join Benef_div B on M.id_bendiv=B.id_bendiv inner join Usuarios U on M.id_usuario=U.id_usuario  where M.id_bendiv= ? order by M.clave_b,M.id_movdiversos", params);
+        try{
+            while(res.next()){
+                //MovDiversos movimiento=new MovDiversos(res.getInt("id_movedoscta"),res.getInt("id_benef"),res.getBigDecimal("capital"),res.getBigDecimal("interes"),res.getBigDecimal("admon"),res.getBigDecimal("seguro"),res.getString("clave_mov"),res.getString("poliza"),res.getDate("fecha_mov"),res.getInt("recibo"),res.getBigDecimal("o_seg"),res.getBigDecimal("moratorios"), res.getString("estatus"),res.getDate("fecha_pol"),res.getInt("id_usuario"),res.getString("prepago"),res.getInt("id_bonific"),res.getBigDecimal("comisiones"),res.getString("serie"),res.getBoolean("puntual"),res.getString("clave_b"),res.getBigDecimal("tit"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getInt("id_caja"),res.getBoolean("bonific"));
+                MovDiversos movimiento=new MovDiversos(res.getInt("id_movdiversos"), 
+                        res.getInt("id_bendiv"),    res.getString("clave_div"), 
+                        res.getDate("fecha_div"),   res.getString("poliza"), 
+                        res.getInt("recibo"),       res.getBigDecimal("cargo"), 
+                        res.getBigDecimal("abono"), res.getBigDecimal("moratorios"), 
+                        res.getBigDecimal("otros"), res.getDate("fecha_pol"), 
+                        res.getString("estatus"),    res.getInt("id_usuario"), 
+                        res.getBoolean("aplicado"), res.getString("descripcion"), 
+                        res.getInt("id_catprog"),   res.getBigDecimal("bonificacion"), 
+                        res.getString("serie"),     res.getString("poliza_apli"), 
+                        res.getDate("fecha_apli"),  res.getBigDecimal("interes"), 
+                        res.getBigDecimal("seguro"), res.getInt("id_emisor"), 
+                        res.getString("clave_b"),   res.getString("numcontrato"), 
+                        res.getInt("id_caja"),      res.getBoolean("bonific")
+                );
+                movimiento.setNombrebenef(res.getString("nombrebenef"));
+                movimiento.setNombreusuario(res.getString("usuario"));
+                
+                movimientos.add(movimiento);
+            }
+            res.close();
+        }catch(Exception e){}
+        return movimientos;
+    }
+    
     
     public boolean actualizarMov_diversos(MovDiversos movimiento){
         Integer id_movdiversos=movimiento.getId_movdiversos();

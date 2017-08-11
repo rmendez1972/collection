@@ -22,15 +22,12 @@
         }
         
         function listarMovBendiv(id){
-            alert('Listar movimientos...En construcción')
             
-            /*confirma("", "Eliminar beneficiario diverso", "Confirmar eliminación", "eliminar", function(){
-                var params=new Object();
-                params.id=id;
-                $.post("controladorbendiv?operacion=eliminar", params, function(datos){
-                    $("#show").html(datos);
-                },"html");
-            });*/
+            var params=new Object();
+            params.id=id;
+            $.post("controladormov_diversos?operacion=listarMovBendivId", params, function(datos){
+                $("#show").html(datos);
+            },"html");
         }
         
         function eliminarBendiv(id){
