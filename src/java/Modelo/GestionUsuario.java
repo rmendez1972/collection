@@ -64,13 +64,37 @@ public class GestionUsuario {
         Object params[]={usr.getNombre(), usr.getId_nivel(), usr.getDireccion(), usr.getCargo(), usr.getId_del(), usr.getSerie(), usr.getUsuario().toUpperCase(), usr.getPassword().toUpperCase(), usr.getId_usuario()};
         return Conexion.ejecutar("update usuarios set nombre=UPPER(?), id_nivel=?, direccion=UPPER(?), cargo=UPPER(?), id_del=?, serie=UPPER(?), usuario=?, password=md5(?) where id_usuario=?", params);
     }
-    /*
-    public ArrayList obtenerPermisos(int id_usuario){
-        Usuario usr=this.obtenerPorId(id_usuario);
-        GestionGrupo grp=new GestionGrupo();
-        return grp.obtenerPermisos(usr.getId_grupo());
+    public Usuario obtenerPorEmailPassword(String email, String password){
+        Usuario usua=null;
+        Object[] params={email,password};
+        ResultSet res=Conexion.ejecutarConsulta("select * from usuarios  where usuario=? and password=MD5(?)", params);
+        try {
+            if(res.next()){
+                usua=fromResultSet(res);
+            }
+            res.close();
+        } catch (Exception ex) {}
+        
+        return usua;
     }
-    */
+    
+    private Usuario fromResultSet(ResultSet res){
+        Usuario usuario=new Usuario();
+        try{
+            
+            usuario.setCargo(res.getString("cargo"));
+            usuario.setDireccion(res.getString("direccion"));
+            usuario.setId_del(res.getInt("id_del"));
+            usuario.setId_nivel(res.getInt("id_del"));
+            usuario.setId_usuario(res.getInt("id_usuario"));
+            usuario.setNombre(res.getString("nombre"));
+            usuario.setPassword(res.getString("password"));
+            usuario.setUsuario(res.getString("usuario"));
+            
+        }catch(Exception e){}
+        return usuario;
+    }
+    
     public boolean eliminarPorId(int id_usuario){
         Object params[]={id_usuario};
         return Conexion.ejecutar("delete from usuarios where id_usuario=?", params);
