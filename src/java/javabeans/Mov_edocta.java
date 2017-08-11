@@ -43,6 +43,14 @@ public class Mov_edocta
     private String nombrebenef;
     private String nombreusuario;
     private Boolean bonific;
+    
+    private BigDecimal sumcapital;
+    private BigDecimal suminteres;
+    private BigDecimal sumadmon;
+    private BigDecimal sumseguro;
+    private BigDecimal sumoseg;
+    private BigDecimal sumcomisiones;
+    private BigDecimal sumtitulacion;
   
    
     public Mov_edocta(){ super();}
@@ -335,5 +343,64 @@ public class Mov_edocta
     public void setBonific(Boolean bonific) {
         this.bonific = bonific;
     }
+
+    public BigDecimal getSumcapital() {
+        return sumcapital;
+    }
+
+    public void setSumcapital(BigDecimal sumcapital) {
+        this.sumcapital = sumcapital;
+    }
+
+    public BigDecimal getSuminteres() {
+        return suminteres;
+    }
+
+    public void setSuminteres(BigDecimal suminteres) {
+        this.suminteres = suminteres;
+    }
+
+    public BigDecimal getSumadmon() {
+        return sumadmon;
+    }
+
+    public void setSumadmon(BigDecimal sumadmon) {
+        this.sumadmon = sumadmon;
+    }
+
+    public BigDecimal getSumseguro() {
+        return sumseguro;
+    }
+
+    public void setSumseguro(BigDecimal sumseguro) {
+        this.sumseguro = sumseguro;
+    }
+
+    public BigDecimal getSumoseg() {
+        return sumoseg;
+    }
+
+    public void setSumoseg(BigDecimal sumoseg) {
+        this.sumoseg = sumoseg;
+    }
+
+    public BigDecimal getSumcomisiones() {
+        return sumcomisiones;
+    }
+
+    public void setSumcomisiones(BigDecimal sumcomisiones) {
+        this.sumcomisiones = sumcomisiones;
+    }
+
+    public BigDecimal getSumtitulacion() {
+        return sumtitulacion;
+    }
+
+    public void setSumtitulacion(BigDecimal sumtitulacion) {
+        this.sumtitulacion = sumtitulacion;
+    }
+    
+    
+    
      
 }

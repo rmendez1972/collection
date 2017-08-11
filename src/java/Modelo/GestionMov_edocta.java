@@ -200,6 +200,28 @@ public class GestionMov_edocta
     }
     
     
+    public ArrayList obtenerSuma(int id){
+        Object params[]={id};
+        ArrayList movimientos=new ArrayList();
+        ResultSet res=Conexion.ejecutarConsulta("select *, sum(capital) AS sumcapital, sum(interes) AS suminteres, sum(admon) AS sumadmon, sum(seguro) AS sumseguro, sum(o_seg) AS sumoseg, sum(comisiones) AS sumcomisiones, sum(tit) AS sumtitulacion from mov_edoscta where id_benef=?", params);
+        try{
+            while(res.next()){
+                Mov_edocta movimiento=new Mov_edocta(res.getInt("id_movedoscta"),res.getInt("id_benef"),res.getBigDecimal("capital"),res.getBigDecimal("interes"),res.getBigDecimal("admon"),res.getBigDecimal("seguro"),res.getString("clave_mov"),res.getString("poliza"),res.getDate("fecha_mov"),res.getInt("recibo"),res.getBigDecimal("o_seg"),res.getBigDecimal("moratorios"), res.getString("estatus"),res.getDate("fecha_pol"),res.getInt("id_usuario"),res.getString("prepago"),res.getInt("id_bonific"),res.getBigDecimal("comisiones"),res.getString("serie"),res.getBoolean("puntual"),res.getString("clave_b"),res.getBigDecimal("tit"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getInt("id_caja"),res.getBoolean("bonific"));
+                movimiento.setSumcapital(res.getBigDecimal("sumcapital"));
+                movimiento.setSuminteres(res.getBigDecimal("suminteres"));
+                movimiento.setSumadmon(res.getBigDecimal("sumadmon"));
+                movimiento.setSumseguro(res.getBigDecimal("sumseguro"));
+                movimiento.setSumoseg(res.getBigDecimal("sumoseg"));
+                movimiento.setSumcomisiones(res.getBigDecimal("sumcomisiones"));
+                movimiento.setSumtitulacion(res.getBigDecimal("sumtitulacion"));
+                movimientos.add(movimiento);
+            }
+            res.close();
+        }catch(Exception e){}
+        return movimientos;
+    
+    }
+    
 }
 
 

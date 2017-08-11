@@ -41,7 +41,24 @@
         $(document).ready(function(){
             
             $('#candidatoslist').DataTable();
+            $('#candidatoslist2').DataTable();
         });
+        
+        
+        function aperturarVencidos(){
+                var params=new Object();
+                params.fecha_corte=$("#fecha_corte").val();
+                params.id_benef=$("#id_benef").val();
+                
+                $.post("controladorvencidos?operacion=listar", params, function(datos){
+                    $("#vencidos").find('table').remove();
+                    $("#vencidos").html(datos);
+                },"html");
+               
+              
+                
+                return false;
+            }
         
         
         <c:if test="${msg != null}">
@@ -79,17 +96,11 @@
                     <th>Otros Seguros</th>
                     <th>Comisión</th>
                     <th>Titulación</th>
-                    <th>Bonificacion?</th>
-                    
-                    
-                    
-                    
+                    <th>Bonificacion?</th>    
                 </tr>
             </thead>
             <tbody>
                 
-                
-
                 <c:forEach var="mov" items="${requestScope.movimientos}" varStatus="loop"> 
                     <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}" style="font-size: 12px;font-stretch: condensed;color:#000;">
                         <c:set var="estatus" value="${mov.status}"/>
@@ -123,16 +134,67 @@
                                 <th style="text-align: center"><span class="fa fa-close" title="Movimmientto sin Bonificación"></span></th>
                             </c:when>
                         </c:choose>
-                                    
-                        
-                                                
+                                                       
                     </tr>
                 </c:forEach>
+                    
+                <c:forEach var="sumamov" items="${requestScope.sumamov}" varStatus="loop">    
+                    <tr class="${loop.index % 2 == 0 ? 'odd' : 'impar'}" style="font-size: 12px;font-stretch: condensed;color:#000;">
+                        <th style="font-weight: normal; width: 30%">SUMA</th>
+                        <th style="font-weight: normal; width: 30%"></th>
+                        <th style="font-weight: normal; width: 30%"></th>
+                        <th style="font-weight: normal; width: 30%"></th>
+                        <th style="font-weight: normal; width: 30%"></th>
+                        <th style="font-weight: normal; width: 30%"></th>
+                        <th style="font-weight: normal; width: 30%"></th>
+                        <th style="font-weight: normal; width: 30%"> <c:out value="${sumamov.sumcapital}" /></th>
+                        <th style="font-weight: normal; width: 30%"> <c:out value="${sumamov.suminteres}" /></th>
+                        <th style="font-weight: normal; width: 30%"> <c:out value="${sumamov.sumadmon}" /></th>
+                        <th style="font-weight: normal; width: 30%"> <c:out value="${sumamov.sumseguro}" /></th>
+                        <th style="font-weight: normal; width: 30%"> <c:out value="${sumamov.sumoseg}" /></th>
+                        <th style="font-weight: normal; width: 30%"> <c:out value="${sumamov.sumcomisiones}" /></th>
+                        <th style="font-weight: normal; width: 30%"> <c:out value="${sumamov.sumtitulacion}" /></th>
+                        <th style="font-weight: normal; width: 30%"></th>
+                    </tr>
+                </c:forEach>                    
             </tbody>
         </table>
-        
             
-        </div>    
+        </div>
+        <c:set var="id_benef" value="${requestScope.id_benef}"/>
+         <c:if test="${id_benef!=null}">
+            <form id="form_UA" onsubmit="return aperturarVencidos()"  class="form-horizontal">
+                    <label for="imp_cap" class="col-xs-12 col-md-2 control-label">Fecha de Corte:</label>
+                    <input type="date" id="fecha_corte" required>
+                    <input type="hidden" id="id_benef" value="${requestScope.id_benef}">
+                    <input type="submit" value="Aceptar" class="btn btn-primary" />
+            </form>
+        </c:if>
         
+         
+        <div class="vencidos" id="vencidos" >
+            <div class="table-responsive listado">
+                <table class="table table-condensed table-hover" id="candidatoslist2">
+                    <thead>
+                        <tr style="font-size: 13px;font-stretch: condensed;">
+                            <th>Nombre Beneficiario</th>
+                            <th>Estatus</th>
+                            <th>Clave SEDUVI</th>
+                            <th>Clave Movimiento</th>
+                            <th>Fecha Movimiento</th>
+                            <th>Póliza</th>
+                            <th>Capital</th>
+                            <th>Interes</th>
+                            <th>Admon</th>
+                            <th>Seguro</th>
+                            <th>Otros Seguros</th>
+                            <th>Comisión</th>
+                            <th>Titulación</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>       
+        </div>
+         
     </body>
 </html>
