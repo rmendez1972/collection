@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import javabeans.Beneficiario;
 import javabeans.Candidatos;
@@ -30,6 +31,7 @@ import javabeans.Mov_edocta;
 import javabeans.ParametrosApertura;
 import javabeans.Usuario;
 import javabeans.Bonificacion;
+import javabeans.MovBonific;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -60,7 +62,20 @@ public class ControladorMov_edocta extends ControladorBase
         int id=Integer.parseInt(request.getParameter("id"));
         GestionMov_edocta modelo=new GestionMov_edocta();
         ArrayList movimientos=modelo.obtenerMovimientosPorBenefId(id);
+        
+        //iterador para iterar sobre el arreglo de movbonific para sacar el valor de id_bonificacion
+        Iterator<Mov_edocta> it = movimientos.iterator();
+        Mov_edocta mov_edocta = new Mov_edocta();
+        while(it.hasNext()){
+             mov_edocta = it.next();
+        }       
+        Integer id_beneficiario = mov_edocta.getId_benef();
+        
+        ArrayList sumamov = modelo.obtenerSuma(id);
+        
         request.setAttribute("movimientos", movimientos);
+        request.setAttribute("id_benef", id_beneficiario);
+        request.setAttribute("sumamov", sumamov);
             
         RequestDispatcher rd=request.getRequestDispatcher("listar_mov_edoscta.jsp");
         rd.forward(request,response);
