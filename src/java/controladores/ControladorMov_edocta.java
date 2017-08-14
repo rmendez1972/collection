@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import javabeans.Beneficiario;
 import javabeans.Candidatos;
@@ -30,6 +31,7 @@ import javabeans.Mov_edocta;
 import javabeans.ParametrosApertura;
 import javabeans.Usuario;
 import javabeans.Bonificacion;
+import javabeans.MovBonific;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -58,10 +60,12 @@ public class ControladorMov_edocta extends ControladorBase
     
     public void listarPorBenefId(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id=Integer.parseInt(request.getParameter("id"));
+        
         GestionMov_edocta modelo=new GestionMov_edocta();
         ArrayList movimientos=modelo.obtenerMovimientosPorBenefId(id);
+        
         request.setAttribute("movimientos", movimientos);
-            
+       
         RequestDispatcher rd=request.getRequestDispatcher("listar_mov_edoscta.jsp");
         rd.forward(request,response);
     }
