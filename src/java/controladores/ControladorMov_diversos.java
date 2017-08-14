@@ -213,7 +213,7 @@ public class ControladorMov_diversos extends ControladorBase
         RequestDispatcher rd=request.getRequestDispatcher("frm_mov_diversos.jsp");
         rd.forward(request,response);
     }
-  
+  /*
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Candidatos candidato=new Candidatos();
         Integer id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
@@ -260,7 +260,7 @@ public class ControladorMov_diversos extends ControladorBase
         }
     }
     
-   
+/*   
     /*
     public void reporte(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Map param = new HashMap();
