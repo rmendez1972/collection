@@ -3,22 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionBendiv.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBase.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionMov_diversos.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_bendiv.jsp</file>
-<<<<<<< HEAD
-=======
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_bendiv.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_mov_edoscta.jsp</file>
-=======
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/controladores/ControladorMovBonific.java</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/listar_delegaciones.jsp</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/javabeans/MovBonific.java</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/listar_mov_bonific.jsp</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/Modelo/GestionMovBonific.java</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/web/frm_mov_bonific.jsp</file>
->>>>>>> c6831e5ace3b8dadf47f04b283ccc5e972675b9f
->>>>>>> 8b9c0b6be707d6477b1f7a44e36c402b3ffeb2b5
->>>>>>> e79a307c66d5cd048e6d1bcb2c5cee9cdd9c6958
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_candidato.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorMov_diversos.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/javabeans/Beneficiario.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_mov_diversos.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_mov_diversos.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBendiv.java</file>
         </group>
     </open-files>
 </project-private>

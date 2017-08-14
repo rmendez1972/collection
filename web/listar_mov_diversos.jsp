@@ -38,6 +38,20 @@
                 $("#show").html(datos);
             },"html");
         }
+        
+        
+        function nuevoMovDiversos(iddiv){
+            var params=new Object();
+            //params.iddiv=iddiv;
+            params.clave_b=${mov.clave_b};
+            params.id_bendiv=${mov.id_bendiv};
+            params.id_catprog=${mov.id_catprog};
+            params.contrato=${mov.contrato};
+            
+            $.post("controladormovbonific?operacion=listarbonific", params, function(datos){
+                $("#show").html(datos);
+            },"html");
+        }
                 
         $(document).ready(function(){
             
@@ -54,8 +68,10 @@
         <h3 class="bg-primary encabezado">
             <span class="fa fa-folder" style="color: #fff; padding: 5px;"></span>
             Mantenimiento a Estados de Cuenta de Diversos
+
         </h3>
-        <!--
+       
+       
         <div class="container-fluid navbar-right">
             <div class="btn-catalogo"  onclick="cargar('controladormov_diversos?operacion=nuevo','#show')">
                 <img src="imagenes/agregar.png" alt="Nuevo" />
@@ -66,7 +82,7 @@
                 </a>
             </div>
         </div>
-        -->
+       
         <div class="table-responsive listado">
         <table class="table table-condensed table-hover" id="diversoslist">
             <thead>

@@ -18,8 +18,10 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -132,12 +134,56 @@ public class ControladorBendiv extends ControladorBase {
         bendiv.setCurp(request.getParameter("curp").toUpperCase());
         bendiv.setClave_b(request.getParameter("clave_b").toUpperCase());
         bendiv.setNombre(request.getParameter("nombre").toUpperCase());
+       
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha_con = df.parse(request.getParameter("fecha_con"));
+        bendiv.setFecha_con(fecha_con);
+        BigDecimal capital = new BigDecimal(request.getParameter("capital"));
+        bendiv.setCapital(capital);
+        BigDecimal sub_inic = new BigDecimal(request.getParameter("sub_inic"));
+        bendiv.setSub_inic(sub_inic);
+        BigDecimal enganche = new BigDecimal(request.getParameter("enganche"));
+        bendiv.setEnganche(enganche);
+        BigDecimal interes = new BigDecimal(request.getParameter("interes"));
+        bendiv.setInteres(interes);
+        BigDecimal admon = new BigDecimal(request.getParameter("admon"));
+        bendiv.setAdmon(admon);
+        BigDecimal seguro = new BigDecimal(request.getParameter("seguro"));
+        bendiv.setSeguro(seguro);
+        BigDecimal o_seg = new BigDecimal(request.getParameter("o_seg"));
+        bendiv.setO_seg(o_seg);
+        bendiv.setPlazo(Integer.parseInt(request.getParameter("plazo")));
+        BigDecimal pago_mes = new BigDecimal(request.getParameter("pago_mes"));
+        bendiv.setPago_mes(pago_mes);
+        BigDecimal sal_con = new BigDecimal(request.getParameter("sal_con"));
+        bendiv.setSal_con(sal_con);
+        bendiv.setJuridico(request.getParameter("juridico").toUpperCase());
+        bendiv.setReferencia_jur(request.getParameter("referencia_jur").toUpperCase());
+        
+        Date fecha_jur = df.parse(request.getParameter("fecha_jur"));
+        bendiv.setFecha_jur(fecha_jur);
+        bendiv.setMza(request.getParameter("mza").toUpperCase());
+        bendiv.setLte(request.getParameter("lte").toUpperCase());
+        bendiv.setConyuge(request.getParameter("conyuge").toUpperCase());
+        Date fecha = df.parse(request.getParameter("fecha"));
+        bendiv.setFecha(fecha);
         
         Integer id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
         bendiv.setId_catprog(id_catprog);
+        //bendiv.setId_catprog(Integer.parseInt(request.getParameter("id_catprog")));
+        //bendiv.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
+        String num_contrato=request.getParameter("numcontrato");
+        bendiv.setNumcontrato(num_contrato);
         
-        Integer id_usuario=Integer.parseInt(request.getParameter("id_usuario"));
+        HttpSession session = request.getSession();
+        Usuario usuario = (Usuario)(session.getAttribute("usuario"));
+        Integer id_usuario = usuario.getId_usuario();
         bendiv.setId_usuario(id_usuario);
+        
+        GestionProgramas mod_gp= new GestionProgramas();
+        CatProgramas programa=mod_gp.obtenerPorId(id_catprog);
+        String clave_b=programa.getClave()+'-'+num_contrato;
+        bendiv.setClave_b(clave_b);
         
         GestionBendiv modelo=new GestionBendiv();
         if(modelo.actualizarBendiv(bendiv)){
@@ -169,13 +215,56 @@ public class ControladorBendiv extends ControladorBase {
         bendiv.setCurp(request.getParameter("curp").toUpperCase());
         bendiv.setClave_b(request.getParameter("clave_b").toUpperCase());
         bendiv.setNombre(request.getParameter("nombre").toUpperCase());
-        bendiv.setId_catprog(Integer.parseInt(request.getParameter("id_catprog")));
+        
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha_con = df.parse(request.getParameter("fecha_con"));
+        bendiv.setFecha_con(fecha_con);
+        BigDecimal capital = new BigDecimal(request.getParameter("capital"));
+        bendiv.setCapital(capital);
+        BigDecimal sub_inic = new BigDecimal(request.getParameter("sub_inic"));
+        bendiv.setSub_inic(sub_inic);
+        BigDecimal enganche = new BigDecimal(request.getParameter("enganche"));
+        bendiv.setEnganche(enganche);
+        BigDecimal interes = new BigDecimal(request.getParameter("interes"));
+        bendiv.setInteres(interes);
+        BigDecimal admon = new BigDecimal(request.getParameter("admon"));
+        bendiv.setAdmon(admon);
+        BigDecimal seguro = new BigDecimal(request.getParameter("seguro"));
+        bendiv.setSeguro(seguro);
+        BigDecimal o_seg = new BigDecimal(request.getParameter("o_seg"));
+        bendiv.setO_seg(o_seg);
+        bendiv.setPlazo(Integer.parseInt(request.getParameter("plazo")));
+        BigDecimal pago_mes = new BigDecimal(request.getParameter("pago_mes"));
+        bendiv.setPago_mes(pago_mes);
+        BigDecimal sal_con = new BigDecimal(request.getParameter("sal_con"));
+        bendiv.setSal_con(sal_con);
+        bendiv.setJuridico(request.getParameter("juridico").toUpperCase());
+        bendiv.setReferencia_jur(request.getParameter("referencia_jur").toUpperCase());
+        
+        Date fecha_jur = df.parse(request.getParameter("fecha_jur"));
+        bendiv.setFecha_jur(fecha_jur);
+        bendiv.setMza(request.getParameter("mza").toUpperCase());
+        bendiv.setLte(request.getParameter("lte").toUpperCase());
+        bendiv.setConyuge(request.getParameter("conyuge").toUpperCase());
+        Date fecha = df.parse(request.getParameter("fecha"));
+        bendiv.setFecha(fecha);
+        
+        Integer id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
+        bendiv.setId_catprog(id_catprog);
+        //bendiv.setId_catprog(Integer.parseInt(request.getParameter("id_catprog")));
         //bendiv.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
+        String num_contrato=request.getParameter("numcontrato");
+        bendiv.setNumcontrato(num_contrato);
         
         HttpSession session = request.getSession();
         Usuario usuario = (Usuario)(session.getAttribute("usuario"));
         Integer id_usuario = usuario.getId_usuario();
         bendiv.setId_usuario(id_usuario);
+        
+        GestionProgramas mod_gp= new GestionProgramas();
+        CatProgramas programa=mod_gp.obtenerPorId(id_catprog);
+        String clave_b=programa.getClave()+'-'+num_contrato;
+        bendiv.setClave_b(clave_b);
         
            
         GestionBendiv modelo=new GestionBendiv();
