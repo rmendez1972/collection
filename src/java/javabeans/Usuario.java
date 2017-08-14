@@ -44,6 +44,7 @@ public class Usuario {
         this.cargo = cargo;
         this.direccion = direccion;
 
+
     }
 
     public String getUsuario() {

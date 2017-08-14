@@ -5,6 +5,8 @@
 package controladores;
 
 import Modelo.GestionUsuario;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -21,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javabeans.Usuario;
+import javabeans.UsuarioApi;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -94,6 +97,44 @@ public class Controladorlogin extends ControladorBase
                response.sendRedirect("login.jsp");
             }    
                 
+        }
+        
+        
+        if(operacion.equals("apilogin"))
+        {
+            
+            
+            String username = request.getParameter("username").toUpperCase();
+            String password = request.getParameter("password").toUpperCase();
+            GestionUsuario gusua=new GestionUsuario(); 
+            Usuario usua = gusua.obtenerPorEmailPassword(username, password);
+            
+            UsuarioApi user= new UsuarioApi(); 
+            ArrayList usuario = new ArrayList();
+            if (usua != null){
+                user.setId(usua.getId_usuario());
+                user.setUsername(usua.getUsuario());
+                user.setPassword(usua.getPassword());
+                user.setFirstname(usua.getNombre());
+                
+                           
+                usuario.add(user);
+            }else{
+                usuario.add(user);
+            }
+                
+            
+            GsonBuilder builder=new GsonBuilder();
+            Gson gson=builder.create();
+            
+            //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+            response.setHeader("Access-Control-Max-Age", "3600");
+            response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+            response.getWriter().write("{\"user\":"+gson.toJson(usuario)+"}");
+            
+          
         }
         
         
