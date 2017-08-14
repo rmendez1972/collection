@@ -353,6 +353,14 @@
 
                 });
                 
+                //Menu: Estado de Cuenta
+                $("#edo_cta").click(function (event) {
+                    event.preventDefault();
+                    cargar('controladoredocta?operacion=listar','#show');
+
+                });
+                
+                
             });
             
             
