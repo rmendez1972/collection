@@ -202,7 +202,6 @@ public class ControladorMov_diversos extends ControladorBase
         }
     }
     
-/*     
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
         GestionProgramas mod_prog=new GestionProgramas();
         GestionTipocredito mod_tcr=new GestionTipocredito();
@@ -211,7 +210,7 @@ public class ControladorMov_diversos extends ControladorBase
         
         request.setAttribute("prog", prog);
         request.setAttribute("tipo", tipo);
-        RequestDispatcher rd=request.getRequestDispatcher("frm_candidato.jsp");
+        RequestDispatcher rd=request.getRequestDispatcher("frm_mov_diversos.jsp");
         rd.forward(request,response);
     }
   
@@ -261,7 +260,7 @@ public class ControladorMov_diversos extends ControladorBase
         }
     }
     
-*/   
+   
     /*
     public void reporte(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Map param = new HashMap();

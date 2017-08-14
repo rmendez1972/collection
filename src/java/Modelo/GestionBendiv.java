@@ -5,6 +5,7 @@
 package Modelo;
 
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javabeans.BeneficiarioDiv;
 import javabeans.Usuario;
@@ -23,20 +24,42 @@ public class GestionBendiv {
         String curp=bendiv.getCurp();
         String clave_b=bendiv.getClave_b();
         String nombre=bendiv.getNombre();
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+        String fecha_con=sdf.format(bendiv.getFecha_con());
+        String capital=bendiv.getCapital().toString();
+        String sub_inic=bendiv.getSub_inic().toString();
+        String enganche=bendiv.getEnganche().toString();
+        String interes=bendiv.getInteres().toString();
+        String admon=bendiv.getAdmon().toString();
+        String seguro=bendiv.getSeguro().toString();
+        String o_seg=bendiv.getO_seg().toString();
+        Integer plazo=bendiv.getPlazo();
+        String pago_mes=bendiv.getPago_mes().toString();
+        String sal_con=bendiv.getSal_con().toString();
+        String juridico=bendiv.getJuridico();
+        String referencia_jur=bendiv.getReferencia_jur();
+        String fecha_jur=sdf.format(bendiv.getFecha_jur());
         Integer id_catprog=bendiv.getId_catprog();
         Integer id_usuario=bendiv.getId_usuario();
+        String mza=bendiv.getMza();
+        String lte=bendiv.getLte();
+        String conyuge=bendiv.getConyuge();
+        String fecha=sdf.format(bendiv.getFecha());
+        String numcontrato=bendiv.getNumcontrato();
         
-        Boolean bolaperturado=bendiv.isAperturado();
+        /*Boolean bolaperturado=bendiv.isAperturado();
         Integer intaperturado =(bolaperturado) ?1 :0;
-        String aperturado =intaperturado.toString();
+        String aperturado =intaperturado.toString();*/
         
         //
         //Integer id_delegacion=autoriza.getId_delegacion();
         //String nombre=autoriza.getNombre();
         //String cargo=autoriza.getCargo();
           
-        Object params[]={clave_elect, curp, clave_b, nombre, id_catprog, id_usuario,aperturado};
-        res=Conexion.ejecutar("insert into benef_div (clave_elect, curp, clave_b, nombre, id_catprog, id_usuario) values (?,?,?,?,?,?)", params);
+        Object params[]={clave_elect,curp,clave_b,nombre,fecha_con,capital,
+        sub_inic,enganche,interes,admon,seguro,o_seg,plazo,pago_mes,sal_con,juridico,
+        referencia_jur,fecha_jur,id_usuario,id_catprog,mza,lte,conyuge,fecha,numcontrato};
+        res=Conexion.ejecutar("insert into benef_div (clave_elect,curp,clave_b,nombre,fecha_con,capital,sub_inic,enganche,interes,admon,seguro,o_seg,plazo,pago_mes,sal_con,juridico,referencia_jur,fecha_jur,id_usuario,id_catprog,mza,lte,conyuge,fecha,numcontrato) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", params);
         
         return res;
     }
@@ -49,8 +72,13 @@ public class GestionBendiv {
             if(res.next()){
                 bendiv=new BeneficiarioDiv(res.getInt("id_bendiv"), res.getString("clave_elect"), 
                         res.getString("curp"), res.getString("clave_b"), res.getString("nombre"), 
-                        res.getInt("id_catprog"),res.getInt("id_usuario"),res.getBoolean("aperturado"), 
-                        res.getString("numcontrato"));
+                        res.getDate("fecha_con"), res.getBigDecimal("capital"), res.getBigDecimal("sub_inic"),
+                        res.getBigDecimal("enganche"),res.getBigDecimal("interes"),res.getBigDecimal("admon"),
+                        res.getBigDecimal("seguro"),res.getBigDecimal("o_seg"), res.getInt("plazo"),
+                        res.getBigDecimal("pago_mes"),res.getBigDecimal("sal_con"),res.getString("juridico"),
+                        res.getString("referencia_jur"),res.getDate("fecha_jur"),res.getInt("id_usuario"),
+                        res.getInt("id_catprog"),res.getString("mza"),res.getString("lte"),
+                        res.getString("conyuge"), res.getDate("fecha"),res.getBoolean("aperturado"),res.getString("numcontrato"));
             }
             res.close();
         }catch(Exception e){}
@@ -70,7 +98,13 @@ public class GestionBendiv {
             while(res.next()){
                 BeneficiarioDiv bendiv=new BeneficiarioDiv(res.getInt("id_bendiv"), 
                         res.getString("clave_elect"), res.getString("curp"), res.getString("clave_b"), 
-                        res.getString("nombre"), res.getInt("id_catprog"),res.getInt("id_usuario"),
+                        res.getString("nombre"), res.getDate("fecha_con"), res.getBigDecimal("capital"),
+                        res.getBigDecimal("sub_inic"),res.getBigDecimal("enganche"), res.getBigDecimal("interes"),
+                        res.getBigDecimal("admon"), res.getBigDecimal("seguro"), res.getBigDecimal("o_seg"),
+                        res.getInt("plazo"), res.getBigDecimal("pago_mes"), res.getBigDecimal("sal_con"),
+                        res.getString("juridico"), res.getString("referencia_jur"), res.getDate("fecha_jur"),
+                        res.getInt("id_catprog"),res.getInt("id_usuario"), res.getString("mza"),
+                        res.getString("lte"), res.getString("conyuge"),res.getDate("fecha"),
                         res.getBoolean("aperturado"), res.getString("numcontrato"));
                 
                 bendiv.setCatprog(res.getString("catprog"));
@@ -85,21 +119,40 @@ public class GestionBendiv {
   
        
     public boolean actualizarBendiv(BeneficiarioDiv bendiv){
-        Integer mid_bendiv=bendiv.getId_bendiv();
-        String id_bendiv=mid_bendiv.toString();
-        
+        Integer id_bendiv=bendiv.getId_bendiv();
         String clave_elect=bendiv.getClave_elect();
         String curp=bendiv.getCurp();
         String clave_b=bendiv.getClave_b();
         String nombre=bendiv.getNombre();
-        Integer mid_catprog=bendiv.getId_catprog();
-        String id_catprog=mid_catprog.toString();
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+        String fecha_con=sdf.format(bendiv.getFecha_con());
+        String capital=bendiv.getCapital().toString();
+        String sub_inic=bendiv.getSub_inic().toString();
+        String enganche=bendiv.getEnganche().toString();
+        String interes=bendiv.getInteres().toString();
+        String admon=bendiv.getAdmon().toString();
+        String seguro=bendiv.getSeguro().toString();
+        String o_seg=bendiv.getO_seg().toString();
+        Integer plazo=bendiv.getPlazo();
+        String pago_mes=bendiv.getPago_mes().toString();
+        String sal_con=bendiv.getSal_con().toString();
+        String juridico=bendiv.getJuridico();
+        String referencia_jur=bendiv.getReferencia_jur();
+        String fecha_jur=sdf.format(bendiv.getFecha_jur());
+        Integer id_catprog=bendiv.getId_catprog();
+        Integer id_usuario=bendiv.getId_usuario();
+        String mza=bendiv.getMza();
+        String lte=bendiv.getLte();
+        String conyuge=bendiv.getConyuge();
+        String fecha=sdf.format(bendiv.getFecha());
+        String numcontrato=bendiv.getNumcontrato();
         
-        Integer mid_usuario=bendiv.getId_usuario();
-        String id_usuario=mid_usuario.toString();
         
-        Object params[]={clave_elect, curp, clave_b, nombre, id_catprog, id_usuario, id_bendiv};
-        return Conexion.ejecutar("update benef_div set clave_elect=?, curp=?, clave_b=?, nombre=?, id_catprog=?, id_usuario=? where id_bendiv=?", params);
+        Object params[]={clave_elect,curp,clave_b,nombre,fecha_con,capital,
+        sub_inic,enganche,interes,admon,seguro,o_seg,plazo,pago_mes,sal_con,juridico,
+        referencia_jur,fecha_jur,id_usuario,id_catprog,mza,lte,conyuge,fecha,numcontrato,id_bendiv};
+        return Conexion.ejecutar("update benef_div set clave_elect=?, curp=?, clave_b=?, nombre=?, fecha_con=?, capital=? ,sub_inic=? ,enganche=?, interes=?, admon=?, seguro=?, o_seg=?, plazo=?, pago_mes=?, sal_con=?, juridico=?, referencia_jur=?, fecha_jur=?, id_usuario=?, id_catprog=?, mza=?, lte=?, conyuge=?, fecha=?, numcontrato=? where id_bendiv=?", params);
+        //return Conexion.ejecutar("update benef_div set clave_elect=?, curp=?, clave_b=?, nombre=?, id_catprog=?, id_usuario=? where id_bendiv=?", params);
         
     }
      
