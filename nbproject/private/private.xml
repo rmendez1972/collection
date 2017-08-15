@@ -3,8 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBase.java</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorMov_diversos.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionModulo.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/index.html</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBanco.java</file>
@@ -38,6 +38,7 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Mov_edocta.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_firmantes.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/db/sp_apertura10.sql</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorMovBonific.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/db/sp_apertura36.sql</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Beneficiario.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionUsuario.java</file>
@@ -47,25 +48,6 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_bonificaciones.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorCandidato.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_mov_edocta.jsp</file>
-=======
-<<<<<<< HEAD
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionBendiv.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBase.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionMov_diversos.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_bendiv.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_candidato.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorMov_diversos.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/javabeans/Beneficiario.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_mov_diversos.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_mov_diversos.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBendiv.java</file>
-=======
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/controladores/ControladorVencidos.java</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/Modelo/GestionVencidos.java</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/controladores/ControladorEdocta.java</file>
->>>>>>> 81bbd34e62a5054a4d886725eb2b53d18d6be689
->>>>>>> 1b6dd938b7c5760a68f2db46e41ae41712bf0506
         </group>
     </open-files>
 </project-private>
