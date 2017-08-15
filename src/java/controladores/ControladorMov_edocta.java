@@ -60,9 +60,15 @@ public class ControladorMov_edocta extends ControladorBase
         rd.forward(request,response);
     }
     
-    public void listarJson(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public void listarJsonbyIdbenef(HttpServletRequest request, HttpServletResponse response) throws Exception{
         GestionMov_edocta modelo=new GestionMov_edocta();
-        ArrayList movimientos=modelo.obtenerMovimientos();
+        ArrayList movimientos=modelo.obtenerMovimientosPorBenefId(52);
+        
+        GestionBeneficiario gbenef = new GestionBeneficiario();
+        Beneficiario benef = gbenef.obtenerPorId(52);
+        ArrayList beneficiario = new ArrayList();
+        beneficiario.add(benef);
+        
         GsonBuilder builder=new GsonBuilder();
         Gson gson=builder.create();
             
@@ -71,7 +77,7 @@ public class ControladorMov_edocta extends ControladorBase
         response.setHeader("Access-Control-Allow-Methods", "POST, GET");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-        response.getWriter().write("{\"mov_edoscta\":"+gson.toJson(movimientos)+"}");
+        response.getWriter().write("{\"mov_edoscta\":"+gson.toJson(movimientos)+",\"beneficiario\":"+gson.toJson(beneficiario)+"}");
     }
     
     public void listarPorBenefId(HttpServletRequest request, HttpServletResponse response) throws Exception{
