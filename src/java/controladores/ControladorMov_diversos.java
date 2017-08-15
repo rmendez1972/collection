@@ -214,7 +214,7 @@ public class ControladorMov_diversos extends ControladorBase
         rd.forward(request,response);
     }
   
-    public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    /*public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Candidatos candidato=new Candidatos();
         Integer id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
         candidato.setId_catprog(id_catprog);
@@ -258,7 +258,7 @@ public class ControladorMov_diversos extends ControladorBase
             request.setAttribute("msg", "Error al guardar. Intente de nuevo más tarde");
             rd.forward(request,response);
         }
-    }
+    }*/
     
    
     /*
