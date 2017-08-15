@@ -208,8 +208,15 @@ public class ControladorMov_diversos extends ControladorBase
         ArrayList prog=mod_prog.obtenerTodos();
         ArrayList tipo=mod_tcr.obtenerTodos();
         
+        //Obteniendo el registro del movimiento diverso a editar
+        int id=Integer.parseInt(request.getParameter("id_bendiv"));
+        GestionBendiv modelo= new GestionBendiv();
+        BeneficiarioDiv beneficiario=modelo.obtenerPorId(id);
+        
         request.setAttribute("prog", prog);
         request.setAttribute("tipo", tipo);
+        request.setAttribute("beneficiario", beneficiario);
+        
         RequestDispatcher rd=request.getRequestDispatcher("frm_mov_diversos.jsp");
         rd.forward(request,response);
     }
