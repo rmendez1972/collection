@@ -120,7 +120,7 @@
                                  onclick="editarMovimiento(${mov.id_movdiversos});" />
                             <img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Movimiento" 
                                  onclick="eliminarMovimiento(${mov.id_movdiversos});" />
-                            <img src="imagenes/reporte_solicitudes.png" class="btn-tabla" title="Agregar Bonificacion" 
+                            <img src="imagenes/reporte_solicitudes.png" class="btn-tabla" title="Listar Bonificacion" 
                                  onclick="editarBonificacion(${mov.id_movdiversos});" />
                         </th>
                         <th style="font-weight: normal"> <c:out value="${mov.nombrebenef}" /></th>
