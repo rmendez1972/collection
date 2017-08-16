@@ -240,12 +240,7 @@ public class ControladorMov_diversos extends ControladorBase
         RequestDispatcher rd=request.getRequestDispatcher("frm_mov_diversos.jsp");
         rd.forward(request,response);
     }
-<<<<<<< HEAD
-  
-=======
 
-  /*
->>>>>>> aad47917492afd4dcad282dc70d39dfb3140bc0d
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         MovDiversos movimiento=new MovDiversos();
         
@@ -334,7 +329,7 @@ public class ControladorMov_diversos extends ControladorBase
             request.setAttribute("msg", "Error al guardar. Intente de nuevo más tarde");
             rd.forward(request,response);
         }
-    }*/
+    }
     
   
     /*
