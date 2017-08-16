@@ -222,7 +222,7 @@ public class GestionMov_diversos
         String abono=movimiento.getAbono().toString();
         String moratorios=movimiento.getMoratorios().toString();
         String otros=movimiento.getOtros().toString();
-        String fecha_pol=sdf.format(movimiento.getFecha_pol());
+        //String fecha_pol=sdf.format(movimiento.getFecha_pol());
         String estatus=movimiento.getEstatus();
         
         Boolean bolaplicado = movimiento.isAplicado();
@@ -251,12 +251,12 @@ public class GestionMov_diversos
         
         
         Object params[]={id_bendiv, clave_div, fecha_div, poliza, 
-            recibo, cargo, abono, moratorios, otros, fecha_pol, 
+            recibo, cargo, abono, moratorios, otros, 
             estatus, aplicado, descripcion, id_catprog, bonificacion, serie, 
             poliza_apli, fecha_apli, interes, seguro, id_emisor, clave_b, 
             numcontrato, bonific, id_caja, id_usuario, id_movdiversos};
         
-        return Conexion.ejecutar("update mov_diversos set id_bendiv=?, clave_div=?, fecha_div=?, poliza=?, recibo=?, cargo=?, abono=?, moratorios=?, otros=?, fecha_pol=?, estatus=?, aplicado=?, descripcion=?, id_catprog=?, bonificacion=?, serie=?, poliza_apli=?, fecha_apli=?, interes=?, seguro=?, id_emisor=?, clave_b=?, numcontrato=?, bonific=?, id_caja=?, id_usuario=? where id_movdiversos=?", params);
+        return Conexion.ejecutar("update mov_diversos set id_bendiv=?, clave_div=?, fecha_div=?, poliza=?, recibo=?, cargo=?, abono=?, moratorios=?, otros=?, estatus=?, aplicado=?, descripcion=?, id_catprog=?, bonificacion=?, serie=?, poliza_apli=?, fecha_apli=?, interes=?, seguro=?, id_emisor=?, clave_b=?, numcontrato=?, bonific=?, id_caja=?, id_usuario=? where id_movdiversos=?", params);
     }
     
     
