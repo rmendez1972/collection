@@ -73,6 +73,9 @@
                 
                 return false;
             }
+            document.getElementById('fecha_con').value=fechaActual();
+            document.getElementById('fecha_jur').value=fechaActual();
+            document.getElementById('fecha').value=fechaActual();
             
         </script>
     </head>
