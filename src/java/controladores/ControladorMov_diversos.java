@@ -57,11 +57,19 @@ public class ControladorMov_diversos extends ControladorBase
     }
     
     public void listarMovBendivId(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        int id;  
+        if(request.getAttribute("id")!=null){
+                id = Integer.parseInt((String)request.getAttribute("id"));
+
+        }else{
+                id=Integer.parseInt(request.getParameter("id"));
+        }
+        
         GestionMov_diversos modelo=new GestionMov_diversos();
-        int id=Integer.parseInt(request.getParameter("id"));
+        //id=Integer.parseInt(request.getParameter("id"));
         ArrayList movimientos=modelo.obtenerMovimientosporID(id);
         request.setAttribute("movimientos", movimientos);
-            
+        request.setAttribute("id", id);
         RequestDispatcher rd=request.getRequestDispatcher("listar_mov_diversos.jsp");
         rd.forward(request,response);
     }
@@ -72,7 +80,8 @@ public class ControladorMov_diversos extends ControladorBase
         
         if(modelo.eliminarPorId(id))
         {    
-            request.setAttribute("msg", "Registro eliminado");
+
+            
         }else{
             request.setAttribute("msg", "No es posible eliminar. Este Movimiento cuenta con bonificación.");
             
@@ -213,6 +222,17 @@ public class ControladorMov_diversos extends ControladorBase
         GestionBendiv modelo= new GestionBendiv();
         BeneficiarioDiv beneficiario=modelo.obtenerPorId(id);
         
+        //Obteniendo el catalogo de movimientos diversos
+        GestionClaveDiversos modelo_claveDiv= new GestionClaveDiversos();
+        ArrayList clavediv=modelo_claveDiv.obtenerTodos();
+        request.setAttribute("clavediv", clavediv);
+        
+        //Obteniendo el catalogo de emisores
+        GestionEmisor modelo_emisores= new GestionEmisor();
+        ArrayList emisores=modelo_emisores.obtenerTodos();
+        
+        request.setAttribute("emisores", emisores);
+                
         request.setAttribute("prog", prog);
         request.setAttribute("tipo", tipo);
         request.setAttribute("beneficiario", beneficiario);
@@ -221,54 +241,97 @@ public class ControladorMov_diversos extends ControladorBase
         rd.forward(request,response);
     }
 
-  /*
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        Candidatos candidato=new Candidatos();
-        Integer id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
-        candidato.setId_catprog(id_catprog);
-        String num_contrato=request.getParameter("numcontrato");
-        candidato.setNumcontrato(num_contrato);
-        String clave_elect=request.getParameter("clave_elect").toUpperCase();
-        candidato.setClave_elect(clave_elect);
-        String curp=request.getParameter("curp").toUpperCase();
-        candidato.setCurp(curp);
-        String rfc=request.getParameter("rfc").toUpperCase();
-        candidato.setRfc(rfc);
-        String nombre=request.getParameter("nombre").toUpperCase();
-        candidato.setNombre(nombre);
-        String conyuge=request.getParameter("conyuge").toUpperCase();
-        candidato.setConyuge(conyuge);
-               
+        MovDiversos movimiento=new MovDiversos();
+        
+        //Integer id_movdiversos=Integer.parseInt(request.getParameter("id_movdiversos"));
+        //movimiento.setId_movdiversos(id_movdiversos);
+        
+        Integer id_bendiv=Integer.parseInt(request.getParameter("id_bendiv"));
+        movimiento.setId_bendiv(id_bendiv);
+        String clave_div=request.getParameter("clave_div").toUpperCase();
+        movimiento.setClave_div(clave_div);
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Date fecha_con = df.parse(request.getParameter("fecha_con"));
-        candidato.setFecha_con(fecha_con);
-        String mza=request.getParameter("mza").toUpperCase();
-        candidato.setMza(mza);
-        String lte=request.getParameter("lte").toUpperCase();
-        candidato.setLte(lte);
-        BigDecimal area = new BigDecimal(request.getParameter("area"));
-        candidato.setArea(area);
-        String domicilio=request.getParameter("domicilio").toUpperCase();
-        candidato.setDomicilio(domicilio);
-        String clave_cat=request.getParameter("clave_cat").toUpperCase();
-        candidato.setClave_cat(clave_cat);
-        Integer id_tipocredito=Integer.parseInt(request.getParameter("id_tipocredito"));
-        candidato.setId_tipocredito(id_tipocredito);   
-        candidato.setId_usuario(1);
-        GestionCandidatos modelo=new GestionCandidatos();
-        if(modelo.registroCandidatos(candidato)){
-            RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=listar");
+        Date fecha_div = df.parse(request.getParameter("fecha_div"));
+        movimiento.setFecha_div(fecha_div);
+        String poliza=request.getParameter("poliza").toUpperCase();
+        movimiento.setPoliza(poliza);
+        Integer recibo=Integer.parseInt(request.getParameter("recibo"));
+        movimiento.setRecibo(recibo);
+        BigDecimal cargo = new BigDecimal(request.getParameter("cargo"));
+        movimiento.setCargo(cargo);
+        BigDecimal abono = new BigDecimal(request.getParameter("abono"));
+        movimiento.setAbono(abono);
+        BigDecimal moratorios = new BigDecimal(request.getParameter("moratorios"));
+        movimiento.setMoratorios(moratorios);
+        BigDecimal otros = new BigDecimal(request.getParameter("otros"));
+        movimiento.setOtros(otros);
+        //Date fecha_pol = df.parse(request.getParameter("fecha_pol"));
+        //movimiento.setFecha_pol(fecha_pol);
+        String estatus=request.getParameter("estatus").toUpperCase();
+        movimiento.setEstatus(estatus);
+        
+        String valAplicado = request.getParameter("aplicado");
+        Boolean aplicado = Boolean.parseBoolean(valAplicado);
+        movimiento.setAplicado(aplicado);
+              
+        String descripcion=request.getParameter("descripcion").toUpperCase();
+        movimiento.setDescripcion(descripcion);
+        Integer id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
+        movimiento.setId_catprog(id_catprog);
+        BigDecimal bonificacion = new BigDecimal(request.getParameter("bonificacion"));
+        movimiento.setBonificacion(bonificacion);
+        String serie=request.getParameter("serie").toUpperCase();
+        movimiento.setSerie(serie);
+        String poliza_apli=request.getParameter("poliza_apli").toUpperCase();
+        movimiento.setPoliza_apli(poliza_apli);
+        Date fecha_apli = df.parse(request.getParameter("fecha_apli"));
+        movimiento.setFecha_apli(fecha_apli);
+        BigDecimal interes = new BigDecimal(request.getParameter("interes"));
+        movimiento.setInteres(interes);
+        BigDecimal seguro = new BigDecimal(request.getParameter("seguro"));
+        movimiento.setSeguro(seguro);
+        Integer id_emisor=Integer.parseInt(request.getParameter("id_emisor"));
+        movimiento.setId_emisor(id_emisor);
+        String clave_b=request.getParameter("clave_b").toUpperCase();
+        movimiento.setClave_b(clave_b);
+        String numcontrato=request.getParameter("numcontrato").toUpperCase();
+        movimiento.setNumcontrato(numcontrato);
+        String valBonific = request.getParameter("bonific");
+        Boolean bonific = Boolean.parseBoolean(valBonific);
+        movimiento.setBonific(bonific);
+        
+        //Integer id_caja=Integer.parseInt(request.getParameter("id_caja"));
+        //movimiento.setId_caja(id_caja);
+        
+        HttpSession objSession = request.getSession(); 
+        Usuario usuario = (Usuario)(objSession.getAttribute("usuario")); 
+        Integer id_usuario=usuario.getId_usuario();
+        movimiento.setId_usuario(id_usuario);
+        movimiento.setId_caja(id_usuario);
+        
+        GestionMov_diversos modelo=new GestionMov_diversos();
+        if(modelo.registroMov_diverso(movimiento)){
+            
+            GestionBendiv model= new GestionBendiv();
+            model.cambiarAperturadoTrue(id_bendiv);
+            
+            RequestDispatcher rd=request.getRequestDispatcher("controladormov_diversos?operacion=listarMovBendivId");
+            
+            String mid_bendiv = id_bendiv.toString();
+            
             request.setAttribute("msg", "Datos guardados");
+            request.setAttribute("id", mid_bendiv);
             rd.forward(request,response);
         }
         else{
-            RequestDispatcher rd=request.getRequestDispatcher("controladorcandidato?operacion=nuevo");
+            RequestDispatcher rd=request.getRequestDispatcher("controladormov_diversos?operacion=nuevo");
             request.setAttribute("msg", "Error al guardar. Intente de nuevo más tarde");
             rd.forward(request,response);
         }
-    }*/
+    }
     
-/*   
+  
     /*
     public void reporte(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Map param = new HashMap();

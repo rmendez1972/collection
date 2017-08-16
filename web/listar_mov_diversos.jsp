@@ -70,11 +70,12 @@
             Mantenimiento a Estados de Cuenta de Diversos
 
         </h3>
-       <c:forEach var="mov" items="${requestScope.movimientos}" varStatus="loop"> 
-           <input id="id_bendiv" class="hidden" value="${mov.id_bendiv}">           
-       </c:forEach>
-     
+        
+           <input id="id_bendiv" type="hidden" value="${requestScope.id}">           
        
+     
+        <c:set var="id_bendiv" value="${requestScope.id}"/>
+        <c:if test="${id_bendiv!=null}">
         <div class="container-fluid navbar-right">
             <div class="btn-catalogo"  onclick="nuevoMovDiversos()">
                 <img src="imagenes/agregar.png" alt="Nuevo" />
@@ -85,7 +86,8 @@
                 </a>
             </div>
         </div>
-       
+       </c:if>
+        
         <div class="table-responsive listado">
         <table class="table table-condensed table-hover" id="diversoslist">
             <thead>
