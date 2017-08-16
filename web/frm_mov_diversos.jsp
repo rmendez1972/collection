@@ -23,7 +23,7 @@
             function registrar(){
                 
                 var params=new Object();
-                params.id_movdiversos=$("#id_movdiversos").val();
+                //params.id_movdiversos=$("#id_movdiversos").val();
                 
                 params.id_bendiv=$("#id_bendiv").val();
                 params.clave_div=$("#clave_div").val();
@@ -57,7 +57,7 @@
                     return false;
                 }
                              
-                $.post("controladormov_diversos?operacion=editarGuardar", params, function(datos){
+                $.post("controladormov_diversos?operacion=nuevoGuardar", params, function(datos){
                     $("#show").html(datos);
                 },"html");
                 
@@ -82,20 +82,20 @@
                     Alta Movimiento de Estado de Cuenta de Diversos
                 </h4>
             </div>
-            <!--<p>${beneficiario.nombre}</p>-->
+           
+            <input id="id_bendiv" type="hidden" value="${beneficiario.id_bendiv}">
+            
             <div class="panel-body transparent">
                 <form id="form_MP" onsubmit="return registrar()"  class="form-horizontal">
-                    <input type="hidden" name="id_movdiversos" id="id_movdiversos" value="${movimiento.id_movdiversos}" />
-                    <input type="hidden" name="id_caja" id="id_caja" value="${movimiento.id_caja}" />
-                    <input type="hidden" name="id_usuario" id="id_usuario" value="${movimiento.id_usuario}" />
-                    <input type="hidden" name="fecha_pol" id="fecha_pol" class="form-control" value="${movimiento.fecha_pol}" />
+                    
 
                     <div class="form-group">
                         <label for="clave_b" class="col-xs-12 col-md-2 control-label ">
                             Clave SEDETUS:
                         </label>
                         <div class="col-xs-12 col-md-4">
-                            <input type="text" name="clave_b" class="form-control" id="clave_b" required  placeholder="6 caracteres" maxlength="12" value="${movimiento.clave_b}" readonly/>
+                            <input type="text" name="clave_b" class="form-control" id="clave_b" 
+                                   required  placeholder="6 caracteres" maxlength="12" value="${beneficiario.clave_b}" readonly/>
                         </div>
                         
                         <label for="id_catprog" class="col-xs-12 col-md-2 control-label">
@@ -104,9 +104,9 @@
                         <div class="col-xs-12 col-md-4">
                             <select id="id_catprog" required class="select2  wrap form-control" disabled> 
                                 <option value="0">SELECCIONE UNO</option>
-                                <c:forEach  var="prog" items="${requestScope.programas}">
+                                <c:forEach  var="prog" items="${requestScope.prog}">
                                     
-                                    <OPTION value="${prog.id_catprog}" ${prog.id_catprog == movimiento.id_catprog ? 'selected':''}>[${prog.clave}]${prog.descripcion}</OPTION>
+                                    <OPTION value="${prog.id_catprog}" ${prog.id_catprog == beneficiario.id_catprog ? 'selected':''}>[${prog.clave}]${prog.descripcion}</OPTION>
                                 </c:forEach>
                             </select> 
                         </div>
@@ -120,19 +120,15 @@
                         <div class="col-xs-12 col-md-4">
                             <input type="text" class="form-control" required
                                 id="numcontrato"   placeholder="Máx. 5 caracteres" 
-                                maxlength="5" value="${movimiento.numcontrato}" readonly/>
+                                maxlength="5" value="${beneficiario.numcontrato}" readonly/>
                         </div>
                         
                         <label for="id_bendiv" class="col-xs-12 col-md-2 control-label" >
                             Beneficiario:
                         </label>
                         <div class="col-xs-12 col-md-4">
-                            <select id="id_bendiv" required class="select2  wrap form-control" disabled> 
-                                <option value="0" >SELECCIONE UNO</option>
-                                <c:forEach  var="bendiv" items="${requestScope.beneficiarios}">
-                                    <OPTION VALUE="${bendiv.id_bendiv}" ${bendiv.id_bendiv == movimiento.id_bendiv ? 'selected':''}>${bendiv.nombre}</OPTION>
-                                </c:forEach>
-                            </select>
+                            <input type="text" class="form-control"
+                               id="id_bendiv" VALUE="${beneficiario.nombre}" readonly/>
                         </div>   
                     </div>
                         
@@ -157,7 +153,7 @@
                         <div class="col-xs-12 col-md-4">
                             <input type="text" name="descripcion"   class="form-control" 
                                 id="descripcion"  placeholder="Máx. 120 caracteres" maxlength="120" 
-                                style="text-transform:uppercase" value="${movimiento.descripcion}"/>
+                                style="text-transform:uppercase" />
                         </div>
                     </div>
                         
@@ -167,7 +163,7 @@
                         </label>
                         <div class="col-xs-12 col-md-4">
                             <input type="date" id="fecha_div" class="form-control" 
-                                required  value="${movimiento.fecha_div}" />
+                                required />
                         </div>
 
                         <label for="poliza" class="col-xs-12 col-md-2 control-label">
@@ -175,8 +171,8 @@
                         </label>
                         <div class="col-xs-12 col-md-4">
                             <input type="text" name="poliza"   class="form-control" 
-                                id="poliza"  placeholder="Máx. 6 caracteres" maxlength="6" 
-                                style="text-transform:uppercase" value="${movimiento.poliza}"/>
+                                id="poliza"  placeholder="Máx. 4 caracteres" maxlength="4" 
+                                style="text-transform:uppercase"/>
                         </div>
 
                     </div>
@@ -189,7 +185,7 @@
                         </label>
                         <div class="col-xs-12 col-md-4">
                             <input  type="number" name="recibo"class="form-control" required  
-                                id="recibo" placeholder="Sólo acepta números" value="${movimiento.recibo}" />
+                                id="recibo" placeholder="Sólo acepta números" />
                         </div>
                         
                         <label for="serie" class="col-xs-12 col-md-2 control-label">
@@ -198,7 +194,7 @@
                         <div class="col-xs-12 col-md-4">
                             <input type="text" required class="form-control" 
                                 id="serie" placeholder="Solo se aceptan 1 caracter" 
-                                maxlength="1" value="${movimiento.serie}" />
+                                maxlength="1" style="text-transform:uppercase" />
                         </div>
                     </div>
                         
@@ -221,7 +217,7 @@
                         </label>
                         <div class="col-xs-12 col-md-4">
                             <input type="date" class="form-control" required  
-                                id="fecha_apli" value="${movimiento.fecha_apli}"/>
+                                id="fecha_apli"/>
                         </div>
                     </div>
                     
@@ -231,9 +227,9 @@
                         </label>
                         <div class="col-xs-12 col-md-4">
                             <input type="text" name="poliza_apli" class="form-control" 
-                                id="poliza_apli" placeholder="Máx. 6 caracteres" 
-                                maxlength="6" style="text-transform:uppercase" 
-                                value="${movimiento.poliza_apli}"/>
+                                id="poliza_apli" placeholder="Máx. 4 caracteres" 
+                                maxlength="4" style="text-transform:uppercase" 
+                                />
                         </div>
                         
                         <label for="aplicado" class="col-xs-12 col-md-2 control-label">
@@ -242,8 +238,8 @@
                         
                         <div class="col-xs-12 col-md-4">
                             <select id="aplicado" required class="wrap form-control"> 
-                                <option value="false" ${movimiento.aplicado == "false" ? 'selected':''}>INACTIVO</OPTION>
-                                <option value="true"  ${movimiento.aplicado == "true" ? 'selected':''}>ACTIVO</OPTION>
+                                <option value="false" >INACTIVO</OPTION>
+                                <option value="true" >ACTIVO</OPTION>
                                 
                             </select>   
                         </div>
@@ -256,8 +252,8 @@
                         
                         <div class="col-xs-12 col-md-4">
                             <select id="estatus" required class="wrap form-control"> 
-                                <option value="B" ${movimiento.estatus == 'B' ? 'selected':''}>BAJA</OPTION>
-                                <option value="A" ${movimiento.estatus == 'A' ? 'selected':''}>ACTIVO</OPTION>
+                                <option value="B">BAJA</OPTION>
+                                <option value="A">ACTIVO</OPTION>
                                 
                             </select>   
                         </div>
@@ -269,7 +265,7 @@
                             <input type="number" step="0.01" id="cargo" 
                                 class="form-control" required  
                                 placeholder="Solo se aceptan dos decimales" 
-                                maxlength="12" value="${movimiento.cargo}"/>
+                                maxlength="12" value="0.00"/>
                         </div>
                     </div>            
 
@@ -280,7 +276,7 @@
                         <div class="col-xs-12 col-md-4">
                             <input type="number" step="0.01" id="abono" 
                                 class="form-control" required  placeholder="Solo se aceptan dos decimales"
-                                maxlength="12" value="${movimiento.abono}" />
+                                maxlength="12" value="0.00" />
                         </div>
                         
                         <label for="seguro" class="col-xs-12 col-md-2 control-label">
@@ -290,7 +286,7 @@
                             <input type="number" step="0.01" 
                                 id="seguro" class="form-control" required 
                                 placeholder="Solo se aceptan dos decimales" 
-                                maxlength="12" value="${movimiento.seguro}" />
+                                maxlength="12" value="0.00" />
                         </div>
                     </div>
 
@@ -304,7 +300,7 @@
                             <input type="number" step="0.01" 
                                 id="otros" class="form-control" required  
                                 placeholder="Solo se aceptan dos decimales" 
-                                maxlength="12" value="${movimiento.otros}" />
+                                maxlength="12" value="0.00" />
                         </div>
                         
                         <label for="interes" class="col-xs-12 col-md-2 control-label">
@@ -314,7 +310,7 @@
                             <input type="number" step="0.01" 
                                 id="interes" class="form-control" required  
                                 placeholder="Solo se aceptan dos decimales" 
-                                maxlength="12" value="${movimiento.interes}" />
+                                maxlength="12" value="0.00" />
                         </div>
                     </div>
 
@@ -326,7 +322,7 @@
                             <input type="number" step="0.01" 
                                 id="moratorios" class="form-control" 
                                 required  placeholder="Solo se aceptan dos decimales" 
-                                maxlength="12" value="${movimiento.moratorios}" />
+                                maxlength="12" value="0.00" />
                         </div>
 
                         <label for="bonificacion" class="col-xs-12 col-md-2 control-label">
@@ -336,7 +332,7 @@
                             <input type="number" step="0.01" 
                                 id="bonificacion" class="form-control" 
                                 required  placeholder="Solo se aceptan dos decimales" 
-                                maxlength="12" value="${movimiento.bonificacion}" />
+                                maxlength="12" value="0.00" />
                         </div>
                     </div>
                         
@@ -347,8 +343,8 @@
                         
                         <div class="col-xs-12 col-md-4">
                             <select id="bonific" required class="wrap form-control"> 
-                                <option value="false" ${movimiento.bonific == "false" ? 'selected':''}>INACTIVO</OPTION>
-                                <option value="true"  ${movimiento.bonific == "true" ? 'selected':''}>ACTIVO</OPTION>
+                                <option value="false" >INACTIVO</OPTION>
+                                <option value="true" >ACTIVO</OPTION>
                                 
                             </select>   
                         </div>

@@ -7,10 +7,11 @@ package Modelo;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javabeans.Beneficiario;
 import javabeans.BeneficiarioDiv;
 import javabeans.Usuario;
 import javabeans.CatProgramas;
-
+import javabeans.MovDiversos;
 
 /**
  *
@@ -157,9 +158,45 @@ public class GestionBendiv {
     }
      
     public boolean eliminarPorId(int id_bendiv){
-        Object params[]={id_bendiv};
-        return Conexion.ejecutar("delete from benef_div where id_bendiv=?", params);
+      
+        BeneficiarioDiv benef = obtenerPorId(id_bendiv);
+         Boolean bolaperturado=benef.isAperturado();
+        //Integer intaperturado =(bolaperturado) ?1 :0;
+        //String aperturado =intaperturado.toString();
+
+        
+        if (!bolaperturado){
+            Object params[]={id_bendiv};
+            return Conexion.ejecutar("delete from benef_div where id_bendiv=?", params);
+            }else{
+            return false;
+        }
+        
     }
     
-  
+    
+    /*
+    public boolean eliminarPorId(int id_beneficiario){
+        Beneficiario benef = obtenerPorId(id_beneficiario);
+        Boolean aperturado=benef.getAperturado();
+        if (!aperturado){
+            Object params[]={id_beneficiario};
+            return Conexion.ejecutar("delete from beneficiario where id_beneficiario=?", params);
+        }else{
+            return false;
+        }
+            
+    }*/
+    
+    public boolean cambiarAperturadoTrue(int id_bendiv){
+    Object params[]={id_bendiv};
+    return Conexion.ejecutar("update benef_div set aperturado='1' where id_bendiv=?", params);
+    
+    }
+    
+    public boolean cambiarAperturadoFalse(int id_bendiv){
+    Object params[]={id_bendiv};
+    return Conexion.ejecutar("update benef_div set aperturado='0' where id_bendiv=?", params);
+    
+    }
 }
