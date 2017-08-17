@@ -70,11 +70,12 @@
             Mantenimiento a Estados de Cuenta de Diversos
 
         </h3>
-       <c:forEach var="mov" items="${requestScope.movimientos}" varStatus="loop"> 
-           <input id="id_bendiv" class="hidden" value="${mov.id_bendiv}">           
-       </c:forEach>
-     
+        
+           <input id="id_bendiv" type="hidden" value="${requestScope.id}">           
        
+     
+        <c:set var="id_bendiv" value="${requestScope.id}"/>
+        <c:if test="${id_bendiv!=null}">
         <div class="container-fluid navbar-right">
             <div class="btn-catalogo"  onclick="nuevoMovDiversos()">
                 <img src="imagenes/agregar.png" alt="Nuevo" />
@@ -85,7 +86,8 @@
                 </a>
             </div>
         </div>
-       
+       </c:if>
+        
         <div class="table-responsive listado">
         <table class="table table-condensed table-hover" id="diversoslist">
             <thead>
@@ -106,6 +108,8 @@
                     <th>Seguro</th>
                     <th>Descripción</th>
                     <th>Bonific</th>
+                    <th>Recibo</th>
+                    <th>Serie</th>
                     
                 </tr>
             </thead>
@@ -149,6 +153,8 @@
                                 <th style="text-align: center"><span class="fa fa-close" title="movimiento sin bonificación"></span></th>
                             </c:when>
                         </c:choose>
+                        <th style="text-align: left; font-weight: normal"> <c:out value="${mov.recibo}" /></th>
+                        <th style="text-align: left; font-weight: normal"> <c:out value="${mov.serie}" /></th>
                                                 
                     </tr>
                 </c:forEach>

@@ -6,6 +6,7 @@ package Modelo;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,40 +14,60 @@ import javabeans.MovDiversos;
 
 /**
  *
- * @author Ing. Rafael Méndez
+ * @author igh
  */
 
 public class GestionMov_diversos
 {
-   /*    
-    public boolean registroBeneficiario(Beneficiario beneficiario){
-        Integer id_catprog=beneficiario.getId_catprog();
-        String numcontrato=beneficiario.getNumcontrato();
-        String clave_elect=beneficiario.getClave_elect();
-        String curp=beneficiario.getCurp();
-        String rfc=beneficiario.getRfc();
-        String nombre=beneficiario.getNombre();
-        String conyuge=beneficiario.getConyuge();
-                
-        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-        String fecha_con=sdf.format(beneficiario.getFecha_con());
-        String mza=beneficiario.getMza();
-        String lte=beneficiario.getLte();
+       
+    public boolean registroMov_diverso(MovDiversos movimiento){
+        Integer id_bendiv=movimiento.getId_bendiv();
+        String clave_div=movimiento.getClave_div();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String fecha_div=df.format(movimiento.getFecha_div());
+        String poliza=movimiento.getPoliza();
+        Integer recibo=movimiento.getRecibo();
+        String cargo=movimiento.getCargo().toString();
+        String abono=movimiento.getAbono().toString();
+        String moratorios=movimiento.getMoratorios().toString();
+        String otros=movimiento.getOtros().toString();
+        //String fecha_pol=df.format(movimiento.getFecha_pol());
+        String estatus=movimiento.getEstatus();
         
-        String area=beneficiario.getArea().toString();
-        String domicilio=beneficiario.getDomicilio();
-        String clave_cat=beneficiario.getClave_cat();
-        Integer id_tipocredito=beneficiario.getId_tipocredito();
-        Integer id_usuario=beneficiario.getId_usuario();
-        String poliza=beneficiario.getPoliza();
-        String fecha_pol=sdf.format(beneficiario.getFecha_pol());
-        String clave_b=beneficiario.getClave_b();
-        String fecha_ip=sdf.format(beneficiario.getFecha_ip());
+        Boolean bolaplicado = movimiento.isAplicado();
+        Integer intaplicado = (bolaplicado) ? 1 : 0;
+        String aplicado = intaplicado.toString();
         
-        Object params[]={id_catprog, numcontrato,clave_elect,curp,rfc,nombre,conyuge,fecha_con,mza,lte,area,domicilio,clave_cat,id_tipocredito,id_usuario,poliza,fecha_pol,clave_b,fecha_ip};
-        return Conexion.ejecutar("insert into benef (id_catprog, numcontrato,clave_elect,curp,rfc,nombre,conyuge,fecha_cont,mza,lte,area,domicilio,clave_cat,id_tipocredito,id_usuario,poliza,fecha_pol,clave_b,fecha_ip) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", params);
-    }
-    */
+        String descripcion=movimiento.getDescripcion();
+        Integer id_catprog=movimiento.getId_catprog();
+        String bonificacion=movimiento.getBonificacion().toString();
+        String serie=movimiento.getSerie();
+        String poliza_apli=movimiento.getPoliza_apli();
+        String fecha_apli=df.format(movimiento.getFecha_apli());
+        String interes=movimiento.getInteres().toString();
+        String seguro=movimiento.getSeguro().toString();
+        Integer id_emisor=movimiento.getId_emisor();
+        String clave_b=movimiento.getClave_b();
+        String numcontrato=movimiento.getNumcontrato();
+        
+        Boolean bolbonific = movimiento.isBonific();
+        Integer intbonific = (bolbonific) ? 1 : 0;
+        String bonific = intbonific.toString();
+        
+        Integer id_caja=movimiento.getId_caja();
+        Integer id_usuario=movimiento.getId_usuario();
+        
+        Object params[]={id_bendiv, clave_div, fecha_div, poliza, 
+            recibo, cargo, abono, moratorios, otros, 
+            estatus, aplicado, descripcion, id_catprog, bonificacion, serie, 
+            poliza_apli, fecha_apli, interes, seguro, id_emisor, clave_b, 
+            numcontrato, bonific, id_caja, id_usuario};
+        
+        //Object params[]={id_catprog, numcontrato,clave_elect,curp,rfc,nombre,conyuge,fecha_con,mza,lte,area,domicilio,clave_cat,id_tipocredito,id_usuario,poliza,fecha_pol,clave_b,fecha_ip};
+        //return Conexion.ejecutar("insert into benef (id_catprog, numcontrato,clave_elect,curp,rfc,nombre,conyuge,fecha_cont,mza,lte,area,domicilio,clave_cat,id_tipocredito,id_usuario,poliza,fecha_pol,clave_b,fecha_ip) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", params);
+        return Conexion.ejecutar("insert into mov_diversos (id_bendiv, clave_div, fecha_div, poliza,recibo, cargo, abono, moratorios, otros,estatus, aplicado, descripcion, id_catprog, bonificacion, serie,poliza_apli, fecha_apli, interes, seguro, id_emisor, clave_b,numcontrato, bonific, id_caja, id_usuario) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", params);
+    }   
+    
     
     public MovDiversos obtenerPorId(int id_movdiversos){
         MovDiversos movimiento=null;
@@ -201,7 +222,7 @@ public class GestionMov_diversos
         String abono=movimiento.getAbono().toString();
         String moratorios=movimiento.getMoratorios().toString();
         String otros=movimiento.getOtros().toString();
-        String fecha_pol=sdf.format(movimiento.getFecha_pol());
+        //String fecha_pol=sdf.format(movimiento.getFecha_pol());
         String estatus=movimiento.getEstatus();
         
         Boolean bolaplicado = movimiento.isAplicado();
@@ -230,12 +251,12 @@ public class GestionMov_diversos
         
         
         Object params[]={id_bendiv, clave_div, fecha_div, poliza, 
-            recibo, cargo, abono, moratorios, otros, fecha_pol, 
+            recibo, cargo, abono, moratorios, otros, 
             estatus, aplicado, descripcion, id_catprog, bonificacion, serie, 
             poliza_apli, fecha_apli, interes, seguro, id_emisor, clave_b, 
             numcontrato, bonific, id_caja, id_usuario, id_movdiversos};
         
-        return Conexion.ejecutar("update mov_diversos set id_bendiv=?, clave_div=?, fecha_div=?, poliza=?, recibo=?, cargo=?, abono=?, moratorios=?, otros=?, fecha_pol=?, estatus=?, aplicado=?, descripcion=?, id_catprog=?, bonificacion=?, serie=?, poliza_apli=?, fecha_apli=?, interes=?, seguro=?, id_emisor=?, clave_b=?, numcontrato=?, bonific=?, id_caja=?, id_usuario=? where id_movdiversos=?", params);
+        return Conexion.ejecutar("update mov_diversos set id_bendiv=?, clave_div=?, fecha_div=?, poliza=?, recibo=?, cargo=?, abono=?, moratorios=?, otros=?, estatus=?, aplicado=?, descripcion=?, id_catprog=?, bonificacion=?, serie=?, poliza_apli=?, fecha_apli=?, interes=?, seguro=?, id_emisor=?, clave_b=?, numcontrato=?, bonific=?, id_caja=?, id_usuario=? where id_movdiversos=?", params);
     }
     
     
@@ -243,6 +264,7 @@ public class GestionMov_diversos
     public boolean eliminarPorId(int id_movdiversos){
         MovDiversos movimiento = obtenerPorId(id_movdiversos);
         Boolean bonific=movimiento.isBonific();
+
         if (!bonific){
             Object params[]={id_movdiversos};
             return Conexion.ejecutar("delete from mov_diversos where id_movdiversos=?", params);

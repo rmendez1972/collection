@@ -98,13 +98,15 @@ public class ControladorBendiv extends ControladorBase {
         {    
             request.setAttribute("msg", "Registro eliminado");
         }else{
-            request.setAttribute("msg", "No es posible eliminar. Intente más tarde.");
+            request.setAttribute("msg", "No es posible eliminar. Este Beneficiario ya cuenta con Movimientos en diversos.");
             
         }
         RequestDispatcher rd=request.getRequestDispatcher("controladorbendiv?operacion=listar");
         rd.forward(request,response);
         
     }
+    
+
     
    
     public void editar(HttpServletRequest request, HttpServletResponse response) throws Exception{
