@@ -610,12 +610,13 @@ public class ControladorMovBonific extends ControladorBase{
     
     }
     
-    public void listarJsonbyIdbenef(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public void listarJsonbyCriterio(HttpServletRequest request, HttpServletResponse response) throws Exception{
         
-        Integer id_benef = Integer.parseInt(request.getParameter("id_benef"));
+        String criterio = request.getParameter("criterio");
+        String valorcriterio = request.getParameter("valorcriterio");
         
         GestionMovBonific modelo=new GestionMovBonific();
-        ArrayList bonificaciones=modelo.obtenerPorBenefId(id_benef);
+        ArrayList bonificaciones=modelo.obtenerPorClave_b(valorcriterio);
         
         GsonBuilder builder=new GsonBuilder();
         Gson gson=builder.create();
