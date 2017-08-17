@@ -191,6 +191,22 @@ public class GestionBeneficiario
             
     }
     
+    public Beneficiario obtenerPorClave_b(String clave_b){
+        Beneficiario beneficiario=null;
+        Object params[]={clave_b};
+        ResultSet res=Conexion.ejecutarConsulta("select * from benef where clave_b=?", params);
+        try{
+            if(res.next())
+
+                //beneficiario=new Beneficiario(res.getInt("id_benef"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getString("clave_elect"),res.getString("curp"),res.getString("rfc"),res.getString("nombre"),res.getString("conyuge"),res.getDate("fecha_cont"),res.getString("mza"),res.getString("lte"),res.getBigDecimal("area"),res.getString("domicilio"),res.getString("clave_cat"),res.getInt("id_tipocredito"),res.getDate("fecha_pol"),res.getString("poliza"), res.getString("clave_b"), res.getBigDecimal("capital"),res.getBigDecimal("enganche"), res.getBoolean("aperturado"));
+
+                beneficiario=new Beneficiario(res.getInt("id_benef"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getString("clave_elect"),res.getString("curp"),res.getString("rfc"),res.getString("nombre"),res.getString("conyuge"),res.getDate("fecha_cont"),res.getString("mza"),res.getString("lte"),res.getBigDecimal("area"),res.getString("domicilio"),res.getString("clave_cat"),res.getInt("id_tipocredito"),res.getDate("fecha_pol"),res.getString("poliza"), res.getString("clave_b"), res.getBigDecimal("capital"),res.getBigDecimal("enganche"), res.getBigDecimal("pagant"),res.getBigDecimal("sub_inic"), res.getBigDecimal("admon"),res.getBigDecimal("interes"),res.getBigDecimal("seguro"),res.getBigDecimal("comision"), res.getBoolean("aperturado"), res.getDate("fecha_ip"));
+
+            res.close();
+        }catch(Exception e){}
+        return beneficiario;
+    }
+    
 }
 
 

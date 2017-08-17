@@ -108,6 +108,8 @@
                     <th>Seguro</th>
                     <th>Descripción</th>
                     <th>Bonific</th>
+                    <th>Recibo</th>
+                    <th>Serie</th>
                     
                 </tr>
             </thead>
@@ -151,6 +153,8 @@
                                 <th style="text-align: center"><span class="fa fa-close" title="movimiento sin bonificación"></span></th>
                             </c:when>
                         </c:choose>
+                        <th style="text-align: left; font-weight: normal"> <c:out value="${mov.recibo}" /></th>
+                        <th style="text-align: left; font-weight: normal"> <c:out value="${mov.serie}" /></th>
                                                 
                     </tr>
                 </c:forEach>

@@ -11,6 +11,8 @@ import Modelo.GestionMovBonific;
 import Modelo.GestionMov_diversos;
 import Modelo.GestionMov_edocta;
 import Modelo.GestionProgramas;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -606,6 +608,24 @@ public class ControladorMovBonific extends ControladorBase{
         param.put("titulo", "Reporte de Bonificación para: "+beneficiario);
         generarReporte("ReporteMovBonificacionesDiv.jasper", param, request, response);
     
+    }
+    
+    public void listarJsonbyIdbenef(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        
+        Integer id_benef = Integer.parseInt(request.getParameter("id_benef"));
+        
+        GestionMovBonific modelo=new GestionMovBonific();
+        ArrayList bonificaciones=modelo.obtenerPorBenefId(id_benef);
+        
+        GsonBuilder builder=new GsonBuilder();
+        Gson gson=builder.create();
+            
+        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        response.getWriter().write("{\"bonificacion\":"+gson.toJson(bonificaciones)+"}");
     }
     
 }

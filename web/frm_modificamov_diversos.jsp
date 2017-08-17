@@ -52,7 +52,7 @@
                 params.bonific=$("#bonific").val();
                 params.id_caja=$("#id_caja").val();
                 
-                if(params.id_bendiv == 0){
+                if(params.id_bendiv === 0){
                     alert("Seleccione un beneficiario");
                     return false;
                 }
@@ -87,7 +87,7 @@
                     <input type="hidden" name="id_movdiversos" id="id_movdiversos" value="${movimiento.id_movdiversos}" />
                     <input type="hidden" name="id_caja" id="id_caja" value="${movimiento.id_caja}" />
                     <input type="hidden" name="id_usuario" id="id_usuario" value="${movimiento.id_usuario}" />
-                    <input type="hidden" name="fecha_pol" id="fecha_pol" class="form-control" value="${movimiento.fecha_pol}" />
+                    <!--<input type="text" name="fecha_pol" id="fecha_pol" class="form-control" value="${movimiento.fecha_pol}" />-->
 
                     <div class="form-group">
                         <label for="clave_b" class="col-xs-12 col-md-2 control-label ">

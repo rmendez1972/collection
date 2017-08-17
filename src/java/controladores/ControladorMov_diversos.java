@@ -152,8 +152,8 @@ public class ControladorMov_diversos extends ControladorBase
         movimiento.setMoratorios(moratorios);
         BigDecimal otros = new BigDecimal(request.getParameter("otros"));
         movimiento.setOtros(otros);
-        Date fecha_pol = df.parse(request.getParameter("fecha_pol"));
-        movimiento.setFecha_pol(fecha_pol);
+        //Date fecha_pol = df.parse(request.getParameter("fecha_pol"));
+        //movimiento.setFecha_pol(fecha_pol);
         String estatus=request.getParameter("estatus").toUpperCase();
         movimiento.setEstatus(estatus);
         
@@ -187,8 +187,6 @@ public class ControladorMov_diversos extends ControladorBase
         String valBonific = request.getParameter("bonific");
         Boolean bonific = Boolean.parseBoolean(valBonific);
         movimiento.setBonific(bonific);
-        
-
         
         Integer id_caja=Integer.parseInt(request.getParameter("id_caja"));
         movimiento.setId_caja(id_caja);
@@ -240,6 +238,7 @@ public class ControladorMov_diversos extends ControladorBase
         RequestDispatcher rd=request.getRequestDispatcher("frm_mov_diversos.jsp");
         rd.forward(request,response);
     }
+
 
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         MovDiversos movimiento=new MovDiversos();
