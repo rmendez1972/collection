@@ -40,15 +40,15 @@
         }
         
         
-        function nuevoMovDiversos(iddiv){
+        function nuevoMovDiversos(){
             var params=new Object();
-            //params.iddiv=iddiv;
-            params.clave_b=${mov.clave_b};
-            params.id_bendiv=${mov.id_bendiv};
-            params.id_catprog=${mov.id_catprog};
-            params.contrato=${mov.contrato};
             
-            $.post("controladormovbonific?operacion=listarbonific", params, function(datos){
+            
+            params.id_bendiv=$("#id_bendiv").val();
+            
+         
+            
+            $.post("controladormov_diversos?operacion=nuevo", params, function(datos){
                 $("#show").html(datos);
             },"html");
         }
@@ -70,10 +70,13 @@
             Mantenimiento a Estados de Cuenta de Diversos
 
         </h3>
-       
+       <c:forEach var="mov" items="${requestScope.movimientos}" varStatus="loop"> 
+           <input id="id_bendiv" class="hidden" value="${mov.id_bendiv}">           
+       </c:forEach>
+     
        
         <div class="container-fluid navbar-right">
-            <div class="btn-catalogo"  onclick="cargar('controladormov_diversos?operacion=nuevo','#show')">
+            <div class="btn-catalogo"  onclick="nuevoMovDiversos()">
                 <img src="imagenes/agregar.png" alt="Nuevo" />
             </div>
             <div class="btn-catalogo">    
@@ -115,7 +118,7 @@
                                  onclick="editarMovimiento(${mov.id_movdiversos});" />
                             <img src="imagenes/eliminar.png" class="btn-tabla" title="Eliminar Movimiento" 
                                  onclick="eliminarMovimiento(${mov.id_movdiversos});" />
-                            <img src="imagenes/reporte_solicitudes.png" class="btn-tabla" title="Agregar Bonificacion" 
+                            <img src="imagenes/reporte_solicitudes.png" class="btn-tabla" title="Listar Bonificacion" 
                                  onclick="editarBonificacion(${mov.id_movdiversos});" />
                         </th>
                         <th style="font-weight: normal"> <c:out value="${mov.nombrebenef}" /></th>

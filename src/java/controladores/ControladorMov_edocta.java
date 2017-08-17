@@ -60,9 +60,21 @@ public class ControladorMov_edocta extends ControladorBase
         rd.forward(request,response);
     }
     
-    public void listarJson(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public void listarJsonbyIdbenef(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        
+        String criterio = request.getParameter("criterio");
+        String valorcriterio = request.getParameter("valorcriterio");
+        
+        GestionBeneficiario gbenef = new GestionBeneficiario();
+        Beneficiario benef = gbenef.obtenerPorClave_b(valorcriterio);
+        ArrayList beneficiario = new ArrayList();
+        Integer id_benef = benef.getId_beneficiario();
+        beneficiario.add(benef);
+        
         GestionMov_edocta modelo=new GestionMov_edocta();
-        ArrayList movimientos=modelo.obtenerMovimientos();
+        ArrayList movimientos=modelo.obtenerMovimientosPorBenefId(id_benef);
+        
+        
         GsonBuilder builder=new GsonBuilder();
         Gson gson=builder.create();
             
@@ -71,12 +83,12 @@ public class ControladorMov_edocta extends ControladorBase
         response.setHeader("Access-Control-Allow-Methods", "POST, GET");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-        response.getWriter().write("{\"mov_edoscta\":"+gson.toJson(movimientos)+"}");
+        response.getWriter().write("{\"mov_edoscta\":"+gson.toJson(movimientos)+",\"beneficiario\":"+gson.toJson(beneficiario)+"}");
     }
     
-    public void listarporidJson(HttpServletRequest request, HttpServletResponse response) throws Exception{
+   /* public void listarporidJson(HttpServletRequest request, HttpServletResponse response) throws Exception{
         GestionMov_edocta modelo = new GestionMov_edocta();
-        //ArrayList edocta = modelo.obtenerPorClave();
+        ArrayList edocta = modelo.obtenerPorClave();
         
         GsonBuilder builder=new GsonBuilder();
         Gson gson=builder.create();
@@ -88,7 +100,7 @@ public class ControladorMov_edocta extends ControladorBase
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
         response.getWriter().write("{\"mov_edoscta\":"+gson.toJson(edocta)+"}");
     
-    }
+    }*/
     
     public void listarPorBenefId(HttpServletRequest request, HttpServletResponse response) throws Exception{
         int id=Integer.parseInt(request.getParameter("id"));

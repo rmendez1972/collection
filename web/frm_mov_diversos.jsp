@@ -82,6 +82,7 @@
                     Alta Movimiento de Estado de Cuenta de Diversos
                 </h4>
             </div>
+            <!--<p>${beneficiario.nombre}</p>-->
             <div class="panel-body transparent">
                 <form id="form_MP" onsubmit="return registrar()"  class="form-horizontal">
                     <input type="hidden" name="id_movdiversos" id="id_movdiversos" value="${movimiento.id_movdiversos}" />
