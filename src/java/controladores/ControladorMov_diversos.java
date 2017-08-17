@@ -239,26 +239,7 @@ public class ControladorMov_diversos extends ControladorBase
         rd.forward(request,response);
     }
 
-<<<<<<< HEAD
-    /*public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
 
-        Candidatos candidato=new Candidatos();
-        Integer id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
-        candidato.setId_catprog(id_catprog);
-        String num_contrato=request.getParameter("numcontrato");
-        candidato.setNumcontrato(num_contrato);
-        String clave_elect=request.getParameter("clave_elect").toUpperCase();
-        candidato.setClave_elect(clave_elect);
-        String curp=request.getParameter("curp").toUpperCase();
-        candidato.setCurp(curp);
-        String rfc=request.getParameter("rfc").toUpperCase();
-        candidato.setRfc(rfc);
-        String nombre=request.getParameter("nombre").toUpperCase();
-        candidato.setNombre(nombre);
-        String conyuge=request.getParameter("conyuge").toUpperCase();
-        candidato.setConyuge(conyuge);
-               
-=======
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         MovDiversos movimiento=new MovDiversos();
         
@@ -269,7 +250,6 @@ public class ControladorMov_diversos extends ControladorBase
         movimiento.setId_bendiv(id_bendiv);
         String clave_div=request.getParameter("clave_div").toUpperCase();
         movimiento.setClave_div(clave_div);
->>>>>>> 8abe39f22f152e1ea31c4a112e149f4946d5a1c6
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Date fecha_div = df.parse(request.getParameter("fecha_div"));
         movimiento.setFecha_div(fecha_div);
