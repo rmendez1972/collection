@@ -6,6 +6,7 @@
 package controladores;
 
 import Modelo.GestionAutoriza;
+import Modelo.GestionBeneficiario;
 import Modelo.GestionBonificacion;
 import Modelo.GestionMovBonific;
 import Modelo.GestionMov_diversos;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import javabeans.Beneficiario;
 import javabeans.Bonificacion;
 import javabeans.CatProgramas;
 import javabeans.MovBonific;
@@ -615,18 +617,41 @@ public class ControladorMovBonific extends ControladorBase{
         String criterio = request.getParameter("criterio");
         String valorcriterio = request.getParameter("valorcriterio");
         
-        GestionMovBonific modelo=new GestionMovBonific();
-        ArrayList bonificaciones=modelo.obtenerPorClave_b(valorcriterio);
-        
-        GsonBuilder builder=new GsonBuilder();
-        Gson gson=builder.create();
+        if(criterio.equals("clave_b")){
+            GestionMovBonific modelo=new GestionMovBonific();
+            ArrayList bonificaciones=modelo.obtenerPorClave_b(valorcriterio);
             
-        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
-        response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-        response.getWriter().write("{\"bonificacion\":"+gson.toJson(bonificaciones)+"}");
+            GsonBuilder builder=new GsonBuilder();
+            Gson gson=builder.create();
+
+            //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+            response.setHeader("Access-Control-Max-Age", "3600");
+            response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+            response.getWriter().write("{\"bonificacion\":"+gson.toJson(bonificaciones)+"}");
+        }else if(criterio.equals("nombre")){
+            //obtenemos el nombre del beneficiario
+            GestionBeneficiario mod_ben = new GestionBeneficiario();
+            Beneficiario beneficiario = mod_ben.obtenerPorNombre(valorcriterio);
+            //obtenemos el id del beneficiario
+            Integer id_benef = beneficiario.getId_beneficiario();
+            
+            //obtenemos las bonificaciones del beneficiario
+            GestionMovBonific mod_bon = new GestionMovBonific();
+            ArrayList bonificaciones = mod_bon.obtenerPorIdBenef(id_benef);
+            
+            GsonBuilder builder=new GsonBuilder();
+            Gson gson=builder.create();
+
+            //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+            response.setHeader("Access-Control-Max-Age", "3600");
+            response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+            response.getWriter().write("{\"bonificacion\":"+gson.toJson(bonificaciones)+"}");
+        }
+        
     }
     
 }

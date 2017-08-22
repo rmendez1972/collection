@@ -7,6 +7,7 @@ package Modelo;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javabeans.Beneficiario;
 import javabeans.MovBonific;
 
 
@@ -266,5 +267,28 @@ public class GestionMovBonific {
         }catch(Exception e){}
         return bon;
     }
+    
+    
+    public ArrayList obtenerPorIdBenef(int id_benef){
+        ArrayList bon=new ArrayList();
+        
+        Object params[]={id_benef};
+        ResultSet res=Conexion.ejecutarConsulta("Select BO.*, BE.nombre as nombrebenef, CB.clave_bonific as clavebonific, U.nombre as usuario, CP.descripcion as catprograma, A.nombre as nombreautoriza from bonific BO inner join benef BE on BO.id_benef=BE.id_benef inner join cat_bonific CB on BO.id_catbonific=CB.id_bonific inner join usuarios U on BO.id_usuario=U.id_usuario inner join cat_prog CP on BO.id_catprog=CP.id_catprog inner join autoriza A on BO.id_autoriza=A.id_autoriza where BO.id_benef=?", params);
+        try{
+            while(res.next()){
+                MovBonific bonific=new MovBonific(res.getInt("id_bonificacion"),res.getInt("id_movedoscta"),res.getInt("id_benef"),res.getBigDecimal("imp_cap"),res.getBigDecimal("imp_int"),res.getBigDecimal("imp_adm"),res.getBigDecimal("imp_seg"),res.getBigDecimal("imp_osg"),res.getInt("id_catbonific"),res.getString("estatus"),res.getInt("id_usuario"),res.getInt("id_autoriza"),res.getString("clave_b"),res.getInt("recibo"),res.getString("serie"),res.getInt("id_movdiversos"),res.getString("numcontrato"),res.getInt("id_catprog"));            
+                bonific.setNombrebenef(res.getString("nombrebenef"));
+                bonific.setClavebonific(res.getString("clavebonific"));
+                bonific.setUsuario(res.getString("usuario"));
+                bonific.setCatprograma(res.getString("catprograma"));
+                bonific.setNombreautoriza(res.getString("nombreautoriza"));
+                bon.add(bonific);
+            }
+            res.close();
+        }catch(Exception e){}
+        return bon;
+    }
+    
+    
     
 }
