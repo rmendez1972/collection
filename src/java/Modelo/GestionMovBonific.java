@@ -267,6 +267,47 @@ public class GestionMovBonific {
         }catch(Exception e){}
         return bon;
     }
+    /*
+    public ArrayList obtenerPorClave_b(int id_bonificacion){
+        ArrayList bon=new ArrayList();
+        
+        Object params[]={id_bonificacion};
+        ResultSet res=Conexion.ejecutarConsulta("Select BO.*, BE.nombre as nombrebenef, CB.clave_bonific as clavebonific, U.nombre as usuario, CP.descripcion as catprograma, A.nombre as nombreautoriza from bonific BO inner join benef BE on BO.id_benef=BE.id_benef inner join cat_bonific CB on BO.id_catbonific=CB.id_bonific inner join usuarios U on BO.id_usuario=U.id_usuario inner join cat_prog CP on BO.id_catprog=CP.id_catprog inner join autoriza A on BO.id_autoriza=A.id_autoriza where BO.id_bonificacion=?", params);
+        try{
+            while(res.next()){
+                MovBonific bonific=new MovBonific(res.getInt("id_bonificacion"),res.getInt("id_movedoscta"),res.getInt("id_benef"),res.getBigDecimal("imp_cap"),res.getBigDecimal("imp_int"),res.getBigDecimal("imp_adm"),res.getBigDecimal("imp_seg"),res.getBigDecimal("imp_osg"),res.getInt("id_catbonific"),res.getString("estatus"),res.getInt("id_usuario"),res.getInt("id_autoriza"),res.getString("clave_b"),res.getInt("recibo"),res.getString("serie"),res.getInt("id_movdiversos"),res.getString("numcontrato"),res.getInt("id_catprog"));            
+                bonific.setNombrebenef(res.getString("nombrebenef"));
+                bonific.setClavebonific(res.getString("clavebonific"));
+                bonific.setUsuario(res.getString("usuario"));
+                bonific.setCatprograma(res.getString("catprograma"));
+                bonific.setNombreautoriza(res.getString("nombreautoriza"));
+                bon.add(bonific);
+            }
+            res.close();
+        }catch(Exception e){}
+        return bon;
+    }*/
+    //By Ismael. Modelo que devuelve las bonificaciones de un contrato de diversos (valorcriterio)
+    public ArrayList obtenerPorClave_bdiv(String valorcriterio){
+        ArrayList bon=new ArrayList();
+        
+        Object params[]={valorcriterio};
+        //ResultSet res=Conexion.ejecutarConsulta("Select BO.*, BE.nombre as nombrebenef, CB.clave_bonific as clavebonific, U.nombre as usuario, CP.descripcion as catprograma, A.nombre as nombreautoriza from bonific BO inner join benef_div BE on BO.id_benef=BE.id_bendiv inner join cat_bonific CB on BO.id_catbonific=CB.id_bonific inner join usuarios U on BO.id_usuario=U.id_usuario inner join cat_prog CP on BO.id_catprog=CP.id_catprog inner join autoriza A on BO.id_autoriza=A.id_autoriza where BO.id_movdiversos=?", params);
+        ResultSet res=Conexion.ejecutarConsulta("Select BO.*, BE.nombre as nombrebenef, CB.clave_bonific as clavebonific, U.nombre as usuario, CP.descripcion as catprograma, A.nombre as nombreautoriza from bonific BO inner join benef_div BE on BO.id_benef=BE.id_bendiv inner join cat_bonific CB on BO.id_catbonific=CB.id_bonific inner join usuarios U on BO.id_usuario=U.id_usuario inner join cat_prog CP on BO.id_catprog=CP.id_catprog inner join autoriza A on BO.id_autoriza=A.id_autoriza where BO.clave_b=?", params);
+        try{
+            while(res.next()){
+                MovBonific bonific=new MovBonific(res.getInt("id_bonificacion"),res.getInt("id_movedoscta"),res.getInt("id_benef"),res.getBigDecimal("imp_cap"),res.getBigDecimal("imp_int"),res.getBigDecimal("imp_adm"),res.getBigDecimal("imp_seg"),res.getBigDecimal("imp_osg"),res.getInt("id_catbonific"),res.getString("estatus"),res.getInt("id_usuario"),res.getInt("id_autoriza"),res.getString("clave_b"),res.getInt("recibo"),res.getString("serie"),res.getInt("id_movdiversos"),res.getString("numcontrato"),res.getInt("id_catprog"));            
+                bonific.setNombrebenef(res.getString("nombrebenef"));
+                bonific.setClavebonific(res.getString("clavebonific"));
+                bonific.setUsuario(res.getString("usuario"));
+                bonific.setCatprograma(res.getString("catprograma"));
+                bonific.setNombreautoriza(res.getString("nombreautoriza"));
+                bon.add(bonific);
+            }
+            res.close();
+        }catch(Exception e){}
+        return bon;
+    }
     
     
     public ArrayList obtenerPorIdBenef(int id_benef){

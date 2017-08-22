@@ -6,7 +6,11 @@
 package controladores;
 
 import Modelo.GestionAutoriza;
+
 import Modelo.GestionBeneficiario;
+
+import Modelo.GestionBendiv;
+
 import Modelo.GestionBonificacion;
 import Modelo.GestionMovBonific;
 import Modelo.GestionMov_diversos;
@@ -19,7 +23,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
 import javabeans.Beneficiario;
+
+import javabeans.BeneficiarioDiv;
+
 import javabeans.Bonificacion;
 import javabeans.CatProgramas;
 import javabeans.MovBonific;
@@ -652,6 +660,27 @@ public class ControladorMovBonific extends ControladorBase{
             response.getWriter().write("{\"bonificacion\":"+gson.toJson(bonificaciones)+"}");
         }
         
+    }
+    
+    //By ismael. Método invocado desde la appCobranza para obtener
+    // El listado de bonificaciones de un contrato de diversos (valorcriterio)
+    public void listarJsonbyCriterioDiv(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        
+        String criterio = request.getParameter("criterio");
+        String valorcriterio = request.getParameter("valorcriterio");
+ 
+        GestionMovBonific modelo=new GestionMovBonific();
+        ArrayList bonificaciones=modelo.obtenerPorClave_bdiv(valorcriterio);
+        
+        GsonBuilder builder=new GsonBuilder();
+        Gson gson=builder.create();
+            
+        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        response.getWriter().write("{\"bonificacion\":"+gson.toJson(bonificaciones)+"}");
     }
     
 }

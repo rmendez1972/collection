@@ -199,4 +199,28 @@ public class GestionBendiv {
     return Conexion.ejecutar("update benef_div set aperturado='0' where id_bendiv=?", params);
     
     }
+    
+    public BeneficiarioDiv obtenerPorClave_b(String clave_b){
+        BeneficiarioDiv beneficiario=null;
+        Object params[]={clave_b};
+        ResultSet res=Conexion.ejecutarConsulta("select * from benef_div where clave_b=?", params);
+        try{
+            if(res.next())
+
+                //beneficiario=new Beneficiario(res.getInt("id_benef"),res.getInt("id_catprog"),res.getString("numcontrato"),res.getString("clave_elect"),res.getString("curp"),res.getString("rfc"),res.getString("nombre"),res.getString("conyuge"),res.getDate("fecha_cont"),res.getString("mza"),res.getString("lte"),res.getBigDecimal("area"),res.getString("domicilio"),res.getString("clave_cat"),res.getInt("id_tipocredito"),res.getDate("fecha_pol"),res.getString("poliza"), res.getString("clave_b"), res.getBigDecimal("capital"),res.getBigDecimal("enganche"), res.getBoolean("aperturado"));
+
+                beneficiario=new BeneficiarioDiv(res.getInt("id_bendiv"), res.getString("clave_elect"), 
+                        res.getString("curp"), res.getString("clave_b"), res.getString("nombre"), 
+                        res.getDate("fecha_con"), res.getBigDecimal("capital"), res.getBigDecimal("sub_inic"),
+                        res.getBigDecimal("enganche"),res.getBigDecimal("interes"),res.getBigDecimal("admon"),
+                        res.getBigDecimal("seguro"),res.getBigDecimal("o_seg"), res.getInt("plazo"),
+                        res.getBigDecimal("pago_mes"),res.getBigDecimal("sal_con"),res.getString("juridico"),
+                        res.getString("referencia_jur"),res.getDate("fecha_jur"),res.getInt("id_usuario"),
+                        res.getInt("id_catprog"),res.getString("mza"),res.getString("lte"),
+                        res.getString("conyuge"), res.getDate("fecha"),res.getBoolean("aperturado"),res.getString("numcontrato"));
+
+            res.close();
+        }catch(Exception e){}
+        return beneficiario;
+    }
 }
