@@ -6,12 +6,16 @@ package controladores;
 
 //import Modelo.GestionBeneficiario;
 import Modelo.GestionBendiv;
+import Modelo.GestionBeneficiario;
 import Modelo.GestionMov_diversos;
 import Modelo.GestionClaveDiversos;
 import Modelo.GestionEmisor;
+import Modelo.GestionMov_edocta;
 
 import Modelo.GestionProgramas;
 import Modelo.GestionTipocredito;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -23,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javabeans.Beneficiario;
 //import javabeans.Beneficiario;
 import javabeans.BeneficiarioDiv;
 import javabeans.Candidatos;
@@ -54,6 +59,31 @@ public class ControladorMov_diversos extends ControladorBase
             
         RequestDispatcher rd=request.getRequestDispatcher("listar_mov_diversos.jsp");
         rd.forward(request,response);
+    }
+    
+    public void listarJsonbyIdbenef(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String criterio = request.getParameter("criterio");
+        String valorcriterio = request.getParameter("valorcriterio");
+        
+        GestionBendiv gbenef = new GestionBendiv();
+        BeneficiarioDiv benef_div = gbenef.obtenerPorClave_b(valorcriterio);
+        ArrayList beneficiario_div = new ArrayList();
+        Integer id_bendiv = benef_div.getId_bendiv();
+        beneficiario_div.add(benef_div);
+        
+        GestionMov_diversos modelo=new GestionMov_diversos();
+        ArrayList movimientos_div=modelo.obtenerMovimientosporID(id_bendiv);
+        
+        
+        GsonBuilder builder=new GsonBuilder();
+        Gson gson=builder.create();
+            
+        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        response.getWriter().write("{\"mov_diversos\":"+gson.toJson(movimientos_div)+",\"beneficiario_div\":"+gson.toJson(beneficiario_div)+"}");
     }
     
     public void listarMovBendivId(HttpServletRequest request, HttpServletResponse response) throws Exception{
