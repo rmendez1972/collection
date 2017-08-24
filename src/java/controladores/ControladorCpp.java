@@ -5,6 +5,8 @@
 package controladores;
 
 import Modelo.GestionCpp;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -40,6 +42,22 @@ public class ControladorCpp extends ControladorBase
             
         RequestDispatcher rd=request.getRequestDispatcher("listar_cpps.jsp");
         rd.forward(request,response);
+    }
+    
+    public void listarJson(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        GestionCpp modelo=new GestionCpp();
+        ArrayList cpps=modelo.obtenerCpp();
+        
+            
+        GsonBuilder builder=new GsonBuilder();
+        Gson gson=builder.create();
+
+        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        response.getWriter().write("{\"cpp\":"+gson.toJson(cpps)+"}");
     }
     
     public void eliminar(HttpServletRequest request, HttpServletResponse response) throws Exception{
