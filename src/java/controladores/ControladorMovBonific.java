@@ -201,6 +201,15 @@ public class ControladorMovBonific extends ControladorBase{
 
             BigDecimal imp_osg = new BigDecimal(request.getParameter("imp_osg"));
             bon.setImp_osg(imp_osg);
+            
+            BigDecimal imp_com = new BigDecimal(request.getParameter("imp_com"));
+            bon.setImp_com(imp_com);
+            
+            BigDecimal imp_mor = new BigDecimal(request.getParameter("imp_mor"));
+            bon.setImp_mor(imp_mor);
+            
+            BigDecimal imp_tit = new BigDecimal(request.getParameter("imp_tit"));
+            bon.setImp_tit(imp_tit);
 
             Integer id_catbonific = Integer.parseInt(request.getParameter("id_catbonific"));
             bon.setId_catbonific(id_catbonific);
@@ -269,6 +278,15 @@ public class ControladorMovBonific extends ControladorBase{
 
             BigDecimal imp_osg = new BigDecimal(request.getParameter("imp_osg"));
             bon.setImp_osg(imp_osg);
+            
+            BigDecimal imp_com = new BigDecimal(request.getParameter("imp_com"));
+            bon.setImp_com(imp_com);
+            
+            BigDecimal imp_mor = new BigDecimal(request.getParameter("imp_mor"));
+            bon.setImp_mor(imp_mor);
+            
+            BigDecimal imp_tit = new BigDecimal(request.getParameter("imp_tit"));
+            bon.setImp_tit(imp_tit);
 
             Integer id_catbonific = Integer.parseInt(request.getParameter("id_catbonific"));
             bon.setId_catbonific(id_catbonific);
@@ -416,6 +434,15 @@ public class ControladorMovBonific extends ControladorBase{
 
             BigDecimal imp_osg = new BigDecimal(request.getParameter("imp_osg"));
             bon.setImp_osg(imp_osg);
+            
+            BigDecimal imp_com = new BigDecimal(request.getParameter("imp_com"));
+            bon.setImp_com(imp_com);
+            
+            BigDecimal imp_mor = new BigDecimal(request.getParameter("imp_mor"));
+            bon.setImp_mor(imp_mor);
+            
+            BigDecimal imp_tit = new BigDecimal(request.getParameter("imp_tit"));
+            bon.setImp_tit(imp_tit);
 
             Integer id_catbonific = Integer.parseInt(request.getParameter("id_catbonific"));
             bon.setId_catbonific(id_catbonific);
@@ -485,6 +512,15 @@ public class ControladorMovBonific extends ControladorBase{
 
             BigDecimal imp_osg = new BigDecimal(request.getParameter("imp_osg"));
             bon.setImp_osg(imp_osg);
+            
+            BigDecimal imp_com = new BigDecimal(request.getParameter("imp_com"));
+            bon.setImp_com(imp_com);
+            
+            BigDecimal imp_mor = new BigDecimal(request.getParameter("imp_mor"));
+            bon.setImp_mor(imp_mor);
+            
+            BigDecimal imp_tit = new BigDecimal(request.getParameter("imp_tit"));
+            bon.setImp_tit(imp_tit);
 
             Integer id_catbonific = Integer.parseInt(request.getParameter("id_catbonific"));
             bon.setId_catbonific(id_catbonific);

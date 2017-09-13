@@ -138,6 +138,9 @@
                     <th>Imp Adm</th>
                     <th>Imp Seg</th>
                     <th>Imp Osg</th>
+                    <th>Imp Com</th>
+                    <th>Imp Mor</th>
+                    <th>Imp Tit</th>
                     <th>Clave Bonificacion</th>
                     <th>Estatus</th>
                     <th>Usuario</th>
@@ -174,6 +177,9 @@
                         <th> <c:out value="${mov.imp_adm}" /></th>
                         <th> <c:out value="${mov.imp_seg}" /></th>
                         <th> <c:out value="${mov.imp_osg}" /></th>
+                        <th> <c:out value="${mov.imp_com}" /></th>
+                        <th> <c:out value="${mov.imp_mor}" /></th>
+                        <th> <c:out value="${mov.imp_tit}" /></th>
                         <th> <c:out value="${mov.clavebonific}" /></th>
                         <th> <c:out value="${mov.estatus}" /></th>
                         <th> <c:out value="${mov.usuario}" /></th>

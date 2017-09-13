@@ -46,7 +46,7 @@ public class ControladorSalmindf extends ControladorBase {
     public void listarJson(HttpServletRequest request, HttpServletResponse response) throws Exception{
         GestionSalmindf modelo=new GestionSalmindf();
         ArrayList salmindf=modelo.obtenerSalmindf();
-        GsonBuilder builder=new GsonBuilder();
+        GsonBuilder builder=new GsonBuilder().setDateFormat("yyyy-MM-dd");
         Gson gson=builder.create();
 
         //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");

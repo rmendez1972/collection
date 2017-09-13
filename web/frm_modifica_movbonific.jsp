@@ -21,6 +21,9 @@
                 params.imp_adm=$("#imp_adm").val();
                 params.imp_seg=$("#imp_seg").val();
                 params.imp_osg=$("#imp_osg").val();
+                params.imp_com=$("#imp_com").val();
+                params.imp_mor=$("#imp_mor").val();
+                params.imp_tit=$("#imp_tit").val();
                 params.id_catbonific=$("#id_catbonific").val();
                 params.estatus=$("#estatus").val();
                 params.clave_b=$("#clave_b").val();
@@ -110,7 +113,26 @@
                             <div class="col-xs-12 col-md-4">
                                 <input type="number" step="0.001" class="form-control" id="imp_osg" required  placeholder="Sólo se aceptan tres decimales" maxlength="12" value="${bon.imp_osg}"/>
                             </div>
+                            
+                            <label for="imp_com" class="col-xs-12 col-md-2 control-label">imp com:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="number" step="0.001" class="form-control" id="imp_com" required  placeholder="Sólo se aceptan tres decimales" maxlength="12" value="${bon.imp_com}"/>
+                            </div>
+                        </div>
+                            
+                        <div class="form-group">
+                            <label for="imp_mor" class="col-xs-12 col-md-2 control-label">imp mor:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="number" step="0.001" class="form-control" id="imp_mor" required  placeholder="Sólo se aceptan tres decimales" maxlength="12" value="${bon.imp_mor}"/>
+                            </div>
+                            
+                            <label for="imp_tit" class="col-xs-12 col-md-2 control-label">imp tit:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="number" step="0.001" class="form-control" id="imp_tit" required  placeholder="Sólo se aceptan tres decimales" maxlength="12" value="${bon.imp_tit}"/>
+                            </div>
+                        </div>
                                 
+                         <div class="form-group">
                             <label for="id_catbonific" class="col-xs-12 col-md-2 control-label">Bonificacion:</label>
                             <div class="col-xs-12 col-md-4">
                                 <select id="id_catbonific" required class="form-control">
@@ -120,9 +142,7 @@
                                         </c:forEach>
                                 </select>
                             </div>
-                        </div>
-                                
-                         <div class="form-group">
+                            
                             <label for="estatus" class="col-xs-12 col-md-2 control-label">Estatus:</label>
                             <div class="col-xs-12 col-md-4" id="divstatus">
                                 <script>
@@ -150,32 +170,34 @@
                                     
                                 </script> 
                             </div>
-                            
+                        </div>
+                                
+                        <div class="form-group">
                             <label for="clave_b" class="col-xs-12 col-md-2 control-label">Clave b:</label>
                             <div class="col-xs-12 col-md-4">
                                 <input type="text" name="clave_b" class="form-control" id="clave_b" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{4,12})"  placeholder="Máx.12 caracteres" maxlength="12" style="text-transform:uppercase" value="${bon.clave_b}" readonly />
                             </div>
-                        </div>
-                                
-                        <div class="form-group">
+                            
                             <label for="recibo" class="col-xs-12 col-md-2 control-label">Recibo:</label>
                             <div class="col-xs-12 col-md-4">
                                 <input type="number" step="1" class="form-control" id="recibo" required  placeholder="Sólo se aceptan enteros" maxlength="12" value="${bon.recibo}" />
                             </div>
-                            
-                           <label for="serie" class="col-xs-12 col-md-2 control-label">Serie:</label>
-                            <div class="col-xs-12 col-md-4">
-                                <input type="text" name="serie" class="form-control" id="serie" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{1,1})"  placeholder="Máx.1 caracteres" maxlength="1" style="text-transform:uppercase" value="${bon.serie}" />
-                            </div>  
                         </div>
                         
                
-                        <div class="form-group">                      
+                        <div class="form-group">                   
+                           <label for="serie" class="col-xs-12 col-md-2 control-label">Serie:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="text" name="serie" class="form-control" id="serie" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{1,1})"  placeholder="Máx.1 caracteres" maxlength="1" style="text-transform:uppercase" value="${bon.serie}" />
+                            </div>
+                            
                            <label for="numcontrato" class="col-xs-12 col-md-2 control-label">Número de Contrato:</label>
                             <div class="col-xs-12 col-md-4">
                                 <input type="text" name="numcontrato" class="form-control" id="numcontrato" required pattern="([a-zA-ZñÑáéíóúÁÉÍÓÚ\0-9]{3,5})"  placeholder="Máx.5 caracteres" maxlength="5" style="text-transform:uppercase" value="${bon.numcontrato}" readonly />
                             </div>
-                            
+                        </div>
+                                
+                        <div class="form-group">
                             <label for="id_catprog" class="col-xs-12 col-md-2 control-label">Programa:</label>
                             <div class="col-xs-12 col-md-4">
                                 <select id="id_catprog" required class="form-control" disabled>
@@ -185,10 +207,6 @@
                                         </c:forEach>
                                 </select>
                             </div>
-                            
-                        </div>
-                                
-                        <div class="form-group">
                             <label for="id_autoriza" class="col-xs-12 col-md-2 control-label">Autoriza:</label>
                             <div class="col-xs-12 col-md-4">
                                 <select id="id_autoriza" required class="form-control">
@@ -198,7 +216,6 @@
                                         </c:forEach>
                                 </select>
                             </div>
-                   
                         </div>
                             
 
