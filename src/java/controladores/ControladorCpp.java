@@ -49,7 +49,7 @@ public class ControladorCpp extends ControladorBase
         ArrayList cpps=modelo.obtenerCpp();
         
             
-        GsonBuilder builder=new GsonBuilder();
+        GsonBuilder builder=new GsonBuilder().setDateFormat("yyyy-MM-dd");
         Gson gson=builder.create();
 
         //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");

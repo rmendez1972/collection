@@ -43,7 +43,7 @@ public class ControladorSalmin extends ControladorBase{
         GestionSalmin modelo = new GestionSalmin();
         ArrayList salmin = modelo.obtenerTodos();
         
-        GsonBuilder builder=new GsonBuilder();
+        GsonBuilder builder=new GsonBuilder().setDateFormat("yyyy-MM-dd");
         Gson gson=builder.create();
 
         //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");

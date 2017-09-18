@@ -31,6 +31,9 @@ public class MovBonific {
     private Integer id_movdiversos;
     private String numcontrato;
     private Integer id_catprog;
+    private BigDecimal imp_com;
+    private BigDecimal imp_mor;
+    private BigDecimal imp_tit;
     
     private String nombrebenef;
     private String clavebonific;
@@ -43,7 +46,7 @@ public class MovBonific {
     
     public MovBonific(){ super();}
 
-    public MovBonific(Integer id_bonificacion, Integer id_movedoscta, Integer id_benef, BigDecimal imp_cap, BigDecimal imp_int, BigDecimal imp_adm, BigDecimal imp_seg, BigDecimal imp_osg, Integer id_catbonific, String estatus, Integer id_usuario, Integer id_autoriza, String clave_b, Integer recibo, String serie, Integer id_movdiversos, String numcontrato, Integer id_catprog) {
+    public MovBonific(Integer id_bonificacion, Integer id_movedoscta, Integer id_benef, BigDecimal imp_cap, BigDecimal imp_int, BigDecimal imp_adm, BigDecimal imp_seg, BigDecimal imp_osg, Integer id_catbonific, String estatus, Integer id_usuario, Integer id_autoriza, String clave_b, Integer recibo, String serie, Integer id_movdiversos, String numcontrato, Integer id_catprog, BigDecimal imp_com, BigDecimal imp_mor, BigDecimal imp_tit) {
         this.id_bonificacion = id_bonificacion;
         this.id_movedoscta = id_movedoscta;
         this.id_benef = id_benef;
@@ -62,6 +65,9 @@ public class MovBonific {
         this.id_movdiversos = id_movdiversos;
         this.numcontrato = numcontrato;
         this.id_catprog = id_catprog;
+        this.imp_com = imp_com;
+        this.imp_mor = imp_mor;
+        this.imp_tit = imp_tit;
     }
 
     
@@ -265,10 +271,29 @@ public class MovBonific {
     public void setAutoriza(String autoriza) {
         this.autoriza = autoriza;
     }
-    
-    
-    
-    
-    
+
+    public BigDecimal getImp_com() {
+        return imp_com;
+    }
+
+    public void setImp_com(BigDecimal imp_com) {
+        this.imp_com = imp_com;
+    }
+
+    public BigDecimal getImp_mor() {
+        return imp_mor;
+    }
+
+    public void setImp_mor(BigDecimal imp_mor) {
+        this.imp_mor = imp_mor;
+    }
+
+    public BigDecimal getImp_tit() {
+        return imp_tit;
+    }
+
+    public void setImp_tit(BigDecimal imp_tit) {
+        this.imp_tit = imp_tit;
+    }
     
 }
