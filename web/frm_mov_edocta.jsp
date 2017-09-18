@@ -80,7 +80,7 @@
                                 <select id="id_benef" required class="select2  wrap form-control" > 
                                     <option value="0">SELECCIONE UNO</option>
                                     <c:forEach  var="benef" items="${requestScope.beneficiarios}">
-                                        <OPTION VALUE="${benef.id_beneficiario}" >${benef.nombre}</OPTION>
+                                        <OPTION VALUE="${benef.id_beneficiario}" >[${benef.clave_b}] ${benef.nombre}</OPTION>
                                     </c:forEach>
                                 </select>
                             </div>

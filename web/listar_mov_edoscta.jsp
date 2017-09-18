@@ -80,6 +80,7 @@
                     <th>Otros Seguros</th>
                     <th>Comisión</th>
                     <th>Titulación</th>
+                    <th>Moratorios</th>
                     <th>Bonificacion?</th>    
                 </tr>
             </thead>
@@ -109,6 +110,7 @@
                         <th style="font-weight: normal; width: 30%"> <c:out value="${mov.o_seguro}" /></th>
                         <th style="font-weight: normal; width: 30%"> <c:out value="${mov.comisiones}" /></th>                        
                         <th style="font-weight: normal; width: 30%"> <c:out value="${mov.tit}" /></th>
+                        <th style="font-weight: normal; width: 30%"> <c:out value="${mov.moratorios}" /></th>
                         <c:choose>
                             <c:when test="${mov.bonific==true}">
                                 <th style="text-align: center"><span class="fa fa-check" title="Movimiento con Bonificación"></span></th>
