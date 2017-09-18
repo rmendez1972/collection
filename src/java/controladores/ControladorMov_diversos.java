@@ -75,7 +75,7 @@ public class ControladorMov_diversos extends ControladorBase
         ArrayList movimientos_div=modelo.obtenerMovimientosporID(id_bendiv);
         
         
-        GsonBuilder builder=new GsonBuilder();
+        GsonBuilder builder=new GsonBuilder().setDateFormat("dd/MM/yyy");
         Gson gson=builder.create();
             
         //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
