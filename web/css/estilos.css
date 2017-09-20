@@ -1032,6 +1032,8 @@ div.upload input {
         .concluido{background-color: #00FF00; /*verde*/}
         .inconcluso{background-color: #2E9AFE;/*azul*/}
         .revertido{background-color: #8258FA; /*Morado*/}
+        .cancelado{background-color: #F0F0F6; /*Morado*/}
+        .entregado{background-color: #000; /*Morado*/}
         /*#FF0000;#FFBF00;#00FF00;#2E9AFE;#8258FA;*/
         
         #semaforo{
