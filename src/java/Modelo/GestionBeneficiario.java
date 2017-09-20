@@ -117,6 +117,29 @@ public class GestionBeneficiario
         return resultado;
     }
     
+    public boolean verificarMovimientosPorId(ParametrosApertura par_aper){
+        boolean resultado=false;
+        Integer valor=0;
+     
+       Object params[]={par_aper.getId_beneficiario(),par_aper.getClave_b()};
+       ResultSet res=Conexion.ejecutarConsulta("SELECT COUNT(*) AS valor FROM mov_edoscta WHERE id_benef=? AND clave_b=?", params);
+       
+       try{
+            while(res.next()){
+                valor=res.getInt("valor");
+            }
+            res.close();
+        }catch(Exception e){}
+       
+       if(valor == 0){
+           resultado = false;
+       }else{
+           resultado = true;
+       }
+       
+        return resultado;
+    }
+    
     public ArrayList obtenerBeneficiarios(){
         ArrayList beneficiarios=new ArrayList();
         ResultSet res=Conexion.ejecutarConsulta("select B.*, P.descripcion as desprograma, T.descripcion as descredito, U.usuario as usuario from benef B inner join cat_prog P on B.id_catprog=P.id_catprog inner join tipo_credito T on B.id_tipocredito=T.id_tipocredito inner join usuarios U on B.id_usuario=U.id_usuario order by B.fecha_cont", null);

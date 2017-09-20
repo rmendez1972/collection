@@ -169,6 +169,7 @@ public class ControladorBeneficiario extends ControladorBase
     
     public void aperturar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         String sql=null;
+        String sqlverifica = null;
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         int id=Integer.parseInt(request.getParameter("id"));
         int id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
@@ -179,13 +180,23 @@ public class ControladorBeneficiario extends ControladorBase
         int mecanica=programa.getMecanica();
         boolean condicionfija =programa.isCondicion_fija();
         HttpSession objSession = request.getSession(); 
-        Usuario usuario = (Usuario)(objSession.getAttribute("usuario")); 
+        Usuario usuario = (Usuario)(objSession.getAttribute("usuario"));
+        
+        String claveb = benef.getClave_b();
+        
             
         Integer id_usuario=usuario.getId_usuario();
-        ParametrosApertura par_aper=new ParametrosApertura();
+        ParametrosApertura par_aper2=new ParametrosApertura();
+        
+        //sqlverifica= "{call sp_verificamovedocta(?,?,?)}";
+        par_aper2.setId_beneficiario(id);
+        par_aper2.setClave_b(claveb);
+        GestionBeneficiario modelo=new GestionBeneficiario();
+        boolean resultadoMovEdoCta = modelo.verificarMovimientosPorId(par_aper2);
+        
         
 
-        if (benef.getAperturado()==false || benef.getAperturado()==null){
+        if ((benef.getAperturado()==false || benef.getAperturado()==null) && resultadoMovEdoCta==false){
             // defino variables para setear el javabean        
             Date fecha_pol = benef.getFecha_pol();
             String poliza= benef.getPoliza();
@@ -198,7 +209,7 @@ public class ControladorBeneficiario extends ControladorBase
             BigDecimal imp_sui=benef.getSub_inic();
             int id_catprograma=benef.getId_catprog();
             String numcontrato = benef.getNumcontrato();
-            
+            ParametrosApertura par_aper=new ParametrosApertura();
                     
             switch (mecanica){
                 case 29:
@@ -319,7 +330,7 @@ public class ControladorBeneficiario extends ControladorBase
                     break;    
             }
 
-            GestionBeneficiario modelo=new GestionBeneficiario();
+            
             boolean resultado=modelo.aperturarPorId(mecanica,id,sql, par_aper);
             if (resultado)
             {
