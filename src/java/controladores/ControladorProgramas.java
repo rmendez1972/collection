@@ -12,6 +12,8 @@ import Modelo.GestionModulo;
 import Modelo.GestionProgramas;
 import Modelo.GestionTipocredito;
 import Modelo.GestionUsuario;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,6 +41,24 @@ public class ControladorProgramas extends ControladorBase{
         rd.forward(request,response);
     
     }
+    
+    public void listarJson(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        GestionProgramas modelo = new GestionProgramas();
+        ArrayList programas = modelo.obtenerTodos();
+        //request.setAttribute("pr", pr);
+        //RequestDispatcher rd=request.getRequestDispatcher("listar_Programas.jsp");
+        //rd.forward(request,response);
+        GsonBuilder builder=new GsonBuilder();
+        Gson gson=builder.create();
+        
+        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        response.getWriter().write("{\"programas\":"+gson.toJson(programas)+"}");
+    
+    } 
     
     public void nuevo(HttpServletRequest request, HttpServletResponse response) throws Exception{
         GestionTipocredito mod_tc = new GestionTipocredito();
