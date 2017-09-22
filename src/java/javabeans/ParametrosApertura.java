@@ -68,6 +68,11 @@ public class ParametrosApertura
         
         
     }
+    
+    public ParametrosApertura(int id_beneficiario, String clave_b) {
+        this.id_beneficiario = id_beneficiario;
+        this.clave_b= clave_b;
+    }
 
     public int getId_beneficiario() {
         return id_beneficiario;

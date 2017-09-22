@@ -4,7 +4,7 @@ CREATE PROCEDURE sp_apertura38(
 	IN id_benef INT,
 	IN clave_b VARCHAR(12),
     IN fecha_pol VARCHAR(11), 
-    IN poliza VARCHAR(4),
+    IN poliza VARCHAR(6),
     IN imp_cap DECIMAL(10,3),
     IN imp_eng DECIMAL(9,3),
     IN imp_pagos DECIMAL(9,2),
