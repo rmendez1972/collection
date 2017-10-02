@@ -60,7 +60,7 @@ public class ControladorMov_edocta extends ControladorBase
         rd.forward(request,response);
     }
     
- 
+ //listar Json Movimientos
     public void listarJsonbyMovimientos(HttpServletRequest request, HttpServletResponse response) throws Exception{
         
         String criterio = request.getParameter("criterio");

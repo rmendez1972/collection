@@ -348,7 +348,8 @@ public class ControladorBeneficiario extends ControladorBase
         RequestDispatcher rd=request.getRequestDispatcher("controladorbeneficiario?operacion=listar");
         rd.forward(request,response);
     }
-    
+        
+        //listar JsonBeneficiario
         public void listarJsonbyIdBeneficiario(HttpServletRequest request, HttpServletResponse response) throws Exception{
         
         String criterio = request.getParameter("criterio");
