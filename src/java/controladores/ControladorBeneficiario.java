@@ -6,8 +6,11 @@ package controladores;
 
 import Modelo.GestionBeneficiario;
 import Modelo.GestionCandidatos;
+import Modelo.GestionMov_edocta;
 import Modelo.GestionProgramas;
 import Modelo.GestionTipocredito;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -344,6 +347,33 @@ public class ControladorBeneficiario extends ControladorBase
         
         RequestDispatcher rd=request.getRequestDispatcher("controladorbeneficiario?operacion=listar");
         rd.forward(request,response);
+    }
+    
+        public void listarJsonbyIdBeneficiario(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        
+        String criterio = request.getParameter("criterio");
+        String valorcriterio = request.getParameter("valorcriterio");
+        
+        GestionBeneficiario gbenef = new GestionBeneficiario();
+        Beneficiario benef = gbenef.obtenerGenerico(valorcriterio);
+        //Beneficiario benef = gbenef.obtenerPorClave_b(valorcriterio);
+        ArrayList beneficiario = new ArrayList();
+        Integer id_benef = benef.getId_beneficiario();
+        beneficiario.add(benef);
+        
+        GestionMov_edocta modelo=new GestionMov_edocta();
+        ArrayList movimientos=modelo.obtenerMovimientosPorBenefId(id_benef);
+        
+        
+        GsonBuilder builder=new GsonBuilder().setDateFormat("yyyy-MM-dd");
+        Gson gson=builder.create();
+            
+        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        response.getWriter().write("{\"beneficiario\":"+gson.toJson(beneficiario)+"}");
     }
     
     
