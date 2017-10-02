@@ -352,20 +352,15 @@ public class ControladorBeneficiario extends ControladorBase
         //listar JsonBeneficiario
         public void listarJsonbyIdBeneficiario(HttpServletRequest request, HttpServletResponse response) throws Exception{
         
-        String criterio = request.getParameter("criterio");
+        
         String valorcriterio = request.getParameter("valorcriterio");
         
         GestionBeneficiario gbenef = new GestionBeneficiario();
         Beneficiario benef = gbenef.obtenerGenerico(valorcriterio);
-        //Beneficiario benef = gbenef.obtenerPorClave_b(valorcriterio);
+        
         ArrayList beneficiario = new ArrayList();
-        Integer id_benef = benef.getId_beneficiario();
+        
         beneficiario.add(benef);
-        
-        GestionMov_edocta modelo=new GestionMov_edocta();
-        ArrayList movimientos=modelo.obtenerMovimientosPorBenefId(id_benef);
-        
-        
         GsonBuilder builder=new GsonBuilder().setDateFormat("yyyy-MM-dd");
         Gson gson=builder.create();
             
