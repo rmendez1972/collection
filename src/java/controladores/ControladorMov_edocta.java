@@ -60,22 +60,22 @@ public class ControladorMov_edocta extends ControladorBase
         rd.forward(request,response);
     }
     
-    public void listarJsonbyIdbenef(HttpServletRequest request, HttpServletResponse response) throws Exception{
+ //listar Json Movimientos
+    public void listarJsonbyMovimientos(HttpServletRequest request, HttpServletResponse response) throws Exception{
         
-        String criterio = request.getParameter("criterio");
+        
         String valorcriterio = request.getParameter("valorcriterio");
         
         GestionBeneficiario gbenef = new GestionBeneficiario();
-        Beneficiario benef = gbenef.obtenerPorClave_b(valorcriterio);
-        ArrayList beneficiario = new ArrayList();
+        Beneficiario benef = gbenef.obtenerGenerico(valorcriterio);
+                
         Integer id_benef = benef.getId_beneficiario();
-        beneficiario.add(benef);
         
         GestionMov_edocta modelo=new GestionMov_edocta();
         ArrayList movimientos=modelo.obtenerMovimientosPorBenefId(id_benef);
         
         
-        GsonBuilder builder=new GsonBuilder();
+        GsonBuilder builder=new GsonBuilder().setDateFormat("yyyy-MM-dd");
         Gson gson=builder.create();
             
         //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
@@ -83,7 +83,7 @@ public class ControladorMov_edocta extends ControladorBase
         response.setHeader("Access-Control-Allow-Methods", "POST, GET");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-        response.getWriter().write("{\"mov_edoscta\":"+gson.toJson(movimientos)+",\"beneficiario\":"+gson.toJson(beneficiario)+"}");
+        response.getWriter().write("{\"mov_edoscta\":"+gson.toJson(movimientos)+"}");
     }
     
    /* public void listarporidJson(HttpServletRequest request, HttpServletResponse response) throws Exception{

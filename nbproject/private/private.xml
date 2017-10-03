@@ -3,12 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_edoscta.jsp</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorProgramas.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_mov_edoscta.jsp</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/index.jsp</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/listar_Programas.jsp</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/web/frm_mov_edocta.jsp</file>
+=======
+            <file>file:/C:/Users/angel/Documents/NetBeansProjects/cobranza/web/frm_mov_edocta.jsp</file>
+            <file>file:/C:/Users/angel/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorMov_edocta.java</file>
+>>>>>>> a291160d73ef667621345ae879d77893a4d6af8c
         </group>
     </open-files>
 </project-private>

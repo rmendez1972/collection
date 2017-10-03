@@ -6,8 +6,11 @@ package controladores;
 
 import Modelo.GestionBeneficiario;
 import Modelo.GestionCandidatos;
+import Modelo.GestionMov_edocta;
 import Modelo.GestionProgramas;
 import Modelo.GestionTipocredito;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -344,6 +347,29 @@ public class ControladorBeneficiario extends ControladorBase
         
         RequestDispatcher rd=request.getRequestDispatcher("controladorbeneficiario?operacion=listar");
         rd.forward(request,response);
+    }
+        
+        //listar JsonBeneficiario
+        public void listarJsonbyIdBeneficiario(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        
+        
+        String valorcriterio = request.getParameter("valorcriterio");
+        
+        GestionBeneficiario gbenef = new GestionBeneficiario();
+        Beneficiario benef = gbenef.obtenerGenerico(valorcriterio);
+        
+        ArrayList beneficiario = new ArrayList();
+        
+        beneficiario.add(benef);
+        GsonBuilder builder=new GsonBuilder().setDateFormat("yyyy-MM-dd");
+        Gson gson=builder.create();
+            
+        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        response.getWriter().write("{\"beneficiario\":"+gson.toJson(beneficiario)+"}");
     }
     
     
