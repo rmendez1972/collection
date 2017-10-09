@@ -5,7 +5,7 @@ CREATE PROCEDURE sp_apertura26(
     IN `id_benef` INT, 
     IN `imp_cap` DECIMAL(11,3), 
     IN `imp_eng` DECIMAL (11,3), 
-    IN `poliza` VARCHAR(4), 
+    IN `poliza` VARCHAR(6), 
     IN `fecha_pol` VARCHAR(11), 
     IN `clave_b` VARCHAR(12), 
     IN `imp_pagos` DECIMAL(11,3), 

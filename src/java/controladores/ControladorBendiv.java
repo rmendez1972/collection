@@ -6,6 +6,7 @@
 package controladores;
 
 import Modelo.GestionBendiv;
+import Modelo.GestionBeneficiario;
 import Modelo.GestionDelegacion;
 import Modelo.GestionUsuario;
 import Modelo.GestionProgramas;
@@ -33,6 +34,7 @@ import java.util.Scanner;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javabeans.Beneficiario;
 
 import javabeans.BeneficiarioDiv;
 import javabeans.Usuario;
@@ -88,6 +90,28 @@ public class ControladorBendiv extends ControladorBase {
             
         RequestDispatcher rd=request.getRequestDispatcher("listar_bendiv.jsp");
         rd.forward(request,response);
+    }
+    
+    
+    //listar JsonBeneficiarioByBeneficiarioDiv
+    public void listarJsonbyIdBeneficiarioDiv(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String valorcriterio = request.getParameter("valorcriterio");
+        
+        GestionBendiv gbenef = new GestionBendiv();
+        BeneficiarioDiv benef = gbenef.obtenerGenerico(valorcriterio);
+        
+        ArrayList beneficiariodiv = new ArrayList();
+        
+        beneficiariodiv.add(benef);
+        GsonBuilder builder=new GsonBuilder().setDateFormat("yyyy-MM-dd");
+        Gson gson=builder.create();
+            
+        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        response.getWriter().write("{\"beneficiario_div\":"+gson.toJson(beneficiariodiv)+"}");
     }
     
     
