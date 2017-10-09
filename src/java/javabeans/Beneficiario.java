@@ -112,13 +112,14 @@ public class Beneficiario
 
     }
 
+        //Angel
     public Beneficiario(int id_beneficiario,int id_catprog, String numcontrato, 
             String clave_elect, String curp, String rfc, String nombre, String conyuge, 
             Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,
             String clave_cat,int id_tipocredito, Date fecha_pol, String poliza, String clave_b, 
             BigDecimal capital, BigDecimal enganche, BigDecimal pagant, BigDecimal sub_inic, 
             BigDecimal admon, BigDecimal interes, BigDecimal seguro, BigDecimal comision, 
-            Boolean aperturado, Date fecha_ip,BigDecimal sub_inf, BigDecimal titulacion){
+            Boolean aperturado, Date fecha_ip,BigDecimal sub_inf, BigDecimal titulacion, BigDecimal o_seg){
 
          this.id_beneficiario=id_beneficiario;
          this.id_catprog=id_catprog;
@@ -150,6 +151,7 @@ public class Beneficiario
          this.fecha_ip=fecha_ip;
          this.sub_inf = sub_inf;
          this.titulacion = titulacion;
+         this.o_seg=o_seg;
      }
     
     public Beneficiario(int id_beneficiario, String poliza, int id_usuario, String clave_b, int id_catprog, 
@@ -173,6 +175,7 @@ public class Beneficiario
          this.sub_inf = sub_inf;
          this.pagant = pagant;
     }
+    
 
     
     public int getId_beneficiario() {

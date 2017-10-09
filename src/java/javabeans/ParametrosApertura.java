@@ -34,6 +34,7 @@ public class ParametrosApertura
     private String numcontrato;
     private BigDecimal titulacion;
     private BigDecimal sub_inf;
+    private BigDecimal otros_seg;
 
 
     
@@ -210,6 +211,14 @@ public class ParametrosApertura
     
     public BigDecimal getSub_inf(){
         return sub_inf;
+    }
+
+    public BigDecimal getOtros_seg() {
+        return otros_seg;
+    }
+
+    public void setOtros_seg(BigDecimal otros_seg) {
+        this.otros_seg = otros_seg;
     }
    
     

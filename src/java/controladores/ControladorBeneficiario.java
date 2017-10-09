@@ -163,6 +163,9 @@ public class ControladorBeneficiario extends ControladorBase
         BigDecimal titulacion = new BigDecimal(request.getParameter("titulacion"));
         benef.setTitulacion(titulacion);
         
+        BigDecimal o_seg = new BigDecimal(request.getParameter("o_seg"));
+        benef.setO_seg(o_seg);
+        
         GestionBeneficiario modelo=new GestionBeneficiario();
         if(modelo.actualizarBeneficiario(benef)){
             RequestDispatcher rd=request.getRequestDispatcher("controladorbeneficiario?operacion=listar");
@@ -219,6 +222,7 @@ public class ControladorBeneficiario extends ControladorBase
             BigDecimal imp_interes = benef.getInteres();
             BigDecimal imp_sin = benef.getSub_inf();
             BigDecimal titulacion = benef.getTitulacion();
+            BigDecimal imp_osg = benef.getO_seg();
             int id_catprograma=benef.getId_catprog();
             String numcontrato = benef.getNumcontrato();
             ParametrosApertura par_aper=new ParametrosApertura();
@@ -267,6 +271,25 @@ public class ControladorBeneficiario extends ControladorBase
                     par_aper.setId_usuario(id_usuario);
                     par_aper.setId_catprog(id_catprograma);
                     par_aper.setNumcontrato(numcontrato);
+                    break;
+                    
+                case 40:
+                    sql= "{call sp_apertura40(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+                    par_aper.setId_beneficiario(id);
+                    par_aper.setClave_b(clave_b);
+                    par_aper.setFecha_pol(fecha_pol);
+                    par_aper.setPoliza(poliza);
+                    par_aper.setId_usuario(id_usuario);
+                    par_aper.setId_catprog(id_catprog);
+                    par_aper.setNumcontrato(numcontrato);
+                    par_aper.setImp_capital(imp_capital);
+                    par_aper.setImp_enganche(imp_enganche);
+                    par_aper.setSub_inic(imp_sui);
+                    par_aper.setPagos_anticipados(imp_pagos);
+                    par_aper.setIntereses(imp_interes);
+                    par_aper.setGastos_admon(imp_admon);
+                    par_aper.setSeguro_vida(imp_svida);
+                    par_aper.setOtros_seg(imp_osg);
                     break;
                     
                 case 8:
