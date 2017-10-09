@@ -157,6 +157,12 @@ public class ControladorBeneficiario extends ControladorBase
         BigDecimal seguro = new BigDecimal(request.getParameter("seguro"));
         benef.setSeguro(seguro);
         
+        BigDecimal sub_inf = new BigDecimal(request.getParameter("sub_inf"));
+        benef.setSub_inf(sub_inf);
+        
+        BigDecimal titulacion = new BigDecimal(request.getParameter("titulacion"));
+        benef.setTitulacion(titulacion);
+        
         GestionBeneficiario modelo=new GestionBeneficiario();
         if(modelo.actualizarBeneficiario(benef)){
             RequestDispatcher rd=request.getRequestDispatcher("controladorbeneficiario?operacion=listar");
@@ -210,6 +216,9 @@ public class ControladorBeneficiario extends ControladorBase
             BigDecimal imp_svida=benef.getSeguro();
             BigDecimal imp_pagos=benef.getPagant();
             BigDecimal imp_sui=benef.getSub_inic();
+            BigDecimal imp_interes = benef.getInteres();
+            BigDecimal imp_sin = benef.getSub_inf();
+            BigDecimal titulacion = benef.getTitulacion();
             int id_catprograma=benef.getId_catprog();
             String numcontrato = benef.getNumcontrato();
             ParametrosApertura par_aper=new ParametrosApertura();
@@ -279,7 +288,7 @@ public class ControladorBeneficiario extends ControladorBase
                 case 10: //igh
                     sql= "{call sp_apertura10(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
                     // defino variables para setear el javabean
-                    BigDecimal imp_interes=benef.getInteres();
+                    //BigDecimal imp_interes=benef.getInteres();
 
                     par_aper.setId_beneficiario(id);
                     par_aper.setPoliza(poliza);
@@ -330,7 +339,27 @@ public class ControladorBeneficiario extends ControladorBase
                     
                     par_aper.setId_catprog(id_catprograma);
                     par_aper.setNumcontrato(numcontrato);
-                    break;    
+                    break;  
+                case 48: 
+                    sql= "{call sp_apertura48(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+                    
+                    par_aper.setId_beneficiario(id);
+                    par_aper.setPoliza(poliza);
+                    par_aper.setClave_b(clave_b);
+                    par_aper.setId_usuario(id_usuario);
+                    par_aper.setId_catprog(id_catprograma);
+                    par_aper.setNumcontrato(numcontrato);
+                    par_aper.setFecha_pol(fecha_pol);
+                    par_aper.setImp_capital(imp_capital);
+                    par_aper.setIntereses(imp_interes);
+                    par_aper.setSeguro_vida(imp_svida);
+                    par_aper.setGastos_admon(imp_admon);
+                    par_aper.setTitulacion(titulacion);
+                    par_aper.setImp_enganche(imp_enganche);
+                    par_aper.setSub_inic(imp_sui);
+                    par_aper.setSub_inf(imp_sin);
+                    par_aper.setPagos_anticipados(imp_pagos);
+                    break;
             }
 
             

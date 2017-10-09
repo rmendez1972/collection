@@ -61,6 +61,7 @@ public class Beneficiario
     private String usuario;
     private Boolean aperturado;
     private BigDecimal comision;
+    private BigDecimal titulacion;
        
     public Beneficiario(){ super();}
     //constructor que permite crear un objeto
@@ -111,7 +112,13 @@ public class Beneficiario
 
     }
 
-    public Beneficiario(int id_beneficiario,int id_catprog, String numcontrato, String clave_elect, String curp, String rfc, String nombre, String conyuge, Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,String clave_cat,int id_tipocredito, Date fecha_pol, String poliza, String clave_b, BigDecimal capital, BigDecimal enganche, BigDecimal pagant, BigDecimal sub_inic, BigDecimal admon, BigDecimal interes, BigDecimal seguro, BigDecimal comision, Boolean aperturado, Date fecha_ip){
+    public Beneficiario(int id_beneficiario,int id_catprog, String numcontrato, 
+            String clave_elect, String curp, String rfc, String nombre, String conyuge, 
+            Date fecha_con, String mza, String lte, BigDecimal area, String domicilio,
+            String clave_cat,int id_tipocredito, Date fecha_pol, String poliza, String clave_b, 
+            BigDecimal capital, BigDecimal enganche, BigDecimal pagant, BigDecimal sub_inic, 
+            BigDecimal admon, BigDecimal interes, BigDecimal seguro, BigDecimal comision, 
+            Boolean aperturado, Date fecha_ip,BigDecimal sub_inf, BigDecimal titulacion){
 
          this.id_beneficiario=id_beneficiario;
          this.id_catprog=id_catprog;
@@ -141,7 +148,31 @@ public class Beneficiario
          this.comision=comision;
          this.aperturado=aperturado;
          this.fecha_ip=fecha_ip;
+         this.sub_inf = sub_inf;
+         this.titulacion = titulacion;
      }
+    
+    public Beneficiario(int id_beneficiario, String poliza, int id_usuario, String clave_b, int id_catprog, 
+            String numcontrato, Date fecha_pol, BigDecimal capital, BigDecimal interes,BigDecimal seguro,
+            BigDecimal admon,BigDecimal titulacion ,BigDecimal eng, BigDecimal sub_sui,BigDecimal sub_inf, 
+            BigDecimal pagant){
+         this.id_beneficiario=id_beneficiario;
+         this.poliza=poliza;
+         this.id_usuario=id_usuario;
+         this.clave_b=clave_b;
+         this.id_catprog=id_catprog;
+         this.numcontrato = numcontrato;
+         this.fecha_pol=fecha_pol;
+         this.capital=capital;
+         this.interes = interes;
+         this.seguro = seguro;
+         this.admon = admon;
+         this.titulacion = titulacion;
+         this.enganche = eng;
+         this.sub_inic = sub_sui;
+         this.sub_inf = sub_inf;
+         this.pagant = pagant;
+    }
 
     
     public int getId_beneficiario() {
@@ -514,6 +545,13 @@ public class Beneficiario
 
     public void setComision(BigDecimal comision) {
         this.comision = comision;
+    }
+
+    public BigDecimal getTitulacion() {
+        return titulacion;
+    }
+    public void setTitulacion(BigDecimal titulacion){
+        this.titulacion =titulacion;
     }
      
 }
