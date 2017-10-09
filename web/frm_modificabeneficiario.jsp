@@ -37,6 +37,10 @@
                 params.comision=$("#comision").val();
                 params.interes=$("#interes").val();
                 params.seguro=$("#seguro").val();
+                params.sub_inf=$("#sub_inf").val();
+                params.titulacion=$("#titulacion").val();
+                params.o_seg=$("#o_seg").val();
+                
                 if(params.id_catprog == 0){
                     alert("Seleccione un programa");
                     return false;
@@ -232,8 +236,27 @@
                             <div class="col-xs-12 col-md-4">
                                 <input type="number" step="0.01" id="seguro" class="form-control" required  placeholder="Solo se aceptan dos decimales" maxlength="12" value="${benef.seguro}" />
                             </div>
+                            <label for="titulacion" class="col-xs-12 col-md-2 control-label">Titulación:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="number" step="0.01" id="titulacion" class="form-control" required  placeholder="Solo se aceptan dos decimales" maxlength="12" value="${benef.titulacion}" />
+                            </div>
                                                        
                         </div>
+                        <div class="form-group">
+                                                          
+                            <label for="sub_inf" class="col-xs-12 col-md-2 control-label">Subsidio INF:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="number" step="0.01" id="sub_inf" class="form-control" required  placeholder="Solo se aceptan dos decimales" maxlength="12" value="${benef.sub_inf}" />
+                            </div>
+                            
+                            <label for="o_seg" class="col-xs-12 col-md-2 control-label">Otros Seguros:</label>
+                            <div class="col-xs-12 col-md-4">
+                                <input type="number" step="0.001" id="o_seg" class="form-control" required  placeholder="Solo se aceptan tres decimales" maxlength="12" value="${benef.o_seg}" />
+                            </div>
+                            
+                                                       
+                        </div>
+                            
                                 
 
                         <div class="form-group" style="text-align:center">
