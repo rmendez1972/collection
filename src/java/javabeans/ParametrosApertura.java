@@ -32,6 +32,8 @@ public class ParametrosApertura
     
     private int id_catprog;
     private String numcontrato;
+    private BigDecimal titulacion;
+    private BigDecimal sub_inf;
 
 
     
@@ -68,6 +70,8 @@ public class ParametrosApertura
         
         
     }
+    //Constructor mecanicas: 48
+    
     
     public ParametrosApertura(int id_beneficiario, String clave_b) {
         this.id_beneficiario = id_beneficiario;
@@ -192,6 +196,22 @@ public class ParametrosApertura
     public void setNumcontrato(String numcontrato) {
         this.numcontrato = numcontrato;
     }
+
+    public void setTitulacion(BigDecimal titulacion) {
+        this.titulacion = titulacion;
+    }
+    public BigDecimal getTitulacion(){
+        return titulacion;
+    }
+
+    public void setSub_inf(BigDecimal sub_inf) {
+        this.sub_inf = sub_inf;
+    }
+    
+    public BigDecimal getSub_inf(){
+        return sub_inf;
+    }
+   
     
     
 
