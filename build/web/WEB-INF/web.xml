@@ -22,6 +22,7 @@
         <servlet-name>ControladorTramite</servlet-name>
         <servlet-class>controladores.ControladorTramite</servlet-class>
     </servlet>
+    
     <servlet>
         <servlet-name>ControladorUsuario</servlet-name>
         <servlet-class>controladores.ControladorUsuario</servlet-class>
@@ -77,6 +78,7 @@
         <servlet-name>ControladorBase</servlet-name>
         <url-pattern>/controladorbase</url-pattern>
     </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>ControladorPermiso</servlet-name>
         <url-pattern>/controladorpermiso</url-pattern>
