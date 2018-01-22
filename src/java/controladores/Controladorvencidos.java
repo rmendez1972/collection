@@ -58,10 +58,15 @@ public class Controladorvencidos extends ControladorBase
     
     
     public void listar(HttpServletRequest request, HttpServletResponse response) throws Exception{
+<<<<<<< HEAD
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+=======
+        response.setContentType("text/html;charset=UTF-8");
+        
+>>>>>>> 1cdf351aeac3ee24aed42a3d1fabafac2a2fd9c8
         PrintWriter out = response.getWriter();
         try {
                 Gestionvencidos vencidos = new Gestionvencidos();
@@ -74,12 +79,17 @@ public class Controladorvencidos extends ControladorBase
                 ArrayList fechas = vencidos.localizaFechasparaJson (clave_b,fecha_corte);
                 ArrayList jurs = vencidos.localizaMovJurparaJson (clave_b);
                 ArrayList movss = vencidos.localizaMovCanparaJson (clave_b);
-                //ArrayList vencidoss = vencidos.listarVencidosparaJson(clave_b);
+                //ArrayList vencidoss = vencidos.listarvencidosparaJson(clave_b);
                 ArrayList vencidoss = null;
+                response.setHeader("Access-Control-Allow-Origin", "*");
+                response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+                response.setHeader("Access-Control-Max-Age", "3600");
+                response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
                 
           if ((movss !=null) && (movss.size() != 0))
           {    
-                    lista = "\"" + "Vencidos" + "\":" + "[";
+                    lista = "\"" + "vencidos" + "\":" + "[";
                     for (int x = 0; x < movss.size(); x=x+10) 
                     {
                         lista += "{" + "\"" + "fecha" + "\"" + ":" + " \"" + movss.get(x) + "\""+ ","+ "\"" + "letra" + "\"" + ":" + " \"" + movss.get(x+1) + " \"" + "," +"\"" + "capital" + "\"" + ":" + " \"" + movss.get(x+2)+ " \""+ "," +"\"" + "interes" + "\"" + ":" + " \""  + movss.get(x+3) + " \""+ "," +"\"" + "seguro" + "\"" + ":" + " \""  + movss.get(x+4) + " \""+ "," +"\"" + "admon" + "\"" + ":" + " \""  + movss.get(x+5) + " \""+ "," +"\"" + "oseg" + "\"" + ":" + " \""  + movss.get(x+6) + " \""+ "," +"\"" + "com" + "\"" + ":" + " \""  + movss.get(x+7) + " \""+ "," +"\"" + "tit" + "\"" + ":" + " \""  + movss.get(x+8) + " \""+ "," +"\"" + "mor" + "\"" + ":" + " \""  + movss.get(x+9) + " \""  + "}" + ",";
@@ -93,7 +103,7 @@ public class Controladorvencidos extends ControladorBase
           {
              if ((jurs !=null) && (jurs.size() != 0))
              {    
-                    lista = "\"" + "Vencidos" + "\":" + "[";
+                    lista = "\"" + "vencidos" + "\":" + "[";
                     for (int x = 0; x < jurs.size(); x=x+10) 
                     {
                         lista += "{" + "\"" + "fecha" + "\"" + ":" + " \"" + jurs.get(x) + "\""+ ","+ "\"" + "letra" + "\"" + ":" + " \"" + jurs.get(x+1) + " \"" + "," +"\"" + "capital" + "\"" + ":" + " \"" + jurs.get(x+2)+ " \""+ "," +"\"" + "interes" + "\"" + ":" + " \""  + jurs.get(x+3) + " \""+ "," +"\"" + "seguro" + "\"" + ":" + " \""  + jurs.get(x+4) + " \""+ "," +"\"" + "admon" + "\"" + ":" + " \""  + jurs.get(x+5) + " \""+ "," +"\"" + "oseg" + "\"" + ":" + " \""  + jurs.get(x+6) + " \""+ "," +"\"" + "com" + "\"" + ":" + " \""  + jurs.get(x+7) + " \""+ "," +"\"" + "tit" + "\"" + ":" + " \""  + jurs.get(x+8) + " \""+ "," +"\"" + "mor" + "\"" + ":" + " \""  + jurs.get(x+9) + " \""  + "}" + ",";
@@ -107,7 +117,7 @@ public class Controladorvencidos extends ControladorBase
              {    
                 if ((fechas !=null) && (fechas.size() != 0))
                 {    
-                    lista = "\"" + "Vencidos" + "\":" + "[";
+                    lista = "\"" + "vencidos" + "\":" + "[";
                     for (int x = 0; x < fechas.size(); x=x+10) 
                     {
                         lista += "{" + "\"" + "fecha" + "\"" + ":" + " \"" + fechas.get(x) + "\""+ ","+ "\"" + "letra" + "\"" + ":" + " \"" + fechas.get(x+1) + " \"" + "," +"\"" + "capital" + "\"" + ":" + " \"" + fechas.get(x+2)+ " \""+ "," +"\"" + "interes" + "\"" + ":" + " \""  + fechas.get(x+3) + " \""+ "," +"\"" + "seguro" + "\"" + ":" + " \""  + fechas.get(x+4) + " \""+ "," +"\"" + "admon" + "\"" + ":" + " \""  + fechas.get(x+5) + " \""+ "," +"\"" + "oseg" + "\"" + ":" + " \""  + fechas.get(x+6) + " \""+ "," +"\"" + "com" + "\"" + ":" + " \""  + fechas.get(x+7) + " \""+ "," +"\"" + "tit" + "\"" + ":" + " \""  + fechas.get(x+8) + " \""+ "," +"\"" + "mor" + "\"" + ":" + " \""  + fechas.get(x+9) + " \""  + "}" + ",";
@@ -121,7 +131,7 @@ public class Controladorvencidos extends ControladorBase
                 {
                     if (vencidoss.size() != 0) 
                     {
-                        lista = "\"" + "Vencidos" + "\":" + "[";
+                        lista = "\"" + "vencidos" + "\":" + "[";
                             for (int x = 0; x < vencidoss.size(); x=x+3) 
                             {
                                 lista += "{" + "\"" + "capital" + "\"" + ":" + vencidoss.get(x).toString() + "," +"\"" + "interes" + "\"" + ":" + " \"" + vencidoss.get(x+1)+ " \""+ "," +"\"" + "admon" + "\"" + ":" + " \""  + vencidoss.get(x+2)+ " \""  + "}" + ",";
@@ -158,7 +168,7 @@ public class Controladorvencidos extends ControladorBase
         } 
         catch (Exception ex) 
         {
-            Logger.getLogger(Controladorcolonias2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controladorcolonias2.class.getName()).log(Level.SEvERE, null, ex);
         }
     }
     
@@ -170,7 +180,7 @@ public class Controladorvencidos extends ControladorBase
             processRequest(request, response);
         } catch (Exception ex) 
         {
-            Logger.getLogger(Controladorcolonias2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controladorcolonias2.class.getName()).log(Level.SEvERE, null, ex);
         }
     }
     
