@@ -61,15 +61,15 @@ public class ControladorMov_diversos extends ControladorBase
         rd.forward(request,response);
     }
     
-    public void listarJsonbyIdbenef(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        String criterio = request.getParameter("criterio");
+    public void listarJsonbyMovimientos(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        //String criterio = request.getParameter("criterio");
         String valorcriterio = request.getParameter("valorcriterio");
         
         GestionBendiv gbenef = new GestionBendiv();
-        BeneficiarioDiv benef_div = gbenef.obtenerPorClave_b(valorcriterio);
-        ArrayList beneficiario_div = new ArrayList();
+        BeneficiarioDiv benef_div = gbenef.obtenerGenerico(valorcriterio);
+        //ArrayList beneficiario_div = new ArrayList();
         Integer id_bendiv = benef_div.getId_bendiv();
-        beneficiario_div.add(benef_div);
+        //beneficiario_div.add(benef_div);
         
         GestionMov_diversos modelo=new GestionMov_diversos();
         ArrayList movimientos_div=modelo.obtenerMovimientosporID(id_bendiv);
@@ -83,7 +83,8 @@ public class ControladorMov_diversos extends ControladorBase
         response.setHeader("Access-Control-Allow-Methods", "POST, GET");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-        response.getWriter().write("{\"mov_diversos\":"+gson.toJson(movimientos_div)+",\"beneficiario_div\":"+gson.toJson(beneficiario_div)+"}");
+        //response.getWriter().write("{\"mov_diversos\":"+gson.toJson(movimientos_div)+",\"beneficiario_div\":"+gson.toJson(beneficiario_div)+"}");
+        response.getWriter().write("{\"mov_diversos\":"+gson.toJson(movimientos_div)+"}");
     }
     
     public void listarMovBendivId(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -367,4 +368,3 @@ public class ControladorMov_diversos extends ControladorBase
         generarReporte("ReporteCpp.jasper", param, request, response);
     } */
 }
-
