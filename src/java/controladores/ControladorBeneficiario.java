@@ -485,10 +485,10 @@ public class ControladorBeneficiario extends ControladorBase
     }
     */
     
-    /*
+    
     public void reporte(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Map param = new HashMap();
-        generarReporte("ReporteCpp.jasper", param, request, response);
-    } */
+        generarReporte("ReporteBeneficiario.jasper", param, request, response);
+    } 
 }
 
