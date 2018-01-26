@@ -153,6 +153,7 @@ public class Beneficiario
          this.titulacion = titulacion;
          this.o_seg=o_seg;
          this.plazo=plazo;
+         //comentario
      }
     
     public Beneficiario(int id_beneficiario, String poliza, int id_usuario, String clave_b, int id_catprog, 
