@@ -58,15 +58,10 @@ public class Controladorvencidos extends ControladorBase
     
     
     public void listar(HttpServletRequest request, HttpServletResponse response) throws Exception{
-<<<<<<< HEAD
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
-        response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-=======
+
         response.setContentType("text/html;charset=UTF-8");
         
->>>>>>> 1cdf351aeac3ee24aed42a3d1fabafac2a2fd9c8
+
         PrintWriter out = response.getWriter();
         try {
                 Gestionvencidos vencidos = new Gestionvencidos();
