@@ -12,6 +12,7 @@ import Modelo.GestionMov_edocta;
 
 import Modelo.GestionProgramas;
 import Modelo.GestionTipocredito;
+import Modelo.Gestionvencidos;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.File;
@@ -225,6 +226,106 @@ public class ControladorMov_edocta extends ControladorBase
         RequestDispatcher rd=request.getRequestDispatcher("frm_mov_edocta.jsp");
         rd.forward(request,response);
     }
+    /*ismael
+    /* Método para aplicar_las letras a cubrir por un beneficiario
+    /* Este método es consumido desde la app cobranza
+    */
+    public void aplica_Movedocta_app(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        response.setContentType("text/html;charset=UTF-8");
+        String lista="";
+        
+        PrintWriter out = response.getWriter();
+        try {
+                Gestionvencidos vencidos = new Gestionvencidos();
+                //acceder al metodo buscaPaises
+                
+                String clave_b = request.getParameter("clave_b");
+                SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+                Date fecha_corte=sdf.parse(request.getParameter("fecha_corte"));
+                
+                ArrayList fechas = vencidos.localizaFechasparaJson (clave_b,fecha_corte);
+                ArrayList jurs = vencidos.localizaMovJurparaJson (clave_b);
+                ArrayList movss = vencidos.localizaMovCanparaJson (clave_b);
+                //ArrayList vencidoss = vencidos.listarvencidosparaJson(clave_b);
+                ArrayList vencidoss = null;
+                response.setHeader("Access-Control-Allow-Origin", "*");
+                response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+                response.setHeader("Access-Control-Max-Age", "3600");
+                response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+                
+          if ((movss !=null) && (movss.size() != 0))
+          {    
+                    lista = "\"" + "vencidos" + "\":" + "[";
+                    for (int x = 0; x < movss.size(); x=x+10) 
+                    {
+                        lista += "{" + "\"" + "fecha" + "\"" + ":" + " \"" + movss.get(x) + "\""+ ","+ "\"" + "letra" + "\"" + ":" + " \"" + movss.get(x+1) + " \"" + "," +"\"" + "capital" + "\"" + ":" + " \"" + movss.get(x+2)+ " \""+ "," +"\"" + "interes" + "\"" + ":" + " \""  + movss.get(x+3) + " \""+ "," +"\"" + "seguro" + "\"" + ":" + " \""  + movss.get(x+4) + " \""+ "," +"\"" + "admon" + "\"" + ":" + " \""  + movss.get(x+5) + " \""+ "," +"\"" + "oseg" + "\"" + ":" + " \""  + movss.get(x+6) + " \""+ "," +"\"" + "com" + "\"" + ":" + " \""  + movss.get(x+7) + " \""+ "," +"\"" + "tit" + "\"" + ":" + " \""  + movss.get(x+8) + " \""+ "," +"\"" + "mor" + "\"" + ":" + " \""  + movss.get(x+9) + " \""  + "}" + ",";
+                        //formar la cadena en formato JSON para enviarlo a la vista con jquery
+                    }
+                    //quitar la ultima coma para parsear la cadena JSON
+                    lista = lista.substring(0, lista.length() - 1);
+                    
+          }
+          else
+          {
+             if ((jurs !=null) && (jurs.size() != 0))
+             {    
+                    lista = "\"" + "vencidos" + "\":" + "[";
+                    for (int x = 0; x < jurs.size(); x=x+10) 
+                    {
+                        lista += "{" + "\"" + "fecha" + "\"" + ":" + " \"" + jurs.get(x) + "\""+ ","+ "\"" + "letra" + "\"" + ":" + " \"" + jurs.get(x+1) + " \"" + "," +"\"" + "capital" + "\"" + ":" + " \"" + jurs.get(x+2)+ " \""+ "," +"\"" + "interes" + "\"" + ":" + " \""  + jurs.get(x+3) + " \""+ "," +"\"" + "seguro" + "\"" + ":" + " \""  + jurs.get(x+4) + " \""+ "," +"\"" + "admon" + "\"" + ":" + " \""  + jurs.get(x+5) + " \""+ "," +"\"" + "oseg" + "\"" + ":" + " \""  + jurs.get(x+6) + " \""+ "," +"\"" + "com" + "\"" + ":" + " \""  + jurs.get(x+7) + " \""+ "," +"\"" + "tit" + "\"" + ":" + " \""  + jurs.get(x+8) + " \""+ "," +"\"" + "mor" + "\"" + ":" + " \""  + jurs.get(x+9) + " \""  + "}" + ",";
+                        //formar la cadena en formato JSON para enviarlo a la vista con jquery
+                    }
+                    //quitar la ultima coma para parsear la cadena JSON
+                    lista = lista.substring(0, lista.length() - 1);
+                    
+             }
+             else
+             {    
+                if ((fechas !=null) && (fechas.size() != 0))
+                {    
+                    lista = "\"" + "vencidos" + "\":" + "[";
+                    for (int x = 0; x < fechas.size(); x=x+10) 
+                    {
+                        lista += "{" + "\"" + "fecha" + "\"" + ":" + " \"" + fechas.get(x) + "\""+ ","+ "\"" + "letra" + "\"" + ":" + " \"" + fechas.get(x+1) + " \"" + "," +"\"" + "capital" + "\"" + ":" + " \"" + fechas.get(x+2)+ " \""+ "," +"\"" + "interes" + "\"" + ":" + " \""  + fechas.get(x+3) + " \""+ "," +"\"" + "seguro" + "\"" + ":" + " \""  + fechas.get(x+4) + " \""+ "," +"\"" + "admon" + "\"" + ":" + " \""  + fechas.get(x+5) + " \""+ "," +"\"" + "oseg" + "\"" + ":" + " \""  + fechas.get(x+6) + " \""+ "," +"\"" + "com" + "\"" + ":" + " \""  + fechas.get(x+7) + " \""+ "," +"\"" + "tit" + "\"" + ":" + " \""  + fechas.get(x+8) + " \""+ "," +"\"" + "mor" + "\"" + ":" + " \""  + fechas.get(x+9) + " \""  + "}" + ",";
+                        //formar la cadena en formato JSON para enviarlo a la vista con jquery
+                    }
+                    //quitar la ultima coma para parsear la cadena JSON
+                    lista = lista.substring(0, lista.length() - 1);
+                    
+                }
+                else 
+                {
+                    if (vencidoss.size() != 0) 
+                    {
+                        lista = "\"" + "vencidos" + "\":" + "[";
+                            for (int x = 0; x < vencidoss.size(); x=x+3) 
+                            {
+                                lista += "{" + "\"" + "capital" + "\"" + ":" + vencidoss.get(x).toString() + "," +"\"" + "interes" + "\"" + ":" + " \"" + vencidoss.get(x+1)+ " \""+ "," +"\"" + "admon" + "\"" + ":" + " \""  + vencidoss.get(x+2)+ " \""  + "}" + ",";
+                                //formar la cadena en formato JSON para enviarlo a la vista con jquery
+                            }
+                            //quitar la ultima coma para parsear la cadena JSON
+                            lista = lista.substring(0, lista.length() - 1);
+                    } else 
+                    {
+                        out.println("No se logro obtener datos");
+                    }
+                }
+             }
+           }
+            }    
+               
+            
+            finally 
+            { 
+                    out.println("{" + lista + "]}");
+                    System.out.println("{" + lista + "]}");
+                    out.close();
+            }
+}
+    
+    
+    
     /*
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Candidatos candidato=new Candidatos();
