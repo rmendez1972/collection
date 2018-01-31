@@ -230,19 +230,41 @@ public class ControladorMov_edocta extends ControladorBase
     /* Método para aplicar_las letras a cubrir por un beneficiario
     /* Este método es consumido desde la app cobranza
     */
-    public void aplica_Movedocta_app(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public void aplicaMovedoctaApi(HttpServletRequest request, HttpServletResponse response) throws Exception{
         response.setContentType("text/html;charset=UTF-8");
+        
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        
         String lista="";
+        String sql;
+        ParametrosApertura par_aper=new ParametrosApertura();
+        GestionMov_edocta modelo=new GestionMov_edocta();
+        Mov_edocta aplicaMov=new  Mov_edocta();
+        
+        sql= "{call sp_aplicaMovimientos(?,?)}";
         
         PrintWriter out = response.getWriter();
-        try {
+        String clave_b = request.getParameter("clave_b");
+        String numLetras= request.getParameter("numLetras");
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha_corte=sdf.parse(request.getParameter("fecha_corte"));
+        
+        //par_aper.setId_beneficiario(id);
+        aplicaMov.setClave_b(clave_b);
+        aplicaMov.setFecha_mov(fecha_corte);
+        //boolean resultado=modelo.aperturarPorId(mecanica,id,sql, par_aper);
+        boolean resultado=modelo.aplicaMovimientos(sql,aplicaMov);
+        /*try {
                 Gestionvencidos vencidos = new Gestionvencidos();
                 //acceder al metodo buscaPaises
                 
-                String clave_b = request.getParameter("clave_b");
+                /*String clave_b = request.getParameter("clave_b");
                 SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-                Date fecha_corte=sdf.parse(request.getParameter("fecha_corte"));
-                
+                Date fecha_corte=sdf.parse(request.getParameter("fecha_corte"));*/
+        /*        
                 ArrayList fechas = vencidos.localizaFechasparaJson (clave_b,fecha_corte);
                 ArrayList jurs = vencidos.localizaMovJurparaJson (clave_b);
                 ArrayList movss = vencidos.localizaMovCanparaJson (clave_b);
@@ -321,9 +343,9 @@ public class ControladorMov_edocta extends ControladorBase
                     out.println("{" + lista + "]}");
                     System.out.println("{" + lista + "]}");
                     out.close();
-            }
+            }*/
 }
-    
+
     
     
     /*
