@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="880a6dc1-cc5e-44b4-9a08-4abd4f8648fa">
-	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="34"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[select B.*, P.descripcion  as programa, TC.descripcion as tipocredito from benef B inner join cat_prog P on B.id_catprog = P.id_catprog inner join tipo_credito TC on B.id_tipocredito = TC.id_tipocredito]]>
@@ -235,10 +235,6 @@
 	</background>
 	<title>
 		<band height="144" splitType="Stretch">
-			<image scaleImage="RealHeight" hAlign="Center">
-				<reportElement stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="968" height="98" uuid="1e1ba5e4-889c-48e6-8c9f-df72ea923f9f"/>
-				<imageExpression><![CDATA["..\\imagenes\\seduvi.jpg"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="3" y="121" width="965" height="20" uuid="0503b35f-acc0-4832-a848-290874a81fd8"/>
 				<textElement textAlignment="Center">
@@ -253,6 +249,10 @@
 				</textElement>
 				<text><![CDATA[Sistema de Cobranza]]></text>
 			</staticText>
+			<image>
+				<reportElement x="195" y="1" width="773" height="98" uuid="65d7da9b-23b8-4a0d-a0e3-74522f2c330a"/>
+				<imageExpression><![CDATA["C:\\Users\\SEDUVI\\Documents\\neatbeans-project\\cobranza\\web\\imagenes\\headerreporte.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
