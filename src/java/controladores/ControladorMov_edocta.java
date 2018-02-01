@@ -231,9 +231,12 @@ public class ControladorMov_edocta extends ControladorBase
     /* Este método es consumido desde la app cobranza
     */
     public void aplicaMovedoctaApi(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String lista = "";
+      
         response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
         
-        response.setHeader("Access-Control-Allow-Origin", "*");
+       /* response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
@@ -256,15 +259,15 @@ public class ControladorMov_edocta extends ControladorBase
         aplicaMov.setClave_b(clave_b);
         aplicaMov.setFecha_mov(fecha_corte);
         //boolean resultado=modelo.aperturarPorId(mecanica,id,sql, par_aper);
-        boolean resultado=modelo.aplicaMovimientos(sql,aplicaMov);
-        /*try {
+        boolean resultado=modelo.aplicaMovimientos(sql,aplicaMov);*/
+        try {
                 Gestionvencidos vencidos = new Gestionvencidos();
                 //acceder al metodo buscaPaises
                 
-                /*String clave_b = request.getParameter("clave_b");
+                String clave_b = request.getParameter("clave_b");
                 SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-                Date fecha_corte=sdf.parse(request.getParameter("fecha_corte"));*/
-        /*        
+                Date fecha_corte=sdf.parse(request.getParameter("fecha_corte"));
+                
                 ArrayList fechas = vencidos.localizaFechasparaJson (clave_b,fecha_corte);
                 ArrayList jurs = vencidos.localizaMovJurparaJson (clave_b);
                 ArrayList movss = vencidos.localizaMovCanparaJson (clave_b);
@@ -275,11 +278,12 @@ public class ControladorMov_edocta extends ControladorBase
                 response.setHeader("Access-Control-Max-Age", "3600");
                 response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
+                //for (int x=0;x<2;x++) System.out.println(a[x]);
                 
           if ((movss !=null) && (movss.size() != 0))
           {    
                     lista = "\"" + "vencidos" + "\":" + "[";
-                    for (int x = 0; x < movss.size(); x=x+10) 
+                    for (int x = 0; x < movss.size(); x=x+10)
                     {
                         lista += "{" + "\"" + "fecha" + "\"" + ":" + " \"" + movss.get(x) + "\""+ ","+ "\"" + "letra" + "\"" + ":" + " \"" + movss.get(x+1) + " \"" + "," +"\"" + "capital" + "\"" + ":" + " \"" + movss.get(x+2)+ " \""+ "," +"\"" + "interes" + "\"" + ":" + " \""  + movss.get(x+3) + " \""+ "," +"\"" + "seguro" + "\"" + ":" + " \""  + movss.get(x+4) + " \""+ "," +"\"" + "admon" + "\"" + ":" + " \""  + movss.get(x+5) + " \""+ "," +"\"" + "oseg" + "\"" + ":" + " \""  + movss.get(x+6) + " \""+ "," +"\"" + "com" + "\"" + ":" + " \""  + movss.get(x+7) + " \""+ "," +"\"" + "tit" + "\"" + ":" + " \""  + movss.get(x+8) + " \""+ "," +"\"" + "mor" + "\"" + ":" + " \""  + movss.get(x+9) + " \""  + "}" + ",";
                         //formar la cadena en formato JSON para enviarlo a la vista con jquery
@@ -307,7 +311,8 @@ public class ControladorMov_edocta extends ControladorBase
                 if ((fechas !=null) && (fechas.size() != 0))
                 {    
                     lista = "\"" + "vencidos" + "\":" + "[";
-                    for (int x = 0; x < fechas.size(); x=x+10) 
+                    //for (int x = 0; x < fechas.size(); x=x+10)
+                        for (int x = 0; x < 2; x=x+10)
                     {
                         lista += "{" + "\"" + "fecha" + "\"" + ":" + " \"" + fechas.get(x) + "\""+ ","+ "\"" + "letra" + "\"" + ":" + " \"" + fechas.get(x+1) + " \"" + "," +"\"" + "capital" + "\"" + ":" + " \"" + fechas.get(x+2)+ " \""+ "," +"\"" + "interes" + "\"" + ":" + " \""  + fechas.get(x+3) + " \""+ "," +"\"" + "seguro" + "\"" + ":" + " \""  + fechas.get(x+4) + " \""+ "," +"\"" + "admon" + "\"" + ":" + " \""  + fechas.get(x+5) + " \""+ "," +"\"" + "oseg" + "\"" + ":" + " \""  + fechas.get(x+6) + " \""+ "," +"\"" + "com" + "\"" + ":" + " \""  + fechas.get(x+7) + " \""+ "," +"\"" + "tit" + "\"" + ":" + " \""  + fechas.get(x+8) + " \""+ "," +"\"" + "mor" + "\"" + ":" + " \""  + fechas.get(x+9) + " \""  + "}" + ",";
                         //formar la cadena en formato JSON para enviarlo a la vista con jquery
@@ -343,7 +348,7 @@ public class ControladorMov_edocta extends ControladorBase
                     out.println("{" + lista + "]}");
                     System.out.println("{" + lista + "]}");
                     out.close();
-            }*/
+            }
 }
 
     
