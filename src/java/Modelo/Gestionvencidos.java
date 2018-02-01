@@ -289,7 +289,7 @@ public class Gestionvencidos
                 BigDecimal Ttit=new BigDecimal(0.00);
                 BigDecimal Tmora=new BigDecimal(0.00);
                 
-                NumberFormat format = new DecimalFormat("#,###,###.##");
+                NumberFormat format = new DecimalFormat("#######.##");
                 
                 while (c < pagos)
                 {
