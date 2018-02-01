@@ -222,6 +222,15 @@ public class GestionMov_edocta
     
     }
     
+    
+    public boolean aplicaMovimientos(String sql, Mov_edocta aplicaMov){
+        boolean resultado=false;
+        //SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+        Object params[]={aplicaMov.getClave_b(),aplicaMov.getFecha_mov()};
+        resultado=Conexion.llamar(sql, params);
+        
+        return resultado;
+    }
+    
 }
-
 
