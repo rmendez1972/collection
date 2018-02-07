@@ -21,6 +21,8 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import javabeans.Usuario;
 import javax.servlet.http.HttpSession;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 /**
  *
  * @author Marlon
@@ -153,5 +155,62 @@ public class ControladorCaja extends ControladorBase{
         Map param = new HashMap();
         generarReporte("ReporteCaja.jasper", param, request, response);
     } 
+    
+    public void grabarfromApp(HttpServletRequest request, HttpServletResponse response) throws Exception    {
+        Caja caja = new Caja();
+        //se crea el formato
+        //se obtiene el parametro de fecha y se guarda en una variable
+        String mfecha = request.getParameter("fecha");
+        //se le da un formato a la fecha y se almacena en una variable
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        //se hace la conversion de Date -> String
+        Date fecha = df.parse(mfecha);
+        //se setea
+        caja.setFecha(fecha);
+        caja.setFolio_inicial(Integer.parseInt(request.getParameter("folio_inicial")));
+        caja.setFolio_final(Integer.parseInt(request.getParameter("folio_final")));
+        caja.setPoliza(request.getParameter("poliza").toUpperCase());
+        //conversion del dato a bigdecimal
+        BigDecimal monto_inicial = new BigDecimal(request.getParameter("monto_inicial"));
+        caja.setMonto_inicial(monto_inicial);
+        
+        Integer id_usuario = 1;
+        caja.setId_usuario(id_usuario);
+        //caja.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
+        Boolean result;
+        GestionCaja modelo = new GestionCaja();
+        if(modelo.registroCaja(caja)){
+            //RequestDispatcher rd=request.getRequestDispatcher("controladorcaja?operacion=listar");
+            //request.setAttribute("msg", "Datos guardados");
+            //rd.forward(request,response);
+            result=true;
+            }
+        else{
+            //RequestDispatcher rd=request.getRequestDispatcher("controladorcaja?operacion=nuevo");
+            //request.setAttribute("msg", "Error al guardar. Intente de nuevo más tarde");
+            //rd.forward(request,response);
+            result=false;
+        } 
+            
+                         
+            ArrayList resultado = new ArrayList();
+            if (result != null){
+                                          
+                resultado.add(result);
+            }
+            
+            GsonBuilder builder=new GsonBuilder();
+            Gson gson=builder.create();
+            
+            //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+            response.setHeader("Content-Type", "application/json; charset=UTF-8");
+            response.setHeader("Access-Control-Max-Age", "3600");
+            response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Charset");
+            response.getWriter().write("{\"cajas\":"+gson.toJson(resultado)+"}");
+            
+          
+        }
     
 }
