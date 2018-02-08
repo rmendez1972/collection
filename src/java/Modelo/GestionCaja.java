@@ -73,4 +73,17 @@ public class GestionCaja {
         return Conexion.ejecutar("delete from cajas where id_caja=?", params);
     }
     
+    public ArrayList obtenerCaja(){
+        ArrayList cajas=new ArrayList();
+        ResultSet res=Conexion.ejecutarConsulta("select * from cajas  order by fecha desc", null);
+        try{
+            while(res.next()){
+                Caja caja=new Caja(res.getInt("id_caja"),res.getDate("fecha"),res.getInt("folio_inicial"),res.getInt("folio_final"),res.getString("poliza"),res.getBigDecimal("monto_inicial"),res.getInt("id_usuario"));
+                cajas.add(caja);
+            }
+            res.close();
+        }catch(Exception e){}
+        return cajas;
+    }
+    
 }

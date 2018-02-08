@@ -211,6 +211,22 @@ public class ControladorCaja extends ControladorBase{
             response.getWriter().write("{\"cajas\":"+gson.toJson(resultado)+"}");
             
           
-        }
+    }
+    
+    public void listarJson(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        GestionCaja modelo=new GestionCaja();
+        ArrayList cajas=modelo.obtenerCaja();
+        
+            
+        GsonBuilder builder=new GsonBuilder().setDateFormat("yyyy-MM-dd");
+        Gson gson=builder.create();
+
+        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        response.getWriter().write("{\"caja\":"+gson.toJson(cajas)+"}");
+    }
     
 }

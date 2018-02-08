@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorCpp.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBase.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/index.html</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionCaja.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_candidatos.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/Conexion.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionMov_edocta.java</file>
@@ -24,12 +26,14 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorMov_edocta.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionCandidatos.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_mov_edoscta.jsp</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionCpp.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/int_mor.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Mov_edocta.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_modificamov_diversos.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorMovBonific.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/fecha_v.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Beneficiario.java</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Caja.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBonificacion.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBeneficiario.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Aperturaedoscta.java</file>
