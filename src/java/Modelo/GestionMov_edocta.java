@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javabeans.Mov_edocta;
+import javabeans.ParametrosApertura;
 
 /**
  *
@@ -231,6 +232,20 @@ public class GestionMov_edocta
         
         return resultado;
     }
+    
+    public boolean registraMovedocta(String sql, Mov_edocta movimiento){
+        //public boolean aperturarPorId(int mecanica,int id_beneficiario,String sql, ParametrosApertura par_aper){
+        boolean resultado=false;
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+        String fechin=sdf.format(movimiento.getFecha_mov());
+        Object params[]={movimiento.getClave_b(),sdf.format(movimiento.getFecha_mov()),movimiento.getCapital()};
+        //Object params[]={par_aper.getId_beneficiario(),par_aper.getImp_capital(),par_aper.getImp_enganche(),par_aper.getPoliza(),sdf.format(par_aper.getFecha_pol()),par_aper.getClave_b(),par_aper.getId_usuario()};
+        resultado=Conexion.llamar(sql, params);
+        return resultado;
+    }
+    
+    
+    
     
 }
 

@@ -121,7 +121,7 @@ public class Mov_edocta
     }
     
   /*Constructor para aplicar movimientos.(igh)*/      
-  public Mov_edocta(String clave_b, Date fecha_mov) {
+  public Mov_edocta(String clave_b, Date fecha_mov,BigDecimal capital) {
         //*this.id_movedoscta = id_movedoscta;
         //this.id_benef = id_benef;
         this.clave_b =clave_b;
@@ -129,7 +129,7 @@ public class Mov_edocta
         this.fecha_mov=fecha_mov;
         //this.poliza=poliza;
         //this.fecha_pol=fecha_pol;
-        //this.capital = capital;
+        this.capital = capital;
         //this.admon = admon;
         //this.seguro = seguro;
         //this.o_seguro = o_seguro;
