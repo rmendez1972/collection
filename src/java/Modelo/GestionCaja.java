@@ -53,6 +53,21 @@ public class GestionCaja {
         return caja;
     }
     
+    public boolean obtenerPorId_usuarioFecha(Caja caja){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String fecha=sdf.format(caja.getFecha());
+        String id_usuario=caja.getId_usuario().toString();
+        
+        Object params[]={fecha,id_usuario};
+        ResultSet res=Conexion.ejecutarConsulta("select * from cajas where fecha=? and id_usuario=?", params);
+        try{
+            if(res.next())
+                return true;
+            res.close();
+        }catch(Exception e){}
+        return false;
+    }
+    
     public boolean actualizarCaja(Caja caja){
        String id_caja = caja.getId_caja().toString();
        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -71,6 +86,19 @@ public class GestionCaja {
     public boolean eliminarPorId(int id_caja){
         Object params[]={id_caja};
         return Conexion.ejecutar("delete from cajas where id_caja=?", params);
+    }
+    
+    public ArrayList obtenerCaja(){
+        ArrayList cajas=new ArrayList();
+        ResultSet res=Conexion.ejecutarConsulta("select * from cajas  order by fecha desc", null);
+        try{
+            while(res.next()){
+                Caja caja=new Caja(res.getInt("id_caja"),res.getDate("fecha"),res.getInt("folio_inicial"),res.getInt("folio_final"),res.getString("poliza"),res.getBigDecimal("monto_inicial"),res.getInt("id_usuario"));
+                cajas.add(caja);
+            }
+            res.close();
+        }catch(Exception e){}
+        return cajas;
     }
     
 }

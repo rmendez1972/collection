@@ -36,6 +36,17 @@ public class Caja {
         this.monto_inicial = monto_inicial;
         this.id_usuario = id_usuario;
     }
+    
+    public Caja( Date fecha, Integer folio_inicial, Integer folio_final, String poliza, BigDecimal monto_inicial, Integer id_usuario){
+        
+        this.fecha = fecha;
+        this.folio_inicial = folio_inicial;
+        this.folio_final = folio_final;
+        this.poliza = poliza;
+        this.monto_inicial = monto_inicial;
+        this.id_usuario = id_usuario;
+    }
+    
     //get set de id_caja
     public Integer getId_caja(){
         return id_caja;
