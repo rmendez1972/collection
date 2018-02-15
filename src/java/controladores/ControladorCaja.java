@@ -243,10 +243,8 @@ public class ControladorCaja extends ControladorBase{
         //conversion del dato a bigdecimal
         BigDecimal monto_inicial = new BigDecimal(request.getParameter("monto_inicial"));
         caja.setMonto_inicial(monto_inicial);
+        caja.setId_usuario(Integer.parseInt(request.getParameter("id")));
         
-        Integer id_usuario = 1;
-        caja.setId_usuario(id_usuario);
-        //caja.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
         Boolean result;
         GestionCaja modelo = new GestionCaja();
         if(modelo.actualizarCaja(caja)){
