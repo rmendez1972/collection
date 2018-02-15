@@ -116,7 +116,7 @@ public class Controladorlogin extends ControladorBase
                 user.setUsername(usua.getUsuario());
                 user.setPassword(usua.getPassword());
                 user.setFirstname(usua.getNombre());
-                
+                user.setId_nivel(usua.getId_nivel());
                            
                 usuario.add(user);
             }else{

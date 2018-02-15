@@ -53,6 +53,21 @@ public class GestionCaja {
         return caja;
     }
     
+    public boolean obtenerPorId_usuarioFecha(Caja caja){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String fecha=sdf.format(caja.getFecha());
+        String id_usuario=caja.getId_usuario().toString();
+        
+        Object params[]={fecha,id_usuario};
+        ResultSet res=Conexion.ejecutarConsulta("select * from cajas where fecha=? and id_usuario=?", params);
+        try{
+            if(res.next())
+                return true;
+            res.close();
+        }catch(Exception e){}
+        return false;
+    }
+    
     public boolean actualizarCaja(Caja caja){
        String id_caja = caja.getId_caja().toString();
        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
