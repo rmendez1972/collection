@@ -20,7 +20,8 @@ public class UsuarioApi {
     private String firstname;
     private String lastname;
     private int id_nivel;
-  
+    private String serie;
+   
     public UsuarioApi( String username, String password){
         this.username=username;
         this.password=password;
@@ -76,4 +77,13 @@ public class UsuarioApi {
     public void setId_nivel(int id_nivel) {
         this.id_nivel = id_nivel;
     }
+    
+    public String getSerie() {
+        return serie;
+    }
+
+    public void setSerie(String serie) {
+        this.serie = serie;
+    }
+  
 }
