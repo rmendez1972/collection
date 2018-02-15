@@ -393,5 +393,5 @@ public class ControladorProgramas extends ControladorBase{
         Map param = new HashMap();
         generarReporte("ReporteProgramas.jasper", param, request, response);
     }
-
+     
 }
