@@ -232,23 +232,12 @@ public class ControladorMov_edocta extends ControladorBase
     */
     public void aplicaMovedoctaApi(HttpServletRequest request, HttpServletResponse response) throws Exception{
         GestionMov_edocta modelo=new GestionMov_edocta();
-        String lista = "";
-        
+        Mov_edocta movimiento=new Mov_edocta();
         String sql="";
-      
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        //String aplica="";
-        ArrayList aplica=null;
-        aplica=new ArrayList();
-        
-        Mov_edocta movimiento=new Mov_edocta();
-       
-        Gestionvencidos vencidos = new Gestionvencidos();
-        String clave_b = request.getParameter("clave_b");
-        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-        Date fecha_corte=sdf.parse(request.getParameter("fecha_corte"));
-        ArrayList fechas = vencidos.localizaFechasparaJson (clave_b,fecha_corte);
+        //Gestionvencidos vencidos = new Gestionvencidos();
+        //ArrayList fechas = vencidos.localizaFechasparaJson (clave_b,fecha_corte);
         //ArrayList jurs = vencidos.localizaMovJurparaJson (clave_b);
         //ArrayList movss = vencidos.localizaMovCanparaJson (clave_b);
         //ArrayList vencidoss = vencidos.listarvencidosparaJson(clave_b);
@@ -256,31 +245,100 @@ public class ControladorMov_edocta extends ControladorBase
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET");
         response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-        int numLetras=2;    
-           
-        if ((fechas !=null) && (fechas.size() != 0))
-        {    
-            //lista = "\"" + "vencidos" + "\":" + "[";
-            //for (int x = 0; x < fechas.size(); x=x+10)
-            for (int x = 0; x < numLetras*10; x=x+10)    
-                //aplica.add(fechas.get(x));
-                //for (int x = 0; x < 2; x=x+10)
-            {
-                movimiento.setClave_b(clave_b);
-                movimiento.setFecha_mov(fecha_corte);
-                //String loquesea=toString((fechas.get(x+2)));
-                BigDecimal capital = new BigDecimal("500.00");
-                movimiento.setCapital(capital);
-                lista+=(fechas.get(x+2));
-                sql= "{call sp_aplicaMovimientos2(?,?,?)}";
-                boolean resultado=modelo.registraMovedocta(sql,movimiento);
-            }
-        }
-    }    
-
-
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Charset");
+        
+        
+        //movimiento.setId_movedoscta(id_movedoscta);
+        
+        //Recupeando valores que vienen de la vista (front, api) 
+    //movimiento.setId_benef(Integer.parseInt(request.getParameter("id_benef")));
+    BigDecimal capital = new BigDecimal (request.getParameter("capital"));
+    movimiento.setCapital(capital);
+    BigDecimal interes = new BigDecimal (request.getParameter("interes"));
+    movimiento.setInteres(interes);
+    BigDecimal admon = new BigDecimal (request.getParameter("admon"));
+    movimiento.setAdmon(admon);
+    BigDecimal seguro = new BigDecimal (request.getParameter("seguro"));
+    movimiento.setSeguro(seguro);
+    movimiento.setClave_mov (request.getParameter("clave_mov"));
+    String poliza = request.getParameter("poliza");
+    movimiento.setPoliza(poliza);
+    SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+    Date fecha_mov=sdf.parse(request.getParameter("fecha_corte"));
+    movimiento.setFecha_mov(fecha_mov);    
+    movimiento.setRecibo(Integer.parseInt(request.getParameter("recibo")));
+    BigDecimal o_seguro = new BigDecimal (request.getParameter("o_seguro"));
+    movimiento.setO_seguro(o_seguro);
+    BigDecimal moratorios = new BigDecimal (request.getParameter("moratorios"));
+    movimiento.setMoratorios(moratorios);
+    movimiento.setStatus(request.getParameter("estatus").toUpperCase());
+        //BigDecimal otrosm = new BigDecimal (request.getParameter("otrosm"));
+        //movimiento.setOtrosm(otrosm);
+        //BigDecimal com_fona = new BigDecimal (request.getParameter("com_fona"));
+        //movimiento.setCom_fona(com_fona);
+        //BigDecimal com_info = new BigDecimal (request.getParameter("com_info"));
+        //movimiento.setCom_info(com_info);
+    Date fecha_pol=sdf.parse(request.getParameter("fecha_pol"));
+    movimiento.setFecha_pol(fecha_pol);
+    movimiento.setId_benef(Integer.parseInt(request.getParameter("id_benef")));
+    movimiento.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
+        //movimiento.setPrepago(request.getParameter("prepago").toUpperCase());
+        //Date Fecha=sdf.parse(request.getParameter("fecha"));
+        //movimiento.setFecha(Fecha);
+    movimiento.setId_bonific(Integer.parseInt(request.getParameter("id_bonific")));
+    BigDecimal comisiones = new BigDecimal (request.getParameter("comisiones"));
+    movimiento.setComisiones(comisiones);
+    movimiento.setSerie(request.getParameter("serie").toUpperCase());
     
+    movimiento.setPuntual(Boolean.TRUE); //Checarlo con marlon.
+    int mora=0;
+    int mpuntual=0;
+    mora=moratorios.intValue();
+    if (mora==0){
+        movimiento.setPuntual(Boolean.TRUE);
+        mpuntual=1;
+    }
+    else {
+        movimiento.setPuntual(Boolean.FALSE);
+        mpuntual=0;
+    }
+    String clave_b = request.getParameter("clave_b");
+    movimiento.setClave_b(clave_b);
+    BigDecimal tit = new BigDecimal (request.getParameter("tit"));
+    movimiento.setTit(tit);
+    movimiento.setId_catprog(Integer.parseInt(request.getParameter("id_catprog")));
+    movimiento.setNumcontrato(request.getParameter("numcontrato"));
+    movimiento.setId_caja(Integer.parseInt(request.getParameter("id_caja")));
+    
+    movimiento.setBonific(Boolean.TRUE);//Checarlo con marlon
+    int mbonific=0;
+    if (movimiento.getId_bonific()!=0){
+        movimiento.setBonific(Boolean.TRUE);
+        mbonific=1;
+    }
+    else {
+        movimiento.setBonific(Boolean.FALSE);
+        mbonific=0;
+    }
+        
+        /*Preparando la sentencia sql mediante un llamado a un procedimiento
+        almacenado.*/
+        sql= "{call sp_aplicaMovimientos(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";//24 atributos
+        //Llama al modelo y aplica el movimiento, si es éxito devuelve true
+        boolean resultado=modelo.registraMovedocta(mpuntual, mbonific,sql,movimiento);
+        
+        /*ArrayList recibo = null;
+        recibo.add(resultado);
+        recibo.add(movimiento.getRecibo());*/
+        
+        //int numLetras=2;
+        GsonBuilder builder=new GsonBuilder();
+        Gson gson=builder.create();
+        response.getWriter().write("{\"movimiento\":"+gson.toJson(resultado)+"}");
+        response.getWriter().write("{\"recibo\":"+gson.toJson(movimiento.getRecibo())+"}");
+        //response.getWriter().write("{\"recibo\":"+gson.toJson(movimiento.getRecibo())+"}");
+  }    
+  
     /*
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Candidatos candidato=new Candidatos();

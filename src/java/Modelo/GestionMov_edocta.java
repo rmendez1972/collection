@@ -233,12 +233,29 @@ public class GestionMov_edocta
         return resultado;
     }
     
-    public boolean registraMovedocta(String sql, Mov_edocta movimiento){
+    public boolean registraMovedocta(int mpuntual,int mbonific, String sql, Mov_edocta movimiento){
         //public boolean aperturarPorId(int mecanica,int id_beneficiario,String sql, ParametrosApertura par_aper){
         boolean resultado=false;
+        /*int mpuntual;
+        if(movimiento.getPuntual()==false){
+            mpuntual=0;
+        }
+        else{
+            mpuntual=1;
+        }*/
         SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
         String fechin=sdf.format(movimiento.getFecha_mov());
-        Object params[]={movimiento.getClave_b(),sdf.format(movimiento.getFecha_mov()),movimiento.getCapital()};
+        //sdf.format(movimiento.getFecha_mov()
+        Object params[]={
+            movimiento.getId_benef(),movimiento.getCapital(),movimiento.getInteres(),
+            movimiento.getAdmon(), movimiento.getSeguro(), movimiento.getClave_mov(),
+            movimiento.getPoliza(),sdf.format(movimiento.getFecha_mov()),
+            movimiento.getRecibo(),movimiento.getO_seguro(),movimiento.getMoratorios(),
+            movimiento.getStatus(),sdf.format(movimiento.getFecha_pol()),
+            movimiento.getId_usuario(),movimiento.getId_bonific(),movimiento.getComisiones(),
+            movimiento.getSerie(),mpuntual,movimiento.getClave_b(), movimiento.getTit(),
+            movimiento.getId_catprog(),movimiento.getNumcontrato(),movimiento.getId_caja(),mbonific
+        };
         //Object params[]={par_aper.getId_beneficiario(),par_aper.getImp_capital(),par_aper.getImp_enganche(),par_aper.getPoliza(),sdf.format(par_aper.getFecha_pol()),par_aper.getClave_b(),par_aper.getId_usuario()};
         resultado=Conexion.llamar(sql, params);
         return resultado;
