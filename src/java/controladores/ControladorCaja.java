@@ -176,13 +176,15 @@ public class ControladorCaja extends ControladorBase{
                 
         Boolean result=false;
         Boolean valida=false;
+        Integer id_caja=0;
         GestionCaja modelo = new GestionCaja();
         if(modelo.obtenerPorId_usuarioFecha(caja)){
             valida=true;
         }
         if (valida==false){
             if(modelo.registroCaja(caja)){
-                
+                Caja newCaja=modelo.obtenerCaja(caja);
+                id_caja=newCaja.getId_caja();
                 result=true;
                 }
             else{
@@ -195,6 +197,7 @@ public class ControladorCaja extends ControladorBase{
             if (result != null){
                                           
                 resultado.add(result);
+                resultado.add(id_caja);
             }
             
             GsonBuilder builder=new GsonBuilder();

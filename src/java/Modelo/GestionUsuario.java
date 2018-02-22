@@ -90,6 +90,7 @@ public class GestionUsuario {
             usuario.setNombre(res.getString("nombre"));
             usuario.setPassword(res.getString("password"));
             usuario.setUsuario(res.getString("usuario"));
+            usuario.setSerie(res.getString("serie"));
             
         }catch(Exception e){}
         return usuario;
