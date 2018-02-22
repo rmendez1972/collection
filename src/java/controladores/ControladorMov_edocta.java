@@ -231,123 +231,88 @@ public class ControladorMov_edocta extends ControladorBase
     /* Este método es consumido desde la app cobranza
     */
     public void aplicaMovedoctaApi(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        GestionMov_edocta modelo=new GestionMov_edocta();
+        Mov_edocta movimiento=new Mov_edocta();
+        String sql="";
+        ArrayList result=new ArrayList();
         response.setContentType("text/html;charset=UTF-8");
-        
+        PrintWriter out = response.getWriter();
+
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET");
         response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-        
-        String lista="";
-        String sql;
-        ParametrosApertura par_aper=new ParametrosApertura();
-        GestionMov_edocta modelo=new GestionMov_edocta();
-        Mov_edocta aplicaMov=new  Mov_edocta();
-        
-        sql= "{call sp_aplicaMovimientos(?,?)}";
-        
-        PrintWriter out = response.getWriter();
-        String clave_b = request.getParameter("clave_b");
-        String numLetras= request.getParameter("numLetras");
-        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-        Date fecha_corte=sdf.parse(request.getParameter("fecha_corte"));
-        
-        //par_aper.setId_beneficiario(id);
-        aplicaMov.setClave_b(clave_b);
-        aplicaMov.setFecha_mov(fecha_corte);
-        //boolean resultado=modelo.aperturarPorId(mecanica,id,sql, par_aper);
-        boolean resultado=modelo.aplicaMovimientos(sql,aplicaMov);
-        /*try {
-                Gestionvencidos vencidos = new Gestionvencidos();
-                //acceder al metodo buscaPaises
-                
-                /*String clave_b = request.getParameter("clave_b");
-                SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-                Date fecha_corte=sdf.parse(request.getParameter("fecha_corte"));*/
-        /*        
-                ArrayList fechas = vencidos.localizaFechasparaJson (clave_b,fecha_corte);
-                ArrayList jurs = vencidos.localizaMovJurparaJson (clave_b);
-                ArrayList movss = vencidos.localizaMovCanparaJson (clave_b);
-                //ArrayList vencidoss = vencidos.listarvencidosparaJson(clave_b);
-                ArrayList vencidoss = null;
-                response.setHeader("Access-Control-Allow-Origin", "*");
-                response.setHeader("Access-Control-Allow-Methods", "POST, GET");
-                response.setHeader("Access-Control-Max-Age", "3600");
-                response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Charset");
 
-                
-          if ((movss !=null) && (movss.size() != 0))
-          {    
-                    lista = "\"" + "vencidos" + "\":" + "[";
-                    for (int x = 0; x < movss.size(); x=x+10) 
-                    {
-                        lista += "{" + "\"" + "fecha" + "\"" + ":" + " \"" + movss.get(x) + "\""+ ","+ "\"" + "letra" + "\"" + ":" + " \"" + movss.get(x+1) + " \"" + "," +"\"" + "capital" + "\"" + ":" + " \"" + movss.get(x+2)+ " \""+ "," +"\"" + "interes" + "\"" + ":" + " \""  + movss.get(x+3) + " \""+ "," +"\"" + "seguro" + "\"" + ":" + " \""  + movss.get(x+4) + " \""+ "," +"\"" + "admon" + "\"" + ":" + " \""  + movss.get(x+5) + " \""+ "," +"\"" + "oseg" + "\"" + ":" + " \""  + movss.get(x+6) + " \""+ "," +"\"" + "com" + "\"" + ":" + " \""  + movss.get(x+7) + " \""+ "," +"\"" + "tit" + "\"" + ":" + " \""  + movss.get(x+8) + " \""+ "," +"\"" + "mor" + "\"" + ":" + " \""  + movss.get(x+9) + " \""  + "}" + ",";
-                        //formar la cadena en formato JSON para enviarlo a la vista con jquery
-                    }
-                    //quitar la ultima coma para parsear la cadena JSON
-                    lista = lista.substring(0, lista.length() - 1);
-                    
-          }
-          else
-          {
-             if ((jurs !=null) && (jurs.size() != 0))
-             {    
-                    lista = "\"" + "vencidos" + "\":" + "[";
-                    for (int x = 0; x < jurs.size(); x=x+10) 
-                    {
-                        lista += "{" + "\"" + "fecha" + "\"" + ":" + " \"" + jurs.get(x) + "\""+ ","+ "\"" + "letra" + "\"" + ":" + " \"" + jurs.get(x+1) + " \"" + "," +"\"" + "capital" + "\"" + ":" + " \"" + jurs.get(x+2)+ " \""+ "," +"\"" + "interes" + "\"" + ":" + " \""  + jurs.get(x+3) + " \""+ "," +"\"" + "seguro" + "\"" + ":" + " \""  + jurs.get(x+4) + " \""+ "," +"\"" + "admon" + "\"" + ":" + " \""  + jurs.get(x+5) + " \""+ "," +"\"" + "oseg" + "\"" + ":" + " \""  + jurs.get(x+6) + " \""+ "," +"\"" + "com" + "\"" + ":" + " \""  + jurs.get(x+7) + " \""+ "," +"\"" + "tit" + "\"" + ":" + " \""  + jurs.get(x+8) + " \""+ "," +"\"" + "mor" + "\"" + ":" + " \""  + jurs.get(x+9) + " \""  + "}" + ",";
-                        //formar la cadena en formato JSON para enviarlo a la vista con jquery
-                    }
-                    //quitar la ultima coma para parsear la cadena JSON
-                    lista = lista.substring(0, lista.length() - 1);
-                    
-             }
-             else
-             {    
-                if ((fechas !=null) && (fechas.size() != 0))
-                {    
-                    lista = "\"" + "vencidos" + "\":" + "[";
-                    for (int x = 0; x < fechas.size(); x=x+10) 
-                    {
-                        lista += "{" + "\"" + "fecha" + "\"" + ":" + " \"" + fechas.get(x) + "\""+ ","+ "\"" + "letra" + "\"" + ":" + " \"" + fechas.get(x+1) + " \"" + "," +"\"" + "capital" + "\"" + ":" + " \"" + fechas.get(x+2)+ " \""+ "," +"\"" + "interes" + "\"" + ":" + " \""  + fechas.get(x+3) + " \""+ "," +"\"" + "seguro" + "\"" + ":" + " \""  + fechas.get(x+4) + " \""+ "," +"\"" + "admon" + "\"" + ":" + " \""  + fechas.get(x+5) + " \""+ "," +"\"" + "oseg" + "\"" + ":" + " \""  + fechas.get(x+6) + " \""+ "," +"\"" + "com" + "\"" + ":" + " \""  + fechas.get(x+7) + " \""+ "," +"\"" + "tit" + "\"" + ":" + " \""  + fechas.get(x+8) + " \""+ "," +"\"" + "mor" + "\"" + ":" + " \""  + fechas.get(x+9) + " \""  + "}" + ",";
-                        //formar la cadena en formato JSON para enviarlo a la vista con jquery
-                    }
-                    //quitar la ultima coma para parsear la cadena JSON
-                    lista = lista.substring(0, lista.length() - 1);
-                    
-                }
-                else 
-                {
-                    if (vencidoss.size() != 0) 
-                    {
-                        lista = "\"" + "vencidos" + "\":" + "[";
-                            for (int x = 0; x < vencidoss.size(); x=x+3) 
-                            {
-                                lista += "{" + "\"" + "capital" + "\"" + ":" + vencidoss.get(x).toString() + "," +"\"" + "interes" + "\"" + ":" + " \"" + vencidoss.get(x+1)+ " \""+ "," +"\"" + "admon" + "\"" + ":" + " \""  + vencidoss.get(x+2)+ " \""  + "}" + ",";
-                                //formar la cadena en formato JSON para enviarlo a la vista con jquery
-                            }
-                            //quitar la ultima coma para parsear la cadena JSON
-                            lista = lista.substring(0, lista.length() - 1);
-                    } else 
-                    {
-                        out.println("No se logro obtener datos");
-                    }
-                }
-             }
-           }
-            }    
-               
-            
-            finally 
-            { 
-                    out.println("{" + lista + "]}");
-                    System.out.println("{" + lista + "]}");
-                    out.close();
-            }*/
-}
+    BigDecimal capital = new BigDecimal (request.getParameter("capital"));
+    movimiento.setCapital(capital);
+    BigDecimal interes = new BigDecimal (request.getParameter("interes"));
+    movimiento.setInteres(interes);
+    BigDecimal admon = new BigDecimal (request.getParameter("admon"));
+    movimiento.setAdmon(admon);
+    BigDecimal seguro = new BigDecimal (request.getParameter("seguro"));
+    movimiento.setSeguro(seguro);
+    movimiento.setClave_mov (request.getParameter("clave_mov"));
+    String poliza = request.getParameter("poliza");
+    movimiento.setPoliza(poliza);
+    SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+    Date fecha_mov=sdf.parse(request.getParameter("fecha_corte"));
+    movimiento.setFecha_mov(fecha_mov);    
+    movimiento.setRecibo(Integer.parseInt(request.getParameter("recibo")));
+    BigDecimal o_seguro = new BigDecimal (request.getParameter("o_seguro"));
+    movimiento.setO_seguro(o_seguro);
+    BigDecimal moratorios = new BigDecimal (request.getParameter("moratorios"));
+    movimiento.setMoratorios(moratorios);
+    movimiento.setStatus("A");
+    Date fecha_pol=sdf.parse(request.getParameter("fecha_pol"));
+    movimiento.setFecha_pol(fecha_pol);
+    movimiento.setId_benef(Integer.parseInt(request.getParameter("id_benef")));
+    movimiento.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
+    //movimiento.setId_bonific(Integer.parseInt(request.getParameter("id_bonific")));
+    BigDecimal comisiones = new BigDecimal (request.getParameter("comisiones"));
+    movimiento.setComisiones(comisiones);
+    movimiento.setSerie(request.getParameter("serie").toUpperCase());
+    
+    movimiento.setPuntual(Boolean.TRUE); //Checarlo con marlon.
+    int mpuntual=0;
+    if (moratorios==new BigDecimal (0)){
+        mpuntual=1;
+    }
+    else {
+        mpuntual=0;
+    }
+    String clave_b = request.getParameter("clave_b");
+    movimiento.setClave_b(clave_b);
+    BigDecimal tit = new BigDecimal (request.getParameter("tit"));
+    movimiento.setTit(tit);
+    movimiento.setId_catprog(Integer.parseInt(request.getParameter("id_catprog")));
+    movimiento.setNumcontrato(request.getParameter("numcontrato"));
+    movimiento.setId_caja(Integer.parseInt(request.getParameter("id_caja")));
+    
+    /*int mbonific=0;
+    if (movimiento.getId_bonific()!=0){
+        movimiento.setBonific(Boolean.TRUE);
+        mbonific=1;
+    }
+    else {
+        movimiento.setBonific(Boolean.FALSE);
+        mbonific=0;
+    }*/
+    int mbonific=0;    
+        /*Preparando la sentencia sql mediante un llamado a un procedimiento
+        almacenado.*/
+        sql= "{call sp_aplicaMovimientos(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";//23 atributos
+        //Llama al modelo y aplica el movimiento, si es éxito devuelve true
+        boolean resultado=modelo.registraMovedocta(mpuntual, mbonific,sql,movimiento);
+  
+        result.add(resultado);
+        result.add(movimiento.getRecibo());
 
-    
-    
+        GsonBuilder builder=new GsonBuilder();
+        Gson gson=builder.create();
+        response.getWriter().write("{\"resultado\":"+gson.toJson(result)+"}");
+        
+  }    
+  
     /*
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         Candidatos candidato=new Candidatos();

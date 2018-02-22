@@ -28,9 +28,13 @@ public class Mov_edocta
     private BigDecimal o_seguro;
     private BigDecimal moratorios;
     private String status;
+    private BigDecimal otrosm;//igh
+    private BigDecimal com_fona;//igh
+    private BigDecimal com_info;//igh
     private Date fecha_pol;
     private int id_usuario;
     private String prepago;
+    private Date fecha;//igh
     private int id_bonific;
     private BigDecimal comisiones;
     private String serie;
@@ -40,9 +44,11 @@ public class Mov_edocta
     private int id_catprog;
     private String numcontrato;
     private int id_caja;
+    private Boolean bonific;
+    
     private String nombrebenef;
     private String nombreusuario;
-    private Boolean bonific;
+    
     
     private BigDecimal sumcapital;
     private BigDecimal suminteres;
@@ -121,20 +127,45 @@ public class Mov_edocta
     }
     
   /*Constructor para aplicar movimientos.(igh)*/      
-  public Mov_edocta(String clave_b, Date fecha_mov) {
-        //*this.id_movedoscta = id_movedoscta;
-        //this.id_benef = id_benef;
-        this.clave_b =clave_b;
-        //this.clave_mov=clave_mov;
-        this.fecha_mov=fecha_mov;
-        //this.poliza=poliza;
-        //this.fecha_pol=fecha_pol;
-        //this.capital = capital;
-        //this.admon = admon;
-        //this.seguro = seguro;
-        //this.o_seguro = o_seguro;
-        //this.comisiones = comisiones;
-        //this.tit = tit;
+  public Mov_edocta(int id_movedoscta, int id_benef, BigDecimal capital, 
+          BigDecimal interes, BigDecimal admon, BigDecimal seguro, 
+          String clave_mov, String poliza, Date fecha_mov,int recibo, 
+          BigDecimal o_seguro, BigDecimal moratorios, String status,
+          BigDecimal otrosm, BigDecimal com_fona, BigDecimal com_info, 
+          Date fecha_pol, int id_usuario,String prepago, Date fecha,
+          int id_bonific, BigDecimal comisiones, String serie, Boolean puntual, 
+          String clave_b, BigDecimal tit, int id_catprog, String numcontrato, 
+          int id_caja, Boolean bonific) {
+      
+        this.id_movedoscta = id_movedoscta;
+        this.id_benef = id_benef;
+        this.capital = capital;
+        this.interes = interes;
+        this.admon = admon;
+        this.seguro = seguro;
+        this.clave_mov = clave_mov;
+        this.poliza = poliza;
+        this.fecha_mov = fecha_mov;
+        this.recibo = recibo;
+        this.o_seguro = o_seguro;
+        this.moratorios = moratorios;
+        this.status = status;
+        this.otrosm = otrosm;
+        this.com_fona = com_fona;
+        this.com_info = com_info;
+        this.fecha_pol = fecha_pol;
+        this.id_usuario = id_usuario;
+        this.prepago = prepago;
+        this.id_bonific = id_bonific;
+        this.comisiones = comisiones;
+        this.serie = serie;
+        this.puntual = puntual;
+        this.clave_b = clave_b;
+        this.tit = tit;
+        this.id_catprog = id_catprog;
+        this.numcontrato = numcontrato;
+        this.id_caja = id_caja;
+        this.bonific=bonific;
         
     }  
 
@@ -416,6 +447,38 @@ public class Mov_edocta
 
     public void setSumtitulacion(BigDecimal sumtitulacion) {
         this.sumtitulacion = sumtitulacion;
+    }
+
+    public BigDecimal getOtrosm() {
+        return otrosm;
+    }
+
+    public void setOtrosm(BigDecimal otrosm) {
+        this.otrosm = otrosm;
+    }
+
+    public BigDecimal getCom_fona() {
+        return com_fona;
+    }
+
+    public void setCom_fona(BigDecimal com_fona) {
+        this.com_fona = com_fona;
+    }
+
+    public BigDecimal getCom_info() {
+        return com_info;
+    }
+
+    public void setCom_info(BigDecimal com_info) {
+        this.com_info = com_info;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
     
     
