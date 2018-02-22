@@ -721,6 +721,9 @@ public class ControladorMovBonific extends ControladorBase{
     
     //funcion que introduce valores ala tabla bonific que llegan del front end
     public void aplicaBonificacionesApi(HttpServletRequest request, HttpServletResponse response) throws Exception{
+            
+            ArrayList resultado = new ArrayList();
+            
             MovBonific bon = new MovBonific();
 
             Integer id_movedoscta = Integer.parseInt(request.getParameter("id_movedoscta"));
@@ -781,11 +784,25 @@ public class ControladorMovBonific extends ControladorBase{
             //validamos si los datos se introducieron de manera correcta en la DB
             if(modelo.registroMovBonific(bon)){
                 //se actualiza el campo bonific de la tabla mov_edocta para mostrar que el registro de ese movimiento tiene una bonificacion.
-                GestionMov_edocta mod_edocta = new GestionMov_edocta();
-                mod_edocta.cambiarBonificTrue(id_movedoscta);
-                
+                //GestionMov_edocta mod_edocta = new GestionMov_edocta();
+                //mod_edocta.cambiarBonificTrue(id_movedoscta);
                 boolean actividad = true;
                 
+                ArrayList movbonific = modelo.obtenerPorId(id_movedoscta);
+                //iterador para iterar sobre el arreglo de movbonific para sacar el valor de id_bonificacion
+                Iterator<MovBonific> it = movbonific.iterator();
+                MovBonific bonific = new MovBonific();
+                while(it.hasNext()){
+                    bonific = it.next();
+                }       
+                Integer id_bonificacion = bonific.getId_bonificacion();
+                
+                
+                resultado.add(id_movedoscta);
+                resultado.add(recibo);
+                resultado.add(id_bonificacion);
+                resultado.add(actividad);
+      
                 GsonBuilder builder=new GsonBuilder();
                 Gson gson=builder.create();
             
@@ -794,7 +811,7 @@ public class ControladorMovBonific extends ControladorBase{
                 response.setHeader("Access-Control-Allow-Methods", "POST, GET");
                 response.setHeader("Access-Control-Max-Age", "3600");
                 response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-                response.getWriter().write("{\"registroBonificacion\":"+gson.toJson(actividad)+"}");
+                response.getWriter().write("{\"registroBonificacion\":"+gson.toJson(resultado)+"}");
                 
                 }
             else{
