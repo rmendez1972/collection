@@ -252,7 +252,7 @@ public class GestionMov_edocta
             movimiento.getPoliza(),sdf.format(movimiento.getFecha_mov()),
             movimiento.getRecibo(),movimiento.getO_seguro(),movimiento.getMoratorios(),
             movimiento.getStatus(),sdf.format(movimiento.getFecha_pol()),
-            movimiento.getId_usuario(),movimiento.getId_bonific(),movimiento.getComisiones(),
+            movimiento.getId_usuario(),movimiento.getComisiones(),
             movimiento.getSerie(),mpuntual,movimiento.getClave_b(), movimiento.getTit(),
             movimiento.getId_catprog(),movimiento.getNumcontrato(),movimiento.getId_caja(),mbonific
         };
