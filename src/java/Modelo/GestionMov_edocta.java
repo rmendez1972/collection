@@ -261,6 +261,15 @@ public class GestionMov_edocta
         return resultado;
     }
     
+    public boolean insertarId_bonificacion(Mov_edocta movimiento){
+        Integer id_movedoscta=movimiento.getId_movedoscta();
+        Integer id_bonificacion=movimiento.getId_bonific();
+        
+        Object params[]={id_bonificacion, id_movedoscta};
+        return Conexion.ejecutar("update mov_edoscta set id_bonific=? where id_movedoscta=?", params);
+    
+    }
+    
     
     
     

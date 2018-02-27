@@ -719,4 +719,114 @@ public class ControladorMovBonific extends ControladorBase{
         response.getWriter().write("{\"bonificacion\":"+gson.toJson(bonificaciones)+"}");
     }
     
+    //funcion que introduce valores ala tabla bonific que llegan del front end
+    public void aplicaBonificacionesApi(HttpServletRequest request, HttpServletResponse response) throws Exception{
+            
+            ArrayList resultado = new ArrayList();
+            
+            MovBonific bon = new MovBonific();
+
+            Integer id_movedoscta = Integer.parseInt(request.getParameter("id_movedoscta"));
+            bon.setId_movedoscta(id_movedoscta);
+
+            Integer id_benef = Integer.parseInt(request.getParameter("id_benef"));
+            bon.setId_benef(id_benef);
+
+            BigDecimal imp_cap = new BigDecimal(request.getParameter("imp_cap"));
+            bon.setImp_cap(imp_cap);
+
+            BigDecimal imp_int = new BigDecimal(request.getParameter("imp_int"));
+            bon.setImp_int(imp_int);
+
+            BigDecimal imp_adm = new BigDecimal(request.getParameter("imp_adm"));
+            bon.setImp_adm(imp_adm);
+
+            BigDecimal imp_seg = new BigDecimal(request.getParameter("imp_seg"));
+            bon.setImp_seg(imp_seg);
+
+            BigDecimal imp_osg = new BigDecimal(request.getParameter("imp_osg"));
+            bon.setImp_osg(imp_osg);
+            
+            BigDecimal imp_com = new BigDecimal(request.getParameter("imp_com"));
+            bon.setImp_com(imp_com);
+            
+            BigDecimal imp_mor = new BigDecimal(request.getParameter("imp_mor"));
+            bon.setImp_mor(imp_mor);
+            
+            BigDecimal imp_tit = new BigDecimal(request.getParameter("imp_tit"));
+            bon.setImp_tit(imp_tit);
+
+            Integer id_catbonific = Integer.parseInt(request.getParameter("id_catbonific"));
+            bon.setId_catbonific(id_catbonific);
+
+            bon.setEstatus(request.getParameter("estatus").toUpperCase());
+            
+            Integer id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
+            bon.setId_usuario(id_usuario);
+
+            bon.setClave_b(request.getParameter("clave_b"));
+
+            Integer recibo = Integer.parseInt(request.getParameter("recibo"));
+            bon.setRecibo(recibo);
+
+            bon.setSerie(request.getParameter("serie").toUpperCase());
+
+            bon.setNumcontrato(request.getParameter("numcontrato"));
+
+            Integer id_catprog = Integer.parseInt(request.getParameter("id_catprog"));
+            bon.setId_catprog(id_catprog);
+
+            Integer id_autoriza = Integer.parseInt(request.getParameter("id_autoriza"));
+            bon.setId_autoriza(id_autoriza);
+            
+            GestionMovBonific modelo = new GestionMovBonific();
+            
+            //validamos si los datos se introducieron de manera correcta en la DB
+            if(modelo.registroMovBonific(bon)){
+                //se actualiza el campo bonific de la tabla mov_edocta para mostrar que el registro de ese movimiento tiene una bonificacion.
+                //GestionMov_edocta mod_edocta = new GestionMov_edocta();
+                //mod_edocta.cambiarBonificTrue(id_movedoscta);
+                boolean actividad = true;
+                
+                ArrayList movbonific = modelo.obtenerPorId(id_movedoscta);
+                //iterador para iterar sobre el arreglo de movbonific para sacar el valor de id_bonificacion
+                Iterator<MovBonific> it = movbonific.iterator();
+                MovBonific bonific = new MovBonific();
+                while(it.hasNext()){
+                    bonific = it.next();
+                }       
+                Integer id_bonificacion = bonific.getId_bonificacion();
+                
+                
+                resultado.add(id_movedoscta);
+                resultado.add(recibo);
+                resultado.add(id_bonificacion);
+                resultado.add(actividad);
+      
+                GsonBuilder builder=new GsonBuilder();
+                Gson gson=builder.create();
+            
+                //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+                response.setHeader("Access-Control-Allow-Origin", "*");
+                response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+                response.setHeader("Access-Control-Max-Age", "3600");
+                response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+                response.getWriter().write("{\"registroBonificacion\":"+gson.toJson(resultado)+"}");
+                
+                }
+            else{
+                boolean actividad = false;
+                
+                GsonBuilder builder=new GsonBuilder();
+                Gson gson=builder.create();
+            
+                //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+                response.setHeader("Access-Control-Allow-Origin", "*");
+                response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+                response.setHeader("Access-Control-Max-Age", "3600");
+                response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+                response.getWriter().write("{\"registroBonificacion\":"+gson.toJson(actividad)+"}");
+            }
+    }
+    
 }
