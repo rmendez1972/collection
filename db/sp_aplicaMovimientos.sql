@@ -34,9 +34,9 @@ BEGIN
                 o_seg,moratorios,estatus,fecha_pol,id_usuario,comisiones,
                 serie,puntual,clave_b,tit,id_catprog,numcontrato,id_caja,bonific)
 
-    values (id_benef,capital,interes,admon,seguro,clave_mov,poliza,fecha_mov,recibo,
-            o_seg,moratorios,estatus,fecha_pol,id_usuario,comisiones,
-            serie,puntual,clave_b,tit,id_catprog,numcontrato,id_caja,bonific);
+    values (id_benef,capital*-1,interes*-1,admon*-1,seguro*-1,clave_mov,poliza,fecha_mov,recibo,
+            o_seg*-1,moratorios*-1,estatus,fecha_pol,id_usuario,comisiones*-1,
+            serie,puntual,clave_b,tit*-1,id_catprog,numcontrato,id_caja,bonific);
 
 END $$
 DELIMITER ;
@@ -44,5 +44,5 @@ DELIMITER ;
 
 /*
 Prueba:
-http://localhost:8083/cobranza/controladormov_edocta?operacion=aplicaMovedoctaApi&id_benef=1&capital=500.00&interes=201.00&admon=0.00&seguro=50.00&clave_mov=101&poliza=D001&fecha_corte=2018-02-22&recibo=00030&o_seguro=0&moratorios=0.50&fecha_pol=2018-02-20&id_usuario=5&comisiones=0.00&serie=A&clave_b=NUGD19-00001&tit=25.99&id_catprog=10&numcontrato=12345&id_caja=1000
+http://localhost:8083/cobranza/controladormov_edocta?operacion=aplicaMovedoctaApi&id_benef=1&capital=90.00&interes=201.00&admon=0.00&seguro=50.00&clave_mov=101&poliza=D001&fecha_corte=2018-02-22&recibo=00030&o_seguro=0&moratorios=0.50&fecha_pol=2018-02-27&id_usuario=5&comisiones=0.00&serie=A&clave_b=NUGD19-00001&tit=25.99&id_catprog=10&numcontrato=12345&id_caja=1000
 */
