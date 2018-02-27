@@ -311,7 +311,51 @@ public class ControladorMov_edocta extends ControladorBase
         Gson gson=builder.create();
         response.getWriter().write("{\"resultado\":"+gson.toJson(result)+"}");
         
-  }    
+  }
+    
+    
+    public void aplicaMovedoctaBonific(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        
+        Mov_edocta movimiento=new Mov_edocta();
+        
+        GsonBuilder builder=new GsonBuilder();
+        Gson gson=builder.create();
+
+        Integer id_movedoscta = Integer.parseInt(request.getParameter("id_movedoscta"));
+        movimiento.setId_movedoscta(id_movedoscta);
+        
+        Integer id_bonificacion = Integer.parseInt(request.getParameter("id_bonificacion"));
+        movimiento.setId_bonific(id_bonificacion);
+        
+               
+        //se actualiza el campo bonific de la tabla mov_edocta para mostrar que el registro de ese movimiento tiene una bonificacion.
+        GestionMov_edocta mod_edocta = new GestionMov_edocta();
+        
+        if(mod_edocta.insertarId_bonificacion(movimiento) && mod_edocta.cambiarBonificTrue(id_movedoscta)){
+        
+            boolean actividad = true;
+            
+            //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+            response.setHeader("Access-Control-Max-Age", "3600");
+            response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+            response.getWriter().write("{\"aplicaMovedoctaBonific\":"+gson.toJson(actividad)+"}");
+            
+        }else{
+            boolean actividad = false;
+            
+            //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+            response.setHeader("Access-Control-Max-Age", "3600");
+            response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+            response.getWriter().write("{\"aplicaMovedoctaBonific\":"+gson.toJson(actividad)+"}");
+        }
+        
+        
+        
+    }
   
     /*
     public void nuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
