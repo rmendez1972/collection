@@ -300,9 +300,9 @@ public class ControladorMov_edocta extends ControladorBase
     int mbonific=0;    
         /*Preparando la sentencia sql mediante un llamado a un procedimiento
         almacenado.*/
-        sql= "{call sp_aplicaMovimientos(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";//23 atributos
+        sql= "{call sp_aplicaMovimientos(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";//23 atributos
         //Llama al modelo y aplica el movimiento, si es éxito devuelve true
-        boolean resultado=modelo.registraMovedocta(mpuntual, mbonific,sql,movimiento);
+        int resultado=modelo.registraMovedocta(mpuntual, mbonific,sql,movimiento);
   
         result.add(resultado);
         result.add(movimiento.getRecibo());

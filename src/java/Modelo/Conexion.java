@@ -83,6 +83,27 @@ public class Conexion {
         }
     }
     
+    public static int llamarconsalida(String sql, Object parametros[]){
+        try{
+            conectar();
+            CallableStatement cStmt = conex.prepareCall(sql);
+            /*seteo los comodines del call al  store procedure*/
+            establecerParametrosLlamar(cStmt,parametros);
+            cStmt.registerOutParameter("ultimo", Types.INTEGER);
+            
+            Integer hadResults = cStmt.executeUpdate(); //ejecutamos el llamado al Sp
+            ResultSet rs = cStmt.getResultSet();
+            
+            int ultimo = cStmt.getInt("ultimo");
+            cStmt.close();
+            parametros=null;
+            return ultimo;
+        }catch(Exception e){
+            System.out.println(e);
+            return 0;
+        }
+    }
+    
     public static boolean ejecutarImagen(String sql, Object parametros[], String ruta){
         try{
             conectar();
