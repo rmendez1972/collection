@@ -71,7 +71,9 @@ public class Conexion {
             conectar();
             CallableStatement cStmt = conex.prepareCall(sql);
             /*seteo los comodines del call al  store procedure*/
+            /*cStmt.registerOutParameter("loquesea", java.sql.Types.INTEGER); igh*/ 
             establecerParametrosLlamar(cStmt,parametros);
+            
             
             Integer hadResults = cStmt.executeUpdate();
             cStmt.close();
