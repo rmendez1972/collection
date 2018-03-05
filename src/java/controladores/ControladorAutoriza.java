@@ -265,4 +265,19 @@ public class ControladorAutoriza extends ControladorBase {
         Map param = new HashMap();
         generarReporte("ReporteAutoriza.jasper", param, request, response);
     }
+        
+        public void listarJson(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        GestionAutoriza modelo=new GestionAutoriza();
+        ArrayList autorizas=modelo.obtenerTodos();
+        
+        GsonBuilder builder=new GsonBuilder().setDateFormat("yyyy-MM-dd");
+        Gson gson=builder.create();
+            
+        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        response.getWriter().write("{\"autoriza\":"+gson.toJson(autorizas)+"}");
+    }
 }

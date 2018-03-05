@@ -27,12 +27,10 @@ CREATE PROCEDURE sp_aplicaMovimientos(
     IN numcontrato    VARCHAR(5),
     IN id_caja        INT,
     IN bonific        INT,
-     ultimo    INT)
+    INOUT ultimo    INT)
     
 
 BEGIN
-    SET ultimo=0;
-
     insert into mov_edoscta (id_benef,capital,interes,admon,seguro,clave_mov,poliza,fecha_mov,recibo,
                 o_seg,moratorios,estatus,fecha_pol,id_usuario,comisiones,
                 serie,puntual,clave_b,tit,id_catprog,numcontrato,id_caja,bonific)
@@ -40,14 +38,23 @@ BEGIN
     values (id_benef,capital*-1,interes*-1,admon*-1,seguro*-1,clave_mov,poliza,fecha_mov,recibo,
             o_seg*-1,moratorios*-1,estatus,fecha_pol,id_usuario,comisiones*-1,
             serie,puntual,clave_b,tit*-1,id_catprog,numcontrato,id_caja,bonific);
-       
+    /*SET x=SELECT DISTINCT LAST_INSERT_ID(); 
+    SET ultimo=x;
+    SELECT ultimo;*/  
     SELECT DISTINCT LAST_INSERT_ID() into ultimo;
 
 
 END $$
+
 DELIMITER ;
 
-
+/*CREATE PROCEDURE demoSp(IN inputParam VARCHAR(255), INOUT inOutParam INT)
+BEGIN
+    DECLARE z INT;
+    SET z = inOutParam + 1;
+    SET inOutParam = z;
+ 
+    SELECT inputParam;*/
 /*
 Prueba:
                                                                                   id_benef,  capital,      interes,       admon,     seguro,      clave_mov,    poliza,     fecha_mov,           recibo,      o_seg,     moratorios,     estatus,  fecha_pol,           id_usuario,  comisiones,     serie, puntual,   clave_b,             tit,      id_catprog,   numcontrato,      id_caja,bonific
