@@ -71,7 +71,9 @@ public class Conexion {
             conectar();
             CallableStatement cStmt = conex.prepareCall(sql);
             /*seteo los comodines del call al  store procedure*/
+            /*cStmt.registerOutParameter("loquesea", java.sql.Types.INTEGER); igh*/ 
             establecerParametrosLlamar(cStmt,parametros);
+            
             
             Integer hadResults = cStmt.executeUpdate();
             cStmt.close();
@@ -80,6 +82,27 @@ public class Conexion {
         }catch(Exception e){
             System.out.println(e);
             return false;
+        }
+    }
+    
+    public static int llamarconsalida(String sql, Object parametros[]){
+        try{
+            conectar();
+            CallableStatement cStmt = conex.prepareCall(sql);
+            /*seteo los comodines del call al  store procedure*/
+            establecerParametrosLlamar(cStmt,parametros);
+            cStmt.registerOutParameter("ultimo", Types.INTEGER);
+            
+            Integer hadResults = cStmt.executeUpdate(); //ejecutamos el llamado al Sp
+            ResultSet rs = cStmt.getResultSet();
+            
+            int ultimo = cStmt.getInt("ultimo");
+            cStmt.close();
+            parametros=null;
+            return ultimo;
+        }catch(Exception e){
+            System.out.println(e);
+            return 0;
         }
     }
     
