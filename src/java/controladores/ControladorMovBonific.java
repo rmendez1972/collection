@@ -802,6 +802,8 @@ public class ControladorMovBonific extends ControladorBase{
                 resultado.add(recibo);
                 resultado.add(id_bonificacion);
                 resultado.add(actividad);
+                
+                //movbonific.add(actividad);
       
                 GsonBuilder builder=new GsonBuilder();
                 Gson gson=builder.create();
