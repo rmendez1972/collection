@@ -233,7 +233,9 @@ public class GestionMov_edocta
         return resultado;
     }
     
+
     public int registraMovedocta(int mpuntual,int mbonific, String sql, Mov_edocta movimiento){
+
         //public boolean aperturarPorId(int mecanica,int id_beneficiario,String sql, ParametrosApertura par_aper){
         int resultado;
         /*int mpuntual;
@@ -255,6 +257,7 @@ public class GestionMov_edocta
             movimiento.getId_usuario(),movimiento.getComisiones(),
             movimiento.getSerie(),mpuntual,movimiento.getClave_b(), movimiento.getTit(),
             movimiento.getId_catprog(),movimiento.getNumcontrato(),movimiento.getId_caja(),mbonific,-1
+
         };
         //Object params[]={par_aper.getId_beneficiario(),par_aper.getImp_capital(),par_aper.getImp_enganche(),par_aper.getPoliza(),sdf.format(par_aper.getFecha_pol()),par_aper.getClave_b(),par_aper.getId_usuario()};
         resultado=Conexion.llamarconsalida(sql, params);

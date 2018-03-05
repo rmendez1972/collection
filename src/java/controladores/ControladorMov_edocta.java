@@ -243,69 +243,73 @@ public class ControladorMov_edocta extends ControladorBase
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Charset");
 
-    BigDecimal capital = new BigDecimal (request.getParameter("capital"));
-    movimiento.setCapital(capital);
-    BigDecimal interes = new BigDecimal (request.getParameter("interes"));
-    movimiento.setInteres(interes);
-    BigDecimal admon = new BigDecimal (request.getParameter("admon"));
-    movimiento.setAdmon(admon);
-    BigDecimal seguro = new BigDecimal (request.getParameter("seguro"));
-    movimiento.setSeguro(seguro);
-    movimiento.setClave_mov (request.getParameter("clave_mov"));
-    String poliza = request.getParameter("poliza");
-    movimiento.setPoliza(poliza);
-    SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-    Date fecha_mov=sdf.parse(request.getParameter("fecha_corte"));
-    movimiento.setFecha_mov(fecha_mov);    
-    movimiento.setRecibo(Integer.parseInt(request.getParameter("recibo")));
-    BigDecimal o_seguro = new BigDecimal (request.getParameter("o_seguro"));
-    movimiento.setO_seguro(o_seguro);
-    BigDecimal moratorios = new BigDecimal (request.getParameter("moratorios"));
-    movimiento.setMoratorios(moratorios);
-    movimiento.setStatus("A");
-    Date fecha_pol=sdf.parse(request.getParameter("fecha_pol"));
-    movimiento.setFecha_pol(fecha_pol);
-    movimiento.setId_benef(Integer.parseInt(request.getParameter("id_benef")));
-    movimiento.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
-    //movimiento.setId_bonific(Integer.parseInt(request.getParameter("id_bonific")));
-    BigDecimal comisiones = new BigDecimal (request.getParameter("comisiones"));
-    movimiento.setComisiones(comisiones);
-    movimiento.setSerie(request.getParameter("serie").toUpperCase());
+        BigDecimal capital = new BigDecimal (request.getParameter("capital"));
+        movimiento.setCapital(capital);
+        BigDecimal interes = new BigDecimal (request.getParameter("interes"));
+        movimiento.setInteres(interes);
+        BigDecimal admon = new BigDecimal (request.getParameter("admon"));
+        movimiento.setAdmon(admon);
+        BigDecimal seguro = new BigDecimal (request.getParameter("seguro"));
+        movimiento.setSeguro(seguro);
+        movimiento.setClave_mov (request.getParameter("clave_mov"));
+        String poliza = request.getParameter("poliza");
+        movimiento.setPoliza(poliza);
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha_mov=sdf.parse(request.getParameter("fecha_corte"));
+        movimiento.setFecha_mov(fecha_mov);    
+        movimiento.setRecibo(Integer.parseInt(request.getParameter("recibo")));
+        BigDecimal o_seguro = new BigDecimal (request.getParameter("o_seguro"));
+        movimiento.setO_seguro(o_seguro);
+        BigDecimal moratorios = new BigDecimal (request.getParameter("moratorios"));
+        movimiento.setMoratorios(moratorios);
+        movimiento.setStatus("A");
+        Date fecha_pol=sdf.parse(request.getParameter("fecha_pol"));
+        movimiento.setFecha_pol(fecha_pol);
+        movimiento.setId_benef(Integer.parseInt(request.getParameter("id_benef")));
+        movimiento.setId_usuario(Integer.parseInt(request.getParameter("id_usuario")));
+        //movimiento.setId_bonific(Integer.parseInt(request.getParameter("id_bonific")));
+        BigDecimal comisiones = new BigDecimal (request.getParameter("comisiones"));
+        movimiento.setComisiones(comisiones);
+        movimiento.setSerie(request.getParameter("serie").toUpperCase());
     
-    movimiento.setPuntual(Boolean.TRUE); //Checarlo con marlon.
-    int mpuntual=0;
-    if (moratorios==new BigDecimal (0)){
-        mpuntual=1;
-    }
-    else {
-        mpuntual=0;
-    }
-    String clave_b = request.getParameter("clave_b");
-    movimiento.setClave_b(clave_b);
-    BigDecimal tit = new BigDecimal (request.getParameter("tit"));
-    movimiento.setTit(tit);
-    movimiento.setId_catprog(Integer.parseInt(request.getParameter("id_catprog")));
-    movimiento.setNumcontrato(request.getParameter("numcontrato"));
-    movimiento.setId_caja(Integer.parseInt(request.getParameter("id_caja")));
+        movimiento.setPuntual(Boolean.TRUE); //Checarlo con marlon.
+        int mpuntual=0;
+        if (moratorios==new BigDecimal (0)){
+            mpuntual=1;
+        }
+        else {
+            mpuntual=0;
+        }
+        String clave_b = request.getParameter("clave_b");
+        movimiento.setClave_b(clave_b);
+        BigDecimal tit = new BigDecimal (request.getParameter("tit"));
+        movimiento.setTit(tit);
+        movimiento.setId_catprog(Integer.parseInt(request.getParameter("id_catprog")));
+        movimiento.setNumcontrato(request.getParameter("numcontrato"));
+        movimiento.setId_caja(Integer.parseInt(request.getParameter("id_caja")));
     
-    /*int mbonific=0;
-    if (movimiento.getId_bonific()!=0){
-        movimiento.setBonific(Boolean.TRUE);
-        mbonific=1;
-    }
-    else {
-        movimiento.setBonific(Boolean.FALSE);
-        mbonific=0;
-    }*/
-    int mbonific=0;    
+        /*int mbonific=0;
+        if (movimiento.getId_bonific()!=0){
+            movimiento.setBonific(Boolean.TRUE);
+            mbonific=1;
+        }
+        else {
+            movimiento.setBonific(Boolean.FALSE);
+            mbonific=0;
+        }*/
+        int mbonific=0;
+        int multimo_reg=0;
         /*Preparando la sentencia sql mediante un llamado a un procedimiento
         almacenado.*/
-        sql= "{call sp_aplicaMovimientos(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";//23 atributos
+
+        sql= "{call sp_aplicaMovimientos(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";//24 atributos
         //Llama al modelo y aplica el movimiento, si es éxito devuelve true
         int resultado=modelo.registraMovedocta(mpuntual, mbonific,sql,movimiento);
+
   
         result.add(resultado);
         result.add(movimiento.getRecibo());
+        result.add(multimo_reg);
 
         GsonBuilder builder=new GsonBuilder();
         Gson gson=builder.create();
