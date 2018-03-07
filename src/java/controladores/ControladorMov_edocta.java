@@ -298,7 +298,7 @@ public class ControladorMov_edocta extends ControladorBase
             mbonific=0;
         }*/
         int mbonific=0;
-        int multimo_reg=0;
+        
         /*Preparando la sentencia sql mediante un llamado a un procedimiento
         almacenado.*/
 
@@ -309,7 +309,7 @@ public class ControladorMov_edocta extends ControladorBase
   
         result.add(resultado);
         result.add(movimiento.getRecibo());
-        result.add(multimo_reg);
+        
 
         GsonBuilder builder=new GsonBuilder();
         Gson gson=builder.create();
