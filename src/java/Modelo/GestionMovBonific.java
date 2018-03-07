@@ -61,7 +61,7 @@ public class GestionMovBonific {
         String id_autoriza = mov.getId_autoriza().toString();
         
         Object params[]={id_movedoscta, id_benef, imp_cap, imp_int, imp_adm, imp_seg, imp_osg, id_catbonific, estatus, id_usuario, clave_b, recibo, serie, numcontrato, id_catprog, id_autoriza, imp_com, imp_mor, imp_tit};
-        return Conexion.ejecutar("insert into bonific (id_movedoscta, id_benef, imp_cap, imp_int, imp_adm, imp_seg, imp_osg, id_catbonific, estatus, id_usuario, clave_b, recibo, serie, numcontrato, id_catprog, id_autoriza, imp_com, imp_mor, imp_tit) values (?,?,?,?,?,?,?,?,UPPER(?),?,?,?,UPPER(?),?,?,?,?,?,?)", params);
+        return Conexion.ejecutar("insert into bonific (id_movedoscta, id_benef, imp_cap, imp_int, imp_adm, imp_seg, imp_osg, id_catbonific, estatus, id_usuario, clave_b, recibo, serie, numcontrato, id_catprog, id_autoriza, imp_com, imp_mor, imp_tit) values (?,?,?*-1,?,?,?,?,?,UPPER(?),?,?,?,UPPER(?),?,?,?,?,?,?)", params);
         
     }
     
