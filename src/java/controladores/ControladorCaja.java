@@ -280,4 +280,40 @@ public class ControladorCaja extends ControladorBase{
           
     }
     
+    public void updateFolio_finalfromApp(HttpServletRequest request, HttpServletResponse response) throws Exception    {
+        int id_caja=(Integer.parseInt(request.getParameter("id_caja")));
+        Boolean result;
+        GestionCaja modelo = new GestionCaja();
+        Caja caja=modelo.obtenerPorId(id_caja);
+        int folio_final=caja.getFolio_final()+1;
+        caja.setFolio_final(folio_final);
+        
+        if(modelo.actualizarCaja(caja)){
+            
+            result=true;
+            }
+        else{
+            
+            result=false;
+        } 
+            
+                         
+        ArrayList resultado = new ArrayList();
+        if (result != null){
+                                          
+            resultado.add(result);
+        }
+            
+        GsonBuilder builder=new GsonBuilder();
+        Gson gson=builder.create();
+            
+        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.setHeader("Content-Type", "application/json; charset=UTF-8");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Charset");
+        response.getWriter().write("{\"respuesta\":"+gson.toJson(resultado)+"}");
+    }
+    
 }
