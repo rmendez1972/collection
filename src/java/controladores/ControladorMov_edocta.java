@@ -324,6 +324,7 @@ public class ControladorMov_edocta extends ControladorBase
         
         GsonBuilder builder=new GsonBuilder();
         Gson gson=builder.create();
+        
 
         Integer id_movedoscta = Integer.parseInt(request.getParameter("id_movedoscta"));
         movimiento.setId_movedoscta(id_movedoscta);
