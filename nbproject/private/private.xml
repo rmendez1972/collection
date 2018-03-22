@@ -13,6 +13,7 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/Conexion.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionMov_edocta.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_modificacandidatoapertura.jsp</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/index.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/Controladorvencidos.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Usuario.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_modificamov_edocta.jsp</file>
@@ -29,8 +30,10 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/cal_29.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorMov_edocta.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionCandidatos.java</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/MovBonific.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_mov_edoscta.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionCpp.java</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionMovBonific.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/int_mor.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Mov_edocta.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/frm_modificamov_diversos.jsp</file>
@@ -40,6 +43,7 @@
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Caja.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionUsuario.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBonificacion.java</file>
+            <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/web/listar_cpps.jsp</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBeneficiario.java</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/nbproject/private/private.properties</file>
             <file>file:/C:/Users/rmendez1972/Documents/NetBeansProjects/cobranza/src/java/javabeans/Aperturaedoscta.java</file>
