@@ -38,6 +38,22 @@ public class GestionMovBonific {
     }
     
     
+    public ArrayList obtenerPorReciboSerie(String recibo, String serie){
+        ArrayList bon=new ArrayList();
+        
+        Object params[]={recibo,serie};
+        ResultSet res=Conexion.ejecutarConsulta("Select BO.* from bonific BO where BO.recibo=? and BO.serie=?", params);
+        try{
+            while(res.next()){
+                MovBonific bonific=new MovBonific(res.getInt("id_bonificacion"),res.getInt("id_movedoscta"),res.getInt("id_benef"),res.getBigDecimal("imp_cap"),res.getBigDecimal("imp_int"),res.getBigDecimal("imp_adm"),res.getBigDecimal("imp_seg"),res.getBigDecimal("imp_osg"),res.getInt("id_catbonific"),res.getString("estatus"),res.getInt("id_usuario"),res.getInt("id_autoriza"),res.getString("clave_b"),res.getInt("recibo"),res.getString("serie"),res.getInt("id_movdiversos"),res.getString("numcontrato"),res.getInt("id_catprog"), res.getBigDecimal("imp_com"), res.getBigDecimal("imp_mor"), res.getBigDecimal("imp_tit"));            
+                bon.add(bonific);
+            }
+            res.close();
+        }catch(Exception e){}
+        return bon;
+    }
+    
+    
     public boolean registroMovBonific(MovBonific mov){
         
         String id_movedoscta = mov.getId_movedoscta().toString();
@@ -65,21 +81,9 @@ public class GestionMovBonific {
         
     }
     
-    public MovBonific obtenerPorIdEdit(int id){
-        MovBonific mb=null;
-        Object params[]={id};
-        ResultSet res=Conexion.ejecutarConsulta("select * from bonific where id_movedoscta=?", params);
-        try{
-            if(res.next())
-                mb=new MovBonific(res.getInt("id_bonificacion"),res.getInt("id_movedoscta"),res.getInt("id_benef"),res.getBigDecimal("imp_cap"),res.getBigDecimal("imp_int"),res.getBigDecimal("imp_adm"),res.getBigDecimal("imp_seg"),res.getBigDecimal("imp_osg"),res.getInt("id_catbonific"),res.getString("estatus"),res.getInt("id_usuario"),res.getInt("id_autoriza"),res.getString("clave_b"),res.getInt("recibo"),res.getString("serie"),res.getInt("id_movdiversos"),res.getString("numcontrato"),res.getInt("id_catprog"), res.getBigDecimal("imp_com"), res.getBigDecimal("imp_mor"), res.getBigDecimal("imp_tit"));
-            res.close();
-        }catch(Exception e){}
-        return mb;
-        
-    }
     
-    public boolean actualizarMovBonific(MovBonific mov){
-        String id_bonificacion = mov.getId_bonificacion().toString();
+    public boolean actualizaMovBonific(MovBonific mov){
+        
         String id_movedoscta = mov.getId_movedoscta().toString();
         String id_benef = mov.getId_benef().toString();
         String imp_cap = mov.getImp_cap().toString();
@@ -100,8 +104,50 @@ public class GestionMovBonific {
         String id_catprog = mov.getId_catprog().toString();
         String id_autoriza = mov.getId_autoriza().toString();
         
-        Object params[]={id_movedoscta, id_benef, imp_cap, imp_int, imp_adm, imp_seg, imp_osg, id_catbonific, estatus, id_usuario, clave_b, recibo, serie, numcontrato, id_catprog, id_autoriza, imp_com, imp_mor, imp_tit, id_bonificacion};
-        return Conexion.ejecutar("update bonific set id_movedoscta=?, id_benef=?, imp_cap=?, imp_int=?, imp_adm=?, imp_seg=?, imp_osg=?, id_catbonific=?, estatus=UPPER(?), id_usuario=?, clave_b=?, recibo=?, serie=UPPER(?), numcontrato=?, id_catprog=?, id_autoriza=?, imp_com=?, imp_mor=?, imp_tit=? where id_bonificacion=? ", params);
+        Object params[]={id_movedoscta, id_benef, imp_cap, imp_int, imp_adm, imp_seg, imp_osg, id_catbonific, estatus, id_usuario, clave_b, recibo, serie, numcontrato, id_catprog, id_autoriza, imp_com, imp_mor, imp_tit};
+        return Conexion.ejecutar("update bonific set id_movedoscta values (?,?,?*-1,?,?,?,?,?,UPPER(?),?,?,?,UPPER(?),?,?,?,?,?,?)", params);
+        
+    }
+    
+    
+    
+    public MovBonific obtenerPorIdEdit(int id){
+        MovBonific mb=null;
+        Object params[]={id};
+        ResultSet res=Conexion.ejecutarConsulta("select * from bonific where id_movedoscta=?", params);
+        try{
+            if(res.next())
+                mb=new MovBonific(res.getInt("id_bonificacion"),res.getInt("id_movedoscta"),res.getInt("id_benef"),res.getBigDecimal("imp_cap"),res.getBigDecimal("imp_int"),res.getBigDecimal("imp_adm"),res.getBigDecimal("imp_seg"),res.getBigDecimal("imp_osg"),res.getInt("id_catbonific"),res.getString("estatus"),res.getInt("id_usuario"),res.getInt("id_autoriza"),res.getString("clave_b"),res.getInt("recibo"),res.getString("serie"),res.getInt("id_movdiversos"),res.getString("numcontrato"),res.getInt("id_catprog"), res.getBigDecimal("imp_com"), res.getBigDecimal("imp_mor"), res.getBigDecimal("imp_tit"));
+            res.close();
+        }catch(Exception e){}
+        return mb;
+        
+    }
+    
+    public boolean actualizarMovBonific(MovBonific mov){
+        
+        String id_movedoscta = mov.getId_movedoscta().toString();
+        String id_benef = mov.getId_benef().toString();
+        String imp_cap = mov.getImp_cap().toString();
+        String imp_int = mov.getImp_int().toString();
+        String imp_adm = mov.getImp_adm().toString();
+        String imp_seg = mov.getImp_seg().toString();
+        String imp_osg = mov.getImp_osg().toString();
+        String imp_com = mov.getImp_com().toString();
+        String imp_mor = mov.getImp_mor().toString();
+        String imp_tit = mov.getImp_tit().toString();
+        String id_catbonific = mov.getId_catbonific().toString();
+        String estatus = mov.getEstatus();
+        String id_usuario = mov.getId_usuario().toString();
+        String clave_b = mov.getClave_b();
+        String recibo = mov.getRecibo().toString();
+        String serie = mov.getSerie();
+        String numcontrato = mov.getNumcontrato();
+        String id_catprog = mov.getId_catprog().toString();
+        String id_autoriza = mov.getId_autoriza().toString();
+        
+        Object params[]={id_movedoscta, recibo, serie, clave_b};
+        return Conexion.ejecutar("update bonific set id_movedoscta=? where recibo=? and serie=? and clave_b=? ", params);
     }
     
     public boolean eliminarPorId(int id){
