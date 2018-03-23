@@ -768,7 +768,8 @@ public class ControladorMovBonific extends ControladorBase{
 
             Integer recibo = Integer.parseInt(request.getParameter("recibo"));
             bon.setRecibo(recibo);
-
+            
+            
             bon.setSerie(request.getParameter("serie").toUpperCase());
 
             bon.setNumcontrato(request.getParameter("numcontrato"));
@@ -780,14 +781,13 @@ public class ControladorMovBonific extends ControladorBase{
             bon.setId_autoriza(id_autoriza);
             
             GestionMovBonific modelo = new GestionMovBonific();
-            
-            //validamos si los datos se introducieron de manera correcta en la DB
-            if(modelo.registroMovBonific(bon)){
-                //se actualiza el campo bonific de la tabla mov_edocta para mostrar que el registro de ese movimiento tiene una bonificacion.
-                //GestionMov_edocta mod_edocta = new GestionMov_edocta();
-                //mod_edocta.cambiarBonificTrue(id_movedoscta);
-                boolean actividad = true;
+            ArrayList bonificacion = modelo.obtenerPorReciboSerie(request.getParameter("recibo"), request.getParameter("serie"));
+            int tamanioBonificacion = bonificacion.size();
+            if(tamanioBonificacion > 0){
+                modelo.actualizarMovBonific(bon);
                 
+                boolean actividad = true;
+
                 ArrayList movbonific = modelo.obtenerPorId(id_movedoscta);
                 //iterador para iterar sobre el arreglo de movbonific para sacar el valor de id_bonificacion
                 Iterator<MovBonific> it = movbonific.iterator();
@@ -796,18 +796,18 @@ public class ControladorMovBonific extends ControladorBase{
                     bonific = it.next();
                 }       
                 Integer id_bonificacion = bonific.getId_bonificacion();
-                
-                
+
+
                 resultado.add(id_movedoscta);
                 resultado.add(recibo);
                 resultado.add(id_bonificacion);
                 resultado.add(actividad);
-                
+
                 //movbonific.add(actividad);
-      
+
                 GsonBuilder builder=new GsonBuilder();
                 Gson gson=builder.create();
-            
+
                 //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
                 response.setHeader("Access-Control-Allow-Origin", "*");
                 response.setHeader("Access-Control-Allow-Methods", "POST, GET");
@@ -815,19 +815,56 @@ public class ControladorMovBonific extends ControladorBase{
                 response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
                 response.getWriter().write("{\"registroBonificacion\":"+gson.toJson(resultado)+"}");
                 
-                }
-            else{
-                boolean actividad = false;
-                
-                GsonBuilder builder=new GsonBuilder();
-                Gson gson=builder.create();
+            }else{
             
-                //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-                response.setHeader("Access-Control-Allow-Origin", "*");
-                response.setHeader("Access-Control-Allow-Methods", "POST, GET");
-                response.setHeader("Access-Control-Max-Age", "3600");
-                response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-                response.getWriter().write("{\"registroBonificacion\":"+gson.toJson(actividad)+"}");
+                //validamos si los datos se introducieron de manera correcta en la DB
+                if(modelo.registroMovBonific(bon)){
+                    //se actualiza el campo bonific de la tabla mov_edocta para mostrar que el registro de ese movimiento tiene una bonificacion.
+                    //GestionMov_edocta mod_edocta = new GestionMov_edocta();
+                    //mod_edocta.cambiarBonificTrue(id_movedoscta);
+                    boolean actividad = true;
+
+                    ArrayList movbonific = modelo.obtenerPorId(id_movedoscta);
+                    //iterador para iterar sobre el arreglo de movbonific para sacar el valor de id_bonificacion
+                    Iterator<MovBonific> it = movbonific.iterator();
+                    MovBonific bonific = new MovBonific();
+                    while(it.hasNext()){
+                        bonific = it.next();
+                    }       
+                    Integer id_bonificacion = bonific.getId_bonificacion();
+
+
+                    resultado.add(id_movedoscta);
+                    resultado.add(recibo);
+                    resultado.add(id_bonificacion);
+                    resultado.add(actividad);
+
+                    //movbonific.add(actividad);
+
+                    GsonBuilder builder=new GsonBuilder();
+                    Gson gson=builder.create();
+
+                    //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+                    response.setHeader("Access-Control-Allow-Origin", "*");
+                    response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+                    response.setHeader("Access-Control-Max-Age", "3600");
+                    response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+                    response.getWriter().write("{\"registroBonificacion\":"+gson.toJson(resultado)+"}");
+
+                    }
+                else{
+                    boolean actividad = false;
+
+                    GsonBuilder builder=new GsonBuilder();
+                    Gson gson=builder.create();
+
+                    //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+                    response.setHeader("Access-Control-Allow-Origin", "*");
+                    response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+                    response.setHeader("Access-Control-Max-Age", "3600");
+                    response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+                    response.getWriter().write("{\"registroBonificacion\":"+gson.toJson(actividad)+"}");
+                }
             }
     }
     
