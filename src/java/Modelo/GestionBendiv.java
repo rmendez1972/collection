@@ -227,7 +227,7 @@ public class GestionBendiv {
     public BeneficiarioDiv obtenerGenerico(String generico){
         BeneficiarioDiv beneficiario=null;
         Object params[]={generico};
-        ResultSet res=Conexion.ejecutarConsulta("select * from benef_div where clave_b like'"+generico+"'||id_bendiv like'"+generico+"'||nombre like'"+generico+"'", params);
+        ResultSet res=Conexion.ejecutarConsulta("select * from benef_div where clave_b like'"+generico+"'||id_bendiv like'"+generico+"'||nombre like'"+generico+"'||curp like'"+generico+"'", params);
         
         try{
             if(res.next())
