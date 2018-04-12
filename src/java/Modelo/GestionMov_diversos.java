@@ -303,6 +303,54 @@ public class GestionMov_diversos
         return movimientos;
     }*/
     
+    public int appregistroMov_diverso(MovDiversos movimiento, String sql, int mbonific){
+        Integer id_bendiv=movimiento.getId_bendiv();
+        String clave_div=movimiento.getClave_div();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String fecha_div=df.format(movimiento.getFecha_div());
+        String poliza=movimiento.getPoliza();
+        Integer recibo=movimiento.getRecibo();
+        //String cargo=movimiento.getCargo().toString();
+        String abono=movimiento.getAbono().toString();
+        String moratorios=movimiento.getMoratorios().toString();
+        String otros=movimiento.getOtros().toString();
+        //String fecha_pol=df.format(movimiento.getFecha_pol());
+        String estatus=movimiento.getEstatus();
+        
+        /*Boolean bolaplicado = movimiento.isAplicado();
+        Integer intaplicado = (bolaplicado) ? 1 : 0;
+        String aplicado = intaplicado.toString();*/
+        
+        String descripcion=movimiento.getDescripcion();
+        Integer id_catprog=movimiento.getId_catprog();
+        //String bonificacion=movimiento.getBonificacion().toString();
+        String serie=movimiento.getSerie();
+        /*String poliza_apli=movimiento.getPoliza_apli();
+        String fecha_apli=df.format(movimiento.getFecha_apli());
+        String interes=movimiento.getInteres().toString();
+        String seguro=movimiento.getSeguro().toString();
+        Integer id_emisor=movimiento.getId_emisor();*/
+        String clave_b=movimiento.getClave_b();
+        String numcontrato=movimiento.getNumcontrato();
+        
+        Boolean bolbonific = movimiento.isBonific();
+        Integer intbonific = (bolbonific) ? 1 : 0;
+        String bonific = intbonific.toString();
+        
+        Integer id_caja=movimiento.getId_caja();
+        Integer id_usuario=movimiento.getId_usuario();
+        
+        Object params[]={id_bendiv, clave_div, fecha_div, poliza, 
+            recibo, abono, moratorios, otros, 
+            estatus, descripcion, id_catprog, serie, clave_b, 
+            numcontrato, mbonific, id_caja, id_usuario,-1};
+        
+        //Object params[]={id_catprog, numcontrato,clave_elect,curp,rfc,nombre,conyuge,fecha_con,mza,lte,area,domicilio,clave_cat,id_tipocredito,id_usuario,poliza,fecha_pol,clave_b,fecha_ip};
+        //return Conexion.ejecutar("insert into benef (id_catprog, numcontrato,clave_elect,curp,rfc,nombre,conyuge,fecha_cont,mza,lte,area,domicilio,clave_cat,id_tipocredito,id_usuario,poliza,fecha_pol,clave_b,fecha_ip) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", params);
+        return Conexion.llamarconsalida(sql, params);
+    }
+    
+    
 }
 
 
