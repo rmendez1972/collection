@@ -367,4 +367,106 @@ public class ControladorMov_diversos extends ControladorBase
         Map param = new HashMap();
         generarReporte("ReporteCpp.jasper", param, request, response);
     } */
+    
+    //metodo para guardar los mov_diversos desde angular
+    public void appNuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        MovDiversos movimiento=new MovDiversos();
+        ArrayList resultado = new ArrayList();
+        //Integer id_movdiversos=Integer.parseInt(request.getParameter("id_movdiversos"));
+        //movimiento.setId_movdiversos(id_movdiversos);
+        
+        Integer id_bendiv=Integer.parseInt(request.getParameter("id_bendiv"));
+        movimiento.setId_bendiv(id_bendiv);
+        String clave_div=request.getParameter("clave_div").toUpperCase();
+        movimiento.setClave_div(clave_div);
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha_div = df.parse(request.getParameter("fecha_div"));
+        movimiento.setFecha_div(fecha_div);
+        String poliza=request.getParameter("poliza").toUpperCase();
+        movimiento.setPoliza(poliza);
+        Integer recibo=Integer.parseInt(request.getParameter("recibo"));
+        movimiento.setRecibo(recibo);
+        /*BigDecimal cargo = new BigDecimal(request.getParameter("cargo"));
+        movimiento.setCargo(cargo);*/
+        BigDecimal abono = new BigDecimal(request.getParameter("abono"));
+        movimiento.setAbono(abono);
+        BigDecimal moratorios = new BigDecimal(request.getParameter("moratorios"));
+        movimiento.setMoratorios(moratorios);
+        BigDecimal otros = new BigDecimal(request.getParameter("otros"));
+        movimiento.setOtros(otros);
+        //Date fecha_pol = df.parse(request.getParameter("fecha_pol"));
+        //movimiento.setFecha_pol(fecha_pol);
+        String estatus=request.getParameter("estatus").toUpperCase();
+        movimiento.setEstatus(estatus);
+        
+        Integer id_usuario=Integer.parseInt(request.getParameter("id_usuario"));
+        movimiento.setId_usuario(id_usuario);
+        
+        /*String valAplicado = request.getParameter("aplicado");
+        Boolean aplicado = Boolean.parseBoolean(valAplicado);
+        movimiento.setAplicado(aplicado);*/
+              
+        String descripcion=request.getParameter("descripcion").toUpperCase();
+        movimiento.setDescripcion(descripcion);
+        Integer id_catprog=Integer.parseInt(request.getParameter("id_catprog"));
+        movimiento.setId_catprog(id_catprog);
+        /*BigDecimal bonificacion = new BigDecimal(request.getParameter("bonificacion"));
+        movimiento.setBonificacion(bonificacion);*/
+        String serie=request.getParameter("serie").toUpperCase();
+        movimiento.setSerie(serie);
+        /*String poliza_apli=request.getParameter("poliza_apli").toUpperCase();
+        movimiento.setPoliza_apli(poliza_apli);
+        Date fecha_apli = df.parse(request.getParameter("fecha_apli"));
+        movimiento.setFecha_apli(fecha_apli);
+        BigDecimal interes = new BigDecimal(request.getParameter("interes"));
+        movimiento.setInteres(interes);
+        BigDecimal seguro = new BigDecimal(request.getParameter("seguro"));
+        movimiento.setSeguro(seguro);
+        Integer id_emisor=Integer.parseInt(request.getParameter("id_emisor"));
+        movimiento.setId_emisor(id_emisor);*/
+        String clave_b=request.getParameter("clave_b").toUpperCase();
+        movimiento.setClave_b(clave_b);
+        String numcontrato=request.getParameter("numcontrato").toUpperCase();
+        movimiento.setNumcontrato(numcontrato);
+        Integer id_caja=Integer.parseInt(request.getParameter("id_caja"));
+        movimiento.setId_caja(id_caja);
+        String valBonific = request.getParameter("bonific");
+        Boolean bonific = Boolean.parseBoolean(valBonific);
+        movimiento.setBonific(bonific);
+        
+        GestionMov_diversos modelo=new GestionMov_diversos();
+        if(modelo.appregistroMov_diverso(movimiento)){
+            
+            
+            boolean actividad = true;
+            resultado.add(actividad);
+            
+            GsonBuilder builder=new GsonBuilder();
+            Gson gson=builder.create();
+            
+            //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+            response.setHeader("Access-Control-Max-Age", "3600");
+            response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+            response.getWriter().write("{\"registroAplicaMovDiversos\":"+gson.toJson(resultado)+"}");
+           
+        }
+        else{
+            
+            boolean actividad = false;
+            resultado.add(actividad);
+            GsonBuilder builder=new GsonBuilder();
+            Gson gson=builder.create();
+            
+            //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+            response.setHeader("Access-Control-Max-Age", "3600");
+            response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+            response.getWriter().write("{\"registroAplicaMovDiversos\":"+gson.toJson(resultado)+"}");
+        }
+    
+    }
+    
 }
