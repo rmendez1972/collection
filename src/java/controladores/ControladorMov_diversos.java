@@ -372,8 +372,7 @@ public class ControladorMov_diversos extends ControladorBase
     public void appNuevoGuardar(HttpServletRequest request, HttpServletResponse response) throws Exception{
         MovDiversos movimiento=new MovDiversos();
         ArrayList resultado = new ArrayList();
-        //Integer id_movdiversos=Integer.parseInt(request.getParameter("id_movdiversos"));
-        //movimiento.setId_movdiversos(id_movdiversos);
+        String sql="";
         
         Integer id_bendiv=Integer.parseInt(request.getParameter("id_bendiv"));
         movimiento.setId_bendiv(id_bendiv);
@@ -434,39 +433,25 @@ public class ControladorMov_diversos extends ControladorBase
         Boolean bonific = Boolean.parseBoolean(valBonific);
         movimiento.setBonific(bonific);
         
+        int mbonific=0;
+        
         GestionMov_diversos modelo=new GestionMov_diversos();
-        if(modelo.appregistroMov_diverso(movimiento)){
-            
-            
-            boolean actividad = true;
-            resultado.add(actividad);
-            
-            GsonBuilder builder=new GsonBuilder();
-            Gson gson=builder.create();
-            
-            //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-            response.setHeader("Access-Control-Allow-Origin", "*");
-            response.setHeader("Access-Control-Allow-Methods", "POST, GET");
-            response.setHeader("Access-Control-Max-Age", "3600");
-            response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-            response.getWriter().write("{\"registroAplicaMovDiversos\":"+gson.toJson(resultado)+"}");
+        sql= "{call sp_aplicaMovimientosDiv(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"; //18
+        
+        int resultadoprocedimiento = modelo.appregistroMov_diverso(movimiento,sql,mbonific);
+        
+        boolean actividad = true;
+        resultado.add(actividad);
+        resultado.add(resultadoprocedimiento);
+        GsonBuilder builder=new GsonBuilder();
+        Gson gson=builder.create();
            
-        }
-        else{
-            
-            boolean actividad = false;
-            resultado.add(actividad);
-            GsonBuilder builder=new GsonBuilder();
-            Gson gson=builder.create();
-            
-            //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-            response.setHeader("Access-Control-Allow-Origin", "*");
-            response.setHeader("Access-Control-Allow-Methods", "POST, GET");
-            response.setHeader("Access-Control-Max-Age", "3600");
-            response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-            response.getWriter().write("{\"registroAplicaMovDiversos\":"+gson.toJson(resultado)+"}");
-        }
-    
+        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        response.getWriter().write("{\"registroAplicaMovDiversos\":"+gson.toJson(resultado)+"}");
     }
     
 }

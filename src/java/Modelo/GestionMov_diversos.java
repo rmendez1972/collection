@@ -303,7 +303,7 @@ public class GestionMov_diversos
         return movimientos;
     }*/
     
-    public boolean appregistroMov_diverso(MovDiversos movimiento){
+    public int appregistroMov_diverso(MovDiversos movimiento, String sql, int mbonific){
         Integer id_bendiv=movimiento.getId_bendiv();
         String clave_div=movimiento.getClave_div();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -343,11 +343,11 @@ public class GestionMov_diversos
         Object params[]={id_bendiv, clave_div, fecha_div, poliza, 
             recibo, abono, moratorios, otros, 
             estatus, descripcion, id_catprog, serie, clave_b, 
-            numcontrato, bonific, id_caja, id_usuario};
+            numcontrato, mbonific, id_caja, id_usuario,-1};
         
         //Object params[]={id_catprog, numcontrato,clave_elect,curp,rfc,nombre,conyuge,fecha_con,mza,lte,area,domicilio,clave_cat,id_tipocredito,id_usuario,poliza,fecha_pol,clave_b,fecha_ip};
         //return Conexion.ejecutar("insert into benef (id_catprog, numcontrato,clave_elect,curp,rfc,nombre,conyuge,fecha_cont,mza,lte,area,domicilio,clave_cat,id_tipocredito,id_usuario,poliza,fecha_pol,clave_b,fecha_ip) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", params);
-        return Conexion.ejecutar("insert into mov_diversos (id_bendiv, clave_div, fecha_div, poliza,recibo, abono, moratorios, otros,estatus, descripcion, id_catprog, serie, clave_b,numcontrato, bonific, id_caja, id_usuario) values (?,?,?,?,?,?*-1,?,?,?,?,?,?,?,?,?,?,?)", params);
+        return Conexion.llamarconsalida(sql, params);
     }
     
     
