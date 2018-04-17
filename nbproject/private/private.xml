@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/GestionBeneficiario.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/Modelo/Conexion.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorBase.java</file>
@@ -13,6 +14,15 @@
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/javabeans/Beneficiario.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/controladores/ControladorCaja.java</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/cobranza/src/java/javabeans/Mov_edocta.java</file>
+=======
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/controladores/ControladorMovBonific.java</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/javabeans/MovDiversos.java</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/controladores/ControladorMov_edocta.java</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/Modelo/GestionMov_diversos.java</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/Modelo/GestionMovBonific.java</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/controladores/ControladorMov_diversos.java</file>
+            <file>file:/C:/Users/SEDUVI/Documents/neatbeans-project/cobranza/src/java/Modelo/GestionMov_edocta.java</file>
+>>>>>>> b1fdb9755ebef6e55ddfc3ae055dd1b65b31f170
         </group>
     </open-files>
 </project-private>
