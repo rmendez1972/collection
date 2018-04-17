@@ -701,10 +701,17 @@ public class ControladorMovBonific extends ControladorBase{
     //By ismael. Método invocado desde la appCobranza para obtener
     // El listado de bonificaciones de un contrato de diversos (valorcriterio)
     public void listarJsonbyCriterioDiv(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        
         String criterio = request.getParameter("criterio");
         String valorcriterio = request.getParameter("valorcriterio");
- 
+        
+        //17-04-2018 By ismael. Condición cuando el criterio de búsqueda es la CURP
+        if(criterio.equals("clave_curp")){ 
+            GestionBendiv modelo1 =new GestionBendiv();
+            BeneficiarioDiv bendiv=modelo1.obtenerPorClave_curp(valorcriterio);
+            valorcriterio=bendiv.getClave_b();
+            
+        }
+        
         GestionMovBonific modelo=new GestionMovBonific();
         ArrayList bonificaciones=modelo.obtenerPorClave_bdiv(valorcriterio);
         
@@ -717,6 +724,7 @@ public class ControladorMovBonific extends ControladorBase{
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
         response.getWriter().write("{\"bonificacion\":"+gson.toJson(bonificaciones)+"}");
+        
     }
     
     //funcion que introduce valores ala tabla bonific que llegan del front end
