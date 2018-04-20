@@ -350,6 +350,15 @@ public class GestionMov_diversos
         return Conexion.llamarconsalida(sql, params);
     }
     
+    public boolean insertarId_bonificacion(MovDiversos movimiento){
+        Integer id_movdiversos=movimiento.getId_movdiversos();
+        Integer id_bonificacion=movimiento.getId_bonificacion();
+        
+        Object params[]={id_bonificacion, id_movdiversos};
+        return Conexion.ejecutar("update mov_diversos set id_bonificacion=? where id_movdiversos=?", params);
+    
+    }
+    
     
 }
 

@@ -42,10 +42,10 @@ public class MovDiversos
     private String numcontrato;
     private boolean bonific;//
     private int id_caja;
+    private int id_bonificacion;
     
     private String nombrebenef; 
     private String nombreusuario;
-    
     private String nombreprograma;
 
   
@@ -80,6 +80,37 @@ public class MovDiversos
         this.numcontrato = numcontrato;
         this.id_caja = id_caja;
         this.bonific=bonific;
+    }
+    
+    public MovDiversos(int id_movdiversos, int id_bendiv, String clave_div, Date fecha_div, String poliza, int recibo, BigDecimal cargo, BigDecimal abono, BigDecimal moratorios, BigDecimal otros, Date fecha_pol, String estatus, int id_usuario, boolean aplicado, String descripcion, int id_catprog, BigDecimal bonificacion, String serie, String poliza_apli, Date fecha_apli, BigDecimal interes, BigDecimal seguro, int id_emisor, String clave_b, String numcontrato, int id_caja, boolean bonific, int id_bonificacion) {
+        this.id_movdiversos = id_movdiversos;
+        this.id_bendiv = id_bendiv;
+        this.clave_div = clave_div;
+        this.fecha_div = fecha_div;
+        this.poliza = poliza;
+        this.recibo = recibo;
+        this.cargo = cargo;
+        this.abono = abono;
+        this.moratorios = moratorios;
+        this.otros = otros;
+        this.fecha_pol = fecha_pol;
+        this.estatus = estatus;
+        this.id_usuario = id_usuario;
+        this.aplicado = aplicado;
+        this.descripcion = descripcion;
+        this.id_catprog = id_catprog;
+        this.bonificacion = bonificacion;
+        this.serie = serie;
+        this.poliza_apli = poliza_apli;
+        this.fecha_apli = fecha_apli;
+        this.interes = interes;
+        this.seguro = seguro;
+        this.id_emisor = id_emisor;
+        this.clave_b = clave_b;
+        this.numcontrato = numcontrato;
+        this.id_caja = id_caja;
+        this.bonific=bonific;
+        this.id_bonificacion=id_bonificacion;
     }
     
     /*
@@ -388,6 +419,12 @@ public class MovDiversos
         this.nombreprograma = nombreprograma;
     }
 
+     public int getId_bonificacion() {
+        return id_bonificacion;
+    }
 
+    public void setId_bonificacion(int id_bonificacion) {
+        this.id_bonificacion = id_bonificacion;
+    }
     
 }

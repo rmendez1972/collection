@@ -23,10 +23,16 @@ CREATE PROCEDURE sp_aplicaMovimientosDiv(
 
 BEGIN
     insert into mov_diversos (id_bendiv, clave_div, fecha_div, poliza,recibo, abono, moratorios, 
-			otros,estatus, descripcion, id_catprog, serie, clave_b,numcontrato, bonific, id_caja, id_usuario, cargo)
+			otros,estatus, descripcion, id_catprog, serie, clave_b,numcontrato, bonific, id_caja, id_usuario, cargo,
+            interes,seguro)
     
     values (id_bendiv, clave_div, fecha_div, poliza,recibo, abono*-1, moratorios*-1, 
+<<<<<<< HEAD
 			otros*-1,estatus, descripcion, id_catprog, serie, clave_b,numcontrato, bonific, id_caja, id_usuario, 0);
+=======
+			otros*-1,estatus, descripcion, id_catprog, serie, clave_b,numcontrato, bonific, id_caja, id_usuario, 0,
+            0,0);
+>>>>>>> f5a45b997f345c0602934b416fc2c949e7da7d32
     /*SET x=SELECT DISTINCT LAST_INSERT_ID(); 
     SET ultimo=x;
     SELECT ultimo;*/  
