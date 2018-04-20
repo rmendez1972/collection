@@ -443,6 +443,7 @@ public class ControladorMov_diversos extends ControladorBase
         boolean actividad = true;
         resultado.add(actividad);
         resultado.add(resultadoprocedimiento);
+        resultado.add(movimiento.getRecibo());
         GsonBuilder builder=new GsonBuilder();
         Gson gson=builder.create();
            
@@ -452,6 +453,50 @@ public class ControladorMov_diversos extends ControladorBase
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
         response.getWriter().write("{\"registroAplicaMovDiversos\":"+gson.toJson(resultado)+"}");
+    }
+    
+    public void aplicaMovdiversosBonific(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        
+        MovDiversos movimiento=new MovDiversos();
+        
+        GsonBuilder builder=new GsonBuilder();
+        Gson gson=builder.create();
+        
+
+        Integer id_movdiversos = Integer.parseInt(request.getParameter("id_movdiversos"));
+        movimiento.setId_movdiversos(id_movdiversos);
+        
+        Integer id_bonificacion = Integer.parseInt(request.getParameter("id_bonificacion"));
+        movimiento.setId_bonificacion(id_bonificacion);
+        
+               
+        //se actualiza el campo bonific de la tabla mov_edocta para mostrar que el registro de ese movimiento tiene una bonificacion.
+        GestionMov_diversos modelo=new GestionMov_diversos();
+        
+        if(modelo.cambiarBonificTrue(id_movdiversos) && modelo.insertarId_bonificacion(movimiento)){
+        
+            boolean actividad = true;
+            
+            //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+            response.setHeader("Access-Control-Max-Age", "3600");
+            response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+            response.getWriter().write("{\"aplicaMovdiversosBonific\":"+gson.toJson(actividad)+"}");
+            
+        }else{
+            boolean actividad = false;
+            
+            //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+            response.setHeader("Access-Control-Max-Age", "3600");
+            response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+            response.getWriter().write("{\"aplicaMovdiversosBonific\":"+gson.toJson(actividad)+"}");
+        }
+        
+        
+        
     }
     
 }
